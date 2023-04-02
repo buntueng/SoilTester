@@ -8,8 +8,7 @@ import glob
 import logging
 from tkinter import messagebox
 from get_data_displacement import linear_displacement
-import time
-import threading
+
 
 debug = True
 
@@ -136,7 +135,7 @@ class App(ctk.CTk):
         self.MIN_Y_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20)
         self.MIN_Y_unit_label = ctk.CTkLabel(self.configuration_frame,text="mm",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
 
-        self.MAX_Y_label = ctk.CTkLabel(self.configuration_frame,text="MIN Y",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
+        self.MAX_Y_label = ctk.CTkLabel(self.configuration_frame,text="MAX Y",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
         self.MAX_Y_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20)
         self.MAX_Y_unit_label = ctk.CTkLabel(self.configuration_frame,text="mm",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
 
