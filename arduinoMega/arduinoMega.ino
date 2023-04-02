@@ -7,6 +7,10 @@ const int x_motor_speed_pin = 3;
 const int x_limit_front = 18;
 const int x_limit_back = 16;
 
+// x move button
+const int x_forward_pin = 12;
+const int x_backward_pin = 13;
+
 bool execute_cmd = false;
 String cmd_string = "";
 
@@ -39,6 +43,9 @@ void setup()
 
     pinMode(x_limit_front,INPUT_PULLUP);
     pinMode(x_limit_back,INPUT_PULLUP);
+
+    pinMode(x_forward_pin,INPUT_PULLUP);
+    pinMode(x_backward_pin,INPUT_PULLUP);
 }
 
 void loop()
@@ -148,8 +155,8 @@ void loop()
         if(present_time-loadcell_timer >= 10)
         {
             int x_loadcell_value = analogRead(x_loadcell_pin);
-            Serial.print('X = ');
-            Serial.println(x_loadcell_value);
+            Serial.print("X");
+            Serial.println(x_loadcell_value,DEC);
             loadcell_timer = present_time;
         }
         // ==============x axis state machine =====================
@@ -172,7 +179,7 @@ void loop()
         }
         case 2:
         {
-            // if((digitalRead(x_limit_front)==1) || (x_distance >= x_max_displacement))
+            // if((digitalRead(x_limit_front)==1) || (x_distance <= x_max_displacement))
             if((digitalRead(x_limit_front)==1))
             {
                 digitalWrite(x_motor_dir1,LOW);
@@ -194,7 +201,7 @@ void loop()
         }
         case 4:
         {
-            // if((digitalRead(x_limit_back)==1) || (x_distance <= x_min_displacement))
+            // if((digitalRead(x_limit_back)==1) || (x_distance >= x_min_displacement))
             if((digitalRead(x_limit_back)==1) )
             {
                 digitalWrite(x_motor_dir1,LOW);
@@ -210,6 +217,28 @@ void loop()
             break;
         }
 
+    }
+    else
+    {
+        if((digitalRead(x_forward_pin)==0))
+        {
+            digitalWrite(x_motor_dir1,HIGH);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,50);
+        }
+        else if ((digitalRead(x_backward_pin)==0))
+        {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,HIGH);
+            analogWrite(x_motor_speed_pin,50);
+        }
+        else
+        {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+        }
+        
     }
     
 }
