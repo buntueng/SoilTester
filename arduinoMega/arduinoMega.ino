@@ -316,6 +316,7 @@ void loop()
             digitalWrite(y_motor_dir1,LOW);
             digitalWrite(y_motor_dir2,LOW);
             analogWrite(y_motor_speed_pin,0);
+            //osofmv
         }
         
     }
