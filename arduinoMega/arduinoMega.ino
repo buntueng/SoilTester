@@ -12,15 +12,15 @@ const int y_motor_speed_pin = 2;
 // limit switches
 const int x_limit_front = 18;
 const int x_limit_back = 16;
-const int y_limit_top = 20;
-const int y_limit_bottom = 22;
+const int y_limit_top = 26;
+const int y_limit_bottom = 20;
 
 
 // x move button
-const int x_forward_pin = 12;
-const int x_backward_pin = 13;
-const int y_up_pin =23;
-const int y_down_pin =25;
+const int x_forward_pin = 11;
+const int x_backward_pin = 15;
+const int y_up_pin =10;
+const int y_down_pin =12;
 
 bool execute_cmd = false;
 String cmd_string = "";
@@ -66,6 +66,8 @@ void setup()
 
     pinMode(y_up_pin,INPUT_PULLUP);
     pinMode(y_down_pin,INPUT_PULLUP);
+    pinMode(y_limit_top,INPUT_PULLUP);
+    pinMode(y_limit_bottom,INPUT_PULLUP);
 }
 
 void loop()
@@ -83,6 +85,10 @@ void loop()
         }
     }
 
+    Serial.print(digitalRead(y_limit_top));
+    Serial.print(",");
+    Serial.println(digitalRead(y_limit_bottom));
+    delay(100);
 
     if(execute_cmd)
     {
@@ -303,20 +309,19 @@ void loop()
         {
             digitalWrite(y_motor_dir1,HIGH);
             digitalWrite(y_motor_dir2,LOW);
-            analogWrite(y_motor_speed_pin,50);
+            analogWrite(y_motor_speed_pin,150);
         }
         else if ((digitalRead(y_down_pin)==0)&&(digitalRead(y_limit_bottom)==0))
         {
             digitalWrite(y_motor_dir1,LOW);
             digitalWrite(y_motor_dir2,HIGH);
-            analogWrite(y_motor_speed_pin,50);
+            analogWrite(y_motor_speed_pin,150);
         }
         else
         {
             digitalWrite(y_motor_dir1,LOW);
             digitalWrite(y_motor_dir2,LOW);
             analogWrite(y_motor_speed_pin,0);
-            //osofmv
         }
         
     }
