@@ -1,15 +1,26 @@
 const int x_loadcell_pin = A13;
+const int y_loadcell_pin = A10;
 
 const int x_motor_dir1 = 7;
 const int x_motor_dir2 = 5;
 const int x_motor_speed_pin = 3;
+
+const int y_motor_dir1 = 6;
+const int y_motor_dir2 = 4;
+const int y_motor_speed_pin = 2;
+
 // limit switches
 const int x_limit_front = 18;
 const int x_limit_back = 16;
+const int y_limit_top = 20;
+const int y_limit_bottom = 22;
+
 
 // x move button
 const int x_forward_pin = 12;
 const int x_backward_pin = 13;
+const int y_up_pin =23;
+const int y_down_pin =25;
 
 bool execute_cmd = false;
 String cmd_string = "";
@@ -29,7 +40,8 @@ int y_loadcell = 0;
 int y_weight = 0;
 
 bool run_machine = false;
-int x_axis_state_machine = true;
+int x_axis_state_machine = 0;
+int y_axis_state_machine = 0;
 
 unsigned long loadcell_timer = 0;
 void setup()
@@ -38,14 +50,22 @@ void setup()
     //============ setup motor pin ================
     pinMode(x_motor_dir1,OUTPUT);
     pinMode(x_motor_dir2,OUTPUT);
-    pinMode(x_loadcell_pin,INPUT);
     pinMode(x_motor_speed_pin,OUTPUT);
+    pinMode(x_loadcell_pin,INPUT);
+
+    pinMode(y_motor_dir1,OUTPUT);
+    pinMode(y_motor_dir2,OUTPUT);
+    pinMode(y_motor_speed_pin,OUTPUT);
+    pinMode(y_loadcell_pin,INPUT);
 
     pinMode(x_limit_front,INPUT_PULLUP);
     pinMode(x_limit_back,INPUT_PULLUP);
 
     pinMode(x_forward_pin,INPUT_PULLUP);
     pinMode(x_backward_pin,INPUT_PULLUP);
+
+    pinMode(y_up_pin,INPUT_PULLUP);
+    pinMode(y_down_pin,INPUT_PULLUP);
 }
 
 void loop()
@@ -62,10 +82,7 @@ void loop()
             cmd_string.concat(input_char);
         }
     }
-    // Serial.print(digitalRead(x_limit_front));
-    // Serial.print(',');
-    // Serial.println(analogRead(x_loadcell_pin));
-    // delay(10);
+
 
     if(execute_cmd)
     {
@@ -82,7 +99,7 @@ void loop()
                 cyclic_ms = cmd_string.substring(1,cmd_len).toInt();
                 break;
             }
-            case 'D':   // maximum displacement in micrometers
+            case 'L':   // maximum displacement in micrometers
             {
                 x_max_displacement = cmd_string.substring(1,cmd_len).toInt();
                 break;
@@ -98,16 +115,26 @@ void loop()
                 break;
             }
             // //======== parameters on Y axis ==========
-            // case 'P':   // set pwm to y-axis range from 0 to 255 [0-100%]
-            // {
-            //     pwm_yaxis = cmd_string.substring(1,cmd_len).toInt();
-            //     break;
-            // }
-            // case 'U':
-            // {
-            //     y_max_displacement = cmd_string.substring(1,cmd_len).toInt();
-            //     break;
-            // }
+            case 'Y':   // set pwm to y-axis range from 0 to 255 [0-100%]
+            {
+                pwm_yaxis = cmd_string.substring(1,cmd_len).toInt();
+                break;
+            }
+            case 'U':
+            {
+                y_axis_state_machine = 1;
+                break;
+            }
+            case 'D':
+            {
+                y_axis_state_machine = 2;
+                break;
+            }
+            case 'P':
+            {
+                y_axis_state_machine = 3;
+                break;
+            }
             // =============== run and terminate flag ====================
             case 'R':       // run state machine
             {
@@ -159,7 +186,7 @@ void loop()
             Serial.println(x_loadcell_value,DEC);
             loadcell_timer = present_time;
         }
-        // ==============x axis state machine =====================
+        // ============= x axis state machine =====================
         switch (x_axis_state_machine)
         {
         case 0:
@@ -216,17 +243,50 @@ void loop()
         default:
             break;
         }
+        // ============= y axis state machine =====================
+        switch(y_axis_state_machine)
+        {
+            case 0:
+            {
+                break;
+            }
+            case 1:     // move up
+            {
+                digitalWrite(y_motor_dir1,HIGH);
+                digitalWrite(y_motor_dir2,LOW);
+                analogWrite(y_motor_speed_pin,pwm_xaxis);
+                break;
+            }
+            case 2:     // move down
+            {
+                digitalWrite(y_motor_dir1,HIGH);
+                digitalWrite(y_motor_dir2,LOW);
+                analogWrite(y_motor_speed_pin,pwm_yaxis);
+                break;
+            }
+            case 3:
+            {
+                digitalWrite(y_motor_dir1,HIGH);
+                digitalWrite(y_motor_dir2,LOW);
+                analogWrite(y_motor_speed_pin,0);
+                break;
+            }
+            default:
+            {
 
+            }
+        }
     }
     else
     {
-        if((digitalRead(x_forward_pin)==0))
+        // ======= switch control xaxis=========
+        if((digitalRead(x_forward_pin)==0)&&(digitalRead(x_limit_front)==0))
         {
             digitalWrite(x_motor_dir1,HIGH);
             digitalWrite(x_motor_dir2,LOW);
             analogWrite(x_motor_speed_pin,50);
         }
-        else if ((digitalRead(x_backward_pin)==0))
+        else if ((digitalRead(x_backward_pin)==0)&&(digitalRead(x_limit_back)==0))
         {
             digitalWrite(x_motor_dir1,LOW);
             digitalWrite(x_motor_dir2,HIGH);
@@ -237,6 +297,25 @@ void loop()
             digitalWrite(x_motor_dir1,LOW);
             digitalWrite(x_motor_dir2,LOW);
             analogWrite(x_motor_speed_pin,0);
+        }
+        // ======= switch control yaxis =============
+        if((digitalRead(y_up_pin)==0)&&(digitalRead(y_limit_top)==0))
+        {
+            digitalWrite(y_motor_dir1,HIGH);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,50);
+        }
+        else if ((digitalRead(y_down_pin)==0)&&(digitalRead(y_limit_bottom)==0))
+        {
+            digitalWrite(y_motor_dir1,LOW);
+            digitalWrite(y_motor_dir2,HIGH);
+            analogWrite(y_motor_speed_pin,50);
+        }
+        else
+        {
+            digitalWrite(y_motor_dir1,LOW);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,0);
         }
         
     }
