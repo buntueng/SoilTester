@@ -161,7 +161,7 @@ void loop()
     {
         unsigned long present_time = millis();
         // send loadcell every 10 milliseconds
-        if(present_time-loadcell_timer >= interval_time)
+        if(present_time-loadcell_timer >= loadcell_interval_time)
         {
             int x_loadcell_value = analogRead(x_loadcell_pin);
             Serial.print("x");
@@ -253,34 +253,37 @@ void run_exp1()
     int y_present_force = analogRead(y_loadcell_pin);
     switch (exp1_state)
     {
-    case 0:
-    {
-        exp1_state = 1;
-        break;
-    }
-    case 1:     // move machine down
-    {
-        digitalWrite(y_motor_dir1,HIGH);
-        digitalWrite(y_motor_dir2,LOW);
-        analogWrite(y_motor_speed_pin,pwm_yaxis);
-        exp1_state = 2
-        break;
-    }
-    case 2:
-    {
-        if(digitalRead(y_limit_bottom)==1)
-        else if (y_present_force > fixed_vertical_force)
+        case 0:
         {
+            exp1_state = 1;
+            break;
+        }
+        case 1:     // move machine down
+        {
+            digitalWrite(y_motor_dir1,HIGH);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,50);
+            exp1_state = 2;
+            break;
+        }
+        case 2:
+        {
+            if(digitalRead(y_limit_bottom)==1)
+            {
+                
+            }
+            else if (y_present_force > fixed_vertical_force)
+            {
             /* code */
-        }
-        else if (y_present_force < fixed_vertical_force)
-        {
+            }
+            else if (y_present_force < fixed_vertical_force)
+            {
 
-        }
-        else if(y_present_force == fixed_vertical_force)
-        {
-            
-        }
+            }
+            else if(y_present_force == fixed_vertical_force)
+            {
+                
+            }
         break;
     }
     default:
