@@ -68,6 +68,9 @@ void setup()
     pinMode(y_down_pin,INPUT_PULLUP);
     pinMode(y_limit_top,INPUT_PULLUP);
     pinMode(y_limit_bottom,INPUT_PULLUP);
+
+    pinMode(x_loadcell_pin,INPUT);
+    pinMode(y_loadcell_pin,INPUT);
 }
 
 void loop()
@@ -85,10 +88,10 @@ void loop()
         }
     }
 
-    Serial.print(digitalRead(y_limit_top));
-    Serial.print(",");
-    Serial.println(digitalRead(y_limit_bottom));
-    delay(100);
+    // Serial.print(digitalRead(y_limit_top));
+    // Serial.print(",");
+    // Serial.println(digitalRead(y_limit_bottom));
+    // delay(100);
 
     if(execute_cmd)
     {
@@ -190,7 +193,12 @@ void loop()
             int x_loadcell_value = analogRead(x_loadcell_pin);
             Serial.print("X");
             Serial.println(x_loadcell_value,DEC);
+ 
+            int y_loadcell_value = analogRead(y_loadcell_pin);
+            Serial.print("Y");
+            Serial.println(y_loadcell_value,DEC);
             loadcell_timer = present_time;
+
         }
         // ============= x axis state machine =====================
         switch (x_axis_state_machine)

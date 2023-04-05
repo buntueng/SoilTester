@@ -8,7 +8,6 @@ import glob
 import logging
 from tkinter import messagebox
 from get_data_displacement import linear_displacement
-import math
 
 
 debug = True
@@ -51,7 +50,7 @@ class App(ctk.CTk):
         self.image_frame .grid(row=0,column=0,padx=5,pady=(5,0))
         
         self.configuration_frame = ctk.CTkFrame(self.master_frame,fg_color="azure3",corner_radius=20)
-        self.configuration_frame.grid(row=0,column=1,padx=(0,10),pady=(10,0),ipady=15,sticky=tk.NE)
+        self.configuration_frame.grid(row=0,column=1,padx=(0,10),pady=(5,0),ipady=37,sticky=tk.NE)
 
         self.monitor_frame = ctk.CTkFrame(self.master_frame,fg_color="azure3",corner_radius=20)
         self.monitor_frame.grid(row=1,column=0,padx=5,pady=5,sticky=tk.NW)
@@ -98,46 +97,48 @@ class App(ctk.CTk):
         self.com_port_dis_X = ctk.CTkOptionMenu(self.configuration_frame,width=100,height=40,values=[""])
         self.com_port_dis_X.set("เลือกพอต")
 
-        self.com_port_CT_Y_label = ctk.CTkLabel(self.configuration_frame,text="CONTROL Y",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.com_port_CT_Y = ctk.CTkOptionMenu(self.configuration_frame,width=100,height=40,values=[""])
-        self.com_port_CT_Y.set("เลือกพอต")
+        # self.com_port_CT_Y_label = ctk.CTkLabel(self.configuration_frame,text="CONTROL Y",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
+        # self.com_port_CT_Y = ctk.CTkOptionMenu(self.configuration_frame,width=100,height=40,values=[""])
+        # self.com_port_CT_Y.set("เลือกพอต")
 
         self.com_port_dis_Y_label = ctk.CTkLabel(self.configuration_frame,text="DIS Y",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
         self.com_port_dis_Y = ctk.CTkOptionMenu(self.configuration_frame,width=100,height=40,values=[""])
         self.com_port_dis_Y.set("เลือกพอต")
 
-        self.cyclic_label = ctk.CTkLabel(self.configuration_frame,text="CYCLIC",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.cyclic_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,placeholder_text="0-1000")
+        self.cyclic_default = tk.StringVar(value="1000")
+        self.loop_defualt = tk.StringVar(value="10")
+        self.cyclic_label = ctk.CTkLabel(self.configuration_frame,text="CYCLIC",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font,)
+        self.cyclic_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,textvariable=self.cyclic_default)
         self.cyclic_unit_label = ctk.CTkLabel(self.configuration_frame,text="RPM",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.speed_motor_X_label = ctk.CTkLabel(self.configuration_frame,text="ความเร็วมอเตอร์แกนX",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.speed_motor_X_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,placeholder_text="0-100%")
-        self.speed_motor_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="PWM",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
+        self.speed_motor_X_label = ctk.CTkLabel(self.configuration_frame,text="จำนวนรอบ",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
+        self.speed_motor_X_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,textvariable=self.loop_defualt)
+        self.speed_motor_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="รอบ",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
         self.pressure_X_label = ctk.CTkLabel(self.configuration_frame,text="แรงกดแกนX",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.pressure_X_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,placeholder_text="0 - 10kg")
+        self.pressure_X_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,)
         self.pressure_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
 
-        self.MIN_X_label = ctk.CTkLabel(self.configuration_frame,text="MIN X",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.MIN_X_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20,placeholder_text="0-4uM")
-        self.MIN_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="mm",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
+        # self.MIN_X_label = ctk.CTkLabel(self.configuration_frame,text="MIN X",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
+        # self.MIN_X_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20,placeholder_text="0-4")
+        # self.MIN_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="mm",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
         
-        self.MAX_X_label = ctk.CTkLabel(self.configuration_frame,text="MAX X",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.MAX_X_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20,placeholder_text="0-4uM")
-        self.MAX_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="mm",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
+        # self.MAX_X_label = ctk.CTkLabel(self.configuration_frame,text="MAX X",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
+        # self.MAX_X_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20,placeholder_text="0-4")
+        # self.MAX_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="mm",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
 
         self.speed_motor_Y_label = ctk.CTkLabel(self.configuration_frame,text="ความเร็วมอเตอร์แกนY",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.speed_motor_Y_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,placeholder_text="0-100%")
+        self.speed_motor_Y_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,)
         self.speed_motor_Y_unit_label = ctk.CTkLabel(self.configuration_frame,text="PWM",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
         self.pressure_Y_label = ctk.CTkLabel(self.configuration_frame,text="แรงกดแกนY",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.pressure_Y_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,placeholder_text="0-10kg")
+        self.pressure_Y_entry = ctk.CTkEntry(self.configuration_frame,width=150,height=40,font=eng_font,corner_radius=20,)
         self.pressure_Y_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
         self.clear_button_entry = ctk.CTkButton(self.configuration_frame,text = "CLEAR",width=150,height=40,font=eng_font,corner_radius=20,command=self.clear_button_pressed)
 
         self.MIN_Y_label = ctk.CTkLabel(self.configuration_frame,text="MIN Y",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.MIN_Y_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20,placeholder_text="0-4uM")
+        self.MIN_Y_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20,)
         self.MIN_Y_unit_label = ctk.CTkLabel(self.configuration_frame,text="mm",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
 
         self.MAX_Y_label = ctk.CTkLabel(self.configuration_frame,text="MAX Y",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
-        self.MAX_Y_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20,placeholder_text="0-4uM")
+        self.MAX_Y_entry = ctk.CTkEntry(self.configuration_frame,width=90,height=40,font=eng_font,corner_radius=20,)
         self.MAX_Y_unit_label = ctk.CTkLabel(self.configuration_frame,text="mm",bg_color=configulation_frame_colors,text_color="red",font=thai_large_font)
 
 
@@ -147,11 +148,11 @@ class App(ctk.CTk):
         self.com_port_dis_X_label.grid(row=0,column=0,padx=(150,0),pady=(10,0),columnspan = 2,sticky=tk.N)
         self.com_port_dis_X.grid(row=0, column=0, padx=(260,0),pady=(10,0),columnspan = 3,sticky=tk.N)
 
-        self.com_port_CT_Y_label.grid(row=1,column=0,padx=(5,0),pady=(5,0),ipadx = 5,sticky=tk.NW)
-        self.com_port_CT_Y.grid(row=1, column=0, padx=(115,0), pady=(5, 5),columnspan = 3,sticky=tk.NW)
+        # self.com_port_CT_Y_label.grid(row=1,column=0,padx=(5,0),pady=(5,0),ipadx = 5,sticky=tk.NW)
+        # self.com_port_CT_Y.grid(row=1, column=0, padx=(115,0), pady=(5, 5),columnspan = 3,sticky=tk.NW)
 
-        self.com_port_dis_Y_label.grid(row=1,column=0,padx=(150,0),pady=(5,0),columnspan = 2,sticky=tk.N)
-        self.com_port_dis_Y.grid(row=1, column=0, padx=(260,0),pady=(5,0),columnspan = 3,sticky=tk.N)
+        self.com_port_dis_Y_label.grid(row=1,column=0,padx=(150,0),pady=(5,5),columnspan = 2,sticky=tk.N)
+        self.com_port_dis_Y.grid(row=1, column=0, padx=(260,0),pady=(5,5),columnspan = 3,sticky=tk.N)
 
         self.com_conection_button_CT_X.grid(row=2, column=0, padx=(115,5), pady=(0, 5),columnspan = 1,sticky=tk.N)
         self.com_disconection_button_CT_X.grid(row=2, column=0, padx=(265,5), pady=(0, 5),columnspan = 3,sticky=tk.N)
@@ -166,13 +167,13 @@ class App(ctk.CTk):
         self.pressure_X_entry.grid(row=6, column=1, padx=(0,5))
         self.pressure_X_unit_label.grid(row=6, column=2, padx=(0,5),sticky=tk.NW)
 
-        self.MIN_X_label.grid(row=7, column=0, padx=10,pady = (10,0),sticky=tk.NW)
-        self.MIN_X_entry.grid(row=7, column=0, padx=(70,5),pady = (10,0),columnspan = 3,sticky=tk.NW)
-        self.MIN_X_unit_label.grid(row=7, column=0, padx=(165,0),pady = (10,0),columnspan = 3,sticky=tk.NW)
+        # self.MIN_X_label.grid(row=7, column=0, padx=10,pady = (10,0),sticky=tk.NW)
+        # self.MIN_X_entry.grid(row=7, column=0, padx=(70,5),pady = (10,0),columnspan = 3,sticky=tk.NW)
+        # self.MIN_X_unit_label.grid(row=7, column=0, padx=(165,0),pady = (10,0),columnspan = 3,sticky=tk.NW)
 
-        self.MAX_X_label.grid(row=7, column=0, padx=(225,0),pady = (10,0),sticky=tk.NW,columnspan = 3)
-        self.MAX_X_entry.grid(row=7, column=0, padx=(245,0),pady = (10,0),sticky=tk.N,columnspan = 3)
-        self.MAX_X_unit_label.grid(row=7, column=0, padx=(375,0),pady = (10,0),columnspan = 3,sticky=tk.N)
+        # self.MAX_X_label.grid(row=7, column=0, padx=(225,0),pady = (10,0),sticky=tk.NW,columnspan = 3)
+        # self.MAX_X_entry.grid(row=7, column=0, padx=(245,0),pady = (10,0),sticky=tk.N,columnspan = 3)
+        # self.MAX_X_unit_label.grid(row=7, column=0, padx=(375,0),pady = (10,0),columnspan = 3,sticky=tk.N)
 
         self.speed_motor_Y_label.grid(row=8,column=0,padx=5,pady=(12,0),ipadx = 5,sticky=tk.NW)
         self.speed_motor_Y_entry.grid(row=8, column=1, padx=(0,5), pady=(10, 10))
@@ -230,14 +231,13 @@ class App(ctk.CTk):
 
         self.disable_widgets_ct_X()
         self.disable_widgets_dis_X()
-        self.disable_widgets_CT_Y()
+        # self.disable_widgets_CT_Y()
         self.disable_widgets_dis_Y()
         active_port_list = self.list_serial_ports()
         self.com_port_CT_X.configure(values=active_port_list)
         self.com_port_dis_X.configure(values = active_port_list)
-        self.com_port_CT_Y.configure(values = active_port_list)
+        # self.com_port_CT_Y.configure(values = active_port_list)
         self.com_port_dis_Y.configure(values = active_port_list)
-
 
     def disable_widgets_ct_X(self):
         self.com_disconection_button_CT_X.configure(state="disabled")
@@ -253,12 +253,12 @@ class App(ctk.CTk):
         self.cyclic_label.configure(state="disabled")
         self.cyclic_entry.configure(state="disabled")
         self.cyclic_unit_label.configure(state="disabled")
-        self.MIN_X_label.configure(state="disabled")
-        self.MIN_X_entry.configure(state="disabled")
-        self.MIN_X_unit_label.configure(state="disabled")
-        self.MAX_X_label.configure(state="disabled")
-        self.MAX_X_entry.configure(state="disabled")
-        self.MAX_X_unit_label.configure(state="disabled")
+        # self.MIN_X_label.configure(state="disabled")
+        # self.MIN_X_entry.configure(state="disabled")
+        # self.MIN_X_unit_label.configure(state="disabled")
+        # self.MAX_X_label.configure(state="disabled")
+        # self.MAX_X_entry.configure(state="disabled")
+        # self.MAX_X_unit_label.configure(state="disabled")
         self.MIN_Y_label.configure(state="disabled")
         self.MIN_Y_entry.configure(state="disabled")
         self.MIN_Y_unit_label.configure(state="disabled")
@@ -266,6 +266,14 @@ class App(ctk.CTk):
         self.MAX_Y_entry.configure(state="disabled")
         self.MAX_Y_unit_label.configure(state="disabled")        
         self.stop_button.configure(state="disabled")
+        self.speed_motor_Y_label.configure(state="disabled")
+        self.speed_motor_Y_entry.configure(state="disabled")
+        self.speed_motor_Y_unit_label.configure(state="disabled")
+        self.pressure_Y_label.configure(state="disabled")
+        self.pressure_Y_entry.configure(state="disabled")
+        self.pressure_Y_unit_label.configure(state="disabled")
+        self.image_pressure_Y_label.configure(state="disabled")
+        self.image_pressure_Y_entry.configure(state="disabled")
 
     def enable_widgets_ct_x(self):
         self.com_disconection_button_CT_X.configure(state="normal")
@@ -281,18 +289,26 @@ class App(ctk.CTk):
         self.cyclic_label.configure(state="normal")
         self.cyclic_entry.configure(state="normal")
         self.cyclic_unit_label.configure(state="normal")
-        self.MIN_X_label.configure(state="normal")
-        self.MIN_X_entry.configure(state="normal")
-        self.MIN_X_unit_label.configure(state="normal")
-        self.MAX_X_label.configure(state="normal")
-        self.MAX_X_entry.configure(state="normal")
-        self.MAX_X_unit_label.configure(state="normal")
+        # self.MIN_X_label.configure(state="normal")
+        # self.MIN_X_entry.configure(state="normal")
+        # self.MIN_X_unit_label.configure(state="normal")
+        # self.MAX_X_label.configure(state="normal")
+        # self.MAX_X_entry.configure(state="normal")
+        # self.MAX_X_unit_label.configure(state="normal")
         self.MIN_Y_label.configure(state="normal")
         self.MIN_Y_entry.configure(state="normal")
         self.MIN_Y_unit_label.configure(state="normal")
         self.MAX_Y_label.configure(state="normal")
         self.MAX_Y_entry.configure(state="normal")
-        self.MAX_Y_unit_label.configure(state="normal")       
+        self.MAX_Y_unit_label.configure(state="normal")   
+        self.speed_motor_Y_label.configure(state="normal")
+        self.speed_motor_Y_entry.configure(state="normal")
+        self.speed_motor_Y_unit_label.configure(state="normal")
+        self.pressure_Y_label.configure(state="normal")
+        self.pressure_Y_entry.configure(state="normal")
+        self.pressure_Y_unit_label.configure(state="normal")
+        self.image_pressure_Y_label.configure(state="normal")
+        self.image_pressure_Y_entry.configure(state="normal")   
 
     def disable_widgets_dis_X(self):
         self.image_dimention_x_entry.configure(state="disabled")
@@ -314,12 +330,12 @@ class App(ctk.CTk):
         self.pressure_Y_label.configure(state="disabled")
         self.pressure_Y_entry.configure(state="disabled")
         self.pressure_Y_unit_label.configure(state="disabled")
-        self.MIN_X_label.configure(state="disabled")
-        self.MIN_X_entry.configure(state="disabled")
-        self.MIN_X_unit_label.configure(state="disabled")
-        self.MAX_X_label.configure(state="disabled")
-        self.MAX_X_entry.configure(state="disabled")
-        self.MAX_X_unit_label.configure(state="disabled")
+        # self.MIN_X_label.configure(state="disabled")
+        # self.MIN_X_entry.configure(state="disabled")
+        # self.MIN_X_unit_label.configure(state="disabled")
+        # self.MAX_X_label.configure(state="disabled")
+        # self.MAX_X_entry.configure(state="disabled")
+        # self.MAX_X_unit_label.configure(state="disabled")
         self.MIN_Y_label.configure(state="disabled")
         self.MIN_Y_entry.configure(state="disabled")
         self.MIN_Y_unit_label.configure(state="disabled")
@@ -343,12 +359,12 @@ class App(ctk.CTk):
         self.pressure_Y_label.configure(state="normal")
         self.pressure_Y_entry.configure(state="normal")
         self.pressure_Y_unit_label.configure(state="normal")
-        self.MIN_X_label.configure(state="normal")
-        self.MIN_X_entry.configure(state="normal")
-        self.MIN_X_unit_label.configure(state="normal")
-        self.MAX_X_label.configure(state="normal")
-        self.MAX_X_entry.configure(state="normal")
-        self.MAX_X_unit_label.configure(state="normal")
+        # self.MIN_X_label.configure(state="normal")
+        # self.MIN_X_entry.configure(state="normal")
+        # self.MIN_X_unit_label.configure(state="normal")
+        # self.MAX_X_label.configure(state="normal")
+        # self.MAX_X_entry.configure(state="normal")
+        # self.MAX_X_unit_label.configure(state="normal")
         self.MIN_Y_label.configure(state="normal")
         self.MIN_Y_entry.configure(state="normal")
         self.MIN_Y_unit_label.configure(state="normal")
@@ -402,8 +418,8 @@ class App(ctk.CTk):
         self.speed_motor_Y_entry.delete(0,'end')
         self.pressure_Y_entry.delete(0,'end')
         self.cyclic_entry.delete(0,'end')
-        self.MIN_X_entry.delete(0,'end')
-        self.MAX_X_entry.delete(0,'end')
+        # self.MIN_X_entry.delete(0,'end')
+        # self.MAX_X_entry.delete(0,'end')
         self.MIN_Y_entry.delete(0,'end')
         self.MAX_Y_entry.delete(0,'end')
 
@@ -417,7 +433,7 @@ class App(ctk.CTk):
         if len(list_available_port) > 0:
             self.com_port_CT_X.configure(values=list_available_port)
             self.com_port_dis_X.configure(values = list_available_port)
-            self.com_port_CT_Y.configure(values = list_available_port)
+            # self.com_port_CT_Y.configure(values = list_available_port)
             self.com_port_dis_Y.configure(values = list_available_port)
 
     def list_serial_ports(self):
@@ -448,30 +464,30 @@ class App(ctk.CTk):
     def connection_CT_X_button_pressed(self):
 
         CTX_port = self.com_port_CT_X.get()
-        CTY_port = self.com_port_CT_Y.get()
+        # CTY_port = self.com_port_CT_Y.get()
         disX = self.com_port_dis_X.get()
         disY = self.com_port_dis_Y.get()
 
-        self.selected_port_list = [CTX_port,CTY_port,disX,disY]
-        # print(self.selected_port_list)
+        self.selected_port_list = [CTX_port,disX,disY]
+        print(self.selected_port_list)
         locked_port = self.selected_port_list
-        if len(set(self.selected_port_list))<4:
+        if len(set(self.selected_port_list))<3:
             self.com_port_CT_X.configure(state=tk.NORMAL)
-            self.com_port_CT_Y.configure(state=tk.NORMAL)
+            # self.com_port_CT_Y.configure(state=tk.NORMAL)
             self.com_port_dis_X.configure(state=tk.NORMAL)
             self.com_port_dis_Y.configure(state=tk.NORMAL)
         else:
             # open all ports
             try:
                 self.ser_port_CT_X.port = CTX_port
-                self.ser_port_CT_Y.port = CTY_port
+                # self.ser_port_CT_Y.port = CTY_port
                 self.ser_port_dis_X.port = disX
                 self.ser_port_dis_Y.port = disY
 
                 self.ser_port_CT_X.open()
                 locked_port.remove(CTX_port)
-                self.ser_port_CT_Y.open()
-                locked_port.remove(CTY_port)
+                # self.ser_port_CT_Y.open()
+                # locked_port.remove(CTY_port)
                 self.ser_port_dis_X.open()
                 # self.ser_port_dis_X.close()
                 locked_port.remove(disX)
@@ -479,11 +495,11 @@ class App(ctk.CTk):
                 # self.ser_port_dis_Y.close()
                 locked_port.remove(disY)
                 self.enable_widgets_ct_x()
-                self.enable_widgets_CT_Y()
+                # self.enable_widgets_CT_Y()
                 self.enable_widgets_dis_x()
                 self.enable_widgets_dis_Y()
                 self.com_port_CT_X.configure(state=tk.DISABLED)
-                self.com_port_CT_Y.configure(state=tk.DISABLED)
+                # self.com_port_CT_Y.configure(state=tk.DISABLED)
                 self.com_port_dis_X.configure(state=tk.DISABLED)
                 self.com_port_dis_Y.configure(state=tk.DISABLED)
                 # self.image_dimention_x_string.set(200)
@@ -500,10 +516,10 @@ class App(ctk.CTk):
         self.ser_port_dis_Y.close()
         self.disable_widgets_ct_X()
         self.disable_widgets_dis_X()
-        self.disable_widgets_CT_Y()
+        # self.disable_widgets_CT_Y()
         self.disable_widgets_dis_Y()
         self.com_port_CT_X.configure(state=tk.NORMAL)
-        self.com_port_CT_Y.configure(state=tk.NORMAL)
+        # self.com_port_CT_Y.configure(state=tk.NORMAL)
         self.com_port_dis_X.configure(state=tk.NORMAL)
         self.com_port_dis_Y.configure(state=tk.NORMAL)
 
@@ -586,26 +602,26 @@ class App(ctk.CTk):
                     self.motor_x_param = self.speed_motor_X_entry.get()
                     self.motor_x_param = str(int(255/100*int(self.motor_x_param)))
                     self.load_cell_x_param = self.pressure_X_entry.get()
-                    self.MIN_X_param = self.MIN_X_entry.get()
-                    self.MAX_X_param = self.MAX_X_entry.get()
-                    
+                    # self.MIN_X_param = self.MIN_X_entry.get()
+                    # self.MAX_X_param = self.MAX_X_entry.get()
+
+                    self.motor_y_param = self.speed_motor_Y_entry.get()
+                    self.motor_y_param = str(int(255/100*int(self.motor_y_param)))
+                    self.load_cell_y_param = self.pressure_Y_entry.get()
+                    self.MIN_Y_param = self.MIN_Y_entry.get()
+                    self.MAX_Y_param = self.MAX_Y_entry.get() 
+
                     logger.debug(self.cyclic_param)
                     logger.debug(self.motor_x_param)
                     logger.debug(self.load_cell_x_param)
-                    logger.debug(self.MIN_X_param)
-                    logger.debug(self.MAX_X_param)
-
-                    if self.ser_port_CT_Y.is_open:
-                        self.motor_y_param = self.speed_motor_Y_entry.get()
-                        # self.motor_y_param = str(int(255/100*int(self.motor_y_param)))
-                        self.load_cell_y_param = self.pressure_Y_entry.get()
-                        self.MIN_Y_param = self.MIN_Y_entry.get()
-                        self.MAX_Y_param = self.MAX_Y_entry.get()
-                        logger.debug(self.motor_y_param)
-                        logger.debug(self.load_cell_y_param)
-                        logger.debug(self.MIN_Y_param)
-                        logger.debug(self.MAX_Y_param)
-                        self.start_mc = 2
+                    # logger.debug(self.MIN_X_param)
+                    # logger.debug(self.MAX_X_param)
+                    
+                    logger.debug(self.motor_y_param)
+                    logger.debug(self.load_cell_y_param)
+                    logger.debug(self.MIN_Y_param)
+                    logger.debug(self.MAX_Y_param)
+                    self.start_mc = 2
                 self.after(10,self.run_mc)
 
             case 2:
@@ -644,49 +660,56 @@ class App(ctk.CTk):
                     messagebox.showwarning("WARNING", "คุณไท่ได้กรอก parameter ของ LOADCELL X")
                     self.stop_button_pressed()
 
-            case 5:
-                if self.MIN_X_param:
-                    MIN_X_write = ("M")+(self.MIN_X_param)+("\n")
-                    MIN_X_write = MIN_X_write.encode() #============ DISPLACMENT X
-                    print(MIN_X_write)
-                    self.ser_port_CT_X.write(MIN_X_write)
-                    self.start_mc = 6
-                    self.after(10,self.run_mc)
-                else:
-                    messagebox.showwarning("WARNING", "คุณไท่ได้กรอก parameter ของ MIN X")
-                    self.stop_button_pressed()
+            # case 5:
+            #     if self.MIN_X_param:
+            #         MIN_X_write = ("M")+(self.MIN_X_param)+("\n")
+            #         MIN_X_write = MIN_X_write.encode() #============ DISPLACMENT X
+            #         print(MIN_X_write)
+            #         self.ser_port_CT_X.write(MIN_X_write)
+            #         self.start_mc = 6
+            #         self.after(10,self.run_mc)
+            #     else:
+            #         messagebox.showwarning("WARNING", "คุณไท่ได้กรอก parameter ของ MIN X")
+            #         self.stop_button_pressed()
 
-            case 6:
-                if self.MAX_X_param:
-                    MAX_X_write = ("L")+(self.MAX_X_param)+("\n")
-                    MAX_X_write = MAX_X_write.encode() #============ DISPLACMENT X
-                    print(MAX_X_write)
-                    self.ser_port_CT_X.write(MAX_X_write)
-                    self.start_mc = 7
-                    self.after(10,self.run_mc)
-                else:
-                    messagebox.showwarning("WARNING", "คุณไท่ได้กรอก parameter ของ MAX X")
-                    self.stop_button_pressed()
+            # case 6:
+            #     if self.MAX_X_param:
+            #         MAX_X_write = ("L")+(self.MAX_X_param)+("\n")
+            #         MAX_X_write = MAX_X_write.encode() #============ DISPLACMENT X
+            #         print(MAX_X_write)
+            #         self.ser_port_CT_X.write(MAX_X_write)
+            #         self.start_mc = 7
+            #         self.after(10,self.run_mc)
+            #     else:
+            #         messagebox.showwarning("WARNING", "คุณไท่ได้กรอก parameter ของ MAX X")
+            #         self.stop_button_pressed()
                 
-            case 7:
+
+            case 5:
+                if self.motor_y_param:
+                    speed_Y_write = ("Y")+(self.motor_y_param)+("\n")
+                    speed_Y_write = speed_Y_write.encode()
+                    print(speed_Y_write)
+                    self.ser_port_CT_X.write(speed_Y_write)
+                    self.start_mc = 12
+                    self.after(10,self.run_mc)
+            
+
+            case 12:
                 self.ser_port_CT_X.write(b'G\n')
                 check_param_X = self.ser_port_CT_X.readline()
                 check_param_X = check_param_X.strip().decode()
                 check_param_X = check_param_X.split(",")
                 speed_x = check_param_X[0]
                 cyclic  = check_param_X[1]
-                x_min  = check_param_X[2]
-                x_max  = check_param_X[3]
-                x_distans = check_param_X[4]
+                x_distans = check_param_X[2]
                 if self.cyclic_param == cyclic:
                     if(self.motor_x_param == speed_x):
-                        if(self.MIN_X_param == x_min):
-                            if(self.MAX_X_param == x_max):
-                                if(self.load_cell_x_param == x_distans):
-                                    self.start_mc = 8   
-                                    self.after(10,self.run_mc)
+                        if(self.load_cell_x_param == x_distans):
+                            self.start_mc = 13   
+                            self.after(10,self.run_mc)
                                     
-            case 8:
+            case 13:
                 self.ser_port_CT_X.write(b'R\n')
                 print("OK")
                 # self.after(100,self.run_mc)
