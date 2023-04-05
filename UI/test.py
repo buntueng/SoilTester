@@ -1,49 +1,51 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter.messagebox import showinfo
+
+# root window
+root = tk.Tk()
+root.geometry("300x150")
+root.resizable(False, False)
+root.title('Sign In')
+
+# store email address and password
+email = tk.StringVar()
+password = tk.StringVar()
 
 
-class App(tk.Tk):
-    def __init__(self):
-        super().__init__()
-        self.geometry("320x80")
-        self.title('Tkinter OptionMenu Widget')
-
-        # initialize data
-        self.languages = ('Python', 'JavaScript', 'Java',
-                        'Swift', 'GoLang', 'C#', 'C++', 'Scala')
-
-        # set up variable
-        self.option_var = tk.StringVar(self)
-
-        # create widget
-        self.create_wigets()
-
-    def create_wigets(self):
-        # padding for widgets using the grid layout
-        paddings = {'padx': 5, 'pady': 5}
-
-        # label
-        label = ttk.Label(self,  text='Select your most favorite language:')
-        label.grid(column=0, row=0, sticky=tk.W, **paddings)
-
-        # option menu
-        option_menu = ttk.OptionMenu(
-            self,
-            self.option_var,
-            self.languages[0],
-            *self.languages,
-            command=self.option_changed)
-
-        option_menu.grid(column=1, row=0, sticky=tk.W, **paddings)
-
-        # output label
-        self.output_label = ttk.Label(self, foreground='red')
-        self.output_label.grid(column=0, row=1, sticky=tk.W, **paddings)
-
-    def option_changed(self, *args):
-        self.output_label['text'] = f'You selected: {self.option_var.get()}'
+def login_clicked():
+    """ callback when the login button clicked
+    """
+    msg = f'You entered email: {email.get()} and password: {password.get()}'
+    showinfo(
+        title='Information',
+        message=msg
+    )
 
 
-if __name__ == "__main__":
-    app = App()
-    app.mainloop()
+# Sign in frame
+signin = ttk.Frame(root)
+signin.pack(padx=10, pady=10, fill='x', expand=True)
+
+
+# email
+email_label = ttk.Label(signin, text="Email Address:")
+email_label.pack(fill='x', expand=True)
+
+email_entry = ttk.Entry(signin, textvariable=email)
+email_entry.pack(fill='x', expand=True)
+email_entry.focus()
+
+# password
+password_label = ttk.Label(signin, text="Password:")
+password_label.pack(fill='x', expand=True)
+
+password_entry = ttk.Entry(signin, textvariable=password, show="*")
+password_entry.pack(fill='x', expand=True)
+
+# login button
+login_button = ttk.Button(signin, text="Login", command=login_clicked)
+login_button.pack(fill='x', expand=True, pady=10)
+
+
+root.mainloop()

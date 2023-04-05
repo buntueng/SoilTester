@@ -85,6 +85,11 @@ void loop()
         }
     }
 
+    // Serial.print(digitalRead(y_limit_top));
+    // Serial.print(",");
+    // Serial.println(digitalRead(y_limit_bottom));
+    // delay(100);
+
     if(execute_cmd)
     {
         int cmd_len = cmd_string.length();
@@ -162,6 +167,7 @@ void loop()
     // ============== run machine here ==========================
     if(run_machine)
     {
+<<<<<<< HEAD
         // unsigned long present_time = millis();
         // // send loadcell every 10 milliseconds
         // if(present_time-loadcell_timer >= loadcell_interval_time)
@@ -174,6 +180,20 @@ void loop()
         //     Serial.print("y");
         //     Serial.println(y_loadcell_value,DEC);
         //     loadcell_timer = present_time;
+=======
+        unsigned long present_time = millis();
+        // send loadcell every 10 milliseconds
+        if(present_time-loadcell_timer >= loadcell_interval_time)
+        {
+            int x_loadcell_value = analogRead(x_loadcell_pin);
+            Serial.print("x");
+            Serial.println(x_loadcell_value,DEC);
+            int y_loadcell_value = analogRead(y_loadcell_pin);
+            Serial.print("Y");
+            Serial.print("y");
+            Serial.println(y_loadcell_value,DEC);
+            loadcell_timer = present_time;
+>>>>>>> 8dc4bcd8e1fd14cdd8e49f2350f47242c2534700
 
         // }
         // ============= exp1 state machine =====================
@@ -249,6 +269,7 @@ void loop()
     }
     
 }
+
 
 
 void run_exp1()
@@ -338,10 +359,21 @@ void run_exp1()
         {
             if(digitalRead(y_limit_bottom)==1)
             {
+<<<<<<< HEAD
                 exp1_y_state = 5;
                 digitalWrite(y_motor_dir1,LOW);
                 digitalWrite(y_motor_dir2,LOW);
                 analogWrite(y_motor_speed_pin,0);
+=======
+                
+            }
+            else if (y_present_force > fixed_vertical_force)
+            {
+                
+            }
+            else if (y_present_force < fixed_vertical_force)
+            {
+>>>>>>> 8dc4bcd8e1fd14cdd8e49f2350f47242c2534700
 
             }
             else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
