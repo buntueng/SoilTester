@@ -35,8 +35,11 @@ bool run_machine = false;
 int exp_number = 0;
 // experiment 1
 int fixed_vertical_force = 0;
-int max_horizontal_force = 0;
-int exp1_state = 0;
+int fixed_horizontal_force = 0;
+int exp1_x_state = 0;
+int exp1_y_state = 0;
+
+const int loadcell_guard_band = 2; 
 
 void setup()
 {
@@ -94,7 +97,7 @@ void loop()
             }
             case 'T':
             {
-                max_horizontal_force = cmd_string.substring(1,cmd_len).toInt();
+                fixed_horizontal_force = cmd_string.substring(1,cmd_len).toInt();
                 break;
             }
             
@@ -136,7 +139,7 @@ void loop()
             {
                 Serial.print(fixed_vertical_force);
                 Serial.print(",");
-                Serial.print(max_horizontal_force);
+                Serial.print(fixed_horizontal_force);
                 // Serial.print(",");
                 // Serial.print(x_min_displacement);
                 // Serial.print(",");
@@ -159,20 +162,20 @@ void loop()
     // ============== run machine here ==========================
     if(run_machine)
     {
-        unsigned long present_time = millis();
-        // send loadcell every 10 milliseconds
-        if(present_time-loadcell_timer >= loadcell_interval_time)
-        {
-            int x_loadcell_value = analogRead(x_loadcell_pin);
-            Serial.print("x");
-            Serial.println(x_loadcell_value,DEC);
+        // unsigned long present_time = millis();
+        // // send loadcell every 10 milliseconds
+        // if(present_time-loadcell_timer >= loadcell_interval_time)
+        // {
+        //     int x_loadcell_value = analogRead(x_loadcell_pin);
+        //     Serial.print("x");
+        //     Serial.println(x_loadcell_value,DEC);
  
-            int y_loadcell_value = analogRead(y_loadcell_pin);
-            Serial.print("y");
-            Serial.println(y_loadcell_value,DEC);
-            loadcell_timer = present_time;
+        //     int y_loadcell_value = analogRead(y_loadcell_pin);
+        //     Serial.print("y");
+        //     Serial.println(y_loadcell_value,DEC);
+        //     loadcell_timer = present_time;
 
-        }
+        // }
         // ============= exp1 state machine =====================
         switch(exp_number)
         {
@@ -250,12 +253,77 @@ void loop()
 
 void run_exp1()
 {
+    int x_present_force = analogRead(x_loadcell_pin);
     int y_present_force = analogRead(y_loadcell_pin);
-    switch (exp1_state)
+    switch (exp1_x_state)
     {
         case 0:
         {
-            exp1_state = 1;
+            exp1_x_state = 1;
+            break;
+        }
+        case 1:     // move machine forward
+        {
+            digitalWrite(x_motor_dir1,HIGH);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,50);
+            exp1_x_state = 2;
+            break;
+        }
+        case 2:
+        {
+            if(digitalRead(x_limit_front)==1)
+            {
+                exp1_x_state = 5;
+                digitalWrite(x_motor_dir1,LOW);
+                digitalWrite(x_motor_dir2,LOW);
+                analogWrite(x_motor_speed_pin,0);
+
+            }
+            else if (x_present_force >= fixed_horizontal_force-loadcell_guard_band)
+            {
+                exp1_x_state = 4;
+                digitalWrite(x_motor_dir1,LOW);
+                digitalWrite(x_motor_dir2,LOW);
+                analogWrite(x_motor_speed_pin,0);
+            }
+        break;
+        }
+        case 3:
+        {   // move machine backward
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,HIGH);
+            analogWrite(x_motor_speed_pin,50);
+            exp1_x_state = 2;
+            break;
+        }
+        case 4:
+        {
+            if(x_present_force < fixed_horizontal_force-loadcell_guard_band)
+            {
+                exp1_x_state = 1;
+            }
+            else if(x_present_force >= fixed_horizontal_force+loadcell_guard_band)
+            {
+                exp1_x_state = 3;
+            }
+            break;
+        }
+        case 5:
+        {
+            break;
+        }
+        default:
+        {
+
+        }
+    }
+
+    switch (exp1_y_state)
+    {
+        case 0:
+        {
+            exp1_y_state = 1;
             break;
         }
         case 1:     // move machine down
@@ -263,118 +331,56 @@ void run_exp1()
             digitalWrite(y_motor_dir1,HIGH);
             digitalWrite(y_motor_dir2,LOW);
             analogWrite(y_motor_speed_pin,50);
-            exp1_state = 2;
+            exp1_y_state = 2;
             break;
         }
         case 2:
         {
             if(digitalRead(y_limit_bottom)==1)
             {
-                
-            }
-            else if (y_present_force > fixed_vertical_force)
-            {
-            /* code */
-            }
-            else if (y_present_force < fixed_vertical_force)
-            {
+                exp1_y_state = 5;
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,LOW);
+                analogWrite(y_motor_speed_pin,0);
 
             }
-            else if(y_present_force == fixed_vertical_force)
+            else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
             {
-                
+                exp1_y_state = 4;
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,LOW);
+                analogWrite(y_motor_speed_pin,0);
             }
         break;
-    }
-    default:
-        break;
+        }
+        case 3:
+        {   // move up
+            digitalWrite(y_motor_dir1,LOW);
+            digitalWrite(y_motor_dir2,HIGH);
+            analogWrite(y_motor_speed_pin,50);
+            exp1_y_state = 2;
+            break;
+        }
+        case 4:
+        {
+            if(y_present_force < fixed_vertical_force-loadcell_guard_band)
+            {
+                exp1_y_state = 1;
+            }
+            else if(y_present_force >= fixed_vertical_force+loadcell_guard_band)
+            {
+                exp1_y_state = 3;
+            }
+            break;
+        }
+        case 5:
+        {
+            break;
+        }
+        default:
+        {
+
+        }
     }
 
 }
-
-        // switch (x_axis_state_machine)
-        // {
-        // case 0:
-        // {
-        //     x_axis_state_machine = 1;
-        //     // Serial.println("case 0");
-        //     break;
-        // }
-        // case 1:
-        // {
-        //     digitalWrite(x_motor_dir1,HIGH);
-        //     digitalWrite(x_motor_dir2,LOW);
-        //     analogWrite(x_motor_speed_pin,pwm_xaxis);
-        //     x_axis_state_machine = 2;
-        //     // Serial.println("case1");
-        //     break;
-        // }
-        // case 2:
-        // {
-        //     // if((digitalRead(x_limit_front)==1) || (x_distance <= x_max_displacement))
-        //     if((digitalRead(x_limit_front)==1))
-        //     {
-        //         digitalWrite(x_motor_dir1,LOW);
-        //         digitalWrite(x_motor_dir2,LOW);
-        //         analogWrite(x_motor_speed_pin,0);
-        //         x_axis_state_machine = 3;
-        //         // Serial.println("case2");
-        //     }
-        //     break;
-        // }
-        // case 3:
-        // {
-        //     digitalWrite(x_motor_dir1,LOW);
-        //     digitalWrite(x_motor_dir2,HIGH);
-        //     analogWrite(x_motor_speed_pin,pwm_xaxis);
-        //     x_axis_state_machine = 4;
-        //     break;
-        // }
-        // case 4:
-        // {
-        //     // if((digitalRead(x_limit_back)==1) || (x_distance >= x_min_displacement))
-        //     if((digitalRead(x_limit_back)==1) )
-        //     {
-        //         digitalWrite(x_motor_dir1,LOW);
-        //         digitalWrite(x_motor_dir2,LOW);
-        //         analogWrite(x_motor_speed_pin,0);
-        //         x_axis_state_machine = 1;
-        //     }
-        //     break;
-        // }
-        // default:
-        //     break;
-        // }
-        // // ============= y axis state machine =====================
-        // switch(y_axis_state_machine)
-        // {
-        //     case 0:
-        //     {
-        //         break;
-        //     }
-        //     case 1:     // move up
-        //     {
-        //         digitalWrite(y_motor_dir1,HIGH);
-        //         digitalWrite(y_motor_dir2,LOW);
-        //         analogWrite(y_motor_speed_pin,pwm_xaxis);
-        //         break;
-        //     }
-        //     case 2:     // move down
-        //     {
-        //         digitalWrite(y_motor_dir1,HIGH);
-        //         digitalWrite(y_motor_dir2,LOW);
-        //         analogWrite(y_motor_speed_pin,pwm_yaxis);
-        //         break;
-        //     }
-        //     case 3:
-        //     {
-        //         digitalWrite(y_motor_dir1,HIGH);
-        //         digitalWrite(y_motor_dir2,LOW);
-        //         analogWrite(y_motor_speed_pin,0);
-        //         break;
-        //     }
-        //     default:
-        //     {
-
-        //     }
-        // }
