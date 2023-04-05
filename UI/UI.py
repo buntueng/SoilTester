@@ -259,7 +259,6 @@ class App(ctk.CTk):
                 self.run_exp1_state = 6
                 self.after(100,self.run_monotonic_tester)
 
-
             case 6:
                 out_data_dis_x = self.obj_dis_x.get_data()
                 tim_now = datetime.now()
@@ -268,16 +267,13 @@ class App(ctk.CTk):
                     try:
                         x_show3digit = f'{int(out_data_dis_x[:-2])*0.001:.3f}'
                         DIS_X_data = (x_show3digit + "," + time_stamp+"\n")
-                        print(DIS_X_data)
                         self.monitor_text_box.insert("1.0",DIS_X_data)
-                        # print(x_show3digit + "," + time_stamp)
                     except:
                         pass
-                self.after(100,self.run_monotonic_tester)
+                self.after(10,self.run_monotonic_tester)
 
             case 7:
                 pass
-                
 
 
             case _:
