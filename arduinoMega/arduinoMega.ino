@@ -95,14 +95,25 @@ void loop()
         int cmd_len = cmd_string.length();
         switch(cmd_string[0])
         {
+            case 'f':
+            {
+                int vertical_force = analogRead(y_loadcell_pin);
+                Serial.print(vertical_force,DEC);       // return vertical force
+                Serial.print(",");
+                int horizontal_force = analogRead(x_loadcell_pin);
+                Serial.println(horizontal_force,DEC);     // return horizontal force
+              break;
+            }
             case 'N':
             {
                 fixed_vertical_force = cmd_string.substring(1,cmd_len).toInt();
+                Serial.println(fixed_vertical_force,DEC);
                 break;
             }
             case 'T':
             {
                 fixed_horizontal_force = cmd_string.substring(1,cmd_len).toInt();
+                Serial.println(fixed_horizontal_force,DEC);
                 break;
             }
             
@@ -113,18 +124,22 @@ void loop()
                 {
                     case '1':           // run experiment 1
                     {
+                        exp_number = 1;
                         break;
                     }
                     case '2':           // run experiment 2
                     {
+                        exp_number = 2;
                         break;
                     }
                     case '3':           // run experiment 3
                     {
+                        exp_number = 3;
                         break;
                     }
                     case '4':           // run experiment 4
                     {
+                        exp_number = 4;
                         break;
                     }
                     default:
@@ -167,7 +182,6 @@ void loop()
     // ============== run machine here ==========================
     if(run_machine)
     {
-<<<<<<< HEAD
         // unsigned long present_time = millis();
         // // send loadcell every 10 milliseconds
         // if(present_time-loadcell_timer >= loadcell_interval_time)
@@ -180,20 +194,6 @@ void loop()
         //     Serial.print("y");
         //     Serial.println(y_loadcell_value,DEC);
         //     loadcell_timer = present_time;
-=======
-        unsigned long present_time = millis();
-        // send loadcell every 10 milliseconds
-        if(present_time-loadcell_timer >= loadcell_interval_time)
-        {
-            int x_loadcell_value = analogRead(x_loadcell_pin);
-            Serial.print("x");
-            Serial.println(x_loadcell_value,DEC);
-            int y_loadcell_value = analogRead(y_loadcell_pin);
-            Serial.print("Y");
-            Serial.print("y");
-            Serial.println(y_loadcell_value,DEC);
-            loadcell_timer = present_time;
->>>>>>> 8dc4bcd8e1fd14cdd8e49f2350f47242c2534700
 
         // }
         // ============= exp1 state machine =====================
@@ -359,21 +359,10 @@ void run_exp1()
         {
             if(digitalRead(y_limit_bottom)==1)
             {
-<<<<<<< HEAD
                 exp1_y_state = 5;
                 digitalWrite(y_motor_dir1,LOW);
                 digitalWrite(y_motor_dir2,LOW);
                 analogWrite(y_motor_speed_pin,0);
-=======
-                
-            }
-            else if (y_present_force > fixed_vertical_force)
-            {
-                
-            }
-            else if (y_present_force < fixed_vertical_force)
-            {
->>>>>>> 8dc4bcd8e1fd14cdd8e49f2350f47242c2534700
 
             }
             else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
