@@ -1,0 +1,3196 @@
+09-Apr-23 15:09:22 - DEBUG - xy params is integer
+09-Apr-23 15:10:11 - DEBUG - xy params is integer
+09-Apr-23 15:11:41 - DEBUG - xy params is integer
+09-Apr-23 15:12:39 - DEBUG - xy params is integer
+09-Apr-23 15:13:22 - DEBUG - xy params is integer
+09-Apr-23 15:15:25 - DEBUG - xy params is integer
+09-Apr-23 15:16:26 - DEBUG - xy params is integer
+09-Apr-23 15:17:21 - DEBUG - xy params is integer
+09-Apr-23 15:18:40 - DEBUG - xy params is integer
+09-Apr-23 15:20:12 - DEBUG - xy params is integer
+09-Apr-23 15:23:02 - DEBUG - xy params is integer
+09-Apr-23 15:23:49 - DEBUG - xy params is integer
+09-Apr-23 15:25:35 - DEBUG - xy params is integer
+09-Apr-23 15:25:40 - DEBUG - xy params is integer
+09-Apr-23 15:29:09 - DEBUG - xy params is integer
+09-Apr-23 15:29:09 - DEBUG - 0
+09-Apr-23 15:29:11 - DEBUG - 1
+09-Apr-23 15:29:12 - DEBUG - 2
+09-Apr-23 15:29:12 - DEBUG - 3
+09-Apr-23 15:29:12 - DEBUG - 3
+09-Apr-23 15:29:12 - DEBUG - 3
+09-Apr-23 15:29:12 - DEBUG - 3
+09-Apr-23 15:29:12 - DEBUG - 3
+09-Apr-23 15:29:12 - DEBUG - 3
+09-Apr-23 15:29:12 - DEBUG - 3
+09-Apr-23 15:29:12 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:13 - DEBUG - 3
+09-Apr-23 15:29:14 - DEBUG - 3
+09-Apr-23 15:29:14 - DEBUG - 3
+09-Apr-23 15:29:14 - DEBUG - 3
+09-Apr-23 15:29:14 - DEBUG - 3
+09-Apr-23 15:29:14 - DEBUG - 3
+09-Apr-23 15:29:14 - DEBUG - 3
+09-Apr-23 15:29:14 - DEBUG - 3
+09-Apr-23 15:29:14 - DEBUG - 3
+09-Apr-23 15:29:14 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:15 - DEBUG - 3
+09-Apr-23 15:29:16 - DEBUG - 3
+09-Apr-23 15:29:16 - DEBUG - 3
+09-Apr-23 15:29:16 - DEBUG - 3
+09-Apr-23 15:29:16 - DEBUG - 3
+09-Apr-23 15:29:16 - DEBUG - 3
+09-Apr-23 15:29:16 - DEBUG - 3
+09-Apr-23 15:29:16 - DEBUG - 3
+09-Apr-23 15:29:16 - DEBUG - 3
+09-Apr-23 15:29:16 - DEBUG - 3
+09-Apr-23 15:29:17 - DEBUG - 3
+09-Apr-23 15:29:17 - DEBUG - 3
+09-Apr-23 15:29:17 - DEBUG - 3
+09-Apr-23 15:29:17 - DEBUG - 3
+09-Apr-23 15:29:17 - DEBUG - 3
+09-Apr-23 15:29:17 - DEBUG - 3
+09-Apr-23 15:29:17 - DEBUG - 3
+09-Apr-23 15:29:17 - DEBUG - 3
+09-Apr-23 15:29:17 - DEBUG - 3
+09-Apr-23 15:29:18 - DEBUG - 3
+09-Apr-23 15:29:18 - DEBUG - 3
+09-Apr-23 15:29:18 - DEBUG - 3
+09-Apr-23 15:29:18 - DEBUG - 3
+09-Apr-23 15:29:18 - DEBUG - 3
+09-Apr-23 15:29:18 - DEBUG - 3
+09-Apr-23 15:29:18 - DEBUG - 3
+09-Apr-23 15:29:18 - DEBUG - 3
+09-Apr-23 15:29:18 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:19 - DEBUG - 3
+09-Apr-23 15:29:20 - DEBUG - 3
+09-Apr-23 15:29:20 - DEBUG - 3
+09-Apr-23 15:29:20 - DEBUG - 3
+09-Apr-23 15:29:20 - DEBUG - 3
+09-Apr-23 15:29:20 - DEBUG - 3
+09-Apr-23 15:29:20 - DEBUG - 3
+09-Apr-23 15:29:20 - DEBUG - 3
+09-Apr-23 15:29:20 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:21 - DEBUG - 3
+09-Apr-23 15:29:22 - DEBUG - 3
+09-Apr-23 15:29:22 - DEBUG - 3
+09-Apr-23 15:29:22 - DEBUG - 3
+09-Apr-23 15:29:22 - DEBUG - 3
+09-Apr-23 15:29:22 - DEBUG - 3
+09-Apr-23 15:29:22 - DEBUG - 3
+09-Apr-23 15:29:22 - DEBUG - 3
+09-Apr-23 15:29:22 - DEBUG - 3
+09-Apr-23 15:29:22 - DEBUG - 3
+09-Apr-23 15:29:23 - DEBUG - 3
+09-Apr-23 15:29:23 - DEBUG - 3
+09-Apr-23 15:29:23 - DEBUG - 3
+09-Apr-23 15:29:23 - DEBUG - 3
+09-Apr-23 15:29:23 - DEBUG - 3
+09-Apr-23 15:29:23 - DEBUG - 3
+09-Apr-23 15:29:23 - DEBUG - 3
+09-Apr-23 15:29:23 - DEBUG - 3
+09-Apr-23 15:29:23 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:24 - DEBUG - 3
+09-Apr-23 15:29:25 - DEBUG - 3
+09-Apr-23 15:29:25 - DEBUG - 3
+09-Apr-23 15:29:25 - DEBUG - 3
+09-Apr-23 15:29:25 - DEBUG - 3
+09-Apr-23 15:29:25 - DEBUG - 3
+09-Apr-23 15:29:25 - DEBUG - 3
+09-Apr-23 15:29:25 - DEBUG - 3
+09-Apr-23 15:29:25 - DEBUG - 3
+09-Apr-23 15:29:25 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:26 - DEBUG - 3
+09-Apr-23 15:29:27 - DEBUG - 3
+09-Apr-23 15:29:27 - DEBUG - 3
+09-Apr-23 15:29:27 - DEBUG - 3
+09-Apr-23 15:29:27 - DEBUG - 3
+09-Apr-23 15:29:27 - DEBUG - 3
+09-Apr-23 15:29:27 - DEBUG - 3
+09-Apr-23 15:29:27 - DEBUG - 3
+09-Apr-23 15:29:27 - DEBUG - 3
+09-Apr-23 15:29:27 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:28 - DEBUG - 3
+09-Apr-23 15:29:29 - DEBUG - 3
+09-Apr-23 15:29:29 - DEBUG - 3
+09-Apr-23 15:29:29 - DEBUG - 3
+09-Apr-23 15:29:29 - DEBUG - 3
+09-Apr-23 15:29:29 - DEBUG - 3
+09-Apr-23 15:29:29 - DEBUG - 3
+09-Apr-23 15:29:29 - DEBUG - 3
+09-Apr-23 15:29:29 - DEBUG - 3
+09-Apr-23 15:29:29 - DEBUG - 3
+09-Apr-23 15:29:30 - DEBUG - 3
+09-Apr-23 15:29:30 - DEBUG - 3
+09-Apr-23 15:29:30 - DEBUG - 3
+09-Apr-23 15:29:30 - DEBUG - 3
+09-Apr-23 15:29:30 - DEBUG - 3
+09-Apr-23 15:29:30 - DEBUG - 3
+09-Apr-23 15:29:30 - DEBUG - 3
+09-Apr-23 15:29:30 - DEBUG - 3
+09-Apr-23 15:29:30 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:31 - DEBUG - 3
+09-Apr-23 15:29:32 - DEBUG - 3
+09-Apr-23 15:29:32 - DEBUG - 3
+09-Apr-23 15:29:32 - DEBUG - 3
+09-Apr-23 15:29:32 - DEBUG - 3
+09-Apr-23 15:29:32 - DEBUG - 3
+09-Apr-23 15:29:32 - DEBUG - 3
+09-Apr-23 15:29:32 - DEBUG - 3
+09-Apr-23 15:29:32 - DEBUG - 3
+09-Apr-23 15:29:32 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:33 - DEBUG - 3
+09-Apr-23 15:29:34 - DEBUG - 3
+09-Apr-23 15:29:34 - DEBUG - 3
+09-Apr-23 15:29:34 - DEBUG - 3
+09-Apr-23 15:29:34 - DEBUG - 3
+09-Apr-23 15:29:34 - DEBUG - 3
+09-Apr-23 15:29:34 - DEBUG - 3
+09-Apr-23 15:29:34 - DEBUG - 3
+09-Apr-23 15:29:34 - DEBUG - 3
+09-Apr-23 15:29:34 - DEBUG - 3
+09-Apr-23 15:29:35 - DEBUG - 3
+09-Apr-23 15:29:35 - DEBUG - 3
+09-Apr-23 15:29:35 - DEBUG - 3
+09-Apr-23 15:29:35 - DEBUG - 3
+09-Apr-23 15:29:35 - DEBUG - 3
+09-Apr-23 15:29:35 - DEBUG - 3
+09-Apr-23 15:29:35 - DEBUG - 3
+09-Apr-23 15:29:35 - DEBUG - 3
+09-Apr-23 15:29:35 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:36 - DEBUG - 3
+09-Apr-23 15:29:37 - DEBUG - 3
+09-Apr-23 15:29:37 - DEBUG - 3
+09-Apr-23 15:29:37 - DEBUG - 3
+09-Apr-23 15:29:37 - DEBUG - 3
+09-Apr-23 15:29:37 - DEBUG - 3
+09-Apr-23 15:29:37 - DEBUG - 3
+09-Apr-23 15:29:37 - DEBUG - 3
+09-Apr-23 15:29:37 - DEBUG - 3
+09-Apr-23 15:29:37 - DEBUG - 3
+09-Apr-23 15:29:38 - DEBUG - 3
+09-Apr-23 15:29:38 - DEBUG - 3
+09-Apr-23 15:29:38 - DEBUG - 3
+09-Apr-23 15:29:38 - DEBUG - 3
+09-Apr-23 15:29:38 - DEBUG - 3
+09-Apr-23 15:29:38 - DEBUG - 3
+09-Apr-23 15:29:38 - DEBUG - 3
+09-Apr-23 15:29:38 - DEBUG - 3
+09-Apr-23 15:29:38 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:39 - DEBUG - 3
+09-Apr-23 15:29:40 - DEBUG - 3
+09-Apr-23 15:29:40 - DEBUG - 3
+09-Apr-23 15:29:40 - DEBUG - 3
+09-Apr-23 15:29:40 - DEBUG - 3
+09-Apr-23 15:29:40 - DEBUG - 3
+09-Apr-23 15:29:40 - DEBUG - 3
+09-Apr-23 15:29:40 - DEBUG - 3
+09-Apr-23 15:29:40 - DEBUG - 3
+09-Apr-23 15:29:40 - DEBUG - 3
+09-Apr-23 15:29:41 - DEBUG - 3
+09-Apr-23 15:29:41 - DEBUG - 3
+09-Apr-23 15:29:41 - DEBUG - 3
+09-Apr-23 15:29:41 - DEBUG - 3
+09-Apr-23 15:29:41 - DEBUG - 3
+09-Apr-23 15:29:41 - DEBUG - 3
+09-Apr-23 15:29:41 - DEBUG - 3
+09-Apr-23 15:29:41 - DEBUG - 3
+09-Apr-23 15:29:41 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:42 - DEBUG - 3
+09-Apr-23 15:29:43 - DEBUG - 3
+09-Apr-23 15:29:43 - DEBUG - 3
+09-Apr-23 15:29:43 - DEBUG - 3
+09-Apr-23 15:29:43 - DEBUG - 3
+09-Apr-23 15:29:43 - DEBUG - 3
+09-Apr-23 15:29:43 - DEBUG - 3
+09-Apr-23 15:29:43 - DEBUG - 3
+09-Apr-23 15:29:43 - DEBUG - 3
+09-Apr-23 15:29:43 - DEBUG - 3
+09-Apr-23 15:29:44 - DEBUG - 3
+09-Apr-23 15:29:44 - DEBUG - 3
+09-Apr-23 15:29:44 - DEBUG - 3
+09-Apr-23 15:29:44 - DEBUG - 3
+09-Apr-23 15:29:44 - DEBUG - 3
+09-Apr-23 15:29:44 - DEBUG - 3
+09-Apr-23 15:29:44 - DEBUG - 3
+09-Apr-23 15:29:44 - DEBUG - 3
+09-Apr-23 15:29:45 - DEBUG - 3
+09-Apr-23 15:29:45 - DEBUG - 3
+09-Apr-23 15:29:45 - DEBUG - 3
+09-Apr-23 15:29:45 - DEBUG - 3
+09-Apr-23 15:29:45 - DEBUG - 3
+09-Apr-23 15:29:45 - DEBUG - 3
+09-Apr-23 15:29:45 - DEBUG - 3
+09-Apr-23 15:29:45 - DEBUG - 3
+09-Apr-23 15:29:45 - DEBUG - 3
+09-Apr-23 15:29:46 - DEBUG - 3
+09-Apr-23 15:29:46 - DEBUG - 3
+09-Apr-23 15:29:46 - DEBUG - 0
+09-Apr-23 15:29:58 - DEBUG - xy params is integer
+09-Apr-23 15:29:58 - DEBUG - 0
+09-Apr-23 15:30:00 - DEBUG - 1
+09-Apr-23 15:30:00 - DEBUG - 2
+09-Apr-23 15:30:00 - DEBUG - 3
+09-Apr-23 15:30:00 - DEBUG - 4
+09-Apr-23 15:30:05 - DEBUG - xy params is integer
+09-Apr-23 15:30:05 - DEBUG - 0
+09-Apr-23 15:30:07 - DEBUG - 1
+09-Apr-23 15:30:07 - DEBUG - 2
+09-Apr-23 15:30:07 - DEBUG - 3
+09-Apr-23 15:30:07 - DEBUG - 4
+09-Apr-23 15:30:11 - DEBUG - xy params is integer
+09-Apr-23 15:30:11 - DEBUG - 0
+09-Apr-23 15:30:13 - DEBUG - 1
+09-Apr-23 15:30:14 - DEBUG - 2
+09-Apr-23 15:30:14 - DEBUG - 3
+09-Apr-23 15:30:14 - DEBUG - 4
+09-Apr-23 15:30:19 - DEBUG - xy params is integer
+09-Apr-23 15:30:19 - DEBUG - 0
+09-Apr-23 15:30:21 - DEBUG - 0
+09-Apr-23 15:32:46 - DEBUG - xy params is integer
+09-Apr-23 15:33:38 - DEBUG - xy params is integer
+09-Apr-23 15:35:02 - DEBUG - xy params is integer
+09-Apr-23 16:41:10 - DEBUG - xy params is integer
+09-Apr-23 16:41:53 - DEBUG - xy params is integer
+09-Apr-23 16:43:09 - DEBUG - xy params is integer
+09-Apr-23 16:43:20 - DEBUG - xy params is integer
+09-Apr-23 16:44:32 - DEBUG - xy params is integer
+09-Apr-23 16:45:28 - DEBUG - xy params is integer
+09-Apr-23 18:25:43 - DEBUG - xy params is integer
+09-Apr-23 18:33:06 - DEBUG - xy params is integer
+09-Apr-23 18:37:21 - DEBUG - xy params is integer
+09-Apr-23 18:37:21 - DEBUG - 0
+09-Apr-23 18:37:23 - DEBUG - 1
+09-Apr-23 18:37:23 - DEBUG - 2
+09-Apr-23 18:37:23 - DEBUG - 3
+09-Apr-23 18:37:23 - DEBUG - 4
+09-Apr-23 18:37:24 - DEBUG - 3
+09-Apr-23 18:37:24 - DEBUG - 4
+09-Apr-23 18:37:25 - DEBUG - 3
+09-Apr-23 18:37:25 - DEBUG - 4
+09-Apr-23 18:37:25 - DEBUG - 3
+09-Apr-23 18:37:25 - DEBUG - 4
+09-Apr-23 18:37:26 - DEBUG - 3
+09-Apr-23 18:37:26 - DEBUG - 4
+09-Apr-23 18:37:27 - DEBUG - 3
+09-Apr-23 18:37:27 - DEBUG - 4
+09-Apr-23 18:38:42 - DEBUG - xy params is integer
+09-Apr-23 18:38:42 - DEBUG - 0
+09-Apr-23 18:38:44 - DEBUG - 1
+09-Apr-23 18:38:45 - DEBUG - 2
+09-Apr-23 18:38:45 - DEBUG - 3
+09-Apr-23 18:38:45 - DEBUG - 4
+09-Apr-23 18:38:45 - DEBUG - 3
+09-Apr-23 18:38:45 - DEBUG - 4
+09-Apr-23 18:38:45 - DEBUG - 3
+09-Apr-23 18:38:45 - DEBUG - 4
+09-Apr-23 18:38:45 - DEBUG - 3
+09-Apr-23 18:38:45 - DEBUG - 4
+09-Apr-23 18:38:46 - DEBUG - 3
+09-Apr-23 18:38:46 - DEBUG - 4
+09-Apr-23 18:38:46 - DEBUG - 3
+09-Apr-23 18:38:46 - DEBUG - 4
+09-Apr-23 18:38:46 - DEBUG - 3
+09-Apr-23 18:38:46 - DEBUG - 4
+09-Apr-23 18:38:46 - DEBUG - 3
+09-Apr-23 18:38:46 - DEBUG - 4
+09-Apr-23 18:38:46 - DEBUG - 3
+09-Apr-23 18:38:47 - DEBUG - 4
+09-Apr-23 18:38:47 - DEBUG - 3
+09-Apr-23 18:38:47 - DEBUG - 4
+09-Apr-23 18:38:47 - DEBUG - 3
+09-Apr-23 18:38:47 - DEBUG - 4
+09-Apr-23 18:38:47 - DEBUG - 3
+09-Apr-23 18:38:47 - DEBUG - 4
+09-Apr-23 18:38:47 - DEBUG - 3
+09-Apr-23 18:38:47 - DEBUG - 4
+09-Apr-23 18:38:47 - DEBUG - 3
+09-Apr-23 18:38:48 - DEBUG - 4
+09-Apr-23 18:38:48 - DEBUG - 3
+09-Apr-23 18:38:48 - DEBUG - 4
+09-Apr-23 18:38:48 - DEBUG - 3
+09-Apr-23 18:38:48 - DEBUG - 4
+09-Apr-23 18:38:48 - DEBUG - 3
+09-Apr-23 18:38:48 - DEBUG - 4
+09-Apr-23 18:38:48 - DEBUG - 3
+09-Apr-23 18:38:48 - DEBUG - 4
+09-Apr-23 18:38:48 - DEBUG - 3
+09-Apr-23 18:38:49 - DEBUG - 4
+09-Apr-23 18:38:49 - DEBUG - 3
+09-Apr-23 18:38:49 - DEBUG - 4
+09-Apr-23 18:38:49 - DEBUG - 3
+09-Apr-23 18:41:30 - DEBUG - xy params is integer
+09-Apr-23 18:41:30 - DEBUG - 0
+09-Apr-23 18:41:32 - DEBUG - 1
+09-Apr-23 18:41:33 - DEBUG - 2
+09-Apr-23 18:41:33 - DEBUG - 3
+09-Apr-23 18:41:33 - DEBUG - 4
+09-Apr-23 18:41:33 - DEBUG - 1	1
+09-Apr-23 18:41:33 - DEBUG - 5
+09-Apr-23 18:43:26 - DEBUG - xy params is integer
+09-Apr-23 18:43:26 - DEBUG - 0
+09-Apr-23 18:43:28 - DEBUG - 1
+09-Apr-23 18:43:28 - DEBUG - 2
+09-Apr-23 18:43:29 - DEBUG - 3
+09-Apr-23 18:43:29 - DEBUG - 4
+09-Apr-23 18:43:29 - DEBUG - 1	1
+09-Apr-23 18:43:29 - DEBUG - 5
+09-Apr-23 18:43:29 - DEBUG - 6
+09-Apr-23 18:43:29 - DEBUG - 7
+09-Apr-23 18:43:29 - DEBUG - 8
+09-Apr-23 18:44:37 - DEBUG - xy params is integer
+09-Apr-23 18:44:37 - DEBUG - 0
+09-Apr-23 18:44:39 - DEBUG - 1
+09-Apr-23 18:44:39 - DEBUG - 2
+09-Apr-23 18:44:39 - DEBUG - 3
+09-Apr-23 18:44:39 - DEBUG - 4
+09-Apr-23 18:44:39 - DEBUG - 1	1
+09-Apr-23 18:44:39 - DEBUG - 5
+09-Apr-23 18:44:39 - DEBUG - 6
+09-Apr-23 18:44:39 - DEBUG - 7
+09-Apr-23 18:44:39 - DEBUG - 8
+09-Apr-23 18:47:35 - DEBUG - xy params is integer
+09-Apr-23 18:47:35 - DEBUG - 0
+09-Apr-23 18:47:37 - DEBUG - 1
+09-Apr-23 18:47:37 - DEBUG - 2
+09-Apr-23 18:47:37 - DEBUG - 3
+09-Apr-23 18:47:37 - DEBUG - 4
+09-Apr-23 18:47:37 - DEBUG - 1	1
+09-Apr-23 18:47:37 - DEBUG - 5
+09-Apr-23 18:47:38 - DEBUG - 6
+09-Apr-23 18:47:38 - DEBUG - 7
+09-Apr-23 18:47:38 - DEBUG - 8
+09-Apr-23 18:47:38 - DEBUG - save result here
+09-Apr-23 18:47:38 - DEBUG - 1
+09-Apr-23 18:47:38 - DEBUG - 2
+09-Apr-23 18:47:38 - DEBUG - 3
+09-Apr-23 18:47:38 - DEBUG - 4
+09-Apr-23 18:47:38 - DEBUG - 3	3
+09-Apr-23 18:47:38 - DEBUG - 5
+09-Apr-23 18:47:38 - DEBUG - 6
+09-Apr-23 18:47:39 - DEBUG - 7
+09-Apr-23 18:47:39 - DEBUG - 8
+09-Apr-23 18:47:39 - DEBUG - save result here
+09-Apr-23 18:47:39 - DEBUG - 1
+09-Apr-23 18:47:39 - DEBUG - 2
+09-Apr-23 18:47:39 - DEBUG - 3
+09-Apr-23 18:47:39 - DEBUG - 4
+09-Apr-23 18:47:39 - DEBUG - 5	5
+09-Apr-23 18:47:39 - DEBUG - 5
+09-Apr-23 18:47:39 - DEBUG - 6
+09-Apr-23 18:47:39 - DEBUG - 7
+09-Apr-23 18:47:39 - DEBUG - 8
+09-Apr-23 18:47:39 - DEBUG - save result here
+09-Apr-23 18:47:39 - DEBUG - 1
+09-Apr-23 18:47:39 - DEBUG - 2
+09-Apr-23 18:47:39 - DEBUG - 3
+09-Apr-23 18:47:40 - DEBUG - 4
+09-Apr-23 18:47:40 - DEBUG - 7	7
+09-Apr-23 18:47:40 - DEBUG - 5
+09-Apr-23 18:47:40 - DEBUG - 6
+09-Apr-23 18:47:40 - DEBUG - 7
+09-Apr-23 18:47:40 - DEBUG - 8
+09-Apr-23 18:47:40 - DEBUG - save result here
+09-Apr-23 18:47:40 - DEBUG - 1
+09-Apr-23 18:47:40 - DEBUG - 2
+09-Apr-23 18:47:40 - DEBUG - 3
+09-Apr-23 18:47:40 - DEBUG - 4
+09-Apr-23 18:47:40 - DEBUG - 9	9
+09-Apr-23 18:47:40 - DEBUG - 5
+09-Apr-23 18:47:40 - DEBUG - 6
+09-Apr-23 18:47:40 - DEBUG - 7
+09-Apr-23 18:47:40 - DEBUG - 8
+09-Apr-23 18:47:40 - DEBUG - save result here
+09-Apr-23 18:47:41 - DEBUG - 1
+09-Apr-23 18:47:41 - DEBUG - 2
+09-Apr-23 18:47:41 - DEBUG - 3
+09-Apr-23 18:47:41 - DEBUG - 4
+09-Apr-23 18:47:41 - DEBUG - 11	11
+09-Apr-23 18:47:41 - DEBUG - 5
+09-Apr-23 18:47:41 - DEBUG - 6
+09-Apr-23 18:47:41 - DEBUG - 7
+09-Apr-23 18:47:41 - DEBUG - 8
+09-Apr-23 18:47:41 - DEBUG - save result here
+09-Apr-23 18:47:41 - DEBUG - 1
+09-Apr-23 18:47:41 - DEBUG - 2
+09-Apr-23 18:47:41 - DEBUG - 3
+09-Apr-23 18:47:42 - DEBUG - 4
+09-Apr-23 18:47:42 - DEBUG - 13	13
+09-Apr-23 18:47:42 - DEBUG - 5
+09-Apr-23 18:47:42 - DEBUG - 6
+09-Apr-23 18:47:42 - DEBUG - 7
+09-Apr-23 18:47:42 - DEBUG - 8
+09-Apr-23 18:47:42 - DEBUG - save result here
+09-Apr-23 18:47:42 - DEBUG - 1
+09-Apr-23 18:47:42 - DEBUG - 2
+09-Apr-23 18:47:42 - DEBUG - 3
+09-Apr-23 18:47:42 - DEBUG - 4
+09-Apr-23 18:47:42 - DEBUG - 15	15
+09-Apr-23 18:47:42 - DEBUG - 5
+09-Apr-23 18:47:42 - DEBUG - 6
+09-Apr-23 18:47:43 - DEBUG - 7
+09-Apr-23 18:47:43 - DEBUG - 8
+09-Apr-23 18:47:43 - DEBUG - save result here
+09-Apr-23 18:47:43 - DEBUG - 1
+09-Apr-23 18:47:43 - DEBUG - 2
+09-Apr-23 18:47:43 - DEBUG - 3
+09-Apr-23 18:47:43 - DEBUG - 4
+09-Apr-23 18:47:43 - DEBUG - 17	17
+09-Apr-23 18:47:43 - DEBUG - 5
+09-Apr-23 18:47:43 - DEBUG - 6
+09-Apr-23 18:47:43 - DEBUG - 7
+09-Apr-23 18:47:43 - DEBUG - 8
+09-Apr-23 18:47:43 - DEBUG - save result here
+09-Apr-23 18:47:43 - DEBUG - 1
+09-Apr-23 18:47:43 - DEBUG - 2
+09-Apr-23 18:47:43 - DEBUG - 3
+09-Apr-23 18:47:44 - DEBUG - 4
+09-Apr-23 18:47:44 - DEBUG - 19	19
+09-Apr-23 18:47:44 - DEBUG - 5
+09-Apr-23 18:47:44 - DEBUG - 6
+09-Apr-23 18:47:44 - DEBUG - 7
+09-Apr-23 18:47:44 - DEBUG - 8
+09-Apr-23 18:47:44 - DEBUG - save result here
+09-Apr-23 18:47:44 - DEBUG - 1
+09-Apr-23 18:47:44 - DEBUG - 2
+09-Apr-23 18:47:44 - DEBUG - 3
+09-Apr-23 18:47:44 - DEBUG - 4
+09-Apr-23 18:47:44 - DEBUG - 21	21
+09-Apr-23 18:47:44 - DEBUG - 5
+09-Apr-23 18:47:44 - DEBUG - 6
+09-Apr-23 18:47:45 - DEBUG - 7
+09-Apr-23 18:47:45 - DEBUG - 8
+09-Apr-23 18:47:45 - DEBUG - save result here
+09-Apr-23 18:47:45 - DEBUG - 1
+09-Apr-23 18:47:45 - DEBUG - 2
+09-Apr-23 18:47:45 - DEBUG - 3
+09-Apr-23 18:47:45 - DEBUG - 4
+09-Apr-23 18:47:45 - DEBUG - 23	23
+09-Apr-23 18:47:45 - DEBUG - 5
+09-Apr-23 18:47:45 - DEBUG - 6
+09-Apr-23 18:47:45 - DEBUG - 7
+09-Apr-23 18:47:45 - DEBUG - 8
+09-Apr-23 18:47:45 - DEBUG - save result here
+09-Apr-23 18:47:45 - DEBUG - 1
+09-Apr-23 18:47:45 - DEBUG - 2
+09-Apr-23 18:47:45 - DEBUG - 3
+09-Apr-23 18:47:46 - DEBUG - 4
+09-Apr-23 18:47:46 - DEBUG - 25	25
+09-Apr-23 18:47:46 - DEBUG - 5
+09-Apr-23 18:47:46 - DEBUG - 6
+09-Apr-23 18:47:46 - DEBUG - 7
+09-Apr-23 18:47:46 - DEBUG - 8
+09-Apr-23 18:47:46 - DEBUG - save result here
+09-Apr-23 18:47:46 - DEBUG - 1
+09-Apr-23 18:47:46 - DEBUG - 2
+09-Apr-23 18:47:46 - DEBUG - 3
+09-Apr-23 18:47:46 - DEBUG - 4
+09-Apr-23 18:47:46 - DEBUG - 27	27
+09-Apr-23 18:47:46 - DEBUG - 5
+09-Apr-23 18:48:51 - DEBUG - xy params is integer
+09-Apr-23 18:48:51 - DEBUG - 0
+09-Apr-23 18:48:53 - DEBUG - 1
+09-Apr-23 18:48:53 - DEBUG - 2
+09-Apr-23 18:48:53 - DEBUG - 3
+09-Apr-23 18:48:53 - DEBUG - 4
+09-Apr-23 18:48:53 - DEBUG - 1	1
+09-Apr-23 18:48:53 - DEBUG - 5
+09-Apr-23 18:48:53 - DEBUG - 6
+09-Apr-23 18:48:53 - DEBUG - 7
+09-Apr-23 18:53:29 - DEBUG - xy params is integer
+09-Apr-23 18:53:29 - DEBUG - 0
+09-Apr-23 18:53:32 - DEBUG - 1
+09-Apr-23 18:53:32 - DEBUG - 2
+09-Apr-23 18:53:32 - DEBUG - 3
+09-Apr-23 18:53:32 - DEBUG - 4
+09-Apr-23 18:53:32 - DEBUG - 1	1
+09-Apr-23 18:53:32 - DEBUG - 5
+09-Apr-23 18:53:32 - DEBUG - 6
+09-Apr-23 18:53:32 - DEBUG - 7
+09-Apr-23 18:53:32 - DEBUG - exp1
+09-Apr-23 18:54:58 - DEBUG - xy params is integer
+09-Apr-23 18:55:01 - DEBUG - 1	1
+09-Apr-23 18:55:01 - DEBUG - >> return message
+09-Apr-23 18:55:01 - DEBUG - exp1
+09-Apr-23 18:56:20 - DEBUG - xy params is integer
+09-Apr-23 18:56:22 - DEBUG - 1	1
+09-Apr-23 18:56:23 - DEBUG - >> return message
+09-Apr-23 18:56:23 - DEBUG - 19,0
+09-Apr-23 18:56:23 - DEBUG - save result here
+09-Apr-23 18:56:23 - DEBUG - 3	3
+09-Apr-23 18:56:23 - DEBUG - >> return message
+09-Apr-23 18:56:23 - DEBUG - 19,0
+09-Apr-23 18:56:23 - DEBUG - save result here
+09-Apr-23 18:56:24 - DEBUG - 5	5
+09-Apr-23 18:56:24 - DEBUG - >> return message
+09-Apr-23 18:56:24 - DEBUG - 17,0
+09-Apr-23 18:56:24 - DEBUG - save result here
+09-Apr-23 18:56:24 - DEBUG - 7	7
+09-Apr-23 18:56:25 - DEBUG - >> return message
+09-Apr-23 18:56:25 - DEBUG - 22,0
+09-Apr-23 18:56:25 - DEBUG - save result here
+09-Apr-23 18:56:25 - DEBUG - 9	9
+09-Apr-23 18:56:25 - DEBUG - >> return message
+09-Apr-23 18:56:25 - DEBUG - 20,0
+09-Apr-23 18:56:25 - DEBUG - save result here
+09-Apr-23 18:56:26 - DEBUG - 11	11
+09-Apr-23 18:56:26 - DEBUG - >> return message
+09-Apr-23 18:56:26 - DEBUG - 21,12
+09-Apr-23 18:56:26 - DEBUG - save result here
+09-Apr-23 18:56:26 - DEBUG - 13	13
+09-Apr-23 18:56:27 - DEBUG - >> return message
+09-Apr-23 18:56:27 - DEBUG - 21,12
+09-Apr-23 18:56:27 - DEBUG - save result here
+09-Apr-23 18:56:27 - DEBUG - 15	15
+09-Apr-23 18:56:27 - DEBUG - >> return message
+09-Apr-23 18:56:27 - DEBUG - 16,16
+09-Apr-23 18:56:27 - DEBUG - save result here
+09-Apr-23 18:56:28 - DEBUG - 17	17
+09-Apr-23 18:56:28 - DEBUG - >> return message
+09-Apr-23 18:56:28 - DEBUG - 21,17
+09-Apr-23 18:56:28 - DEBUG - save result here
+09-Apr-23 18:56:28 - DEBUG - 19	19
+09-Apr-23 18:56:29 - DEBUG - >> return message
+09-Apr-23 18:56:29 - DEBUG - 21,16
+09-Apr-23 18:56:29 - DEBUG - save result here
+09-Apr-23 18:56:29 - DEBUG - 21	21
+09-Apr-23 18:56:29 - DEBUG - >> return message
+09-Apr-23 18:56:29 - DEBUG - 22,21
+09-Apr-23 18:56:29 - DEBUG - save result here
+09-Apr-23 18:56:30 - DEBUG - 23	23
+09-Apr-23 18:56:30 - DEBUG - >> return message
+09-Apr-23 18:56:30 - DEBUG - 21,22
+09-Apr-23 18:56:30 - DEBUG - save result here
+09-Apr-23 18:56:30 - DEBUG - 25	25
+09-Apr-23 18:56:31 - DEBUG - >> return message
+09-Apr-23 18:56:31 - DEBUG - 21,24
+09-Apr-23 18:56:31 - DEBUG - save result here
+09-Apr-23 18:56:31 - DEBUG - 27	27
+09-Apr-23 18:56:31 - DEBUG - >> return message
+09-Apr-23 18:56:31 - DEBUG - 14,29
+09-Apr-23 18:56:31 - DEBUG - save result here
+09-Apr-23 18:56:32 - DEBUG - 29	29
+09-Apr-23 18:56:32 - DEBUG - >> return message
+09-Apr-23 18:56:32 - DEBUG - 21,30
+09-Apr-23 18:56:32 - DEBUG - save result here
+09-Apr-23 18:56:33 - DEBUG - 31	31
+09-Apr-23 18:56:33 - DEBUG - >> return message
+09-Apr-23 18:56:33 - DEBUG - 22,32
+09-Apr-23 18:56:33 - DEBUG - save result here
+09-Apr-23 18:56:33 - DEBUG - 33	33
+09-Apr-23 18:56:34 - DEBUG - >> return message
+09-Apr-23 18:56:34 - DEBUG - 21,32
+09-Apr-23 18:56:34 - DEBUG - save result here
+09-Apr-23 18:56:34 - DEBUG - 35	35
+09-Apr-23 18:56:34 - DEBUG - >> return message
+09-Apr-23 18:56:34 - DEBUG - 20,36
+09-Apr-23 18:56:34 - DEBUG - save result here
+09-Apr-23 18:56:35 - DEBUG - 37	37
+09-Apr-23 18:56:35 - DEBUG - >> return message
+09-Apr-23 18:56:35 - DEBUG - 21,37
+09-Apr-23 18:56:35 - DEBUG - save result here
+09-Apr-23 18:56:35 - DEBUG - 39	39
+09-Apr-23 18:56:36 - DEBUG - >> return message
+09-Apr-23 18:56:36 - DEBUG - 21,33
+09-Apr-23 18:56:36 - DEBUG - save result here
+09-Apr-23 18:56:36 - DEBUG - 41	41
+09-Apr-23 18:56:36 - DEBUG - >> return message
+09-Apr-23 18:56:36 - DEBUG - 21,41
+09-Apr-23 18:56:36 - DEBUG - save result here
+09-Apr-23 18:56:37 - DEBUG - 43	43
+09-Apr-23 18:56:37 - DEBUG - >> return message
+09-Apr-23 18:56:37 - DEBUG - 21,38
+09-Apr-23 18:56:37 - DEBUG - save result here
+09-Apr-23 18:56:37 - DEBUG - 45	45
+09-Apr-23 18:56:38 - DEBUG - >> return message
+09-Apr-23 18:56:38 - DEBUG - 21,45
+09-Apr-23 18:56:38 - DEBUG - save result here
+09-Apr-23 18:56:38 - DEBUG - 47	47
+09-Apr-23 18:56:38 - DEBUG - >> return message
+09-Apr-23 18:56:38 - DEBUG - 21,46
+09-Apr-23 18:56:38 - DEBUG - save result here
+09-Apr-23 18:56:39 - DEBUG - 49	49
+09-Apr-23 18:56:39 - DEBUG - >> return message
+09-Apr-23 18:56:39 - DEBUG - 22,49
+09-Apr-23 18:56:39 - DEBUG - save result here
+09-Apr-23 18:56:39 - DEBUG - 51	51
+09-Apr-23 18:56:40 - DEBUG - >> return message
+09-Apr-23 18:56:40 - DEBUG - 22,51
+09-Apr-23 18:56:40 - DEBUG - save result here
+09-Apr-23 18:56:40 - DEBUG - 53	53
+09-Apr-23 18:56:40 - DEBUG - >> return message
+09-Apr-23 18:56:40 - DEBUG - 21,48
+09-Apr-23 18:56:40 - DEBUG - save result here
+09-Apr-23 18:56:41 - DEBUG - 55	55
+09-Apr-23 18:56:41 - DEBUG - >> return message
+09-Apr-23 18:56:41 - DEBUG - 21,54
+09-Apr-23 18:56:41 - DEBUG - save result here
+09-Apr-23 18:56:41 - DEBUG - 57	57
+09-Apr-23 18:56:42 - DEBUG - >> return message
+09-Apr-23 18:56:42 - DEBUG - 20,56
+09-Apr-23 18:56:42 - DEBUG - save result here
+09-Apr-23 18:56:42 - DEBUG - 59	59
+09-Apr-23 18:56:42 - DEBUG - >> return message
+09-Apr-23 18:56:42 - DEBUG - 20,58
+09-Apr-23 18:56:42 - DEBUG - save result here
+09-Apr-23 18:56:43 - DEBUG - 61	61
+09-Apr-23 18:56:43 - DEBUG - >> return message
+09-Apr-23 18:56:43 - DEBUG - 22,61
+09-Apr-23 18:56:43 - DEBUG - save result here
+09-Apr-23 18:56:43 - DEBUG - 63	63
+09-Apr-23 18:56:44 - DEBUG - >> return message
+09-Apr-23 18:56:44 - DEBUG - 21,64
+09-Apr-23 18:56:44 - DEBUG - save result here
+09-Apr-23 18:56:44 - DEBUG - 65	65
+09-Apr-23 18:56:44 - DEBUG - >> return message
+09-Apr-23 18:56:44 - DEBUG - 18,66
+09-Apr-23 18:56:44 - DEBUG - save result here
+09-Apr-23 18:56:45 - DEBUG - 67	67
+09-Apr-23 18:56:45 - DEBUG - >> return message
+09-Apr-23 18:56:45 - DEBUG - 21,62
+09-Apr-23 18:56:45 - DEBUG - save result here
+09-Apr-23 18:56:45 - DEBUG - 69	69
+09-Apr-23 18:56:46 - DEBUG - >> return message
+09-Apr-23 18:56:46 - DEBUG - 22,70
+09-Apr-23 18:56:46 - DEBUG - save result here
+09-Apr-23 18:56:46 - DEBUG - 71	71
+09-Apr-23 18:56:46 - DEBUG - >> return message
+09-Apr-23 18:56:46 - DEBUG - 20,70
+09-Apr-23 18:56:46 - DEBUG - save result here
+09-Apr-23 18:56:47 - DEBUG - 73	73
+09-Apr-23 18:56:47 - DEBUG - >> return message
+09-Apr-23 18:56:47 - DEBUG - 21,75
+09-Apr-23 18:56:47 - DEBUG - save result here
+09-Apr-23 18:56:47 - DEBUG - 75	75
+09-Apr-23 18:56:48 - DEBUG - >> return message
+09-Apr-23 18:56:48 - DEBUG - 22,72
+09-Apr-23 18:56:48 - DEBUG - save result here
+09-Apr-23 18:56:48 - DEBUG - 77	77
+09-Apr-23 18:56:48 - DEBUG - >> return message
+09-Apr-23 18:56:48 - DEBUG - 24,74
+09-Apr-23 18:56:48 - DEBUG - save result here
+09-Apr-23 18:56:49 - DEBUG - 79	79
+09-Apr-23 18:56:49 - DEBUG - >> return message
+09-Apr-23 18:56:49 - DEBUG - 23,74
+09-Apr-23 18:56:49 - DEBUG - save result here
+09-Apr-23 18:56:49 - DEBUG - 81	81
+09-Apr-23 18:56:50 - DEBUG - >> return message
+09-Apr-23 18:56:50 - DEBUG - 21,72
+09-Apr-23 18:56:50 - DEBUG - save result here
+09-Apr-23 18:56:50 - DEBUG - 83	83
+09-Apr-23 18:56:50 - DEBUG - >> return message
+09-Apr-23 18:56:50 - DEBUG - 24,72
+09-Apr-23 18:56:50 - DEBUG - save result here
+09-Apr-23 18:56:51 - DEBUG - 85	85
+09-Apr-23 18:56:51 - DEBUG - >> return message
+09-Apr-23 18:56:51 - DEBUG - 21,71
+09-Apr-23 18:56:51 - DEBUG - save result here
+09-Apr-23 18:56:51 - DEBUG - 87	87
+09-Apr-23 18:56:52 - DEBUG - >> return message
+09-Apr-23 18:56:52 - DEBUG - 21,72
+09-Apr-23 18:56:52 - DEBUG - save result here
+09-Apr-23 18:56:52 - DEBUG - 89	89
+09-Apr-23 18:56:52 - DEBUG - >> return message
+09-Apr-23 18:56:52 - DEBUG - 21,70
+09-Apr-23 18:56:52 - DEBUG - save result here
+09-Apr-23 18:56:53 - DEBUG - 91	91
+09-Apr-23 18:56:53 - DEBUG - >> return message
+09-Apr-23 18:56:53 - DEBUG - 23,71
+09-Apr-23 18:56:53 - DEBUG - save result here
+09-Apr-23 18:56:53 - DEBUG - 93	93
+09-Apr-23 18:56:54 - DEBUG - >> return message
+09-Apr-23 18:56:54 - DEBUG - 21,72
+09-Apr-23 18:56:54 - DEBUG - save result here
+09-Apr-23 18:56:54 - DEBUG - 95	95
+09-Apr-23 18:56:55 - DEBUG - >> return message
+09-Apr-23 18:56:55 - DEBUG - 22,71
+09-Apr-23 18:56:55 - DEBUG - save result here
+09-Apr-23 18:56:55 - DEBUG - 97	97
+09-Apr-23 18:56:55 - DEBUG - >> return message
+09-Apr-23 18:56:55 - DEBUG - 18,71
+09-Apr-23 18:56:55 - DEBUG - save result here
+09-Apr-23 18:56:56 - DEBUG - 99	99
+09-Apr-23 18:56:56 - DEBUG - >> return message
+09-Apr-23 18:56:56 - DEBUG - 24,71
+09-Apr-23 18:56:56 - DEBUG - save result here
+09-Apr-23 18:58:00 - DEBUG - xy params is integer
+09-Apr-23 18:58:02 - DEBUG - 1	1
+09-Apr-23 18:58:03 - DEBUG - save result here
+09-Apr-23 18:58:03 - DEBUG - 3	3
+09-Apr-23 18:58:03 - DEBUG - save result here
+09-Apr-23 18:58:04 - DEBUG - 5	5
+09-Apr-23 18:58:04 - DEBUG - save result here
+09-Apr-23 18:58:04 - DEBUG - 7	7
+09-Apr-23 18:58:05 - DEBUG - save result here
+09-Apr-23 18:58:05 - DEBUG - 9	9
+09-Apr-23 18:58:05 - DEBUG - save result here
+09-Apr-23 18:58:06 - DEBUG - 11	11
+09-Apr-23 18:58:06 - DEBUG - save result here
+09-Apr-23 18:58:06 - DEBUG - 13	13
+09-Apr-23 18:58:07 - DEBUG - save result here
+09-Apr-23 18:58:07 - DEBUG - 15	15
+09-Apr-23 18:58:07 - DEBUG - save result here
+09-Apr-23 18:58:08 - DEBUG - 17	17
+09-Apr-23 18:58:08 - DEBUG - save result here
+09-Apr-23 18:58:08 - DEBUG - 19	19
+09-Apr-23 18:58:09 - DEBUG - save result here
+09-Apr-23 18:58:09 - DEBUG - 21	21
+09-Apr-23 18:58:09 - DEBUG - save result here
+09-Apr-23 18:58:10 - DEBUG - 23	23
+09-Apr-23 18:58:10 - DEBUG - save result here
+09-Apr-23 18:58:10 - DEBUG - 25	25
+09-Apr-23 18:58:11 - DEBUG - save result here
+09-Apr-23 18:58:11 - DEBUG - 27	27
+09-Apr-23 18:58:11 - DEBUG - save result here
+09-Apr-23 18:58:12 - DEBUG - 29	29
+09-Apr-23 18:58:12 - DEBUG - save result here
+09-Apr-23 18:58:12 - DEBUG - 31	31
+09-Apr-23 18:58:13 - DEBUG - save result here
+09-Apr-23 18:58:13 - DEBUG - 33	33
+09-Apr-23 18:58:13 - DEBUG - save result here
+09-Apr-23 18:58:14 - DEBUG - 35	35
+09-Apr-23 18:58:14 - DEBUG - save result here
+09-Apr-23 18:58:14 - DEBUG - 37	37
+09-Apr-23 18:58:15 - DEBUG - save result here
+09-Apr-23 18:58:15 - DEBUG - 39	39
+09-Apr-23 18:58:15 - DEBUG - save result here
+09-Apr-23 18:58:16 - DEBUG - 41	41
+09-Apr-23 18:58:16 - DEBUG - save result here
+09-Apr-23 18:58:16 - DEBUG - 43	43
+09-Apr-23 18:58:17 - DEBUG - save result here
+09-Apr-23 18:58:17 - DEBUG - 45	45
+09-Apr-23 18:58:17 - DEBUG - save result here
+09-Apr-23 18:58:18 - DEBUG - 47	47
+09-Apr-23 18:58:18 - DEBUG - save result here
+09-Apr-23 18:58:18 - DEBUG - 49	49
+09-Apr-23 18:58:19 - DEBUG - save result here
+09-Apr-23 18:58:19 - DEBUG - 51	51
+09-Apr-23 18:58:20 - DEBUG - save result here
+09-Apr-23 18:58:20 - DEBUG - 53	53
+09-Apr-23 18:58:20 - DEBUG - save result here
+09-Apr-23 18:58:21 - DEBUG - 55	55
+09-Apr-23 18:58:21 - DEBUG - save result here
+09-Apr-23 18:58:21 - DEBUG - 57	57
+09-Apr-23 18:58:22 - DEBUG - save result here
+09-Apr-23 18:58:22 - DEBUG - 59	59
+09-Apr-23 18:58:22 - DEBUG - save result here
+09-Apr-23 18:58:23 - DEBUG - 61	61
+09-Apr-23 18:58:23 - DEBUG - save result here
+09-Apr-23 18:58:23 - DEBUG - 63	63
+09-Apr-23 18:58:24 - DEBUG - save result here
+09-Apr-23 18:58:24 - DEBUG - 65	65
+09-Apr-23 18:58:24 - DEBUG - save result here
+09-Apr-23 18:58:25 - DEBUG - 67	67
+09-Apr-23 18:58:25 - DEBUG - save result here
+09-Apr-23 18:58:25 - DEBUG - 69	69
+09-Apr-23 18:58:26 - DEBUG - save result here
+09-Apr-23 18:58:26 - DEBUG - 71	71
+09-Apr-23 18:58:26 - DEBUG - save result here
+09-Apr-23 18:58:27 - DEBUG - 73	73
+09-Apr-23 18:58:27 - DEBUG - save result here
+09-Apr-23 18:58:27 - DEBUG - 75	75
+09-Apr-23 18:58:28 - DEBUG - save result here
+09-Apr-23 18:58:28 - DEBUG - 77	77
+09-Apr-23 18:58:28 - DEBUG - save result here
+09-Apr-23 18:58:29 - DEBUG - 79	79
+09-Apr-23 18:58:29 - DEBUG - save result here
+09-Apr-23 18:58:29 - DEBUG - 81	81
+09-Apr-23 18:58:30 - DEBUG - save result here
+09-Apr-23 18:58:30 - DEBUG - 83	83
+09-Apr-23 18:58:30 - DEBUG - save result here
+09-Apr-23 18:58:31 - DEBUG - 85	85
+09-Apr-23 18:58:31 - DEBUG - save result here
+09-Apr-23 18:58:31 - DEBUG - 87	87
+09-Apr-23 18:58:32 - DEBUG - save result here
+09-Apr-23 18:58:32 - DEBUG - 89	89
+09-Apr-23 18:58:32 - DEBUG - save result here
+09-Apr-23 18:58:33 - DEBUG - 91	91
+09-Apr-23 18:58:33 - DEBUG - save result here
+09-Apr-23 18:58:34 - DEBUG - 93	93
+09-Apr-23 18:58:34 - DEBUG - save result here
+09-Apr-23 18:58:34 - DEBUG - 95	95
+09-Apr-23 18:58:35 - DEBUG - save result here
+09-Apr-23 18:58:35 - DEBUG - 97	97
+09-Apr-23 18:58:35 - DEBUG - save result here
+09-Apr-23 18:58:36 - DEBUG - 99	99
+09-Apr-23 18:58:36 - DEBUG - save result here
+09-Apr-23 19:00:16 - DEBUG - xy params is integer
+09-Apr-23 19:00:18 - DEBUG - 1	1
+09-Apr-23 19:00:19 - DEBUG - save result here
+09-Apr-23 19:00:19 - DEBUG - 3	3
+09-Apr-23 19:00:20 - DEBUG - save result here
+09-Apr-23 19:00:20 - DEBUG - 5	5
+09-Apr-23 19:00:20 - DEBUG - save result here
+09-Apr-23 19:00:21 - DEBUG - 7	7
+09-Apr-23 19:00:21 - DEBUG - save result here
+09-Apr-23 19:00:21 - DEBUG - 9	9
+09-Apr-23 19:00:22 - DEBUG - save result here
+09-Apr-23 19:00:22 - DEBUG - 11	11
+09-Apr-23 19:00:22 - DEBUG - save result here
+09-Apr-23 19:00:23 - DEBUG - 13	13
+09-Apr-23 19:00:23 - DEBUG - save result here
+09-Apr-23 19:00:23 - DEBUG - 15	15
+09-Apr-23 19:00:24 - DEBUG - save result here
+09-Apr-23 19:00:24 - DEBUG - 17	17
+09-Apr-23 19:00:24 - DEBUG - save result here
+09-Apr-23 19:00:25 - DEBUG - 19	19
+09-Apr-23 19:00:25 - DEBUG - save result here
+09-Apr-23 19:00:25 - DEBUG - 21	21
+09-Apr-23 19:00:26 - DEBUG - save result here
+09-Apr-23 19:00:26 - DEBUG - 23	23
+09-Apr-23 19:00:26 - DEBUG - save result here
+09-Apr-23 19:00:27 - DEBUG - 25	25
+09-Apr-23 19:00:27 - DEBUG - save result here
+09-Apr-23 19:00:27 - DEBUG - 27	27
+09-Apr-23 19:00:28 - DEBUG - save result here
+09-Apr-23 19:00:28 - DEBUG - 29	29
+09-Apr-23 19:00:28 - DEBUG - save result here
+09-Apr-23 19:00:29 - DEBUG - 31	31
+09-Apr-23 19:00:29 - DEBUG - save result here
+09-Apr-23 19:00:29 - DEBUG - 33	33
+09-Apr-23 19:00:30 - DEBUG - save result here
+09-Apr-23 19:00:30 - DEBUG - 35	35
+09-Apr-23 19:00:31 - DEBUG - save result here
+09-Apr-23 19:00:31 - DEBUG - 37	37
+09-Apr-23 19:00:31 - DEBUG - save result here
+09-Apr-23 19:00:32 - DEBUG - 39	39
+09-Apr-23 19:00:32 - DEBUG - save result here
+09-Apr-23 19:00:32 - DEBUG - 41	41
+09-Apr-23 19:00:33 - DEBUG - save result here
+09-Apr-23 19:00:33 - DEBUG - 43	43
+09-Apr-23 19:00:33 - DEBUG - save result here
+09-Apr-23 19:00:34 - DEBUG - 45	45
+09-Apr-23 19:00:34 - DEBUG - save result here
+09-Apr-23 19:00:34 - DEBUG - 47	47
+09-Apr-23 19:00:35 - DEBUG - save result here
+09-Apr-23 19:00:35 - DEBUG - 49	49
+09-Apr-23 19:00:35 - DEBUG - save result here
+09-Apr-23 19:00:36 - DEBUG - 51	51
+09-Apr-23 19:00:36 - DEBUG - save result here
+09-Apr-23 19:00:36 - DEBUG - 53	53
+09-Apr-23 19:00:37 - DEBUG - save result here
+09-Apr-23 19:00:37 - DEBUG - 55	55
+09-Apr-23 19:00:37 - DEBUG - save result here
+09-Apr-23 19:00:38 - DEBUG - 57	57
+09-Apr-23 19:00:38 - DEBUG - save result here
+09-Apr-23 19:00:38 - DEBUG - 59	59
+09-Apr-23 19:00:39 - DEBUG - save result here
+09-Apr-23 19:00:39 - DEBUG - 61	61
+09-Apr-23 19:00:39 - DEBUG - save result here
+09-Apr-23 19:00:40 - DEBUG - 63	63
+09-Apr-23 19:00:40 - DEBUG - save result here
+09-Apr-23 19:00:40 - DEBUG - 65	65
+09-Apr-23 19:00:41 - DEBUG - save result here
+09-Apr-23 19:00:41 - DEBUG - 67	67
+09-Apr-23 19:00:41 - DEBUG - save result here
+09-Apr-23 19:00:42 - DEBUG - 69	69
+09-Apr-23 19:00:42 - DEBUG - save result here
+09-Apr-23 19:00:42 - DEBUG - 71	71
+09-Apr-23 19:00:43 - DEBUG - save result here
+09-Apr-23 19:00:43 - DEBUG - 73	73
+09-Apr-23 19:00:43 - DEBUG - save result here
+09-Apr-23 19:00:44 - DEBUG - 75	75
+09-Apr-23 19:00:44 - DEBUG - save result here
+09-Apr-23 19:00:44 - DEBUG - 77	77
+09-Apr-23 19:00:45 - DEBUG - save result here
+09-Apr-23 19:00:45 - DEBUG - 79	79
+09-Apr-23 19:00:46 - DEBUG - save result here
+09-Apr-23 19:00:46 - DEBUG - 81	81
+09-Apr-23 19:00:46 - DEBUG - save result here
+09-Apr-23 19:00:47 - DEBUG - 83	83
+09-Apr-23 19:00:47 - DEBUG - save result here
+09-Apr-23 19:00:47 - DEBUG - 85	85
+09-Apr-23 19:00:48 - DEBUG - save result here
+09-Apr-23 19:00:48 - DEBUG - 87	87
+09-Apr-23 19:00:48 - DEBUG - save result here
+09-Apr-23 19:00:49 - DEBUG - 89	89
+09-Apr-23 19:00:49 - DEBUG - save result here
+09-Apr-23 19:00:49 - DEBUG - 91	91
+09-Apr-23 19:00:50 - DEBUG - save result here
+09-Apr-23 19:00:50 - DEBUG - 93	93
+09-Apr-23 19:00:50 - DEBUG - save result here
+09-Apr-23 19:00:51 - DEBUG - 95	95
+09-Apr-23 19:00:51 - DEBUG - save result here
+09-Apr-23 19:00:51 - DEBUG - 97	97
+09-Apr-23 19:00:52 - DEBUG - save result here
+09-Apr-23 19:00:52 - DEBUG - 99	99
+09-Apr-23 19:00:52 - DEBUG - save result here
+09-Apr-23 19:08:59 - DEBUG - xy params is integer
+09-Apr-23 19:09:02 - DEBUG - 1	1
+09-Apr-23 19:09:02 - DEBUG - save result here
+09-Apr-23 19:09:02 - DEBUG - 3	3
+09-Apr-23 19:09:03 - DEBUG - save result here
+09-Apr-23 19:09:03 - DEBUG - 5	5
+09-Apr-23 19:09:03 - DEBUG - save result here
+09-Apr-23 19:09:04 - DEBUG - 7	7
+09-Apr-23 19:09:04 - DEBUG - save result here
+09-Apr-23 19:09:04 - DEBUG - 9	9
+09-Apr-23 19:09:05 - DEBUG - save result here
+09-Apr-23 19:09:05 - DEBUG - 11	11
+09-Apr-23 19:09:05 - DEBUG - save result here
+09-Apr-23 19:09:06 - DEBUG - 13	13
+09-Apr-23 19:09:06 - DEBUG - save result here
+09-Apr-23 19:09:06 - DEBUG - 15	15
+09-Apr-23 19:09:07 - DEBUG - save result here
+09-Apr-23 19:09:07 - DEBUG - 17	17
+09-Apr-23 19:09:07 - DEBUG - save result here
+09-Apr-23 19:09:08 - DEBUG - 19	19
+09-Apr-23 19:09:08 - DEBUG - save result here
+09-Apr-23 19:09:08 - DEBUG - 21	21
+09-Apr-23 19:09:09 - DEBUG - save result here
+09-Apr-23 19:09:09 - DEBUG - 23	23
+09-Apr-23 19:09:09 - DEBUG - save result here
+09-Apr-23 19:09:10 - DEBUG - 25	25
+09-Apr-23 19:09:10 - DEBUG - save result here
+09-Apr-23 19:09:10 - DEBUG - 27	27
+09-Apr-23 19:09:11 - DEBUG - save result here
+09-Apr-23 19:09:11 - DEBUG - 29	29
+09-Apr-23 19:09:11 - DEBUG - save result here
+09-Apr-23 19:09:12 - DEBUG - 31	31
+09-Apr-23 19:09:12 - DEBUG - save result here
+09-Apr-23 19:09:12 - DEBUG - 33	33
+09-Apr-23 19:09:13 - DEBUG - save result here
+09-Apr-23 19:09:13 - DEBUG - 35	35
+09-Apr-23 19:09:13 - DEBUG - save result here
+09-Apr-23 19:09:14 - DEBUG - 37	37
+09-Apr-23 19:09:14 - DEBUG - save result here
+09-Apr-23 19:09:15 - DEBUG - 39	39
+09-Apr-23 19:09:15 - DEBUG - save result here
+09-Apr-23 19:09:15 - DEBUG - 41	41
+09-Apr-23 19:09:16 - DEBUG - save result here
+09-Apr-23 19:09:16 - DEBUG - 43	43
+09-Apr-23 19:09:16 - DEBUG - save result here
+09-Apr-23 19:09:17 - DEBUG - 45	45
+09-Apr-23 19:09:17 - DEBUG - save result here
+09-Apr-23 19:09:17 - DEBUG - 47	47
+09-Apr-23 19:09:18 - DEBUG - save result here
+09-Apr-23 19:09:18 - DEBUG - 49	49
+09-Apr-23 19:09:18 - DEBUG - save result here
+09-Apr-23 19:09:19 - DEBUG - 51	51
+09-Apr-23 19:09:19 - DEBUG - save result here
+09-Apr-23 19:09:19 - DEBUG - 53	53
+09-Apr-23 19:09:20 - DEBUG - save result here
+09-Apr-23 19:09:20 - DEBUG - 55	55
+09-Apr-23 19:09:20 - DEBUG - save result here
+09-Apr-23 19:09:21 - DEBUG - 57	57
+09-Apr-23 19:09:21 - DEBUG - save result here
+09-Apr-23 19:09:21 - DEBUG - 59	59
+09-Apr-23 19:09:22 - DEBUG - save result here
+09-Apr-23 19:09:22 - DEBUG - 61	61
+09-Apr-23 19:09:22 - DEBUG - save result here
+09-Apr-23 19:09:23 - DEBUG - 63	63
+09-Apr-23 19:09:23 - DEBUG - save result here
+09-Apr-23 19:09:23 - DEBUG - 65	65
+09-Apr-23 19:09:24 - DEBUG - save result here
+09-Apr-23 19:09:24 - DEBUG - 67	67
+09-Apr-23 19:09:24 - DEBUG - save result here
+09-Apr-23 19:09:25 - DEBUG - 69	69
+09-Apr-23 19:09:25 - DEBUG - save result here
+09-Apr-23 19:09:25 - DEBUG - 71	71
+09-Apr-23 19:09:26 - DEBUG - save result here
+09-Apr-23 19:09:26 - DEBUG - 73	73
+09-Apr-23 19:09:26 - DEBUG - save result here
+09-Apr-23 19:09:27 - DEBUG - 75	75
+09-Apr-23 19:09:27 - DEBUG - save result here
+09-Apr-23 19:09:27 - DEBUG - 77	77
+09-Apr-23 19:09:28 - DEBUG - save result here
+09-Apr-23 19:09:28 - DEBUG - 79	79
+09-Apr-23 19:09:28 - DEBUG - save result here
+09-Apr-23 19:09:29 - DEBUG - 81	81
+09-Apr-23 19:09:29 - DEBUG - save result here
+09-Apr-23 19:09:29 - DEBUG - 83	83
+09-Apr-23 19:09:30 - DEBUG - save result here
+09-Apr-23 19:09:30 - DEBUG - 85	85
+09-Apr-23 19:09:30 - DEBUG - save result here
+09-Apr-23 19:09:31 - DEBUG - 87	87
+09-Apr-23 19:09:31 - DEBUG - save result here
+09-Apr-23 19:09:31 - DEBUG - 89	89
+09-Apr-23 19:09:32 - DEBUG - save result here
+09-Apr-23 19:09:32 - DEBUG - 91	91
+09-Apr-23 19:09:32 - DEBUG - save result here
+09-Apr-23 19:09:33 - DEBUG - 93	93
+09-Apr-23 19:09:33 - DEBUG - save result here
+09-Apr-23 19:09:34 - DEBUG - 95	95
+09-Apr-23 19:09:34 - DEBUG - save result here
+09-Apr-23 19:09:34 - DEBUG - 97	97
+09-Apr-23 19:09:35 - DEBUG - save result here
+09-Apr-23 19:09:35 - DEBUG - 99	99
+09-Apr-23 19:09:35 - DEBUG - save result here
+09-Apr-23 19:12:58 - DEBUG - xy params is integer
+09-Apr-23 19:13:01 - DEBUG - 1	1
+09-Apr-23 19:13:01 - DEBUG - save result here
+09-Apr-23 19:13:01 - DEBUG - 3	3
+09-Apr-23 19:13:02 - DEBUG - save result here
+09-Apr-23 19:13:02 - DEBUG - 5	5
+09-Apr-23 19:13:02 - DEBUG - save result here
+09-Apr-23 19:13:03 - DEBUG - 7	7
+09-Apr-23 19:13:03 - DEBUG - save result here
+09-Apr-23 19:13:03 - DEBUG - 9	9
+09-Apr-23 19:14:42 - DEBUG - xy params is integer
+09-Apr-23 19:14:45 - DEBUG - 7	0
+09-Apr-23 19:14:45 - DEBUG - save result here
+09-Apr-23 19:14:46 - DEBUG - 1	0
+09-Apr-23 19:14:46 - DEBUG - save result here
+09-Apr-23 19:14:47 - DEBUG - 7	7
+09-Apr-23 19:14:47 - DEBUG - save result here
+09-Apr-23 19:14:47 - DEBUG - 7	8
+09-Apr-23 19:14:47 - DEBUG - save result here
+09-Apr-23 19:14:48 - DEBUG - 6	11
+09-Apr-23 19:14:48 - DEBUG - save result here
+09-Apr-23 19:14:49 - DEBUG - 6	11
+09-Apr-23 19:14:49 - DEBUG - save result here
+09-Apr-23 19:14:49 - DEBUG - 7	14
+09-Apr-23 19:14:49 - DEBUG - save result here
+09-Apr-23 19:14:50 - DEBUG - 8	17
+09-Apr-23 19:14:50 - DEBUG - save result here
+09-Apr-23 19:14:51 - DEBUG - 9	18
+09-Apr-23 19:14:51 - DEBUG - save result here
+09-Apr-23 19:14:51 - DEBUG - 19	21
+09-Apr-23 19:14:51 - DEBUG - save result here
+09-Apr-23 19:14:52 - DEBUG - 20	23
+09-Apr-23 19:14:52 - DEBUG - save result here
+09-Apr-23 19:14:53 - DEBUG - 19	23
+09-Apr-23 19:14:53 - DEBUG - save result here
+09-Apr-23 19:14:53 - DEBUG - 21	24
+09-Apr-23 19:14:53 - DEBUG - save result here
+09-Apr-23 19:14:54 - DEBUG - 21	27
+09-Apr-23 19:14:54 - DEBUG - save result here
+09-Apr-23 19:14:55 - DEBUG - 20	30
+09-Apr-23 19:14:55 - DEBUG - save result here
+09-Apr-23 19:14:55 - DEBUG - 21	32
+09-Apr-23 19:14:55 - DEBUG - save result here
+09-Apr-23 19:14:56 - DEBUG - 20	28
+09-Apr-23 19:14:56 - DEBUG - save result here
+09-Apr-23 19:14:57 - DEBUG - 20	32
+09-Apr-23 19:14:57 - DEBUG - save result here
+09-Apr-23 19:14:58 - DEBUG - 21	33
+09-Apr-23 19:14:58 - DEBUG - save result here
+09-Apr-23 19:14:58 - DEBUG - 20	41
+09-Apr-23 19:14:58 - DEBUG - save result here
+09-Apr-23 19:14:59 - DEBUG - 19	44
+09-Apr-23 19:14:59 - DEBUG - save result here
+09-Apr-23 19:15:00 - DEBUG - 20	45
+09-Apr-23 19:15:00 - DEBUG - save result here
+09-Apr-23 19:15:00 - DEBUG - 20	46
+09-Apr-23 19:15:00 - DEBUG - save result here
+09-Apr-23 19:15:01 - DEBUG - 20	49
+09-Apr-23 19:15:01 - DEBUG - save result here
+09-Apr-23 19:15:02 - DEBUG - 20	51
+09-Apr-23 19:15:02 - DEBUG - save result here
+09-Apr-23 19:15:02 - DEBUG - 20	50
+09-Apr-23 19:15:02 - DEBUG - save result here
+09-Apr-23 19:15:03 - DEBUG - 20	51
+09-Apr-23 19:15:03 - DEBUG - save result here
+09-Apr-23 19:15:04 - DEBUG - 22	57
+09-Apr-23 19:15:04 - DEBUG - save result here
+09-Apr-23 19:15:04 - DEBUG - 20	52
+09-Apr-23 19:15:04 - DEBUG - save result here
+09-Apr-23 19:15:05 - DEBUG - 20	59
+09-Apr-23 19:15:05 - DEBUG - save result here
+09-Apr-23 19:15:06 - DEBUG - 21	63
+09-Apr-23 19:15:06 - DEBUG - save result here
+09-Apr-23 19:15:06 - DEBUG - 21	64
+09-Apr-23 19:15:06 - DEBUG - save result here
+09-Apr-23 19:15:07 - DEBUG - 22	63
+09-Apr-23 19:15:07 - DEBUG - save result here
+09-Apr-23 19:15:08 - DEBUG - 20	63
+09-Apr-23 19:15:08 - DEBUG - save result here
+09-Apr-23 19:15:09 - DEBUG - 21	68
+09-Apr-23 19:15:09 - DEBUG - save result here
+09-Apr-23 19:15:09 - DEBUG - 14	70
+09-Apr-23 19:15:09 - DEBUG - save result here
+09-Apr-23 19:15:10 - DEBUG - 19	69
+09-Apr-23 19:15:10 - DEBUG - save result here
+09-Apr-23 19:15:11 - DEBUG - 25	71
+09-Apr-23 19:15:11 - DEBUG - save result here
+09-Apr-23 19:15:11 - DEBUG - 19	68
+09-Apr-23 19:15:11 - DEBUG - save result here
+09-Apr-23 19:15:12 - DEBUG - 22	67
+09-Apr-23 19:15:12 - DEBUG - save result here
+09-Apr-23 19:15:13 - DEBUG - 16	69
+09-Apr-23 19:15:13 - DEBUG - save result here
+09-Apr-23 19:15:13 - DEBUG - 18	67
+09-Apr-23 19:15:13 - DEBUG - save result here
+09-Apr-23 19:15:14 - DEBUG - 21	69
+09-Apr-23 19:15:14 - DEBUG - save result here
+09-Apr-23 19:15:15 - DEBUG - 24	69
+09-Apr-23 19:15:15 - DEBUG - save result here
+09-Apr-23 19:15:15 - DEBUG - 17	67
+09-Apr-23 19:15:15 - DEBUG - save result here
+09-Apr-23 19:15:16 - DEBUG - 25	67
+09-Apr-23 19:15:16 - DEBUG - save result here
+09-Apr-23 19:15:17 - DEBUG - 20	66
+09-Apr-23 19:15:17 - DEBUG - save result here
+09-Apr-23 19:15:17 - DEBUG - 18	65
+09-Apr-23 19:15:17 - DEBUG - save result here
+09-Apr-23 19:15:18 - DEBUG - 16	67
+09-Apr-23 19:15:18 - DEBUG - save result here
+09-Apr-23 19:15:19 - DEBUG - 25	68
+09-Apr-23 19:15:19 - DEBUG - save result here
+09-Apr-23 19:16:33 - DEBUG - xy params is integer
+09-Apr-23 19:16:36 - DEBUG - 23	65
+09-Apr-23 19:17:36 - DEBUG - xy params is integer
+09-Apr-23 19:17:39 - DEBUG - 7	0
+09-Apr-23 19:17:39 - DEBUG - 5	0
+09-Apr-23 19:17:39 - DEBUG - 7	0
+09-Apr-23 19:17:39 - DEBUG - 7	0
+09-Apr-23 19:17:39 - DEBUG - 5	0
+09-Apr-23 19:17:40 - DEBUG - 7	0
+09-Apr-23 19:17:40 - DEBUG - 7	0
+09-Apr-23 19:17:40 - DEBUG - 7	0
+09-Apr-23 19:17:40 - DEBUG - 7	0
+09-Apr-23 19:17:40 - DEBUG - 7	0
+09-Apr-23 19:17:40 - DEBUG - 7	0
+09-Apr-23 19:17:40 - DEBUG - 7	0
+09-Apr-23 19:17:40 - DEBUG - 7	0
+09-Apr-23 19:17:40 - DEBUG - 0	0
+09-Apr-23 19:17:41 - DEBUG - 8	0
+09-Apr-23 19:17:41 - DEBUG - 7	0
+09-Apr-23 19:17:41 - DEBUG - 8	0
+09-Apr-23 19:17:41 - DEBUG - 6	0
+09-Apr-23 19:17:41 - DEBUG - 7	0
+09-Apr-23 19:17:41 - DEBUG - 7	0
+09-Apr-23 19:17:41 - DEBUG - 8	0
+09-Apr-23 19:17:41 - DEBUG - 7	0
+09-Apr-23 19:17:42 - DEBUG - 7	0
+09-Apr-23 19:17:42 - DEBUG - 8	0
+09-Apr-23 19:17:42 - DEBUG - 3	0
+09-Apr-23 19:17:42 - DEBUG - 7	0
+09-Apr-23 19:17:42 - DEBUG - 9	0
+09-Apr-23 19:17:42 - DEBUG - 8	0
+09-Apr-23 19:17:42 - DEBUG - 7	0
+09-Apr-23 19:17:42 - DEBUG - 7	0
+09-Apr-23 19:17:43 - DEBUG - 6	0
+09-Apr-23 19:17:43 - DEBUG - 7	0
+09-Apr-23 19:17:43 - DEBUG - 7	0
+09-Apr-23 19:17:43 - DEBUG - 6	0
+09-Apr-23 19:17:43 - DEBUG - 8	0
+09-Apr-23 19:17:43 - DEBUG - 7	0
+09-Apr-23 19:17:43 - DEBUG - 7	0
+09-Apr-23 19:17:43 - DEBUG - 8	0
+09-Apr-23 19:17:44 - DEBUG - 8	0
+09-Apr-23 19:17:44 - DEBUG - 7	0
+09-Apr-23 19:17:44 - DEBUG - 7	0
+09-Apr-23 19:17:44 - DEBUG - 7	0
+09-Apr-23 19:17:44 - DEBUG - 9	0
+09-Apr-23 19:17:44 - DEBUG - 8	0
+09-Apr-23 19:17:44 - DEBUG - 10	0
+09-Apr-23 19:17:44 - DEBUG - 9	0
+09-Apr-23 19:17:44 - DEBUG - 12	0
+09-Apr-23 19:17:45 - DEBUG - 14	0
+09-Apr-23 19:17:45 - DEBUG - 16	0
+09-Apr-23 19:17:45 - DEBUG - 17	0
+09-Apr-23 19:17:45 - DEBUG - 18	0
+09-Apr-23 19:17:45 - DEBUG - 19	0
+09-Apr-23 19:17:45 - DEBUG - 20	0
+09-Apr-23 19:17:45 - DEBUG - 21	0
+09-Apr-23 19:17:45 - DEBUG - 21	0
+09-Apr-23 19:17:46 - DEBUG - 21	0
+09-Apr-23 19:17:46 - DEBUG - 22	0
+09-Apr-23 19:17:46 - DEBUG - 22	0
+09-Apr-23 19:17:46 - DEBUG - 21	0
+09-Apr-23 19:17:46 - DEBUG - 20	0
+09-Apr-23 19:17:46 - DEBUG - 22	0
+09-Apr-23 19:17:46 - DEBUG - 21	0
+09-Apr-23 19:17:46 - DEBUG - 20	0
+09-Apr-23 19:17:46 - DEBUG - 22	0
+09-Apr-23 19:17:47 - DEBUG - 18	0
+09-Apr-23 19:17:47 - DEBUG - 15	0
+09-Apr-23 19:17:47 - DEBUG - 23	0
+09-Apr-23 19:17:47 - DEBUG - 19	0
+09-Apr-23 19:17:47 - DEBUG - 20	0
+09-Apr-23 19:17:47 - DEBUG - 21	0
+09-Apr-23 19:17:47 - DEBUG - 22	0
+09-Apr-23 19:17:47 - DEBUG - 19	0
+09-Apr-23 19:17:48 - DEBUG - 20	0
+09-Apr-23 19:17:48 - DEBUG - 22	0
+09-Apr-23 19:17:48 - DEBUG - 22	0
+09-Apr-23 19:17:48 - DEBUG - 20	0
+09-Apr-23 19:17:48 - DEBUG - 14	0
+09-Apr-23 19:17:48 - DEBUG - 23	0
+09-Apr-23 19:17:48 - DEBUG - 18	0
+09-Apr-23 19:17:48 - DEBUG - 20	0
+09-Apr-23 19:17:49 - DEBUG - 22	0
+09-Apr-23 19:17:49 - DEBUG - 21	0
+09-Apr-23 19:17:49 - DEBUG - 21	0
+09-Apr-23 19:17:49 - DEBUG - 22	0
+09-Apr-23 19:17:49 - DEBUG - 21	0
+09-Apr-23 19:17:49 - DEBUG - 21	0
+09-Apr-23 19:17:49 - DEBUG - 15	0
+09-Apr-23 19:17:49 - DEBUG - 22	0
+09-Apr-23 19:17:50 - DEBUG - 20	0
+09-Apr-23 19:17:50 - DEBUG - 14	0
+09-Apr-23 19:17:50 - DEBUG - 21	0
+09-Apr-23 19:17:50 - DEBUG - 18	0
+09-Apr-23 19:17:50 - DEBUG - 19	0
+09-Apr-23 19:17:50 - DEBUG - 22	0
+09-Apr-23 19:17:50 - DEBUG - 19	0
+09-Apr-23 19:17:50 - DEBUG - 23	0
+09-Apr-23 19:17:50 - DEBUG - 12	0
+09-Apr-23 19:17:51 - DEBUG - 21	0
+09-Apr-23 19:17:51 - DEBUG - 21	0
+09-Apr-23 19:17:51 - DEBUG - 21	0
+09-Apr-23 19:17:51 - DEBUG - 21	0
+09-Apr-23 19:17:51 - DEBUG - 15	0
+09-Apr-23 19:17:51 - DEBUG - 22	0
+09-Apr-23 19:17:51 - DEBUG - 18	0
+09-Apr-23 19:17:51 - DEBUG - 22	0
+09-Apr-23 19:17:52 - DEBUG - 17	0
+09-Apr-23 19:17:52 - DEBUG - 21	0
+09-Apr-23 19:17:52 - DEBUG - 22	0
+09-Apr-23 19:17:52 - DEBUG - 20	0
+09-Apr-23 19:17:52 - DEBUG - 23	0
+09-Apr-23 19:17:52 - DEBUG - 20	0
+09-Apr-23 19:17:52 - DEBUG - 20	0
+09-Apr-23 19:17:52 - DEBUG - 21	0
+09-Apr-23 19:17:53 - DEBUG - 19	0
+09-Apr-23 19:17:53 - DEBUG - 20	0
+09-Apr-23 19:17:53 - DEBUG - 16	0
+09-Apr-23 19:17:53 - DEBUG - 18	0
+09-Apr-23 19:17:53 - DEBUG - 16	0
+09-Apr-23 19:17:53 - DEBUG - 22	0
+09-Apr-23 19:17:53 - DEBUG - 21	0
+09-Apr-23 19:17:53 - DEBUG - 21	0
+09-Apr-23 19:17:53 - DEBUG - 21	0
+09-Apr-23 19:17:54 - DEBUG - 21	0
+09-Apr-23 19:17:54 - DEBUG - 15	0
+09-Apr-23 19:17:54 - DEBUG - 23	0
+09-Apr-23 19:17:54 - DEBUG - 19	0
+09-Apr-23 19:17:54 - DEBUG - 22	0
+09-Apr-23 19:17:54 - DEBUG - 17	0
+09-Apr-23 19:17:54 - DEBUG - 14	0
+09-Apr-23 19:17:54 - DEBUG - 22	0
+09-Apr-23 19:17:55 - DEBUG - 14	0
+09-Apr-23 19:17:55 - DEBUG - 16	0
+09-Apr-23 19:17:55 - DEBUG - 14	0
+09-Apr-23 19:17:55 - DEBUG - 21	0
+09-Apr-23 19:17:55 - DEBUG - 23	0
+09-Apr-23 19:17:55 - DEBUG - 19	0
+09-Apr-23 19:17:55 - DEBUG - 23	0
+09-Apr-23 19:17:55 - DEBUG - 20	0
+09-Apr-23 19:17:56 - DEBUG - 19	0
+09-Apr-23 19:17:56 - DEBUG - 23	0
+09-Apr-23 19:17:56 - DEBUG - 19	0
+09-Apr-23 19:17:56 - DEBUG - 23	0
+09-Apr-23 19:17:56 - DEBUG - 18	0
+09-Apr-23 19:17:56 - DEBUG - 21	0
+09-Apr-23 19:17:56 - DEBUG - 16	0
+09-Apr-23 19:17:56 - DEBUG - 21	0
+09-Apr-23 19:17:56 - DEBUG - 22	0
+09-Apr-23 19:17:57 - DEBUG - 22	0
+09-Apr-23 19:17:57 - DEBUG - 14	0
+09-Apr-23 19:17:57 - DEBUG - 22	0
+09-Apr-23 19:17:57 - DEBUG - 19	0
+09-Apr-23 19:17:57 - DEBUG - 14	0
+09-Apr-23 19:17:57 - DEBUG - 21	0
+09-Apr-23 19:17:57 - DEBUG - 22	0
+09-Apr-23 19:17:57 - DEBUG - 21	0
+09-Apr-23 19:17:58 - DEBUG - 22	0
+09-Apr-23 19:17:58 - DEBUG - 24	0
+09-Apr-23 19:17:58 - DEBUG - 19	0
+09-Apr-23 19:17:58 - DEBUG - 19	0
+09-Apr-23 19:17:58 - DEBUG - 22	0
+09-Apr-23 19:17:58 - DEBUG - 18	0
+09-Apr-23 19:17:58 - DEBUG - 22	0
+09-Apr-23 19:17:58 - DEBUG - 20	0
+09-Apr-23 19:17:58 - DEBUG - 19	0
+09-Apr-23 19:17:59 - DEBUG - 19	0
+09-Apr-23 19:17:59 - DEBUG - 22	0
+09-Apr-23 19:17:59 - DEBUG - 19	0
+09-Apr-23 19:17:59 - DEBUG - 21	0
+09-Apr-23 19:17:59 - DEBUG - 20	0
+09-Apr-23 19:17:59 - DEBUG - 19	0
+09-Apr-23 19:17:59 - DEBUG - 23	0
+09-Apr-23 19:17:59 - DEBUG - 19	0
+09-Apr-23 19:18:00 - DEBUG - 21	0
+09-Apr-23 19:18:00 - DEBUG - 19	0
+09-Apr-23 19:18:00 - DEBUG - 18	0
+09-Apr-23 19:18:00 - DEBUG - 23	0
+09-Apr-23 19:18:00 - DEBUG - 19	0
+09-Apr-23 19:18:00 - DEBUG - 18	0
+09-Apr-23 19:18:00 - DEBUG - 20	0
+09-Apr-23 19:18:00 - DEBUG - 18	0
+09-Apr-23 19:18:01 - DEBUG - 21	0
+09-Apr-23 19:18:01 - DEBUG - 22	0
+09-Apr-23 19:18:01 - DEBUG - 22	0
+09-Apr-23 19:18:01 - DEBUG - 19	0
+09-Apr-23 19:18:01 - DEBUG - 23	0
+09-Apr-23 19:18:01 - DEBUG - 18	0
+09-Apr-23 19:18:01 - DEBUG - 22	0
+09-Apr-23 19:18:01 - DEBUG - 20	0
+09-Apr-23 19:18:02 - DEBUG - 21	0
+09-Apr-23 19:18:02 - DEBUG - 21	0
+09-Apr-23 19:18:02 - DEBUG - 22	0
+09-Apr-23 19:18:02 - DEBUG - 22	0
+09-Apr-23 19:18:02 - DEBUG - 19	0
+09-Apr-23 19:18:02 - DEBUG - 23	0
+09-Apr-23 19:18:02 - DEBUG - 19	0
+09-Apr-23 19:18:02 - DEBUG - 22	0
+09-Apr-23 19:18:03 - DEBUG - 18	0
+09-Apr-23 19:18:03 - DEBUG - 20	0
+09-Apr-23 19:18:03 - DEBUG - 13	0
+09-Apr-23 19:18:03 - DEBUG - 17	0
+09-Apr-23 19:18:03 - DEBUG - 18	0
+09-Apr-23 19:18:03 - DEBUG - 20	0
+09-Apr-23 19:18:03 - DEBUG - 24	0
+09-Apr-23 19:18:03 - DEBUG - 21	0
+09-Apr-23 19:18:03 - DEBUG - 22	0
+09-Apr-23 19:18:04 - DEBUG - 22	0
+09-Apr-23 19:18:04 - DEBUG - 15	0
+09-Apr-23 19:18:04 - DEBUG - 21	0
+09-Apr-23 19:18:04 - DEBUG - 21	0
+09-Apr-23 19:18:04 - DEBUG - 22	0
+09-Apr-23 19:18:04 - DEBUG - 20	0
+09-Apr-23 19:18:04 - DEBUG - 21	0
+09-Apr-23 19:18:04 - DEBUG - 22	0
+09-Apr-23 19:18:05 - DEBUG - 18	0
+09-Apr-23 19:18:05 - DEBUG - 22	0
+09-Apr-23 19:18:05 - DEBUG - 21	0
+09-Apr-23 19:18:05 - DEBUG - 16	0
+09-Apr-23 19:18:05 - DEBUG - 14	0
+09-Apr-23 19:18:05 - DEBUG - 22	0
+09-Apr-23 19:18:05 - DEBUG - 22	0
+09-Apr-23 19:18:05 - DEBUG - 18	0
+09-Apr-23 19:18:05 - DEBUG - 22	0
+09-Apr-23 19:18:06 - DEBUG - 19	0
+09-Apr-23 19:18:06 - DEBUG - 23	0
+09-Apr-23 19:18:06 - DEBUG - 19	0
+09-Apr-23 19:18:06 - DEBUG - 21	0
+09-Apr-23 19:18:06 - DEBUG - 22	0
+09-Apr-23 19:18:06 - DEBUG - 22	0
+09-Apr-23 19:18:06 - DEBUG - 18	0
+09-Apr-23 19:18:06 - DEBUG - 18	0
+09-Apr-23 19:18:07 - DEBUG - 16	0
+09-Apr-23 19:18:07 - DEBUG - 19	0
+09-Apr-23 19:18:07 - DEBUG - 21	0
+09-Apr-23 19:18:07 - DEBUG - 18	0
+09-Apr-23 19:18:07 - DEBUG - 21	0
+09-Apr-23 19:18:07 - DEBUG - 20	0
+09-Apr-23 19:18:07 - DEBUG - 20	0
+09-Apr-23 19:18:07 - DEBUG - 23	0
+09-Apr-23 19:18:08 - DEBUG - 18	0
+09-Apr-23 19:18:08 - DEBUG - 22	0
+09-Apr-23 19:18:08 - DEBUG - 21	0
+09-Apr-23 19:18:08 - DEBUG - 20	0
+09-Apr-23 19:18:08 - DEBUG - 21	0
+09-Apr-23 19:18:08 - DEBUG - 23	0
+09-Apr-23 19:18:08 - DEBUG - 20	0
+09-Apr-23 19:18:08 - DEBUG - 16	0
+09-Apr-23 19:18:08 - DEBUG - 22	0
+09-Apr-23 19:18:09 - DEBUG - 18	0
+09-Apr-23 19:18:09 - DEBUG - 21	0
+09-Apr-23 19:18:09 - DEBUG - 24	0
+09-Apr-23 19:18:09 - DEBUG - 18	0
+09-Apr-23 19:18:09 - DEBUG - 22	0
+09-Apr-23 19:18:09 - DEBUG - 18	0
+09-Apr-23 19:18:09 - DEBUG - 23	0
+09-Apr-23 19:18:09 - DEBUG - 17	0
+09-Apr-23 19:18:10 - DEBUG - 22	0
+09-Apr-23 19:18:10 - DEBUG - 19	0
+09-Apr-23 19:18:10 - DEBUG - 22	0
+09-Apr-23 19:18:10 - DEBUG - 19	0
+09-Apr-23 19:18:10 - DEBUG - 23	0
+09-Apr-23 19:18:10 - DEBUG - 19	0
+09-Apr-23 19:18:10 - DEBUG - 20	0
+09-Apr-23 19:18:10 - DEBUG - 19	0
+09-Apr-23 19:18:11 - DEBUG - 19	0
+09-Apr-23 19:18:11 - DEBUG - 22	0
+09-Apr-23 19:18:11 - DEBUG - 19	0
+09-Apr-23 19:18:11 - DEBUG - 21	0
+09-Apr-23 19:18:11 - DEBUG - 19	0
+09-Apr-23 19:18:11 - DEBUG - 21	0
+09-Apr-23 19:18:11 - DEBUG - 24	0
+09-Apr-23 19:18:11 - DEBUG - 18	0
+09-Apr-23 19:18:12 - DEBUG - 23	0
+09-Apr-23 19:18:12 - DEBUG - 19	0
+09-Apr-23 19:18:12 - DEBUG - 23	0
+09-Apr-23 19:18:12 - DEBUG - 17	0
+09-Apr-23 19:18:12 - DEBUG - 20	0
+09-Apr-23 19:18:12 - DEBUG - 24	0
+09-Apr-23 19:18:12 - DEBUG - 15	0
+09-Apr-23 19:18:12 - DEBUG - 20	0
+09-Apr-23 19:18:13 - DEBUG - 16	0
+09-Apr-23 19:18:13 - DEBUG - 19	0
+09-Apr-23 19:18:13 - DEBUG - 23	0
+09-Apr-23 19:18:13 - DEBUG - 19	0
+09-Apr-23 19:18:13 - DEBUG - 22	0
+09-Apr-23 19:18:13 - DEBUG - 18	0
+09-Apr-23 19:18:13 - DEBUG - 22	0
+09-Apr-23 19:18:13 - DEBUG - 18	0
+09-Apr-23 19:18:13 - DEBUG - 16	0
+09-Apr-23 19:18:14 - DEBUG - 15	0
+09-Apr-23 19:18:14 - DEBUG - 20	0
+09-Apr-23 19:18:14 - DEBUG - 23	0
+09-Apr-23 19:18:14 - DEBUG - 19	0
+09-Apr-23 19:18:14 - DEBUG - 23	0
+09-Apr-23 19:18:14 - DEBUG - 19	0
+09-Apr-23 19:18:14 - DEBUG - 21	0
+09-Apr-23 19:18:14 - DEBUG - 19	0
+09-Apr-23 19:18:15 - DEBUG - 21	0
+09-Apr-23 19:18:15 - DEBUG - 18	0
+09-Apr-23 19:18:15 - DEBUG - 17	0
+09-Apr-23 19:18:15 - DEBUG - 23	0
+09-Apr-23 19:18:15 - DEBUG - 18	0
+09-Apr-23 19:18:15 - DEBUG - 22	0
+09-Apr-23 19:18:15 - DEBUG - 18	0
+09-Apr-23 19:18:15 - DEBUG - 22	0
+09-Apr-23 19:18:16 - DEBUG - 24	0
+09-Apr-23 19:18:16 - DEBUG - 18	0
+09-Apr-23 19:18:16 - DEBUG - 23	0
+09-Apr-23 19:18:16 - DEBUG - 21	0
+09-Apr-23 19:18:16 - DEBUG - 22	0
+09-Apr-23 19:18:16 - DEBUG - 20	0
+09-Apr-23 19:18:16 - DEBUG - 24	0
+09-Apr-23 19:18:16 - DEBUG - 19	0
+09-Apr-23 19:18:16 - DEBUG - 24	0
+09-Apr-23 19:18:17 - DEBUG - 19	0
+09-Apr-23 19:18:17 - DEBUG - 22	0
+09-Apr-23 19:18:17 - DEBUG - 21	0
+09-Apr-23 19:18:17 - DEBUG - 16	0
+09-Apr-23 19:18:17 - DEBUG - 24	0
+09-Apr-23 19:18:17 - DEBUG - 19	0
+09-Apr-23 19:18:17 - DEBUG - 22	0
+09-Apr-23 19:18:17 - DEBUG - 20	0
+09-Apr-23 19:18:18 - DEBUG - 19	0
+09-Apr-23 19:18:18 - DEBUG - 23	0
+09-Apr-23 19:18:18 - DEBUG - 17	0
+09-Apr-23 19:18:18 - DEBUG - 22	0
+09-Apr-23 19:18:18 - DEBUG - 20	0
+09-Apr-23 19:18:18 - DEBUG - 19	0
+09-Apr-23 19:18:18 - DEBUG - 24	0
+09-Apr-23 19:18:18 - DEBUG - 18	0
+09-Apr-23 19:18:18 - DEBUG - 21	0
+09-Apr-23 19:18:19 - DEBUG - 19	0
+09-Apr-23 19:18:19 - DEBUG - 22	0
+09-Apr-23 19:18:19 - DEBUG - 21	0
+09-Apr-23 19:18:19 - DEBUG - 23	0
+09-Apr-23 19:18:19 - DEBUG - 18	0
+09-Apr-23 19:18:19 - DEBUG - 22	0
+09-Apr-23 19:18:19 - DEBUG - 22	0
+09-Apr-23 19:18:19 - DEBUG - 18	0
+09-Apr-23 19:18:20 - DEBUG - 18	0
+09-Apr-23 19:18:20 - DEBUG - 22	0
+09-Apr-23 19:18:20 - DEBUG - 22	0
+09-Apr-23 19:18:20 - DEBUG - 22	0
+09-Apr-23 19:18:20 - DEBUG - 20	0
+09-Apr-23 19:18:20 - DEBUG - 20	0
+09-Apr-23 19:18:20 - DEBUG - 20	0
+09-Apr-23 19:18:20 - DEBUG - 14	0
+09-Apr-23 19:18:21 - DEBUG - 16	0
+09-Apr-23 19:18:21 - DEBUG - 21	0
+09-Apr-23 19:18:21 - DEBUG - 18	0
+09-Apr-23 19:18:21 - DEBUG - 23	0
+09-Apr-23 19:18:21 - DEBUG - 17	0
+09-Apr-23 19:18:21 - DEBUG - 22	0
+09-Apr-23 19:18:21 - DEBUG - 19	0
+09-Apr-23 19:18:21 - DEBUG - 22	0
+09-Apr-23 19:18:21 - DEBUG - 20	0
+09-Apr-23 19:18:22 - DEBUG - 24	0
+09-Apr-23 19:18:22 - DEBUG - 18	0
+09-Apr-23 19:18:22 - DEBUG - 23	0
+09-Apr-23 19:18:22 - DEBUG - 20	0
+09-Apr-23 19:18:22 - DEBUG - 20	0
+09-Apr-23 19:18:22 - DEBUG - 22	0
+09-Apr-23 19:18:22 - DEBUG - 19	0
+09-Apr-23 19:18:22 - DEBUG - 24	0
+09-Apr-23 19:18:23 - DEBUG - 19	0
+09-Apr-23 19:18:23 - DEBUG - 19	0
+09-Apr-23 19:18:23 - DEBUG - 22	0
+09-Apr-23 19:18:23 - DEBUG - 17	0
+09-Apr-23 19:18:23 - DEBUG - 24	0
+09-Apr-23 19:18:23 - DEBUG - 18	0
+09-Apr-23 19:18:23 - DEBUG - 22	0
+09-Apr-23 19:18:23 - DEBUG - 20	0
+09-Apr-23 19:18:24 - DEBUG - 22	0
+09-Apr-23 19:18:24 - DEBUG - 19	0
+09-Apr-23 19:18:24 - DEBUG - 23	0
+09-Apr-23 19:18:24 - DEBUG - 17	0
+09-Apr-23 19:18:24 - DEBUG - 20	0
+09-Apr-23 19:18:24 - DEBUG - 22	0
+09-Apr-23 19:18:24 - DEBUG - 19	0
+09-Apr-23 19:18:24 - DEBUG - 23	0
+09-Apr-23 19:18:24 - DEBUG - 22	0
+09-Apr-23 19:18:25 - DEBUG - 17	0
+09-Apr-23 19:18:25 - DEBUG - 18	0
+09-Apr-23 19:18:25 - DEBUG - 19	0
+09-Apr-23 19:18:25 - DEBUG - 24	0
+09-Apr-23 19:18:25 - DEBUG - 19	0
+09-Apr-23 19:18:25 - DEBUG - 18	0
+09-Apr-23 19:18:25 - DEBUG - 17	0
+09-Apr-23 19:18:25 - DEBUG - 22	0
+09-Apr-23 19:18:26 - DEBUG - 19	0
+09-Apr-23 19:18:26 - DEBUG - 18	0
+09-Apr-23 19:18:26 - DEBUG - 22	0
+09-Apr-23 19:18:26 - DEBUG - 18	0
+09-Apr-23 19:18:26 - DEBUG - 20	0
+09-Apr-23 19:18:26 - DEBUG - 21	0
+09-Apr-23 19:18:26 - DEBUG - 17	0
+09-Apr-23 19:18:26 - DEBUG - 18	0
+09-Apr-23 19:18:27 - DEBUG - 21	0
+09-Apr-23 19:18:27 - DEBUG - 21	0
+09-Apr-23 19:18:27 - DEBUG - 21	0
+09-Apr-23 19:18:27 - DEBUG - 21	0
+09-Apr-23 19:18:27 - DEBUG - 16	0
+09-Apr-23 19:18:27 - DEBUG - 22	0
+09-Apr-23 19:18:27 - DEBUG - 19	0
+09-Apr-23 19:18:27 - DEBUG - 21	0
+09-Apr-23 19:18:27 - DEBUG - 18	0
+09-Apr-23 19:18:28 - DEBUG - 20	0
+09-Apr-23 19:18:28 - DEBUG - 22	0
+09-Apr-23 19:18:28 - DEBUG - 20	0
+09-Apr-23 19:18:28 - DEBUG - 21	0
+09-Apr-23 19:18:28 - DEBUG - 18	0
+09-Apr-23 19:18:28 - DEBUG - 22	0
+09-Apr-23 19:20:29 - DEBUG - xy params is integer
+09-Apr-23 19:20:31 - DEBUG - 22	0
+09-Apr-23 19:20:31 - DEBUG - 0.3348667621612549
+09-Apr-23 19:20:31 - DEBUG - <class 'float'>
+09-Apr-23 19:20:32 - DEBUG - 14	0
+09-Apr-23 19:20:32 - DEBUG - 0.45557141304016113
+09-Apr-23 19:20:32 - DEBUG - <class 'float'>
+09-Apr-23 19:20:32 - DEBUG - 16	0
+09-Apr-23 19:20:32 - DEBUG - 0.5768337249755859
+09-Apr-23 19:20:32 - DEBUG - <class 'float'>
+09-Apr-23 19:20:32 - DEBUG - 22	0
+09-Apr-23 19:20:32 - DEBUG - 0.699256181716919
+09-Apr-23 19:20:32 - DEBUG - <class 'float'>
+09-Apr-23 19:20:32 - DEBUG - 16	0
+09-Apr-23 19:20:32 - DEBUG - 0.8195605278015137
+09-Apr-23 19:20:32 - DEBUG - <class 'float'>
+09-Apr-23 19:20:32 - DEBUG - 20	0
+09-Apr-23 19:20:32 - DEBUG - 0.9499213695526123
+09-Apr-23 19:20:32 - DEBUG - <class 'float'>
+09-Apr-23 19:20:32 - DEBUG - 19	0
+09-Apr-23 19:20:32 - DEBUG - 1.0693941116333008
+09-Apr-23 19:20:32 - DEBUG - <class 'float'>
+09-Apr-23 19:20:32 - DEBUG - 22	0
+09-Apr-23 19:20:32 - DEBUG - 1.1892740726470947
+09-Apr-23 19:20:32 - DEBUG - <class 'float'>
+09-Apr-23 19:20:32 - DEBUG - 16	0
+09-Apr-23 19:20:32 - DEBUG - 1.3094782829284668
+09-Apr-23 19:20:32 - DEBUG - <class 'float'>
+09-Apr-23 19:20:33 - DEBUG - 19	0
+09-Apr-23 19:20:33 - DEBUG - 1.434685468673706
+09-Apr-23 19:20:33 - DEBUG - <class 'float'>
+09-Apr-23 19:20:33 - DEBUG - 21	0
+09-Apr-23 19:20:33 - DEBUG - 1.5496101379394531
+09-Apr-23 19:20:33 - DEBUG - <class 'float'>
+09-Apr-23 19:20:33 - DEBUG - 22	0
+09-Apr-23 19:20:33 - DEBUG - 1.6694693565368652
+09-Apr-23 19:20:33 - DEBUG - <class 'float'>
+09-Apr-23 19:20:33 - DEBUG - 14	0
+09-Apr-23 19:20:33 - DEBUG - 1.7895698547363281
+09-Apr-23 19:20:33 - DEBUG - <class 'float'>
+09-Apr-23 19:20:33 - DEBUG - 21	0
+09-Apr-23 19:20:33 - DEBUG - 1.9129559993743896
+09-Apr-23 19:20:33 - DEBUG - <class 'float'>
+09-Apr-23 19:20:33 - DEBUG - 16	0
+09-Apr-23 19:20:33 - DEBUG - 2.0331873893737793
+09-Apr-23 19:20:33 - DEBUG - <class 'float'>
+09-Apr-23 19:20:33 - DEBUG - 23	0
+09-Apr-23 19:20:33 - DEBUG - 2.152141809463501
+09-Apr-23 19:20:33 - DEBUG - <class 'float'>
+09-Apr-23 19:20:33 - DEBUG - 18	0
+09-Apr-23 19:20:33 - DEBUG - 2.2728421688079834
+09-Apr-23 19:20:33 - DEBUG - <class 'float'>
+09-Apr-23 19:20:33 - DEBUG - 23	0
+09-Apr-23 19:20:33 - DEBUG - 2.392582654953003
+09-Apr-23 19:20:33 - DEBUG - <class 'float'>
+09-Apr-23 19:20:34 - DEBUG - 18	0
+09-Apr-23 19:20:34 - DEBUG - 2.519251823425293
+09-Apr-23 19:20:34 - DEBUG - <class 'float'>
+09-Apr-23 19:20:34 - DEBUG - 19	0
+09-Apr-23 19:20:34 - DEBUG - 2.642185926437378
+09-Apr-23 19:20:34 - DEBUG - <class 'float'>
+09-Apr-23 19:20:34 - DEBUG - 23	0
+09-Apr-23 19:20:34 - DEBUG - 2.7617805004119873
+09-Apr-23 19:20:34 - DEBUG - <class 'float'>
+09-Apr-23 19:20:34 - DEBUG - 14	0
+09-Apr-23 19:20:34 - DEBUG - 2.8828060626983643
+09-Apr-23 19:20:34 - DEBUG - <class 'float'>
+09-Apr-23 19:20:34 - DEBUG - 21	0
+09-Apr-23 19:20:34 - DEBUG - 3.003336191177368
+09-Apr-23 19:20:34 - DEBUG - <class 'float'>
+09-Apr-23 19:20:34 - DEBUG - 23	0
+09-Apr-23 19:20:34 - DEBUG - 3.122973918914795
+09-Apr-23 19:20:34 - DEBUG - <class 'float'>
+09-Apr-23 19:20:34 - DEBUG - 18	0
+09-Apr-23 19:20:34 - DEBUG - 3.24245548248291
+09-Apr-23 19:20:34 - DEBUG - <class 'float'>
+09-Apr-23 19:20:34 - DEBUG - 17	0
+09-Apr-23 19:20:34 - DEBUG - 3.3631787300109863
+09-Apr-23 19:20:34 - DEBUG - <class 'float'>
+09-Apr-23 19:20:35 - DEBUG - 15	0
+09-Apr-23 19:20:35 - DEBUG - 3.482046604156494
+09-Apr-23 19:20:35 - DEBUG - <class 'float'>
+09-Apr-23 19:20:35 - DEBUG - 18	0
+09-Apr-23 19:20:35 - DEBUG - 3.609499216079712
+09-Apr-23 19:20:35 - DEBUG - <class 'float'>
+09-Apr-23 19:20:35 - DEBUG - 22	0
+09-Apr-23 19:20:35 - DEBUG - 3.7292654514312744
+09-Apr-23 19:20:35 - DEBUG - <class 'float'>
+09-Apr-23 19:20:35 - DEBUG - 18	0
+09-Apr-23 19:20:35 - DEBUG - 3.8486523628234863
+09-Apr-23 19:20:35 - DEBUG - <class 'float'>
+09-Apr-23 19:20:35 - DEBUG - 22	0
+09-Apr-23 19:20:35 - DEBUG - 3.965513229370117
+09-Apr-23 19:20:35 - DEBUG - <class 'float'>
+09-Apr-23 19:20:35 - DEBUG - 22	0
+09-Apr-23 19:20:35 - DEBUG - 4.094536781311035
+09-Apr-23 19:20:35 - DEBUG - <class 'float'>
+09-Apr-23 19:20:35 - DEBUG - 22	0
+09-Apr-23 19:20:35 - DEBUG - 4.209786653518677
+09-Apr-23 19:20:35 - DEBUG - <class 'float'>
+09-Apr-23 19:20:35 - DEBUG - 19	0
+09-Apr-23 19:20:35 - DEBUG - 4.344921350479126
+09-Apr-23 19:20:35 - DEBUG - <class 'float'>
+09-Apr-23 19:20:36 - DEBUG - 20	0
+09-Apr-23 19:20:36 - DEBUG - 4.4652769565582275
+09-Apr-23 19:20:36 - DEBUG - <class 'float'>
+09-Apr-23 19:20:36 - DEBUG - 22	0
+09-Apr-23 19:20:36 - DEBUG - 4.586683988571167
+09-Apr-23 19:20:36 - DEBUG - <class 'float'>
+09-Apr-23 19:20:36 - DEBUG - 18	0
+09-Apr-23 19:20:36 - DEBUG - 4.705961465835571
+09-Apr-23 19:20:36 - DEBUG - <class 'float'>
+09-Apr-23 19:20:36 - DEBUG - 13	0
+09-Apr-23 19:20:36 - DEBUG - 4.826326608657837
+09-Apr-23 19:20:36 - DEBUG - <class 'float'>
+09-Apr-23 19:20:36 - DEBUG - 23	0
+09-Apr-23 19:20:36 - DEBUG - 4.945991277694702
+09-Apr-23 19:20:36 - DEBUG - <class 'float'>
+09-Apr-23 19:20:36 - DEBUG - 17	0
+09-Apr-23 19:20:36 - DEBUG - 5.066380500793457
+09-Apr-23 19:20:36 - DEBUG - <class 'float'>
+09-Apr-23 19:20:36 - DEBUG - 22	0
+09-Apr-23 19:20:36 - DEBUG - 5.196949481964111
+09-Apr-23 19:20:36 - DEBUG - <class 'float'>
+09-Apr-23 19:20:36 - DEBUG - 18	0
+09-Apr-23 19:20:36 - DEBUG - 5.316287994384766
+09-Apr-23 19:20:36 - DEBUG - <class 'float'>
+09-Apr-23 19:20:37 - DEBUG - 19	0
+09-Apr-23 19:20:37 - DEBUG - 5.436180114746094
+09-Apr-23 19:20:37 - DEBUG - <class 'float'>
+09-Apr-23 19:20:37 - DEBUG - 19	0
+09-Apr-23 19:20:37 - DEBUG - 5.556315660476685
+09-Apr-23 19:20:37 - DEBUG - <class 'float'>
+09-Apr-23 19:20:37 - DEBUG - 18	0
+09-Apr-23 19:20:37 - DEBUG - 5.6818625926971436
+09-Apr-23 19:20:37 - DEBUG - <class 'float'>
+09-Apr-23 19:20:37 - DEBUG - 23	0
+09-Apr-23 19:20:37 - DEBUG - 5.799874782562256
+09-Apr-23 19:20:37 - DEBUG - <class 'float'>
+09-Apr-23 19:20:37 - DEBUG - 15	0
+09-Apr-23 19:20:37 - DEBUG - 5.919568777084351
+09-Apr-23 19:20:37 - DEBUG - <class 'float'>
+09-Apr-23 19:20:37 - DEBUG - 18	0
+09-Apr-23 19:20:37 - DEBUG - 6.055269002914429
+09-Apr-23 19:20:37 - DEBUG - <class 'float'>
+09-Apr-23 19:20:37 - DEBUG - 22	0
+09-Apr-23 19:20:37 - DEBUG - 6.177502870559692
+09-Apr-23 19:20:37 - DEBUG - <class 'float'>
+09-Apr-23 19:20:37 - DEBUG - 15	0
+09-Apr-23 19:20:37 - DEBUG - 6.29601263999939
+09-Apr-23 19:20:37 - DEBUG - <class 'float'>
+09-Apr-23 19:20:37 - DEBUG - 22	0
+09-Apr-23 19:20:37 - DEBUG - 6.431677341461182
+09-Apr-23 19:20:37 - DEBUG - <class 'float'>
+09-Apr-23 19:20:38 - DEBUG - 18	0
+09-Apr-23 19:20:38 - DEBUG - 6.55227518081665
+09-Apr-23 19:20:38 - DEBUG - <class 'float'>
+09-Apr-23 19:20:38 - DEBUG - 22	0
+09-Apr-23 19:20:38 - DEBUG - 6.67243504524231
+09-Apr-23 19:20:38 - DEBUG - <class 'float'>
+09-Apr-23 19:20:38 - DEBUG - 18	0
+09-Apr-23 19:20:38 - DEBUG - 6.794246435165405
+09-Apr-23 19:20:38 - DEBUG - <class 'float'>
+09-Apr-23 19:20:38 - DEBUG - 24	0
+09-Apr-23 19:20:38 - DEBUG - 6.916207551956177
+09-Apr-23 19:20:38 - DEBUG - <class 'float'>
+09-Apr-23 19:20:38 - DEBUG - 17	0
+09-Apr-23 19:20:38 - DEBUG - 7.036276340484619
+09-Apr-23 19:20:38 - DEBUG - <class 'float'>
+09-Apr-23 19:20:38 - DEBUG - 21	0
+09-Apr-23 19:20:38 - DEBUG - 7.155383110046387
+09-Apr-23 19:20:38 - DEBUG - <class 'float'>
+09-Apr-23 19:20:38 - DEBUG - 21	0
+09-Apr-23 19:20:38 - DEBUG - 7.282965183258057
+09-Apr-23 19:20:38 - DEBUG - <class 'float'>
+09-Apr-23 19:20:38 - DEBUG - 15	0
+09-Apr-23 19:20:38 - DEBUG - 7.409288644790649
+09-Apr-23 19:20:38 - DEBUG - <class 'float'>
+09-Apr-23 19:20:39 - DEBUG - 21	0
+09-Apr-23 19:20:39 - DEBUG - 7.529378890991211
+09-Apr-23 19:20:39 - DEBUG - <class 'float'>
+09-Apr-23 19:20:39 - DEBUG - 21	0
+09-Apr-23 19:20:39 - DEBUG - 7.649419784545898
+09-Apr-23 19:20:39 - DEBUG - <class 'float'>
+09-Apr-23 19:20:39 - DEBUG - 21	0
+09-Apr-23 19:20:39 - DEBUG - 7.769383668899536
+09-Apr-23 19:20:39 - DEBUG - <class 'float'>
+09-Apr-23 19:20:39 - DEBUG - 22	0
+09-Apr-23 19:20:39 - DEBUG - 7.888198614120483
+09-Apr-23 19:20:39 - DEBUG - <class 'float'>
+09-Apr-23 19:20:39 - DEBUG - 16	0
+09-Apr-23 19:20:39 - DEBUG - 8.009301900863647
+09-Apr-23 19:20:39 - DEBUG - <class 'float'>
+09-Apr-23 19:20:39 - DEBUG - 22	0
+09-Apr-23 19:20:39 - DEBUG - 8.129563093185425
+09-Apr-23 19:20:39 - DEBUG - <class 'float'>
+09-Apr-23 19:20:39 - DEBUG - 18	0
+09-Apr-23 19:20:39 - DEBUG - 8.249758243560791
+09-Apr-23 19:20:39 - DEBUG - <class 'float'>
+09-Apr-23 19:20:39 - DEBUG - 21	0
+09-Apr-23 19:20:39 - DEBUG - 8.375301599502563
+09-Apr-23 19:20:39 - DEBUG - <class 'float'>
+09-Apr-23 19:20:40 - DEBUG - 23	0
+09-Apr-23 19:20:40 - DEBUG - 8.499561786651611
+09-Apr-23 19:20:40 - DEBUG - <class 'float'>
+09-Apr-23 19:20:40 - DEBUG - 19	0
+09-Apr-23 19:20:40 - DEBUG - 8.622520208358765
+09-Apr-23 19:20:40 - DEBUG - <class 'float'>
+09-Apr-23 19:20:40 - DEBUG - 21	0
+09-Apr-23 19:20:40 - DEBUG - 8.743406534194946
+09-Apr-23 19:20:40 - DEBUG - <class 'float'>
+09-Apr-23 19:20:40 - DEBUG - 22	0
+09-Apr-23 19:20:40 - DEBUG - 8.87186312675476
+09-Apr-23 19:20:40 - DEBUG - <class 'float'>
+09-Apr-23 19:20:40 - DEBUG - 21	0
+09-Apr-23 19:20:40 - DEBUG - 9.001329183578491
+09-Apr-23 19:20:40 - DEBUG - <class 'float'>
+09-Apr-23 19:20:40 - DEBUG - 23	0
+09-Apr-23 19:20:40 - DEBUG - 9.126161575317383
+09-Apr-23 19:20:40 - DEBUG - <class 'float'>
+09-Apr-23 19:20:40 - DEBUG - 18	0
+09-Apr-23 19:20:40 - DEBUG - 9.246295690536499
+09-Apr-23 19:20:40 - DEBUG - <class 'float'>
+09-Apr-23 19:20:40 - DEBUG - 19	0
+09-Apr-23 19:20:40 - DEBUG - 9.362706422805786
+09-Apr-23 19:20:40 - DEBUG - <class 'float'>
+09-Apr-23 19:20:41 - DEBUG - 21	0
+09-Apr-23 19:20:41 - DEBUG - 9.483309745788574
+09-Apr-23 19:20:41 - DEBUG - <class 'float'>
+09-Apr-23 19:20:41 - DEBUG - 18	0
+09-Apr-23 19:20:41 - DEBUG - 9.60334324836731
+09-Apr-23 19:20:41 - DEBUG - <class 'float'>
+09-Apr-23 19:20:41 - DEBUG - 20	0
+09-Apr-23 19:20:41 - DEBUG - 9.726808071136475
+09-Apr-23 19:20:41 - DEBUG - <class 'float'>
+09-Apr-23 19:20:41 - DEBUG - 21	0
+09-Apr-23 19:20:41 - DEBUG - 9.845691204071045
+09-Apr-23 19:20:41 - DEBUG - <class 'float'>
+09-Apr-23 19:20:41 - DEBUG - 18	0
+09-Apr-23 19:20:41 - DEBUG - 9.964746236801147
+09-Apr-23 19:20:41 - DEBUG - <class 'float'>
+09-Apr-23 19:20:41 - DEBUG - 19	0
+09-Apr-23 19:20:41 - DEBUG - 10.089447021484375
+09-Apr-23 19:20:41 - DEBUG - <class 'float'>
+09-Apr-23 19:20:41 - DEBUG - 21	0
+09-Apr-23 19:20:41 - DEBUG - 10.209630727767944
+09-Apr-23 19:20:41 - DEBUG - <class 'float'>
+09-Apr-23 19:20:41 - DEBUG - 19	0
+09-Apr-23 19:20:41 - DEBUG - 10.329295635223389
+09-Apr-23 19:20:41 - DEBUG - <class 'float'>
+09-Apr-23 19:20:42 - DEBUG - 22	0
+09-Apr-23 19:20:42 - DEBUG - 10.455066442489624
+09-Apr-23 19:20:42 - DEBUG - <class 'float'>
+09-Apr-23 19:20:42 - DEBUG - 20	0
+09-Apr-23 19:20:42 - DEBUG - 10.584651470184326
+09-Apr-23 19:20:42 - DEBUG - <class 'float'>
+09-Apr-23 19:20:42 - DEBUG - 21	0
+09-Apr-23 19:20:42 - DEBUG - 10.705981969833374
+09-Apr-23 19:20:42 - DEBUG - <class 'float'>
+09-Apr-23 19:20:42 - DEBUG - 22	0
+09-Apr-23 19:20:42 - DEBUG - 10.825700044631958
+09-Apr-23 19:20:42 - DEBUG - <class 'float'>
+09-Apr-23 19:20:42 - DEBUG - 16	0
+09-Apr-23 19:20:42 - DEBUG - 10.947851419448853
+09-Apr-23 19:20:42 - DEBUG - <class 'float'>
+09-Apr-23 19:20:42 - DEBUG - 20	0
+09-Apr-23 19:20:42 - DEBUG - 11.083237171173096
+09-Apr-23 19:20:42 - DEBUG - <class 'float'>
+09-Apr-23 19:20:42 - DEBUG - 19	0
+09-Apr-23 19:20:42 - DEBUG - 11.211875915527344
+09-Apr-23 19:20:42 - DEBUG - <class 'float'>
+09-Apr-23 19:20:42 - DEBUG - 23	0
+09-Apr-23 19:20:42 - DEBUG - 11.329902410507202
+09-Apr-23 19:20:42 - DEBUG - <class 'float'>
+09-Apr-23 19:20:43 - DEBUG - 17	0
+09-Apr-23 19:20:43 - DEBUG - 11.454293012619019
+09-Apr-23 19:20:43 - DEBUG - <class 'float'>
+09-Apr-23 19:20:43 - DEBUG - 22	0
+09-Apr-23 19:20:43 - DEBUG - 11.582138061523438
+09-Apr-23 19:20:43 - DEBUG - <class 'float'>
+09-Apr-23 19:20:43 - DEBUG - 21	0
+09-Apr-23 19:20:43 - DEBUG - 11.707823038101196
+09-Apr-23 19:20:43 - DEBUG - <class 'float'>
+09-Apr-23 19:20:43 - DEBUG - 21	0
+09-Apr-23 19:20:43 - DEBUG - 11.82776689529419
+09-Apr-23 19:20:43 - DEBUG - <class 'float'>
+09-Apr-23 19:20:43 - DEBUG - 21	0
+09-Apr-23 19:20:43 - DEBUG - 11.954409122467041
+09-Apr-23 19:20:43 - DEBUG - <class 'float'>
+09-Apr-23 19:20:43 - DEBUG - 14	0
+09-Apr-23 19:20:43 - DEBUG - 12.071963548660278
+09-Apr-23 19:20:43 - DEBUG - <class 'float'>
+09-Apr-23 19:20:43 - DEBUG - 21	0
+09-Apr-23 19:20:43 - DEBUG - 12.192018508911133
+09-Apr-23 19:20:43 - DEBUG - <class 'float'>
+09-Apr-23 19:20:43 - DEBUG - 19	0
+09-Apr-23 19:20:43 - DEBUG - 12.3168203830719
+09-Apr-23 19:20:43 - DEBUG - <class 'float'>
+09-Apr-23 19:20:44 - DEBUG - 19	0
+09-Apr-23 19:20:44 - DEBUG - 12.438623428344727
+09-Apr-23 19:20:44 - DEBUG - <class 'float'>
+09-Apr-23 19:20:44 - DEBUG - 18	0
+09-Apr-23 19:20:44 - DEBUG - 12.558917999267578
+09-Apr-23 19:20:44 - DEBUG - <class 'float'>
+09-Apr-23 19:20:44 - DEBUG - 19	0
+09-Apr-23 19:20:44 - DEBUG - 12.691939353942871
+09-Apr-23 19:20:44 - DEBUG - <class 'float'>
+09-Apr-23 19:20:44 - DEBUG - 18	0
+09-Apr-23 19:20:44 - DEBUG - 12.8187096118927
+09-Apr-23 19:20:44 - DEBUG - <class 'float'>
+09-Apr-23 19:20:44 - DEBUG - 21	0
+09-Apr-23 19:20:44 - DEBUG - 12.94874358177185
+09-Apr-23 19:20:44 - DEBUG - <class 'float'>
+09-Apr-23 19:20:44 - DEBUG - 15	0
+09-Apr-23 19:20:44 - DEBUG - 13.075212240219116
+09-Apr-23 19:20:44 - DEBUG - <class 'float'>
+09-Apr-23 19:20:44 - DEBUG - 17	0
+09-Apr-23 19:20:44 - DEBUG - 13.2013578414917
+09-Apr-23 19:20:44 - DEBUG - <class 'float'>
+09-Apr-23 19:20:44 - DEBUG - 20	0
+09-Apr-23 19:20:44 - DEBUG - 13.3245689868927
+09-Apr-23 19:20:44 - DEBUG - <class 'float'>
+09-Apr-23 19:20:45 - DEBUG - 23	0
+09-Apr-23 19:20:45 - DEBUG - 13.448073863983154
+09-Apr-23 19:20:45 - DEBUG - <class 'float'>
+09-Apr-23 19:20:45 - DEBUG - 15	0
+09-Apr-23 19:20:45 - DEBUG - 13.566590309143066
+09-Apr-23 19:20:45 - DEBUG - <class 'float'>
+09-Apr-23 19:20:45 - DEBUG - 19	0
+09-Apr-23 19:20:45 - DEBUG - 13.682261228561401
+09-Apr-23 19:20:45 - DEBUG - <class 'float'>
+09-Apr-23 19:20:45 - DEBUG - 15	0
+09-Apr-23 19:20:45 - DEBUG - 13.802024841308594
+09-Apr-23 19:20:45 - DEBUG - <class 'float'>
+09-Apr-23 19:20:45 - DEBUG - 19	0
+09-Apr-23 19:20:45 - DEBUG - 13.92841649055481
+09-Apr-23 19:20:45 - DEBUG - <class 'float'>
+09-Apr-23 19:20:45 - DEBUG - 12	0
+09-Apr-23 19:20:45 - DEBUG - 14.042891263961792
+09-Apr-23 19:20:45 - DEBUG - <class 'float'>
+09-Apr-23 19:20:45 - DEBUG - 22	0
+09-Apr-23 19:20:45 - DEBUG - 14.169446229934692
+09-Apr-23 19:20:45 - DEBUG - <class 'float'>
+09-Apr-23 19:20:45 - DEBUG - 20	0
+09-Apr-23 19:20:45 - DEBUG - 14.300998210906982
+09-Apr-23 19:20:45 - DEBUG - <class 'float'>
+09-Apr-23 19:20:45 - DEBUG - 22	0
+09-Apr-23 19:20:45 - DEBUG - 14.423811912536621
+09-Apr-23 19:20:45 - DEBUG - <class 'float'>
+09-Apr-23 19:20:46 - DEBUG - 16	0
+09-Apr-23 19:20:46 - DEBUG - 14.555872201919556
+09-Apr-23 19:20:46 - DEBUG - <class 'float'>
+09-Apr-23 19:21:46 - DEBUG - xy params is integer
+09-Apr-23 19:21:49 - DEBUG - 18	0
+09-Apr-23 19:21:49 - DEBUG - 21	0
+09-Apr-23 19:21:49 - DEBUG - 21	0
+09-Apr-23 19:21:49 - DEBUG - 20	0
+09-Apr-23 19:21:49 - DEBUG - 21	0
+09-Apr-23 19:21:49 - DEBUG - 21	0
+09-Apr-23 19:21:49 - DEBUG - 14	0
+09-Apr-23 19:21:49 - DEBUG - 23	0
+09-Apr-23 19:21:50 - DEBUG - 18	0
+09-Apr-23 19:21:50 - DEBUG - 22	0
+09-Apr-23 19:21:50 - DEBUG - 20	0
+09-Apr-23 19:21:50 - DEBUG - 19	0
+09-Apr-23 19:21:50 - DEBUG - 18	0
+09-Apr-23 19:21:50 - DEBUG - 22	0
+09-Apr-23 19:21:50 - DEBUG - 15	0
+09-Apr-23 19:21:50 - DEBUG - 20	0
+09-Apr-23 19:21:51 - DEBUG - 22	0
+09-Apr-23 19:21:51 - DEBUG - 16	0
+09-Apr-23 19:21:51 - DEBUG - 17	0
+09-Apr-23 19:21:51 - DEBUG - 19	0
+09-Apr-23 19:21:51 - DEBUG - 20	0
+09-Apr-23 19:21:51 - DEBUG - 20	0
+09-Apr-23 19:21:51 - DEBUG - 22	0
+09-Apr-23 19:21:51 - DEBUG - 19	0
+09-Apr-23 19:21:52 - DEBUG - 23	0
+09-Apr-23 19:21:52 - DEBUG - 19	0
+09-Apr-23 19:21:52 - DEBUG - 23	0
+09-Apr-23 19:21:52 - DEBUG - 13	0
+09-Apr-23 19:21:52 - DEBUG - 22	0
+09-Apr-23 19:21:52 - DEBUG - 23	0
+09-Apr-23 19:21:52 - DEBUG - 20	0
+09-Apr-23 19:21:52 - DEBUG - 22	0
+09-Apr-23 19:21:53 - DEBUG - 20	0
+09-Apr-23 19:21:53 - DEBUG - 23	0
+09-Apr-23 19:21:53 - DEBUG - 19	0
+09-Apr-23 19:21:53 - DEBUG - 23	0
+09-Apr-23 19:21:53 - DEBUG - 22	0
+09-Apr-23 19:21:53 - DEBUG - 19	0
+09-Apr-23 19:21:53 - DEBUG - 22	0
+09-Apr-23 19:21:53 - DEBUG - 18	0
+09-Apr-23 19:21:53 - DEBUG - 23	0
+09-Apr-23 19:21:54 - DEBUG - 18	0
+09-Apr-23 19:21:54 - DEBUG - 20	0
+09-Apr-23 19:21:54 - DEBUG - 18	0
+09-Apr-23 19:21:54 - DEBUG - 17	0
+09-Apr-23 19:21:54 - DEBUG - 19	0
+09-Apr-23 19:21:54 - DEBUG - 20	0
+09-Apr-23 19:21:54 - DEBUG - 19	0
+09-Apr-23 19:21:54 - DEBUG - 23	0
+09-Apr-23 19:21:55 - DEBUG - 19	0
+09-Apr-23 19:21:55 - DEBUG - 19	0
+09-Apr-23 19:21:55 - DEBUG - 21	0
+09-Apr-23 19:21:55 - DEBUG - 19	0
+09-Apr-23 19:21:55 - DEBUG - 22	0
+09-Apr-23 19:21:55 - DEBUG - 19	0
+09-Apr-23 19:21:55 - DEBUG - 14	0
+09-Apr-23 19:21:55 - DEBUG - 21	0
+09-Apr-23 19:21:56 - DEBUG - 16	0
+09-Apr-23 19:21:56 - DEBUG - 22	0
+09-Apr-23 19:21:56 - DEBUG - 16	0
+09-Apr-23 19:21:56 - DEBUG - 19	0
+09-Apr-23 19:21:56 - DEBUG - 21	0
+09-Apr-23 19:21:56 - DEBUG - 19	0
+09-Apr-23 19:21:56 - DEBUG - 22	0
+09-Apr-23 19:21:56 - DEBUG - 19	0
+09-Apr-23 19:21:56 - DEBUG - 22	0
+09-Apr-23 19:21:57 - DEBUG - 22	0
+09-Apr-23 19:21:57 - DEBUG - 20	0
+09-Apr-23 19:21:57 - DEBUG - 22	0
+09-Apr-23 19:21:57 - DEBUG - 21	0
+09-Apr-23 19:21:57 - DEBUG - 15	0
+09-Apr-23 19:21:57 - DEBUG - 22	0
+09-Apr-23 19:21:57 - DEBUG - 17	0
+09-Apr-23 19:21:57 - DEBUG - 18	0
+09-Apr-23 19:21:58 - DEBUG - 15	0
+09-Apr-23 19:21:58 - DEBUG - 18	0
+09-Apr-23 19:21:58 - DEBUG - 22	0
+09-Apr-23 19:21:58 - DEBUG - 21	0
+09-Apr-23 19:21:58 - DEBUG - 22	0
+09-Apr-23 19:21:58 - DEBUG - 19	0
+09-Apr-23 19:21:58 - DEBUG - 21	0
+09-Apr-23 19:24:24 - DEBUG - xy params is integer
+09-Apr-23 19:24:27 - DEBUG - 18	0
+09-Apr-23 19:24:27 - DEBUG - 18	0
+09-Apr-23 19:24:27 - DEBUG - 17	0
+09-Apr-23 19:24:27 - DEBUG - 22	0
+09-Apr-23 19:24:27 - DEBUG - 16	0
+09-Apr-23 19:24:27 - DEBUG - 19	0
+09-Apr-23 19:24:28 - DEBUG - 22	0
+09-Apr-23 19:24:28 - DEBUG - 17	0
+09-Apr-23 19:24:28 - DEBUG - 22	0
+09-Apr-23 19:24:28 - DEBUG - 17	0
+09-Apr-23 19:24:28 - DEBUG - 22	0
+09-Apr-23 19:24:28 - DEBUG - 18	0
+09-Apr-23 19:24:28 - DEBUG - 16	0
+09-Apr-23 19:24:28 - DEBUG - 19	0
+09-Apr-23 19:24:29 - DEBUG - 21	0
+09-Apr-23 19:24:29 - DEBUG - 19	0
+09-Apr-23 19:24:29 - DEBUG - 15	0
+09-Apr-23 19:24:29 - DEBUG - 14	0
+09-Apr-23 19:24:29 - DEBUG - 23	0
+09-Apr-23 19:24:29 - DEBUG - 18	0
+09-Apr-23 19:24:29 - DEBUG - 19	0
+09-Apr-23 19:24:29 - DEBUG - 22	0
+09-Apr-23 19:24:29 - DEBUG - 18	0
+09-Apr-23 19:24:30 - DEBUG - 21	0
+09-Apr-23 19:24:30 - DEBUG - 22	0
+09-Apr-23 19:24:30 - DEBUG - 14	0
+09-Apr-23 19:24:30 - DEBUG - 21	0
+09-Apr-23 19:24:30 - DEBUG - 26	0
+09-Apr-23 19:24:30 - DEBUG - 17	0
+09-Apr-23 19:24:30 - DEBUG - 16	0
+09-Apr-23 19:24:30 - DEBUG - 21	0
+09-Apr-23 19:24:31 - DEBUG - 21	0
+09-Apr-23 19:24:31 - DEBUG - 24	0
+09-Apr-23 19:24:31 - DEBUG - 19	0
+09-Apr-23 19:24:31 - DEBUG - 19	0
+09-Apr-23 19:24:31 - DEBUG - 21	0
+09-Apr-23 19:24:31 - DEBUG - 13	0
+09-Apr-23 19:24:31 - DEBUG - 23	0
+09-Apr-23 19:24:31 - DEBUG - 19	0
+09-Apr-23 19:24:32 - DEBUG - 21	0
+09-Apr-23 19:24:32 - DEBUG - 22	0
+09-Apr-23 19:24:32 - DEBUG - 21	0
+09-Apr-23 19:24:32 - DEBUG - 21	0
+09-Apr-23 19:24:32 - DEBUG - 15	0
+09-Apr-23 19:24:32 - DEBUG - 21	0
+09-Apr-23 19:24:32 - DEBUG - 23	0
+09-Apr-23 19:24:32 - DEBUG - 18	0
+09-Apr-23 19:24:33 - DEBUG - 20	0
+09-Apr-23 19:24:33 - DEBUG - 22	0
+09-Apr-23 19:24:33 - DEBUG - 19	0
+09-Apr-23 19:24:33 - DEBUG - 20	0
+09-Apr-23 19:24:33 - DEBUG - 17	0
+09-Apr-23 19:24:33 - DEBUG - 22	0
+09-Apr-23 19:24:33 - DEBUG - 19	0
+09-Apr-23 19:24:33 - DEBUG - 19	0
+09-Apr-23 19:24:33 - DEBUG - 19	0
+09-Apr-23 19:24:34 - DEBUG - 20	0
+09-Apr-23 19:24:34 - DEBUG - 20	0
+09-Apr-23 19:24:34 - DEBUG - 22	0
+09-Apr-23 19:24:34 - DEBUG - 20	0
+09-Apr-23 19:24:34 - DEBUG - 21	0
+09-Apr-23 19:24:34 - DEBUG - 21	0
+09-Apr-23 19:24:34 - DEBUG - 19	0
+09-Apr-23 19:24:34 - DEBUG - 22	0
+09-Apr-23 19:24:35 - DEBUG - 20	0
+09-Apr-23 19:24:35 - DEBUG - 23	0
+09-Apr-23 19:24:35 - DEBUG - 19	0
+09-Apr-23 19:24:35 - DEBUG - 20	0
+09-Apr-23 19:24:35 - DEBUG - 21	0
+09-Apr-23 19:24:35 - DEBUG - 17	0
+09-Apr-23 19:24:35 - DEBUG - 22	0
+09-Apr-23 19:24:35 - DEBUG - 19	0
+09-Apr-23 19:24:35 - DEBUG - 18	0
+09-Apr-23 19:24:36 - DEBUG - 19	0
+09-Apr-23 19:24:36 - DEBUG - 19	0
+09-Apr-23 19:24:36 - DEBUG - 21	0
+09-Apr-23 19:24:36 - DEBUG - 19	0
+09-Apr-23 19:24:36 - DEBUG - 22	0
+09-Apr-23 19:24:36 - DEBUG - 18	0
+09-Apr-23 19:24:36 - DEBUG - 18	0
+09-Apr-23 19:24:36 - DEBUG - 22	0
+09-Apr-23 19:24:37 - DEBUG - 18	0
+09-Apr-23 19:29:41 - DEBUG - xy params is integer
+09-Apr-23 19:29:43 - DEBUG - 19	0
+09-Apr-23 19:29:43 - DEBUG - 20	0
+09-Apr-23 19:29:44 - DEBUG - 21	0
+09-Apr-23 19:29:44 - DEBUG - 20	0
+09-Apr-23 19:29:44 - DEBUG - 19	0
+09-Apr-23 19:29:44 - DEBUG - 19	0
+09-Apr-23 19:29:44 - DEBUG - 18	0
+09-Apr-23 19:29:44 - DEBUG - 16	0
+09-Apr-23 19:29:44 - DEBUG - 19	0
+09-Apr-23 19:29:44 - DEBUG - 22	0
+09-Apr-23 19:29:44 - DEBUG - 17	0
+09-Apr-23 19:29:45 - DEBUG - 16	0
+09-Apr-23 19:29:45 - DEBUG - 15	0
+09-Apr-23 19:29:45 - DEBUG - 21	0
+09-Apr-23 19:29:45 - DEBUG - 21	0
+09-Apr-23 19:29:45 - DEBUG - 21	0
+09-Apr-23 19:29:45 - DEBUG - 14	0
+09-Apr-23 19:29:45 - DEBUG - 21	0
+09-Apr-23 19:29:45 - DEBUG - 21	0
+09-Apr-23 19:29:46 - DEBUG - 21	0
+09-Apr-23 19:29:46 - DEBUG - 22	0
+09-Apr-23 19:29:46 - DEBUG - 21	5
+09-Apr-23 19:29:46 - DEBUG - 20	11
+09-Apr-23 19:29:46 - DEBUG - 20	10
+09-Apr-23 19:29:46 - DEBUG - 20	7
+09-Apr-23 19:29:46 - DEBUG - 20	10
+09-Apr-23 19:29:46 - DEBUG - 21	11
+09-Apr-23 19:29:47 - DEBUG - 21	4
+09-Apr-23 19:29:47 - DEBUG - 20	11
+09-Apr-23 19:29:47 - DEBUG - 14	9
+09-Apr-23 19:29:47 - DEBUG - 20	10
+09-Apr-23 19:29:47 - DEBUG - 15	14
+09-Apr-23 19:29:47 - DEBUG - 21	9
+09-Apr-23 19:29:47 - DEBUG - 17	9
+09-Apr-23 19:29:47 - DEBUG - 21	11
+09-Apr-23 19:29:47 - DEBUG - 21	12
+09-Apr-23 19:29:48 - DEBUG - 17	11
+09-Apr-23 19:29:48 - DEBUG - 21	10
+09-Apr-23 19:29:48 - DEBUG - 21	12
+09-Apr-23 19:29:48 - DEBUG - 21	12
+09-Apr-23 19:29:48 - DEBUG - 21	12
+09-Apr-23 19:29:48 - DEBUG - 21	11
+09-Apr-23 19:29:48 - DEBUG - 20	9
+09-Apr-23 19:29:48 - DEBUG - 21	9
+09-Apr-23 19:29:49 - DEBUG - 20	13
+09-Apr-23 19:29:49 - DEBUG - 21	10
+09-Apr-23 19:29:49 - DEBUG - 21	10
+09-Apr-23 19:29:49 - DEBUG - 20	9
+09-Apr-23 19:29:49 - DEBUG - 20	12
+09-Apr-23 19:29:49 - DEBUG - 21	10
+09-Apr-23 19:29:49 - DEBUG - 21	6
+09-Apr-23 19:29:49 - DEBUG - 21	7
+09-Apr-23 19:29:50 - DEBUG - 21	10
+09-Apr-23 19:29:50 - DEBUG - 21	7
+09-Apr-23 19:29:50 - DEBUG - 20	8
+09-Apr-23 19:29:50 - DEBUG - 21	11
+09-Apr-23 19:29:50 - DEBUG - 21	10
+09-Apr-23 19:29:50 - DEBUG - 21	12
+09-Apr-23 19:29:50 - DEBUG - 21	12
+09-Apr-23 19:29:50 - DEBUG - 20	10
+09-Apr-23 19:29:50 - DEBUG - 22	11
+09-Apr-23 19:29:51 - DEBUG - 21	9
+09-Apr-23 19:29:51 - DEBUG - 19	11
+09-Apr-23 19:29:51 - DEBUG - 19	7
+09-Apr-23 19:29:51 - DEBUG - 19	9
+09-Apr-23 19:29:51 - DEBUG - 20	10
+09-Apr-23 19:29:51 - DEBUG - 21	11
+09-Apr-23 19:29:51 - DEBUG - 20	13
+09-Apr-23 19:29:51 - DEBUG - 20	10
+09-Apr-23 19:29:52 - DEBUG - 21	10
+09-Apr-23 19:29:52 - DEBUG - 21	10
+09-Apr-23 19:29:52 - DEBUG - 21	12
+09-Apr-23 19:29:52 - DEBUG - 20	4
+09-Apr-23 19:29:52 - DEBUG - 20	10
+09-Apr-23 19:29:52 - DEBUG - 20	12
+09-Apr-23 19:29:52 - DEBUG - 20	14
+09-Apr-23 19:29:52 - DEBUG - 20	9
+09-Apr-23 19:29:52 - DEBUG - 21	10
+09-Apr-23 19:29:53 - DEBUG - 21	4
+09-Apr-23 19:29:53 - DEBUG - 21	11
+09-Apr-23 19:29:53 - DEBUG - 22	11
+09-Apr-23 19:29:53 - DEBUG - 22	11
+09-Apr-23 19:29:53 - DEBUG - 22	11
+09-Apr-23 19:30:38 - DEBUG - xy params is integer
+09-Apr-23 19:30:40 - DEBUG - 21	19
+09-Apr-23 19:30:40 - DEBUG - 20	19
+09-Apr-23 19:30:41 - DEBUG - 22	23
+09-Apr-23 19:30:41 - DEBUG - 20	14
+09-Apr-23 19:30:41 - DEBUG - 20	17
+09-Apr-23 19:30:41 - DEBUG - 20	16
+09-Apr-23 19:30:41 - DEBUG - 20	20
+09-Apr-23 19:30:41 - DEBUG - 21	17
+09-Apr-23 19:30:41 - DEBUG - 21	20
+09-Apr-23 19:30:41 - DEBUG - 18	21
+09-Apr-23 19:30:42 - DEBUG - 21	16
+09-Apr-23 19:30:42 - DEBUG - 21	20
+09-Apr-23 19:30:42 - DEBUG - 19	22
+09-Apr-23 19:30:42 - DEBUG - 21	21
+09-Apr-23 19:30:42 - DEBUG - 21	21
+09-Apr-23 19:30:42 - DEBUG - 20	21
+09-Apr-23 19:30:42 - DEBUG - 20	15
+09-Apr-23 19:30:42 - DEBUG - 21	20
+09-Apr-23 19:30:42 - DEBUG - 15	22
+09-Apr-23 19:30:43 - DEBUG - 15	22
+09-Apr-23 19:30:43 - DEBUG - 19	17
+09-Apr-23 19:30:43 - DEBUG - 21	19
+09-Apr-23 19:30:43 - DEBUG - 20	15
+09-Apr-23 19:30:43 - DEBUG - 17	18
+09-Apr-23 19:30:43 - DEBUG - 20	21
+09-Apr-23 19:30:43 - DEBUG - 20	18
+09-Apr-23 19:30:43 - DEBUG - 20	19
+09-Apr-23 19:30:44 - DEBUG - 22	22
+09-Apr-23 19:30:44 - DEBUG - 19	19
+09-Apr-23 19:30:44 - DEBUG - 22	18
+09-Apr-23 19:30:44 - DEBUG - 21	20
+09-Apr-23 19:30:44 - DEBUG - 18	22
+09-Apr-23 19:30:44 - DEBUG - 21	22
+09-Apr-23 19:30:44 - DEBUG - 20	22
+09-Apr-23 19:30:44 - DEBUG - 20	19
+09-Apr-23 19:30:45 - DEBUG - 19	19
+09-Apr-23 19:30:45 - DEBUG - 20	21
+09-Apr-23 19:30:45 - DEBUG - 21	21
+09-Apr-23 19:30:45 - DEBUG - 20	20
+09-Apr-23 19:30:45 - DEBUG - 20	22
+09-Apr-23 19:30:45 - DEBUG - 21	21
+09-Apr-23 19:30:45 - DEBUG - 20	22
+09-Apr-23 19:30:45 - DEBUG - 21	22
+09-Apr-23 19:30:45 - DEBUG - 21	11
+09-Apr-23 19:30:46 - DEBUG - 12	20
+09-Apr-23 19:30:46 - DEBUG - 20	20
+09-Apr-23 19:30:46 - DEBUG - 19	18
+09-Apr-23 19:30:46 - DEBUG - 19	21
+09-Apr-23 19:30:46 - DEBUG - 19	20
+09-Apr-23 19:30:46 - DEBUG - 19	19
+09-Apr-23 19:30:46 - DEBUG - 20	21
+09-Apr-23 19:30:46 - DEBUG - 22	21
+09-Apr-23 19:30:47 - DEBUG - 21	16
+09-Apr-23 19:30:47 - DEBUG - 21	20
+09-Apr-23 19:30:47 - DEBUG - 21	20
+09-Apr-23 19:30:47 - DEBUG - 22	19
+09-Apr-23 19:30:47 - DEBUG - 20	20
+09-Apr-23 19:30:47 - DEBUG - 21	21
+09-Apr-23 19:30:47 - DEBUG - 13	23
+09-Apr-23 19:30:47 - DEBUG - 18	21
+09-Apr-23 19:30:48 - DEBUG - 21	22
+09-Apr-23 19:30:48 - DEBUG - 21	22
+09-Apr-23 19:30:48 - DEBUG - 20	22
+09-Apr-23 19:30:48 - DEBUG - 21	18
+09-Apr-23 19:30:48 - DEBUG - 21	21
+09-Apr-23 19:30:48 - DEBUG - 19	21
+09-Apr-23 19:30:48 - DEBUG - 19	17
+09-Apr-23 19:30:48 - DEBUG - 18	21
+09-Apr-23 19:30:48 - DEBUG - 19	22
+09-Apr-23 19:30:49 - DEBUG - 19	19
+09-Apr-23 19:30:49 - DEBUG - 22	19
+09-Apr-23 19:30:49 - DEBUG - 21	17
+09-Apr-23 19:30:49 - DEBUG - 18	19
+09-Apr-23 19:30:49 - DEBUG - 22	19
+09-Apr-23 19:30:49 - DEBUG - 17	19
+09-Apr-23 19:30:49 - DEBUG - 21	22
+09-Apr-23 19:30:49 - DEBUG - 21	21
+09-Apr-23 19:30:50 - DEBUG - 17	18
+09-Apr-23 19:30:50 - DEBUG - 19	18
+09-Apr-23 19:30:50 - DEBUG - 19	22
+09-Apr-23 19:30:50 - DEBUG - 22	21
+09-Apr-23 19:30:50 - DEBUG - 21	21
+09-Apr-23 19:35:32 - DEBUG - xy params is integer
+09-Apr-23 19:35:35 - DEBUG - 7	0
+09-Apr-23 19:39:51 - DEBUG - xy params is integer
+09-Apr-23 19:41:42 - DEBUG - xy params is integer
+09-Apr-23 19:41:45 - DEBUG - save result here
+09-Apr-23 19:41:45 - DEBUG - save result here
+09-Apr-23 19:41:47 - DEBUG - save result here
+09-Apr-23 19:42:27 - DEBUG - xy params is integer
+09-Apr-23 19:43:02 - DEBUG - xy params is integer
+09-Apr-23 19:43:05 - DEBUG - 20	17
+09-Apr-23 19:43:05 - DEBUG - save result here
+09-Apr-23 19:43:06 - DEBUG - 20	24
+09-Apr-23 19:43:06 - DEBUG - 19	25
+09-Apr-23 19:43:06 - DEBUG - 21	23
+09-Apr-23 19:43:06 - DEBUG - save result here
+09-Apr-23 19:43:07 - DEBUG - 21	25
+09-Apr-23 19:43:07 - DEBUG - 21	26
+09-Apr-23 19:43:07 - DEBUG - 21	25
+09-Apr-23 19:43:07 - DEBUG - 21	20
+09-Apr-23 19:43:07 - DEBUG - save result here
+09-Apr-23 19:43:08 - DEBUG - 21	23
+09-Apr-23 19:43:08 - DEBUG - 21	22
+09-Apr-23 19:43:08 - DEBUG - 21	25
+09-Apr-23 19:43:08 - DEBUG - 21	27
+09-Apr-23 19:43:08 - DEBUG - 20	21
+09-Apr-23 19:43:08 - DEBUG - 21	26
+09-Apr-23 19:43:09 - DEBUG - 21	25
+09-Apr-23 19:43:09 - DEBUG - 18	25
+09-Apr-23 19:43:09 - DEBUG - 20	25
+09-Apr-23 19:43:09 - DEBUG - 21	27
+09-Apr-23 19:43:09 - DEBUG - 20	28
+09-Apr-23 19:43:09 - DEBUG - 22	25
+09-Apr-23 19:43:09 - DEBUG - 21	26
+09-Apr-23 19:43:09 - DEBUG - 20	26
+09-Apr-23 19:43:10 - DEBUG - 20	21
+09-Apr-23 19:43:10 - DEBUG - 20	25
+09-Apr-23 19:43:10 - DEBUG - 20	28
+09-Apr-23 19:43:10 - DEBUG - 20	27
+09-Apr-23 19:43:10 - DEBUG - 13	25
+09-Apr-23 19:43:10 - DEBUG - 20	24
+09-Apr-23 19:43:10 - DEBUG - 20	25
+09-Apr-23 19:43:10 - DEBUG - 20	19
+09-Apr-23 19:43:11 - DEBUG - 19	28
+09-Apr-23 19:43:11 - DEBUG - 20	17
+09-Apr-23 19:43:11 - DEBUG - 21	29
+09-Apr-23 19:43:11 - DEBUG - 20	22
+09-Apr-23 19:43:11 - DEBUG - 21	26
+09-Apr-23 19:43:11 - DEBUG - 20	27
+09-Apr-23 19:43:11 - DEBUG - 21	29
+09-Apr-23 19:43:11 - DEBUG - 21	27
+09-Apr-23 19:43:12 - DEBUG - 21	25
+09-Apr-23 19:43:12 - DEBUG - 21	24
+09-Apr-23 19:43:12 - DEBUG - 20	29
+09-Apr-23 19:43:12 - DEBUG - 20	19
+09-Apr-23 19:43:12 - DEBUG - 22	28
+09-Apr-23 19:43:12 - DEBUG - 22	28
+09-Apr-23 19:43:12 - DEBUG - 21	21
+09-Apr-23 19:43:12 - DEBUG - 17	27
+09-Apr-23 19:43:12 - DEBUG - 22	25
+09-Apr-23 19:43:13 - DEBUG - 20	27
+09-Apr-23 19:43:13 - DEBUG - 20	27
+09-Apr-23 19:43:13 - DEBUG - 21	25
+09-Apr-23 19:43:13 - DEBUG - 21	23
+09-Apr-23 19:43:13 - DEBUG - 21	27
+09-Apr-23 19:43:13 - DEBUG - 21	27
+09-Apr-23 19:43:13 - DEBUG - 21	26
+09-Apr-23 19:43:13 - DEBUG - 20	28
+09-Apr-23 19:43:14 - DEBUG - 20	24
+09-Apr-23 19:43:14 - DEBUG - 20	27
+09-Apr-23 19:43:14 - DEBUG - 20	26
+09-Apr-23 19:43:14 - DEBUG - 20	20
+09-Apr-23 19:43:14 - DEBUG - 21	27
+09-Apr-23 19:43:14 - DEBUG - 20	24
+09-Apr-23 19:43:14 - DEBUG - 21	27
+09-Apr-23 19:43:14 - DEBUG - 21	21
+09-Apr-23 19:43:15 - DEBUG - 20	26
+09-Apr-23 19:43:15 - DEBUG - 20	27
+09-Apr-23 19:43:15 - DEBUG - 20	28
+09-Apr-23 19:43:15 - DEBUG - 19	22
+09-Apr-23 19:43:15 - DEBUG - 19	25
+09-Apr-23 19:43:15 - DEBUG - 21	26
+09-Apr-23 19:43:15 - DEBUG - 14	27
+09-Apr-23 19:43:15 - DEBUG - 11	26
+09-Apr-23 19:43:16 - DEBUG - 19	27
+09-Apr-23 19:43:16 - DEBUG - 19	25
+09-Apr-23 19:43:16 - DEBUG - 19	29
+09-Apr-23 19:43:16 - DEBUG - 19	28
+09-Apr-23 19:43:16 - DEBUG - 20	25
+09-Apr-23 19:43:16 - DEBUG - 19	25
+09-Apr-23 19:43:16 - DEBUG - 19	27
+09-Apr-23 19:43:16 - DEBUG - 21	25
+09-Apr-23 19:43:17 - DEBUG - 21	27
+09-Apr-23 19:43:17 - DEBUG - 21	25
+09-Apr-23 19:43:17 - DEBUG - 22	20
+09-Apr-23 19:43:17 - DEBUG - 20	24
+09-Apr-23 19:43:17 - DEBUG - 19	28
+09-Apr-23 19:43:17 - DEBUG - 20	28
+09-Apr-23 19:43:17 - DEBUG - 19	22
+09-Apr-23 19:43:17 - DEBUG - 19	26
+09-Apr-23 19:43:18 - DEBUG - 20	26
+09-Apr-23 19:46:00 - DEBUG - xy params is integer
+09-Apr-23 19:46:03 - DEBUG - 7	0
+09-Apr-23 19:46:03 - DEBUG - 7	0
+09-Apr-23 19:46:03 - DEBUG - 6	0
+09-Apr-23 19:46:04 - DEBUG - 7	0
+09-Apr-23 19:46:04 - DEBUG - 7	0
+09-Apr-23 19:46:04 - DEBUG - 7	0
+09-Apr-23 19:46:04 - DEBUG - 7	0
+09-Apr-23 19:46:04 - DEBUG - 7	0
+09-Apr-23 19:46:04 - DEBUG - 8	0
+09-Apr-23 19:46:04 - DEBUG - 6	0
+09-Apr-23 19:46:04 - DEBUG - 7	0
+09-Apr-23 19:46:05 - DEBUG - 6	0
+09-Apr-23 19:46:05 - DEBUG - 7	9
+09-Apr-23 19:46:05 - DEBUG - 3	11
+09-Apr-23 19:46:05 - DEBUG - 7	7
+09-Apr-23 19:46:05 - DEBUG - 7	10
+09-Apr-23 19:46:05 - DEBUG - 7	11
+09-Apr-23 19:46:05 - DEBUG - 7	9
+09-Apr-23 19:46:05 - DEBUG - 3	11
+09-Apr-23 19:46:05 - DEBUG - 7	10
+09-Apr-23 19:46:06 - DEBUG - 1	12
+09-Apr-23 19:46:06 - DEBUG - 6	8
+09-Apr-23 19:46:06 - DEBUG - 7	11
+09-Apr-23 19:46:06 - DEBUG - 7	13
+09-Apr-23 19:46:06 - DEBUG - 7	11
+09-Apr-23 19:46:06 - DEBUG - 7	10
+09-Apr-23 19:46:06 - DEBUG - 7	11
+09-Apr-23 19:46:06 - DEBUG - 7	11
+09-Apr-23 19:46:07 - DEBUG - 7	11
+09-Apr-23 19:46:07 - DEBUG - 8	11
+09-Apr-23 19:46:07 - DEBUG - 8	11
+09-Apr-23 19:46:07 - DEBUG - 7	10
+09-Apr-23 19:46:07 - DEBUG - 8	11
+09-Apr-23 19:46:07 - DEBUG - 8	11
+09-Apr-23 19:46:07 - DEBUG - 8	11
+09-Apr-23 19:46:07 - DEBUG - 7	12
+09-Apr-23 19:46:08 - DEBUG - 7	11
+09-Apr-23 19:46:08 - DEBUG - 3	11
+09-Apr-23 19:46:08 - DEBUG - 7	10
+09-Apr-23 19:46:08 - DEBUG - 3	11
+09-Apr-23 19:46:08 - DEBUG - 1	11
+09-Apr-23 19:46:08 - DEBUG - 6	5
+09-Apr-23 19:46:08 - DEBUG - 8	13
+09-Apr-23 19:46:08 - DEBUG - 3	10
+09-Apr-23 19:46:09 - DEBUG - 5	9
+09-Apr-23 19:46:09 - DEBUG - 9	10
+09-Apr-23 19:46:09 - DEBUG - 12	9
+09-Apr-23 19:46:09 - DEBUG - 17	10
+09-Apr-23 19:46:09 - DEBUG - 15	8
+09-Apr-23 19:46:09 - DEBUG - 15	9
+09-Apr-23 19:46:09 - DEBUG - 19	4
+09-Apr-23 19:46:09 - DEBUG - 19	9
+09-Apr-23 19:46:10 - DEBUG - 20	8
+09-Apr-23 19:46:10 - DEBUG - 20	9
+09-Apr-23 19:46:10 - DEBUG - 20	10
+09-Apr-23 19:46:10 - DEBUG - 18	10
+09-Apr-23 19:46:10 - DEBUG - 21	5
+09-Apr-23 19:46:10 - DEBUG - 21	10
+09-Apr-23 19:46:10 - DEBUG - 20	9
+09-Apr-23 19:46:10 - DEBUG - 20	9
+09-Apr-23 19:46:11 - DEBUG - 20	11
+09-Apr-23 19:46:11 - DEBUG - 21	5
+09-Apr-23 19:46:11 - DEBUG - 21	5
+09-Apr-23 19:46:11 - DEBUG - 21	10
+09-Apr-23 19:46:11 - DEBUG - 18	12
+09-Apr-23 19:46:11 - DEBUG - 21	11
+09-Apr-23 19:46:11 - DEBUG - 21	3
+09-Apr-23 19:46:11 - DEBUG - 21	12
+09-Apr-23 19:46:11 - DEBUG - 20	12
+09-Apr-23 19:46:12 - DEBUG - 21	11
+09-Apr-23 19:46:12 - DEBUG - 21	10
+09-Apr-23 19:46:12 - DEBUG - 21	12
+09-Apr-23 19:46:12 - DEBUG - 20	7
+09-Apr-23 19:46:12 - DEBUG - 20	10
+09-Apr-23 19:46:12 - DEBUG - 21	10
+09-Apr-23 19:46:12 - DEBUG - 21	10
+09-Apr-23 19:46:12 - DEBUG - 20	9
+09-Apr-23 19:46:13 - DEBUG - 20	11
+09-Apr-23 19:46:13 - DEBUG - 19	12
+09-Apr-23 19:46:13 - DEBUG - 21	9
+09-Apr-23 19:46:13 - DEBUG - 22	9
+09-Apr-23 19:53:32 - DEBUG - xy params is integer
+09-Apr-23 19:53:35 - DEBUG - 19	11
+09-Apr-23 19:53:35 - DEBUG - 19	10
+09-Apr-23 19:53:35 - DEBUG - 20	12
+09-Apr-23 19:53:35 - DEBUG - 19	12
+09-Apr-23 19:53:36 - DEBUG - 22	10
+09-Apr-23 19:53:36 - DEBUG - 21	7
+09-Apr-23 19:53:36 - DEBUG - 22	10
+09-Apr-23 19:53:36 - DEBUG - 21	10
+09-Apr-23 19:53:36 - DEBUG - 22	8
+09-Apr-23 19:53:36 - DEBUG - 21	11
+09-Apr-23 19:53:36 - DEBUG - 22	11
+09-Apr-23 19:53:36 - DEBUG - 23	10
+09-Apr-23 19:53:37 - DEBUG - 20	11
+09-Apr-23 19:53:37 - DEBUG - 20	10
+09-Apr-23 19:53:37 - DEBUG - 16	10
+09-Apr-23 19:53:37 - DEBUG - 18	12
+09-Apr-23 19:53:37 - DEBUG - 12	12
+09-Apr-23 19:53:37 - DEBUG - 18	10
+09-Apr-23 19:53:37 - DEBUG - 19	12
+09-Apr-23 19:53:37 - DEBUG - 19	10
+09-Apr-23 19:53:38 - DEBUG - 20	10
+09-Apr-23 19:53:38 - DEBUG - 16	11
+09-Apr-23 19:53:38 - DEBUG - 19	5
+09-Apr-23 19:53:38 - DEBUG - 15	12
+09-Apr-23 19:53:38 - DEBUG - 21	11
+09-Apr-23 19:53:38 - DEBUG - 21	12
+09-Apr-23 19:53:38 - DEBUG - 21	10
+09-Apr-23 19:53:38 - DEBUG - 21	7
+09-Apr-23 19:53:39 - DEBUG - 21	10
+09-Apr-23 19:53:39 - DEBUG - 22	9
+09-Apr-23 19:53:39 - DEBUG - 20	11
+09-Apr-23 19:53:39 - DEBUG - 12	10
+09-Apr-23 19:53:39 - DEBUG - 19	13
+09-Apr-23 19:53:39 - DEBUG - 13	8
+09-Apr-23 19:53:39 - DEBUG - 19	12
+09-Apr-23 19:53:39 - DEBUG - 20	8
+09-Apr-23 19:53:39 - DEBUG - 21	4
+09-Apr-23 19:53:40 - DEBUG - 20	12
+09-Apr-23 19:53:40 - DEBUG - 21	10
+09-Apr-23 19:53:40 - DEBUG - 22	8
+09-Apr-23 19:53:40 - DEBUG - 22	11
+09-Apr-23 19:53:40 - DEBUG - 18	6
+09-Apr-23 19:53:40 - DEBUG - 19	9
+09-Apr-23 19:53:40 - DEBUG - 20	9
+09-Apr-23 19:53:40 - DEBUG - 21	10
+09-Apr-23 19:53:41 - DEBUG - 21	12
+09-Apr-23 19:53:41 - DEBUG - 21	10
+09-Apr-23 19:53:41 - DEBUG - 20	11
+09-Apr-23 19:53:41 - DEBUG - 20	9
+09-Apr-23 19:53:41 - DEBUG - 21	9
+09-Apr-23 19:53:41 - DEBUG - 21	2
+09-Apr-23 19:53:41 - DEBUG - 21	11
+09-Apr-23 19:53:41 - DEBUG - 20	4
+09-Apr-23 19:53:42 - DEBUG - 20	4
+09-Apr-23 19:53:42 - DEBUG - 20	4
+09-Apr-23 19:53:42 - DEBUG - 20	10
+09-Apr-23 19:53:42 - DEBUG - 20	10
+09-Apr-23 19:53:42 - DEBUG - 21	10
+09-Apr-23 19:53:42 - DEBUG - 20	11
+09-Apr-23 19:53:42 - DEBUG - 21	6
+09-Apr-23 19:53:42 - DEBUG - 19	12
+09-Apr-23 19:53:43 - DEBUG - 18	10
+09-Apr-23 19:53:43 - DEBUG - 20	10
+09-Apr-23 19:53:43 - DEBUG - 21	10
+09-Apr-23 19:53:43 - DEBUG - 20	10
+09-Apr-23 19:53:43 - DEBUG - 21	14
+09-Apr-23 19:53:43 - DEBUG - 20	7
+09-Apr-23 19:53:43 - DEBUG - 21	9
+09-Apr-23 19:53:43 - DEBUG - 16	12
+09-Apr-23 19:53:43 - DEBUG - 21	11
+09-Apr-23 19:53:44 - DEBUG - 21	12
+09-Apr-23 19:53:44 - DEBUG - 21	3
+09-Apr-23 19:53:44 - DEBUG - 21	9
+09-Apr-23 19:53:44 - DEBUG - 21	5
+09-Apr-23 19:53:44 - DEBUG - 19	12
+09-Apr-23 19:53:44 - DEBUG - 21	11
+09-Apr-23 19:53:44 - DEBUG - 21	11
+09-Apr-23 19:53:44 - DEBUG - 21	10
+09-Apr-23 19:53:45 - DEBUG - 21	10
+09-Apr-23 19:53:45 - DEBUG - 21	13
+09-Apr-23 19:53:45 - DEBUG - 21	10
+09-Apr-23 19:54:53 - DEBUG - xy params is integer
+09-Apr-23 19:54:56 - DEBUG - 10	18
+09-Apr-23 19:54:56 - DEBUG - save result here
+09-Apr-23 19:54:56 - DEBUG - 5	21
+09-Apr-23 19:54:57 - DEBUG - 11	21
+09-Apr-23 19:54:57 - DEBUG - save result here
+09-Apr-23 19:54:57 - DEBUG - 17	22
+09-Apr-23 19:54:57 - DEBUG - save result here
+09-Apr-23 19:54:58 - DEBUG - 16	20
+09-Apr-23 19:54:58 - DEBUG - save result here
+09-Apr-23 19:54:59 - DEBUG - 18	22
+09-Apr-23 19:54:59 - DEBUG - save result here
+09-Apr-23 19:54:59 - DEBUG - 21	20
+09-Apr-23 19:54:59 - DEBUG - save result here
+09-Apr-23 19:55:00 - DEBUG - 22	21
+09-Apr-23 19:55:00 - DEBUG - save result here
+09-Apr-23 19:55:01 - DEBUG - 24	17
+09-Apr-23 19:55:01 - DEBUG - save result here
+09-Apr-23 19:55:01 - DEBUG - 29	21
+09-Apr-23 19:55:01 - DEBUG - save result here
+09-Apr-23 19:55:02 - DEBUG - 30	20
+09-Apr-23 19:55:02 - DEBUG - save result here
+09-Apr-23 19:55:03 - DEBUG - 28	22
+09-Apr-23 19:55:03 - DEBUG - save result here
+09-Apr-23 19:55:03 - DEBUG - 34	20
+09-Apr-23 19:55:03 - DEBUG - save result here
+09-Apr-23 19:55:04 - DEBUG - 35	21
+09-Apr-23 19:55:04 - DEBUG - save result here
+09-Apr-23 19:55:05 - DEBUG - 36	20
+09-Apr-23 19:55:05 - DEBUG - save result here
+09-Apr-23 19:55:05 - DEBUG - 39	15
+09-Apr-23 19:55:06 - DEBUG - 40	22
+09-Apr-23 19:55:06 - DEBUG - save result here
+09-Apr-23 19:55:06 - DEBUG - 35	21
+09-Apr-23 19:55:06 - DEBUG - 35	21
+09-Apr-23 19:55:06 - DEBUG - 40	21
+09-Apr-23 19:55:07 - DEBUG - save result here
+09-Apr-23 19:55:07 - DEBUG - 36	21
+09-Apr-23 19:55:07 - DEBUG - 44	22
+09-Apr-23 19:55:07 - DEBUG - save result here
+09-Apr-23 19:55:08 - DEBUG - 44	22
+09-Apr-23 19:55:08 - DEBUG - save result here
+09-Apr-23 19:55:09 - DEBUG - 47	21
+09-Apr-23 19:55:09 - DEBUG - save result here
+09-Apr-23 19:55:09 - DEBUG - 49	17
+09-Apr-23 19:55:09 - DEBUG - save result here
+09-Apr-23 19:55:10 - DEBUG - 49	21
+09-Apr-23 19:55:10 - DEBUG - save result here
+09-Apr-23 19:55:11 - DEBUG - 53	21
+09-Apr-23 19:55:11 - DEBUG - save result here
+09-Apr-23 19:55:11 - DEBUG - 54	21
+09-Apr-23 19:55:11 - DEBUG - save result here
+09-Apr-23 19:55:12 - DEBUG - 57	22
+09-Apr-23 19:55:12 - DEBUG - save result here
+09-Apr-23 19:55:13 - DEBUG - 60	21
+09-Apr-23 19:55:13 - DEBUG - save result here
+09-Apr-23 19:55:13 - DEBUG - 57	18
+09-Apr-23 19:55:13 - DEBUG - save result here
+09-Apr-23 19:55:14 - DEBUG - 60	16
+09-Apr-23 19:55:14 - DEBUG - 59	23
+09-Apr-23 19:55:14 - DEBUG - save result here
+09-Apr-23 19:55:15 - DEBUG - 60	18
+09-Apr-23 19:55:15 - DEBUG - 59	20
+09-Apr-23 19:55:15 - DEBUG - 60	22
+09-Apr-23 19:55:15 - DEBUG - 59	20
+09-Apr-23 19:55:15 - DEBUG - 59	19
+09-Apr-23 19:55:16 - DEBUG - 58	18
+09-Apr-23 19:55:16 - DEBUG - 60	17
+09-Apr-23 19:55:16 - DEBUG - 59	22
+09-Apr-23 19:55:16 - DEBUG - 58	20
+09-Apr-23 19:55:16 - DEBUG - 60	21
+09-Apr-23 19:55:16 - DEBUG - 55	18
+09-Apr-23 19:55:16 - DEBUG - 59	25
+09-Apr-23 19:55:16 - DEBUG - 54	17
+09-Apr-23 19:55:17 - DEBUG - 60	23
+09-Apr-23 19:55:17 - DEBUG - 57	18
+09-Apr-23 19:55:17 - DEBUG - 60	25
+09-Apr-23 19:55:17 - DEBUG - 60	18
+09-Apr-23 19:55:17 - DEBUG - 58	23
+09-Apr-23 19:55:17 - DEBUG - 59	18
+09-Apr-23 19:55:17 - DEBUG - 58	24
+09-Apr-23 19:55:17 - DEBUG - 59	23
+09-Apr-23 19:55:18 - DEBUG - 58	17
+09-Apr-23 19:55:18 - DEBUG - 60	22
+09-Apr-23 19:55:18 - DEBUG - 55	17
+09-Apr-23 19:55:18 - DEBUG - 60	24
+09-Apr-23 19:55:18 - DEBUG - 58	18
+09-Apr-23 19:55:18 - DEBUG - 60	19
+09-Apr-23 19:55:18 - DEBUG - 59	19
+09-Apr-23 19:55:18 - DEBUG - 59	23
+09-Apr-23 19:55:18 - DEBUG - 59	18
+09-Apr-23 19:55:19 - DEBUG - 59	21
+09-Apr-23 19:55:19 - DEBUG - 58	24
+09-Apr-23 19:55:19 - DEBUG - 56	18
+09-Apr-23 19:55:19 - DEBUG - 58	24
+09-Apr-23 19:55:19 - DEBUG - 59	18
+09-Apr-23 19:55:19 - DEBUG - 60	24
+09-Apr-23 19:55:19 - DEBUG - 59	13
+09-Apr-23 19:55:19 - DEBUG - 58	20
+09-Apr-23 19:55:20 - DEBUG - 57	18
+09-Apr-23 19:55:20 - DEBUG - 57	24
+09-Apr-23 19:55:20 - DEBUG - 59	17
+09-Apr-23 19:55:20 - DEBUG - 59	23
+09-Apr-23 19:55:20 - DEBUG - 59	20
+09-Apr-23 19:55:20 - DEBUG - 59	23
+09-Apr-23 19:55:20 - DEBUG - 59	20
+09-Apr-23 19:55:20 - DEBUG - 59	19
+09-Apr-23 19:55:21 - DEBUG - 60	20
+09-Apr-23 19:55:21 - DEBUG - 58	18
+09-Apr-23 19:55:21 - DEBUG - 57	19
+09-Apr-23 19:55:21 - DEBUG - 59	19
+09-Apr-23 19:55:21 - DEBUG - 55	19
+09-Apr-23 19:55:21 - DEBUG - 58	25
+09-Apr-23 19:55:21 - DEBUG - 58	17
+09-Apr-23 19:55:21 - DEBUG - 57	24
+09-Apr-23 19:55:22 - DEBUG - 58	16
+09-Apr-23 19:55:22 - DEBUG - 58	21
+09-Apr-23 19:55:22 - DEBUG - 58	19
+09-Apr-23 19:55:22 - DEBUG - 59	20
+09-Apr-23 19:55:22 - DEBUG - 57	24
+09-Apr-23 19:55:22 - DEBUG - 53	17
+09-Apr-23 19:55:22 - DEBUG - 58	23
+09-Apr-23 19:55:22 - DEBUG - 57	17
+09-Apr-23 19:55:23 - DEBUG - 58	26
+09-Apr-23 19:55:23 - DEBUG - 58	17
+09-Apr-23 19:55:23 - DEBUG - 58	19
+09-Apr-23 19:55:23 - DEBUG - 58	14
+09-Apr-23 19:55:23 - DEBUG - 60	25
+09-Apr-23 19:55:23 - DEBUG - 58	18
+09-Apr-23 19:55:23 - DEBUG - 58	25
+09-Apr-23 19:55:23 - DEBUG - 57	21
+09-Apr-23 19:55:23 - DEBUG - 59	21
+09-Apr-23 19:55:24 - DEBUG - 58	22
+09-Apr-23 19:55:24 - DEBUG - 57	18
+09-Apr-23 19:55:24 - DEBUG - 58	23
+09-Apr-23 19:55:24 - DEBUG - 53	18
+09-Apr-23 19:55:24 - DEBUG - 57	23
+09-Apr-23 19:55:24 - DEBUG - 55	18
+09-Apr-23 19:55:24 - DEBUG - 57	23
+09-Apr-23 19:55:24 - DEBUG - 53	18
+09-Apr-23 19:55:25 - DEBUG - 58	24
+09-Apr-23 19:55:25 - DEBUG - 58	18
+09-Apr-23 19:57:32 - DEBUG - xy params is integer
+09-Apr-23 19:57:35 - DEBUG - 57	22
+09-Apr-23 19:57:35 - DEBUG - 56	20
+09-Apr-23 19:57:35 - DEBUG - 58	25
+09-Apr-23 19:57:36 - DEBUG - 56	23
+09-Apr-23 19:57:36 - DEBUG - 57	20
+09-Apr-23 19:57:36 - DEBUG - 56	25
+09-Apr-23 19:57:36 - DEBUG - 57	25
+09-Apr-23 19:57:36 - DEBUG - 58	14
+09-Apr-23 19:57:36 - DEBUG - 59	23
+09-Apr-23 19:57:36 - DEBUG - 57	24
+09-Apr-23 19:57:36 - DEBUG - 57	23
+09-Apr-23 19:57:37 - DEBUG - 57	20
+09-Apr-23 19:57:37 - DEBUG - 57	23
+09-Apr-23 19:57:37 - DEBUG - 57	21
+09-Apr-23 19:57:37 - DEBUG - 56	18
+09-Apr-23 19:57:37 - DEBUG - 58	22
+09-Apr-23 19:57:37 - DEBUG - 58	24
+09-Apr-23 19:57:37 - DEBUG - 55	20
+09-Apr-23 19:57:37 - DEBUG - 57	15
+09-Apr-23 19:57:38 - DEBUG - 57	19
+09-Apr-23 19:57:38 - DEBUG - 57	23
+09-Apr-23 19:57:38 - DEBUG - 57	23
+09-Apr-23 19:57:38 - DEBUG - 57	21
+09-Apr-23 19:57:38 - DEBUG - 57	22
+09-Apr-23 19:57:38 - DEBUG - 58	25
+09-Apr-23 19:57:38 - DEBUG - 57	22
+09-Apr-23 19:57:38 - DEBUG - 57	21
+09-Apr-23 19:57:38 - DEBUG - 58	23
+09-Apr-23 19:57:39 - DEBUG - 59	21
+09-Apr-23 19:57:39 - DEBUG - 57	23
+09-Apr-23 19:57:39 - DEBUG - 58	23
+09-Apr-23 19:57:39 - DEBUG - 58	25
+09-Apr-23 19:57:39 - DEBUG - 57	22
+09-Apr-23 19:57:39 - DEBUG - 53	19
+09-Apr-23 19:57:39 - DEBUG - 56	26
+09-Apr-23 19:57:39 - DEBUG - 57	20
+09-Apr-23 19:57:40 - DEBUG - 58	22
+09-Apr-23 19:57:40 - DEBUG - 57	19
+09-Apr-23 19:57:40 - DEBUG - 57	18
+09-Apr-23 19:57:40 - DEBUG - 58	26
+09-Apr-23 19:57:40 - DEBUG - 57	24
+09-Apr-23 19:57:40 - DEBUG - 57	22
+09-Apr-23 19:57:40 - DEBUG - 58	23
+09-Apr-23 19:57:40 - DEBUG - 57	24
+09-Apr-23 19:57:41 - DEBUG - 58	24
+09-Apr-23 19:57:41 - DEBUG - 57	25
+09-Apr-23 19:57:41 - DEBUG - 58	23
+09-Apr-23 19:57:41 - DEBUG - 59	16
+09-Apr-23 19:57:41 - DEBUG - 58	23
+09-Apr-23 19:57:41 - DEBUG - 57	17
+09-Apr-23 19:57:41 - DEBUG - 57	25
+09-Apr-23 19:57:41 - DEBUG - 59	21
+09-Apr-23 19:57:42 - DEBUG - 56	19
+09-Apr-23 19:57:42 - DEBUG - 57	24
+09-Apr-23 19:57:42 - DEBUG - 56	24
+09-Apr-23 19:57:42 - DEBUG - 59	21
+09-Apr-23 19:57:42 - DEBUG - 55	26
+09-Apr-23 19:57:42 - DEBUG - 57	23
+09-Apr-23 19:57:42 - DEBUG - 52	23
+09-Apr-23 19:57:42 - DEBUG - 57	23
+09-Apr-23 19:57:42 - DEBUG - 58	24
+09-Apr-23 19:57:43 - DEBUG - 58	19
+09-Apr-23 19:57:43 - DEBUG - 58	23
+09-Apr-23 19:57:43 - DEBUG - 56	16
+09-Apr-23 19:57:43 - DEBUG - 57	14
+09-Apr-23 19:57:43 - DEBUG - 58	21
+09-Apr-23 19:57:43 - DEBUG - 56	25
+09-Apr-23 19:57:43 - DEBUG - 53	22
+09-Apr-23 19:57:43 - DEBUG - 55	20
+09-Apr-23 19:57:44 - DEBUG - 57	21
+09-Apr-23 19:57:44 - DEBUG - 58	26
+09-Apr-23 19:57:44 - DEBUG - 56	23
+09-Apr-23 19:57:44 - DEBUG - 57	22
+09-Apr-23 19:57:44 - DEBUG - 56	22
+09-Apr-23 19:57:44 - DEBUG - 57	22
+09-Apr-23 19:57:44 - DEBUG - 57	22
+09-Apr-23 19:57:44 - DEBUG - 58	22
+09-Apr-23 19:57:45 - DEBUG - 57	22
+09-Apr-23 19:57:45 - DEBUG - 58	25
+09-Apr-23 19:57:45 - DEBUG - 57	21
+09-Apr-23 19:57:45 - DEBUG - 57	15
+09-Apr-23 19:58:02 - DEBUG - xy params is integer
+09-Apr-23 19:58:05 - DEBUG - 0	7
+09-Apr-23 19:58:05 - DEBUG - 0	7
+09-Apr-23 19:58:05 - DEBUG - 0	6
+09-Apr-23 19:58:05 - DEBUG - 0	7
+09-Apr-23 19:58:05 - DEBUG - 0	7
+09-Apr-23 19:58:05 - DEBUG - 0	0
+09-Apr-23 19:58:05 - DEBUG - 0	4
+09-Apr-23 19:58:06 - DEBUG - 0	7
+09-Apr-23 19:58:06 - DEBUG - 0	3
+09-Apr-23 19:58:06 - DEBUG - 0	6
+09-Apr-23 19:58:06 - DEBUG - 0	7
+09-Apr-23 19:58:06 - DEBUG - 0	7
+09-Apr-23 19:58:06 - DEBUG - 0	7
+09-Apr-23 19:58:06 - DEBUG - 0	7
+09-Apr-23 19:58:06 - DEBUG - 0	7
+09-Apr-23 19:58:07 - DEBUG - 0	7
+09-Apr-23 19:58:07 - DEBUG - 0	7
+09-Apr-23 19:58:07 - DEBUG - 10	7
+09-Apr-23 19:58:07 - DEBUG - 10	7
+09-Apr-23 19:58:07 - DEBUG - 10	8
+09-Apr-23 19:58:07 - DEBUG - 10	7
+09-Apr-23 19:58:07 - DEBUG - 12	8
+09-Apr-23 19:58:07 - DEBUG - 12	7
+09-Apr-23 19:58:08 - DEBUG - 10	7
+09-Apr-23 19:58:08 - DEBUG - 8	7
+09-Apr-23 19:58:08 - DEBUG - 11	8
+09-Apr-23 19:58:08 - DEBUG - 9	6
+09-Apr-23 19:58:08 - DEBUG - 11	1
+09-Apr-23 19:58:08 - DEBUG - 9	7
+09-Apr-23 19:58:08 - DEBUG - 11	8
+09-Apr-23 19:58:08 - DEBUG - 9	8
+09-Apr-23 19:58:09 - DEBUG - 12	7
+09-Apr-23 19:58:09 - DEBUG - 12	7
+09-Apr-23 19:58:09 - DEBUG - 7	7
+09-Apr-23 19:58:09 - DEBUG - 10	5
+09-Apr-23 19:58:09 - DEBUG - 11	7
+09-Apr-23 19:58:09 - DEBUG - 3	7
+09-Apr-23 19:58:09 - DEBUG - 12	7
+09-Apr-23 19:58:09 - DEBUG - 12	7
+09-Apr-23 19:58:10 - DEBUG - 8	7
+09-Apr-23 19:58:10 - DEBUG - 11	8
+09-Apr-23 19:58:10 - DEBUG - 14	3
+09-Apr-23 19:58:10 - DEBUG - 9	7
+09-Apr-23 19:58:10 - DEBUG - 12	5
+09-Apr-23 19:58:10 - DEBUG - 8	7
+09-Apr-23 19:58:10 - DEBUG - 11	7
+09-Apr-23 19:58:10 - DEBUG - 11	4
+09-Apr-23 19:58:10 - DEBUG - 10	8
+09-Apr-23 19:58:11 - DEBUG - 11	7
+09-Apr-23 19:58:11 - DEBUG - 7	7
+09-Apr-23 19:58:11 - DEBUG - 13	7
+09-Apr-23 19:58:11 - DEBUG - 10	7
+09-Apr-23 19:58:11 - DEBUG - 10	8
+09-Apr-23 19:58:11 - DEBUG - 10	8
+09-Apr-23 19:58:11 - DEBUG - 9	7
+09-Apr-23 19:58:11 - DEBUG - 9	7
+09-Apr-23 19:58:12 - DEBUG - 8	7
+09-Apr-23 19:58:12 - DEBUG - 8	7
+09-Apr-23 19:58:12 - DEBUG - 9	7
+09-Apr-23 19:58:12 - DEBUG - 10	7
+09-Apr-23 19:58:12 - DEBUG - 11	7
+09-Apr-23 19:58:12 - DEBUG - 9	7
+09-Apr-23 19:58:12 - DEBUG - 11	7
+09-Apr-23 19:58:12 - DEBUG - 10	8
+09-Apr-23 19:58:12 - DEBUG - 5	7
+09-Apr-23 19:58:13 - DEBUG - 11	7
+09-Apr-23 19:58:13 - DEBUG - 6	7
+09-Apr-23 19:58:13 - DEBUG - 11	0
+09-Apr-23 19:58:13 - DEBUG - 11	7
+09-Apr-23 19:58:13 - DEBUG - 6	7
+09-Apr-23 19:58:13 - DEBUG - 11	6
+09-Apr-23 19:58:13 - DEBUG - 12	7
+09-Apr-23 19:58:13 - DEBUG - 11	8
+09-Apr-23 19:58:14 - DEBUG - 9	7
+09-Apr-23 19:58:14 - DEBUG - 12	0
+09-Apr-23 19:58:14 - DEBUG - 9	7
+09-Apr-23 19:58:14 - DEBUG - 12	1
+09-Apr-23 19:58:14 - DEBUG - 12	7
+09-Apr-23 19:58:14 - DEBUG - 10	7
+09-Apr-23 19:58:14 - DEBUG - 9	7
+09-Apr-23 19:58:14 - DEBUG - 10	6
+09-Apr-23 20:00:56 - DEBUG - xy params is integer
+09-Apr-23 20:00:58 - DEBUG - 0	6
+09-Apr-23 20:00:59 - DEBUG - 0	7
+09-Apr-23 20:00:59 - DEBUG - 0	5
+09-Apr-23 20:00:59 - DEBUG - 0	6
+09-Apr-23 20:00:59 - DEBUG - 0	6
+09-Apr-23 20:00:59 - DEBUG - 0	7
+09-Apr-23 20:00:59 - DEBUG - 0	7
+09-Apr-23 20:00:59 - DEBUG - 0	7
+09-Apr-23 20:00:59 - DEBUG - 0	7
+09-Apr-23 20:01:00 - DEBUG - 0	7
+09-Apr-23 20:01:00 - DEBUG - 0	8
+09-Apr-23 20:01:00 - DEBUG - 0	8
+09-Apr-23 20:01:00 - DEBUG - 0	7
+09-Apr-23 20:01:00 - DEBUG - 0	1
+09-Apr-23 20:01:00 - DEBUG - 0	7
+09-Apr-23 20:01:00 - DEBUG - 0	7
+09-Apr-23 20:01:00 - DEBUG - 0	7
+09-Apr-23 20:01:01 - DEBUG - 0	7
+09-Apr-23 20:01:01 - DEBUG - 0	7
+09-Apr-23 20:01:01 - DEBUG - 0	8
+09-Apr-23 20:01:01 - DEBUG - 0	7
+09-Apr-23 20:01:01 - DEBUG - 0	8
+09-Apr-23 20:01:01 - DEBUG - 0	8
+09-Apr-23 20:01:01 - DEBUG - 0	7
+09-Apr-23 20:01:01 - DEBUG - 0	7
+09-Apr-23 20:01:01 - DEBUG - 0	7
+09-Apr-23 20:01:02 - DEBUG - 0	8
+09-Apr-23 20:01:02 - DEBUG - 0	7
+09-Apr-23 20:01:02 - DEBUG - 0	7
+09-Apr-23 20:01:02 - DEBUG - 0	7
+09-Apr-23 20:01:02 - DEBUG - 0	8
+09-Apr-23 20:01:02 - DEBUG - 0	1
+09-Apr-23 20:01:02 - DEBUG - 0	6
+09-Apr-23 20:01:02 - DEBUG - 0	7
+09-Apr-23 20:01:03 - DEBUG - 0	8
+09-Apr-23 20:01:03 - DEBUG - 0	8
+09-Apr-23 20:01:03 - DEBUG - 0	7
+09-Apr-23 20:01:03 - DEBUG - 0	7
+09-Apr-23 20:01:03 - DEBUG - 0	8
+09-Apr-23 20:01:03 - DEBUG - 0	8
+09-Apr-23 20:01:03 - DEBUG - 0	6
+09-Apr-23 20:01:03 - DEBUG - 0	8
+09-Apr-23 20:01:04 - DEBUG - 0	6
+09-Apr-23 20:01:04 - DEBUG - 0	8
+09-Apr-23 20:01:04 - DEBUG - 0	7
+09-Apr-23 20:01:04 - DEBUG - 9	7
+09-Apr-23 20:01:04 - DEBUG - 3	7
+09-Apr-23 20:01:04 - DEBUG - 10	8
+09-Apr-23 20:01:04 - DEBUG - 12	8
+09-Apr-23 20:01:04 - DEBUG - 10	6
+09-Apr-23 20:01:04 - DEBUG - 11	7
+09-Apr-23 20:01:05 - DEBUG - 11	5
+09-Apr-23 20:01:05 - DEBUG - 13	7
+09-Apr-23 20:01:05 - DEBUG - 11	7
+09-Apr-23 20:01:05 - DEBUG - 13	8
+09-Apr-23 20:01:05 - DEBUG - 10	8
+09-Apr-23 20:01:05 - DEBUG - 10	7
+09-Apr-23 20:01:05 - DEBUG - 11	8
+09-Apr-23 20:01:05 - DEBUG - 10	0
+09-Apr-23 20:01:06 - DEBUG - 9	1
+09-Apr-23 20:01:06 - DEBUG - 11	0
+09-Apr-23 20:01:06 - DEBUG - 9	3
+09-Apr-23 20:01:06 - DEBUG - 11	7
+09-Apr-23 20:01:06 - DEBUG - 8	8
+09-Apr-23 20:01:06 - DEBUG - 10	7
+09-Apr-23 20:01:06 - DEBUG - 9	7
+09-Apr-23 20:01:06 - DEBUG - 6	7
+09-Apr-23 20:01:07 - DEBUG - 12	7
+09-Apr-23 20:01:07 - DEBUG - 11	7
+09-Apr-23 20:01:07 - DEBUG - 10	7
+09-Apr-23 20:01:07 - DEBUG - 11	2
+09-Apr-23 20:01:07 - DEBUG - 11	7
+09-Apr-23 20:01:07 - DEBUG - 10	8
+09-Apr-23 20:01:07 - DEBUG - 9	7
+09-Apr-23 20:01:07 - DEBUG - 6	7
+09-Apr-23 20:01:07 - DEBUG - 9	7
+09-Apr-23 20:01:08 - DEBUG - 12	8
+09-Apr-23 20:01:08 - DEBUG - 10	7
+09-Apr-23 20:01:08 - DEBUG - 9	7
+09-Apr-23 20:01:08 - DEBUG - 11	1
+09-Apr-23 20:01:08 - DEBUG - 11	7
+09-Apr-23 20:01:08 - DEBUG - 10	5
+09-Apr-23 20:03:15 - DEBUG - xy params is integer
+09-Apr-23 20:03:17 - DEBUG - 9	7
+09-Apr-23 20:03:18 - DEBUG - 9	7
+09-Apr-23 20:03:18 - DEBUG - 8	7
+09-Apr-23 20:03:18 - DEBUG - 10	7
+09-Apr-23 20:03:18 - DEBUG - 10	7
+09-Apr-23 20:03:18 - DEBUG - 10	8
+09-Apr-23 20:03:18 - DEBUG - 10	8
+09-Apr-23 20:03:18 - DEBUG - 10	1
+09-Apr-23 20:03:18 - DEBUG - 9	7
+09-Apr-23 20:03:19 - DEBUG - 10	8
+09-Apr-23 20:03:19 - DEBUG - 9	7
+09-Apr-23 20:03:19 - DEBUG - 8	8
+09-Apr-23 20:03:19 - DEBUG - 8	6
+09-Apr-23 20:03:19 - DEBUG - 10	7
+09-Apr-23 20:03:19 - DEBUG - 11	7
+09-Apr-23 20:03:19 - DEBUG - 9	7
+09-Apr-23 20:03:19 - DEBUG - 9	7
+09-Apr-23 20:03:20 - DEBUG - 9	8
+09-Apr-23 20:03:20 - DEBUG - 11	7
+09-Apr-23 20:03:20 - DEBUG - 6	6
+09-Apr-23 20:03:20 - DEBUG - 11	7
+09-Apr-23 20:03:20 - DEBUG - 12	7
+09-Apr-23 20:03:20 - DEBUG - 11	8
+09-Apr-23 20:03:20 - DEBUG - 11	8
+09-Apr-23 20:03:20 - DEBUG - 11	7
+09-Apr-23 20:03:20 - DEBUG - 12	2
+09-Apr-23 20:03:21 - DEBUG - 11	4
+09-Apr-23 20:03:21 - DEBUG - 11	7
+09-Apr-23 20:03:21 - DEBUG - 13	8
+09-Apr-23 20:03:21 - DEBUG - 12	8
+09-Apr-23 20:03:21 - DEBUG - 11	8
+09-Apr-23 20:03:21 - DEBUG - 11	0
+09-Apr-23 20:03:21 - DEBUG - 10	7
+09-Apr-23 20:03:21 - DEBUG - 10	7
+09-Apr-23 20:03:22 - DEBUG - 13	3
+09-Apr-23 20:03:22 - DEBUG - 12	6
+09-Apr-23 20:03:22 - DEBUG - 11	8
+09-Apr-23 20:03:22 - DEBUG - 12	9
+09-Apr-23 20:03:22 - DEBUG - 7	9
+09-Apr-23 20:03:22 - DEBUG - 12	9
+09-Apr-23 20:03:22 - DEBUG - 7	9
+09-Apr-23 20:03:22 - DEBUG - 10	10
+09-Apr-23 20:03:23 - DEBUG - 10	8
+09-Apr-23 20:03:23 - DEBUG - 9	10
+09-Apr-23 20:03:23 - DEBUG - 7	10
+09-Apr-23 20:03:23 - DEBUG - 11	13
+09-Apr-23 20:03:23 - DEBUG - 12	12
+09-Apr-23 20:03:23 - DEBUG - 4	13
+09-Apr-23 20:03:23 - DEBUG - 4	14
+09-Apr-23 20:03:23 - DEBUG - 10	14
+09-Apr-23 20:03:24 - DEBUG - 10	15
+09-Apr-23 20:03:24 - DEBUG - save result here
+09-Apr-23 20:03:24 - DEBUG - 7	19
+09-Apr-23 20:03:24 - DEBUG - save result here
+09-Apr-23 20:03:25 - DEBUG - 16	20
+09-Apr-23 20:03:25 - DEBUG - save result here
+09-Apr-23 20:03:26 - DEBUG - 16	20
+09-Apr-23 20:03:26 - DEBUG - save result here
+09-Apr-23 20:03:26 - DEBUG - 17	20
+09-Apr-23 20:03:26 - DEBUG - save result here
+09-Apr-23 20:03:27 - DEBUG - 22	21
+09-Apr-23 20:03:27 - DEBUG - save result here
+09-Apr-23 20:03:28 - DEBUG - 23	21
+09-Apr-23 20:03:28 - DEBUG - save result here
+09-Apr-23 20:03:28 - DEBUG - 22	21
+09-Apr-23 20:03:28 - DEBUG - save result here
+09-Apr-23 20:03:29 - DEBUG - 26	21
+09-Apr-23 20:03:29 - DEBUG - save result here
+09-Apr-23 20:03:30 - DEBUG - 24	20
+09-Apr-23 20:03:30 - DEBUG - save result here
+09-Apr-23 20:03:30 - DEBUG - 25	21
+09-Apr-23 20:03:30 - DEBUG - save result here
+09-Apr-23 20:03:31 - DEBUG - 31	20
+09-Apr-23 20:03:31 - DEBUG - save result here
+09-Apr-23 20:03:32 - DEBUG - 34	21
+09-Apr-23 20:03:32 - DEBUG - save result here
+09-Apr-23 20:03:32 - DEBUG - 36	20
+09-Apr-23 20:03:32 - DEBUG - save result here
+09-Apr-23 20:03:33 - DEBUG - 37	20
+09-Apr-23 20:03:33 - DEBUG - save result here
+09-Apr-23 20:03:34 - DEBUG - 42	21
+09-Apr-23 20:03:34 - DEBUG - save result here
+09-Apr-23 20:03:34 - DEBUG - 41	22
+09-Apr-23 20:03:34 - DEBUG - save result here
+09-Apr-23 20:03:35 - DEBUG - 46	18
+09-Apr-23 20:03:35 - DEBUG - save result here
+09-Apr-23 20:03:36 - DEBUG - 41	20
+09-Apr-23 20:03:36 - DEBUG - save result here
+09-Apr-23 20:03:37 - DEBUG - 41	21
+09-Apr-23 20:03:37 - DEBUG - 42	20
+09-Apr-23 20:03:37 - DEBUG - 50	21
+09-Apr-23 20:03:37 - DEBUG - save result here
+09-Apr-23 20:03:37 - DEBUG - 49	22
+09-Apr-23 20:03:38 - DEBUG - save result here
+09-Apr-23 20:03:38 - DEBUG - 47	18
+09-Apr-23 20:03:38 - DEBUG - save result here
+09-Apr-23 20:03:39 - DEBUG - 56	20
+09-Apr-23 20:03:39 - DEBUG - save result here
+09-Apr-23 20:03:40 - DEBUG - 50	21
+09-Apr-23 20:03:40 - DEBUG - 55	20
+09-Apr-23 20:03:40 - DEBUG - save result here
+09-Apr-23 20:03:40 - DEBUG - 53	21
+09-Apr-23 20:03:40 - DEBUG - save result here
+09-Apr-23 20:03:41 - DEBUG - 62	20
+09-Apr-23 20:03:41 - DEBUG - save result here
+09-Apr-23 20:03:42 - DEBUG - 64	19
+09-Apr-23 20:03:42 - DEBUG - save result here
+09-Apr-23 20:03:42 - DEBUG - 65	21
+09-Apr-23 20:03:42 - DEBUG - save result here
+09-Apr-23 20:03:43 - DEBUG - 63	20
+09-Apr-23 20:03:43 - DEBUG - save result here
+09-Apr-23 20:03:44 - DEBUG - 69	20
+09-Apr-23 20:03:44 - DEBUG - save result here
+09-Apr-23 20:03:44 - DEBUG - 71	21
+09-Apr-23 20:03:45 - DEBUG - save result here
+09-Apr-23 20:03:45 - DEBUG - 73	23
+09-Apr-23 20:03:45 - DEBUG - save result here
+09-Apr-23 20:03:46 - DEBUG - 71	20
+09-Apr-23 20:03:46 - DEBUG - save result here
+09-Apr-23 20:03:47 - DEBUG - 70	20
+09-Apr-23 20:03:47 - DEBUG - 71	21
+09-Apr-23 20:03:47 - DEBUG - save result here
+09-Apr-23 20:03:47 - DEBUG - 71	23
+09-Apr-23 20:03:47 - DEBUG - 73	20
+09-Apr-23 20:03:47 - DEBUG - save result here
+09-Apr-23 20:03:48 - DEBUG - 70	20
+09-Apr-23 20:03:48 - DEBUG - 72	23
+09-Apr-23 20:03:48 - DEBUG - 71	24
+09-Apr-23 20:03:49 - DEBUG - 70	21
+09-Apr-23 20:03:49 - DEBUG - 70	19
+09-Apr-23 20:03:49 - DEBUG - 73	22
+09-Apr-23 20:03:49 - DEBUG - 71	19
+09-Apr-23 20:03:49 - DEBUG - 70	20
+09-Apr-23 20:03:49 - DEBUG - 71	23
+09-Apr-23 20:03:49 - DEBUG - 73	22
+09-Apr-23 20:03:49 - DEBUG - 71	21
+09-Apr-23 20:03:49 - DEBUG - 74	23
+09-Apr-23 20:03:50 - DEBUG - 71	16
+09-Apr-23 20:03:50 - DEBUG - 70	20
+09-Apr-23 20:03:50 - DEBUG - 74	21
+09-Apr-23 20:03:50 - DEBUG - 71	21
+09-Apr-23 20:03:50 - DEBUG - 69	20
+09-Apr-23 20:03:50 - DEBUG - 67	23
+09-Apr-23 20:03:50 - DEBUG - 71	22
+09-Apr-23 20:03:50 - DEBUG - 70	18
+09-Apr-23 20:03:51 - DEBUG - 72	21
+09-Apr-23 20:03:51 - DEBUG - 71	24
+09-Apr-23 20:03:51 - DEBUG - 69	19
+09-Apr-23 20:03:51 - DEBUG - 70	19
+09-Apr-23 20:03:51 - DEBUG - 72	24
+09-Apr-23 20:03:51 - DEBUG - 73	23
+09-Apr-23 20:03:51 - DEBUG - 71	19
+09-Apr-23 20:03:51 - DEBUG - 71	22
+09-Apr-23 20:03:52 - DEBUG - 72	23
+09-Apr-23 20:03:52 - DEBUG - 70	19
+09-Apr-23 20:03:52 - DEBUG - 72	24
+09-Apr-23 20:03:52 - DEBUG - 71	17
+09-Apr-23 20:03:52 - DEBUG - 71	16
+09-Apr-23 20:03:52 - DEBUG - 71	23
+09-Apr-23 20:03:52 - DEBUG - 71	20
+09-Apr-23 20:03:52 - DEBUG - 71	20
+09-Apr-23 20:03:52 - DEBUG - 72	24
+09-Apr-23 20:03:53 - DEBUG - 72	22
+09-Apr-23 20:03:53 - DEBUG - 69	20
+09-Apr-23 20:03:53 - DEBUG - 72	24
+09-Apr-23 20:03:53 - DEBUG - 72	23
+09-Apr-23 20:03:53 - DEBUG - 69	20
+09-Apr-23 20:03:53 - DEBUG - 69	20
+09-Apr-23 20:03:53 - DEBUG - 70	17
+09-Apr-23 20:03:53 - DEBUG - 69	20
+09-Apr-23 20:03:54 - DEBUG - 69	21
+09-Apr-23 20:03:54 - DEBUG - 71	25
+09-Apr-23 20:03:54 - DEBUG - 70	20
+09-Apr-23 20:03:54 - DEBUG - 71	22
+09-Apr-23 20:03:54 - DEBUG - 71	22
+09-Apr-23 20:03:54 - DEBUG - 69	20
+09-Apr-23 20:03:54 - DEBUG - 71	21
+09-Apr-23 20:03:54 - DEBUG - 72	19
+09-Apr-23 20:03:54 - DEBUG - 71	21
+09-Apr-23 20:03:55 - DEBUG - 72	16
+09-Apr-23 20:03:55 - DEBUG - 71	23
+09-Apr-23 20:03:55 - DEBUG - 70	20
+09-Apr-23 20:03:55 - DEBUG - 71	25
+09-Apr-23 20:03:55 - DEBUG - 71	24
+09-Apr-23 20:03:55 - DEBUG - 70	20
+09-Apr-23 20:03:55 - DEBUG - 71	20
+09-Apr-23 20:03:55 - DEBUG - 71	23
+09-Apr-23 20:03:56 - DEBUG - 71	20
+09-Apr-23 20:03:56 - DEBUG - 68	22
+09-Apr-23 20:03:56 - DEBUG - 69	18
+09-Apr-23 20:03:56 - DEBUG - 69	19
+09-Apr-23 20:03:56 - DEBUG - 70	22
+09-Apr-23 20:03:56 - DEBUG - 66	21
+09-Apr-23 20:03:56 - DEBUG - 71	15
+09-Apr-23 20:03:56 - DEBUG - 70	24
+09-Apr-23 20:03:57 - DEBUG - 71	24
+09-Apr-23 20:03:57 - DEBUG - 71	18
+09-Apr-23 20:03:57 - DEBUG - 69	22
+09-Apr-23 20:03:57 - DEBUG - 70	16
+09-Apr-23 20:03:57 - DEBUG - 70	20
+09-Apr-23 20:03:57 - DEBUG - 69	23
+09-Apr-23 20:03:57 - DEBUG - 70	24
+09-Apr-23 20:03:57 - DEBUG - 69	20
+09-Apr-23 20:03:57 - DEBUG - 69	20
+09-Apr-23 20:03:58 - DEBUG - 71	23
+09-Apr-23 20:03:58 - DEBUG - 67	21
+09-Apr-23 20:03:58 - DEBUG - 70	20

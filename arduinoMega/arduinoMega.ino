@@ -12,8 +12,8 @@ const int y_motor_speed_pin = 2;
 // limit switches
 const int x_limit_front = 18;
 const int x_limit_back = 16;
-const int y_limit_top = 26;
-const int y_limit_bottom = 20;
+const int y_limit_top = 20;
+const int y_limit_bottom = 26;
 
 // x move button
 const int x_forward_pin = 11;
@@ -85,11 +85,6 @@ void loop()
         }
     }
 
-    // Serial.print(digitalRead(y_limit_top));
-    // Serial.print(",");
-    // Serial.println(digitalRead(y_limit_bottom));
-    // delay(100);
-
     if(execute_cmd)
     {
         int cmd_len = cmd_string.length();
@@ -123,8 +118,12 @@ void loop()
                 switch(cmd_string[1])
                 {
                     case '1':           // run experiment 1
-                    {
+                    {   
+                        // Serial.println("exp1");
+                        run_machine = true;
                         exp_number = 1;
+                        exp1_x_state = 0;
+                        exp1_y_state = 0;
                         break;
                     }
                     case '2':           // run experiment 2
@@ -201,7 +200,7 @@ void loop()
         {
             case 1:
             {
-                run_exp1();
+                run_exp1();     
                 break;
             }
             case 2:
@@ -287,7 +286,7 @@ void run_exp1()
         {
             digitalWrite(x_motor_dir1,HIGH);
             digitalWrite(x_motor_dir2,LOW);
-            analogWrite(x_motor_speed_pin,50);
+            analogWrite(x_motor_speed_pin,30);
             exp1_x_state = 2;
             break;
         }
@@ -314,7 +313,7 @@ void run_exp1()
         {   // move machine backward
             digitalWrite(x_motor_dir1,LOW);
             digitalWrite(x_motor_dir2,HIGH);
-            analogWrite(x_motor_speed_pin,50);
+            analogWrite(x_motor_speed_pin,30);
             exp1_x_state = 2;
             break;
         }
@@ -339,19 +338,20 @@ void run_exp1()
 
         }
     }
-
+    // Serial.println(exp1_y_state);
     switch (exp1_y_state)
     {
         case 0:
         {
             exp1_y_state = 1;
+            // Serial.println("y_case0");
             break;
         }
         case 1:     // move machine down
         {
             digitalWrite(y_motor_dir1,HIGH);
             digitalWrite(y_motor_dir2,LOW);
-            analogWrite(y_motor_speed_pin,50);
+            analogWrite(y_motor_speed_pin,20);
             exp1_y_state = 2;
             break;
         }
@@ -378,7 +378,7 @@ void run_exp1()
         {   // move up
             digitalWrite(y_motor_dir1,LOW);
             digitalWrite(y_motor_dir2,HIGH);
-            analogWrite(y_motor_speed_pin,50);
+            analogWrite(y_motor_speed_pin,20);
             exp1_y_state = 2;
             break;
         }
