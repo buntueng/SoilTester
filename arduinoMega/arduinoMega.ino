@@ -12,8 +12,8 @@ const int y_motor_speed_pin = 2;
 // limit switches
 const int x_limit_front = 18;
 const int x_limit_back = 16;
-const int y_limit_top = 26;
-const int y_limit_bottom = 20;
+const int y_limit_top = 20;
+const int y_limit_bottom = 26;
 
 // x move button
 const int x_forward_pin = 11;
