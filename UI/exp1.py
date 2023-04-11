@@ -345,7 +345,7 @@ class App(ctk.CTk):
                 pass
 
     def run_monotonic_tester(self):
-        # logger.debug(self.run_exp1_state)
+        logger.debug(self.run_exp1_state)
         match(self.run_exp1_state):
             case 0:
                 if self.start_exp1==True:
