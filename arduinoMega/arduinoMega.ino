@@ -31,8 +31,10 @@ unsigned long loadcell_timer = 0;
 
 //
 bool run_machine = false;
+bool set_zero = false;
 
 int exp_number = 0;
+int zero_state = 0;
 // experiment 1
 int fixed_vertical_force = 0;
 int fixed_horizontal_force = 0;
@@ -93,25 +95,31 @@ void loop()
             case 'f':
             {
                 int vertical_force = analogRead(y_loadcell_pin);
-                Serial.print(vertical_force,DEC);       // return vertical force
+                Serial.print(vertical_force,DEC);       // return vertical force Y
                 Serial.print(",");
                 int horizontal_force = analogRead(x_loadcell_pin);
-                Serial.println(horizontal_force,DEC);     // return horizontal force
+                Serial.println(horizontal_force,DEC);     // return horizontal force X
               break;
             }
-            case 'N':
+            case 'N':   // Y distans
             {
                 fixed_vertical_force = cmd_string.substring(1,cmd_len).toInt();
                 Serial.println(fixed_vertical_force,DEC);
                 break;
             }
-            case 'T':
+            case 'T':   // X distans
             {
                 fixed_horizontal_force = cmd_string.substring(1,cmd_len).toInt();
                 Serial.println(fixed_horizontal_force,DEC);
                 break;
             }
-            
+            case 'Z':
+            {
+                set_zero = true;
+                zero_state = 0;
+                // Serial.println("ZERO");
+                break;
+            }
             // =============== run and terminate flag ====================
             case 'r':       // run state machine
             {
@@ -159,12 +167,6 @@ void loop()
                 Serial.print(fixed_vertical_force);
                 Serial.print(",");
                 Serial.print(fixed_horizontal_force);
-                // Serial.print(",");
-                // Serial.print(x_min_displacement);
-                // Serial.print(",");
-                // Serial.print(x_max_displacement);
-                // Serial.print(",");
-                // Serial.print(x_distance);
                 Serial.println("");
                 break;
             }
@@ -181,20 +183,6 @@ void loop()
     // ============== run machine here ==========================
     if(run_machine)
     {
-        // unsigned long present_time = millis();
-        // // send loadcell every 10 milliseconds
-        // if(present_time-loadcell_timer >= loadcell_interval_time)
-        // {
-        //     int x_loadcell_value = analogRead(x_loadcell_pin);
-        //     Serial.print("x");
-        //     Serial.println(x_loadcell_value,DEC);
- 
-        //     int y_loadcell_value = analogRead(y_loadcell_pin);
-        //     Serial.print("y");
-        //     Serial.println(y_loadcell_value,DEC);
-        //     loadcell_timer = present_time;
-
-        // }
         // ============= exp1 state machine =====================
         switch(exp_number)
         {
@@ -267,9 +255,82 @@ void loop()
         
     }
     
+    if(set_zero)
+    {
+        int limitx_zero = digitalRead(x_limit_back);
+        int limity_zero = digitalRead(y_limit_bottom);
+        switch(zero_state)
+        {
+            case 0:
+            {
+                int limitx_zero = digitalRead(x_limit_back);
+                int limity_zero = digitalRead(y_limit_bottom);
+                if(((limitx_zero)==1)&&((limity_zero)==1))
+                {
+                    digitalWrite(x_motor_dir1,LOW);
+                    digitalWrite(x_motor_dir2,LOW);
+                    digitalWrite(y_motor_dir1,LOW);
+                    digitalWrite(y_motor_dir2,LOW);
+                    analogWrite(x_motor_speed_pin,0);
+                    analogWrite(y_motor_speed_pin,0);
+                    zero_state = 3;
+                }
+                else
+                {
+                    zero_state = 1;
+                }
+            }
+            case 1:
+            { 
+                digitalWrite(x_motor_dir1,LOW);
+                digitalWrite(x_motor_dir2,HIGH);
+                analogWrite(x_motor_speed_pin,255);
+                if((limitx_zero)==1)
+                {
+                    zero_state = 2; 
+                }
+                break;
+            }
+            case 2:
+            {
+                digitalWrite(x_motor_dir1,LOW);
+                digitalWrite(x_motor_dir2,LOW);
+                analogWrite(x_motor_speed_pin,0);
+                zero_state = 3;
+                break;
+            }
+            case 3:
+            {
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,HIGH);
+                analogWrite(y_motor_speed_pin,255);
+                if((limity_zero)==1)
+                {
+                    zero_state = 4;
+                }
+                break;
+            }
+            case 4:
+            {
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,LOW);
+                analogWrite(y_motor_speed_pin,0);
+                zero_state = 5;
+                break;
+            }
+            case 5:
+            {
+                Serial.println("ZERO");
+                set_zero = false;
+                break;
+            }
+            default:
+            {
+            
+            }
+        }
+    }
 }
-
-
 
 void run_exp1()
 {
@@ -328,9 +389,11 @@ void run_exp1()
                 exp1_x_state = 3;
             }
             break;
+
         }
         case 5:
         {
+            // Serial.println("X case 5");
             break;
         }
         default:
@@ -338,13 +401,12 @@ void run_exp1()
 
         }
     }
-    // Serial.println(exp1_y_state);
+
     switch (exp1_y_state)
     {
         case 0:
         {
             exp1_y_state = 1;
-            // Serial.println("y_case0");
             break;
         }
         case 1:     // move machine down
