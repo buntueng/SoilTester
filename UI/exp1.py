@@ -12,6 +12,8 @@ from get_data_displacement import linear_displacement
 from datetime import datetime
 import logging
 import time
+import matplotlib.pyplot as plt
+import random
 
 
 ctk.set_appearance_mode("System") 
@@ -56,9 +58,19 @@ class App(ctk.CTk):
         self.monitor_frame = ctk.CTkFrame(self.master_frame,fg_color="cornflowerblue",corner_radius=20)
         self.monitor_frame.grid(row=1,column=0,padx=5,pady=5,sticky=tk.NW)
         #================================== CANVAS ==================================
-        figure = Figure(figsize=(20, 10), dpi=50)
-        canvas = FigureCanvasTkAgg(figure, master=self.graph_frame)
-        canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10))
+        # figure = Figure(figsize=(20, 10), dpi=50)
+        # canvas = FigureCanvasTkAgg(figure, master=self.graph_frame)
+        # canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10))
+
+
+        self.fig, self.graph_ax = plt.subplots(figsize=(20, 10), dpi=50)
+        self.canvas = FigureCanvasTkAgg(self.fig, master=self.graph_frame)
+        self.canvas.draw()
+        self.canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10))
+
+        self.x_coordinate = []
+        self.y_coordinate = []
+
         #================================== object ==================================
         graph_fg_colors = "powderblue"
         self.result_graph_label = ctk.CTkLabel(self.graph_frame,text="RESULT GRAPH",bg_color="blanchedalmond",text_color="red",font=thai_large_font)
@@ -102,6 +114,10 @@ class App(ctk.CTk):
         self.save_button = ctk.CTkButton(self.configuration_frame,text = "บันทึก",width=255,height=60,font=eng_font,corner_radius=15,command=self.save_botton_pressed)
         self.set_origin = ctk.CTkButton(self.configuration_frame,text = "ZERO",width=255,height=60,font=eng_font,corner_radius=15,command=self.zero_origin_pressed)
 
+        self.plot_graph = ctk.CTkButton(self.configuration_frame,text = "Plot",width=255,height=60,font=eng_font,corner_radius=15,command=self.plot_xy)
+
+
+
 
         self.com_port_DIS_X_label.grid(row=0,column=0,padx=(5,5),pady=(10,0),ipadx = 5,sticky=tk.NW)
         self.com_port_DIS_X.grid(row=0, column=1, padx=(5,10), pady=(10, 0),sticky=tk.N)
@@ -125,6 +141,8 @@ class App(ctk.CTk):
         self.stop_button.grid(row=9,column=0, padx=(20,15),columnspan = 3,pady=10,sticky=tk.NW)
         self.save_button.grid(row=10,column=0, padx=(20,15),columnspan = 3,sticky=tk.NW)
         self.set_origin.grid(row=11,column=0, padx=(20,15),columnspan = 3,pady=(10,0),sticky=tk.NW)
+
+        # self.plot_graph.grid(row=12,column=0, padx=(20,15),columnspan = 3,pady=(10,0),sticky=tk.NW)
         #============================================================================
 
         self.ser_port_uC = ser.Serial(baudrate=115200,parity=ser.PARITY_NONE,stopbits=ser.STOPBITS_ONE,bytesize=ser.EIGHTBITS,timeout=0.5,inter_byte_timeout=0.1)  
@@ -144,6 +162,15 @@ class App(ctk.CTk):
         self.disable_widget()
 
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
+
+    def plot_xy(self):
+        time_axis = time.time()*1000
+        self.x_coordinate.append(time_axis)
+        self.y_coordinate.append(random.randint(0,100))
+        self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+        self.canvas.draw()
+        
+        logger.debug("plot graph")
 
     def on_closing(self):
         try:
@@ -167,7 +194,7 @@ class App(ctk.CTk):
 
     def list_serial_ports(self):
             if sys.platform.startswith('win'):
-                ports = ['COM%s' % (i + 1) for i in range(1,40)]
+                ports = ['COM%s' % (i + 1) for i in range(10,40)]
             elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
                 ports = glob.glob('/dev/tty[A-Za-z]*')
             elif sys.platform.startswith('darwin'):
@@ -458,12 +485,19 @@ class App(ctk.CTk):
                 # logger.debug("save result here")
                 dispX = self.obj_dis_x.get_last()
                 dispY = self.obj_dis_y.get_last()
+                x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
+                y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
                 xy_force_bytes = self.ser_port_uC.readline()
                 xy_force_string = xy_force_bytes.strip().decode()
                 vertical_force,horizontal_force = xy_force_string.split(",")
                 time_stamp = datetime.now().strftime("%H:%M:%S.%f")
 
-                disp_message = time_stamp + "," + str(dispX)+"," + str(dispY) + "," + horizontal_force + "," + vertical_force + "\n"
+                self.x_coordinate.append(int(horizontal_force))
+                self.y_coordinate.append(dispY)
+                self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                self.canvas.draw()
+
+                disp_message = time_stamp + "," + x_show3digit +"," + y_show3digit + "," + horizontal_force + "," + vertical_force + "\n"
                 self.monitor_text_box.insert(tk.END,disp_message)
 
 
