@@ -350,8 +350,12 @@ class App(ctk.CTk):
             case 0:
                 if self.start_exp1==True:
                     self.ser_port_uC.open()
-                    self.ser_port_DIS_X.open()
-                    self.ser_port_DIS_Y.open()
+                    # self.ser_port_DIS_X.open()
+                    # self.ser_port_DIS_Y.open()
+                    self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
+                    self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
+                    self.obj_dis_x.run()
+                    self.obj_dis_y.run()
                     self.run_exp1_state = 1
                     self.after(2000,self.run_monotonic_tester)
 
@@ -400,34 +404,28 @@ class App(ctk.CTk):
                 start_exp1 = "r1\n"
                 start_exp1 = start_exp1.encode()
                 self.ser_port_uC.write(start_exp1)
-                self.ser_port_DIS_X.close()
-                self.ser_port_DIS_Y.close()
-                self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
-                self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
-                self.obj_dis_x.run()
-                self.obj_dis_y.run()
                 self.after(100,self.run_monotonic_tester)
                 self.run_exp1_state = 6
 
             case 6:        
                 self.ser_port_uC.write(b'f\n')
-                out_data_dis_x = self.obj_dis_x.get_data()
-                out_data_dis_y = self.obj_dis_y.get_data()
-                tim_now = datetime.now()
-                time_stamp = tim_now.strftime("%H:%M:%S.%f")
-                if out_data_dis_x != None:
-                    if out_data_dis_y != None:
-                        try:
-                            x_show3digit = f'{int(out_data_dis_x[:-2])*0.001:.3f}'
-                            y_show3digit = f'{int(out_data_dis_y[:-2])*0.001:.3f}'
-                            data_dis_xy = ("DISX = "+x_show3digit + "," +"  DISY = "+y_show3digit+" TIME "+ time_stamp+"\n")
-                            self.monitor_text_box.insert("1.0",data_dis_xy)
-                        except:
-                            pass
-                    else:
-                        pass
-                else:
-                    pass
+                # out_data_dis_x = self.obj_dis_x.get_data()
+                # out_data_dis_y = self.obj_dis_y.get_data()
+                # tim_now = datetime.now()
+                # time_stamp = tim_now.strftime("%H:%M:%S.%f")
+                # if out_data_dis_x != None:
+                #     if out_data_dis_y != None:
+                #         try:
+                #             x_show3digit = f'{int(out_data_dis_x[:-2])*0.001:.3f}'
+                #             y_show3digit = f'{int(out_data_dis_y[:-2])*0.001:.3f}'
+                #             data_dis_xy = ("DISX = "+x_show3digit + "," +"  DISY = "+y_show3digit+" TIME "+ time_stamp+"\n")
+                #             self.monitor_text_box.insert("1.0",data_dis_xy)
+                #         except:
+                #             pass
+                #     else:
+                #         pass
+                # else:
+                #     pass
                 self.run_exp1_state = 7
                 self.after(50,self.run_monotonic_tester)
 
@@ -446,6 +444,7 @@ class App(ctk.CTk):
                 hu_bound = self.horizontal_test_force[0] + hf_gap
                 if (horizontal_force >= hl_bound and horizontal_force <= hu_bound ) and (vertical_force >= vl_bound and vertical_force <= vu_bound):
                     self.run_exp1_state = 8
+                    self.ser_port_uC.write(b'f\n')
                 else:
                     test_pass_time = time.time() - self.record_timer
                     if test_pass_time >= 10:
@@ -456,7 +455,18 @@ class App(ctk.CTk):
 
             case 8:
                 # save results
-                logger.debug("save result here")
+                # logger.debug("save result here")
+                dispX = self.obj_dis_x.get_last()
+                dispY = self.obj_dis_y.get_last()
+                xy_force_bytes = self.ser_port_uC.readline()
+                xy_force_string = xy_force_bytes.strip().decode()
+                vertical_force,horizontal_force = xy_force_string.split(",")
+                time_stamp = datetime.now().strftime("%H:%M:%S.%f")
+
+                disp_message = time_stamp + "," + str(dispX)+"," + str(dispY) + "," + horizontal_force + "," + vertical_force + "\n"
+                self.monitor_text_box.insert(tk.END,disp_message)
+
+
                 if len(self.horizontal_test_force) > 1:
                     self.horizontal_test_force.pop(0)
                     self.run_exp1_state = 1

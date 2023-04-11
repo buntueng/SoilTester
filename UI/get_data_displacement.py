@@ -54,6 +54,13 @@ class linear_displacement:
         self.serial_port.close()
         self.displacement_thread = None
 
+    def get_last(self):
+        return_value = None
+        if len(self.data_list) > 0:
+            return_value = self.data_list[-1]
+            self.data_list = []
+        return return_value
+
     def get_data(self):
         return_value = None
         if len(self.data_list) > 0:
