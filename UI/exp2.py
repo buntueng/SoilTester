@@ -43,7 +43,7 @@ logger.addHandler(consoleHandler)
 class App(ctk.CTk):
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.title("MONOTONIC TESTER")
+        self.title("EXP2 TESTER")
         self.resizable(False,False)
 
         self.master_frame = ctk.CTkFrame(self,fg_color="powderblue")
@@ -65,8 +65,8 @@ class App(ctk.CTk):
 
         self.fig, self.graph_ax = plt.subplots(figsize=(20, 10), dpi=50)
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.graph_frame)
-        plt.yticks(fontsize=40)
-        plt.xticks(fontsize=40)
+        plt.yticks(fontsize=20)
+        plt.xticks(fontsize=20)
         
         self.canvas.draw()
         self.canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10),)
@@ -96,16 +96,20 @@ class App(ctk.CTk):
         self.com_port_uC_label = ctk.CTkLabel(self.configuration_frame,text="uC PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.com_port_uC = ctk.CTkOptionMenu(self.configuration_frame,width=100,height=40,values=[""])
         self.com_port_uC.set("เลือกพอต")
+        self.cyclic_X_defualt = tk.StringVar(value="10")
+        self.cyclic_X_label = ctk.CTkLabel(self.configuration_frame,text="จำนวนครั้ง",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
+        self.cyclic_X_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.cyclic_X_defualt)
+        self.cyclic_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="ครั้ง",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_X_defualt = tk.StringVar(value="10")
-        self.pressure_min_X_label = ctk.CTkLabel(self.configuration_frame,text="แรงกด MIN X",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
+        self.pressure_min_X_label = ctk.CTkLabel(self.configuration_frame,text="แรงกดเริ่ม",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_min_X_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_X_defualt)
         self.pressure_min_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_max_X_defualt = tk.StringVar(value="100")
-        self.pressure_max_X_label = ctk.CTkLabel(self.configuration_frame,text="แรงกด MAX X",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
+        self.pressure_max_X_label = ctk.CTkLabel(self.configuration_frame,text="แรงกดสิ้นสุด",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_max_X_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_max_X_defualt)
         self.pressure_max_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
-        self.pressure_step_X_defualt = tk.StringVar(value="2")
-        self.pressure_step_X_label = ctk.CTkLabel(self.configuration_frame,text="Step แกน X",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
+        self.pressure_step_X_defualt = tk.StringVar(value="70")
+        self.pressure_step_X_label = ctk.CTkLabel(self.configuration_frame,text="PWM X ",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_step_X_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_step_X_defualt)
         self.pressure_step_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_Y_defualt = tk.StringVar(value="20")
@@ -118,6 +122,7 @@ class App(ctk.CTk):
         self.set_origin = ctk.CTkButton(self.configuration_frame,text = "ZERO",width=255,height=60,font=eng_font,corner_radius=15,command=self.zero_origin_pressed)
 
         self.plot_graph = ctk.CTkButton(self.configuration_frame,text = "Plot",width=255,height=60,font=eng_font,corner_radius=15,command=self.plot_xy)
+        self.update_pwm_x = ctk.CTkButton(self.configuration_frame,text = "UPDATE PWM",width=255,height=60,font=eng_font,corner_radius=15,command=self.update_pwm_x_pressed)
 
 
 
@@ -128,6 +133,11 @@ class App(ctk.CTk):
         self.com_port_DIS_Y.grid(row=1, column=1, padx=(5,10), pady=(10, 0),sticky=tk.N)
         self.com_port_uC_label.grid(row=2,column=0,padx=(5,5),pady=(10,0),ipadx = 5,sticky=tk.NW)
         self.com_port_uC.grid(row=2, column=1, padx=(5,10), pady=(10, 0),sticky=tk.N)
+
+        self.cyclic_X_label.grid(row=3, column=0, padx=(5,10), pady=(10, 0),sticky=tk.NW)
+        self.cyclic_X_entry.grid(row=3, column=1,columnspan = 3,padx=(5,10), pady=(10, 0),sticky=tk.NW)
+        self.cyclic_X_unit_label.grid(row=3, column=2, padx=(5,10), pady=(10, 0),sticky=tk.NW)
+
         self.pressure_min_X_label.grid(row=4, column=0, padx=(5,10), pady=(10, 0),sticky=tk.NW)
         self.pressure_min_X_entry.grid(row=4, column=1,columnspan = 3,padx=(5,10), pady=(10, 0),sticky=tk.NW)
         self.pressure_min_X_unit_label.grid(row=4, column=2, padx=(5,10), pady=(10, 0),sticky=tk.NW)
@@ -144,6 +154,7 @@ class App(ctk.CTk):
         self.stop_button.grid(row=9,column=0, padx=(20,15),columnspan = 3,pady=10,sticky=tk.NW)
         self.save_button.grid(row=10,column=0, padx=(20,15),columnspan = 3,sticky=tk.NW)
         self.set_origin.grid(row=11,column=0, padx=(20,15),columnspan = 3,pady=(10,0),sticky=tk.NW)
+        self.update_pwm_x.grid(row=12,column=0, padx=(20,15),columnspan = 3,pady=(10,0),sticky=tk.NW)
 
         # self.plot_graph.grid(row=12,column=0, padx=(20,15),columnspan = 3,pady=(10,0),sticky=tk.NW)
         #============================================================================
@@ -165,6 +176,8 @@ class App(ctk.CTk):
         self.disable_widget()
 
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
+    def update_pwm_x_pressed(self):
+        print("UPDATE")
 
     def plot_xy(self):
         time_axis = time.time()*1000
@@ -316,8 +329,6 @@ class App(ctk.CTk):
         self.pressure_Y_entry.configure(state = "normal")
         self.start_exp1 = False
         self.run_exp1_state = 0
-        self.obj_dis_x.stop()
-        self.obj_dis_y.stop()
 
     def save_botton_pressed(self):
         print("SAVE")
@@ -375,151 +386,7 @@ class App(ctk.CTk):
                 pass
 
     def run_monotonic_tester(self):
-        logger.debug(self.run_exp1_state)
-        match(self.run_exp1_state):
-            case 0:
-                if self.start_exp1==True:
-                    self.ser_port_uC.open()
-                    # self.ser_port_DIS_X.open()
-                    # self.ser_port_DIS_Y.open()
-                    self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
-                    self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
-                    self.obj_dis_x.run()
-                    self.obj_dis_y.run()
-                    self.run_exp1_state = 1
-                    self.after(2000,self.run_monotonic_tester)
-
-            case 1:
-                # print("case1")
-                vertical_force = self.pressure_Y_entry.get()
-                if self.ser_port_uC.is_open:
-                    # print("open")
-                    vertical_test_force = "N" + vertical_force + "\n" #============================== Y
-                    vertical_test_force_bytes = vertical_test_force.encode()
-                    # print(vertical_test_force_bytes)
-                    self.ser_port_uC.write(vertical_test_force_bytes)
-                    self.run_exp1_state = 2
-                    self.after(100,self.run_monotonic_tester)
-
-            case 2:
-                setting_result = self.ser_port_uC.readline()
-                setting_result_string = setting_result.strip().decode()
-                # print("pressure_Y= "+setting_result_string)
-                if setting_result_string == self.pressure_Y_entry.get():
-                    # print("to 3")
-                    self.run_exp1_state = 3
-                else:
-                    self.run_exp1_state = 1
-                self.after(100,self.run_monotonic_tester)
-                
-            case 3:
-                test_horizontal_force_string = f'T{self.horizontal_test_force[0]}\n'
-                test_horizontal_force_bytes = test_horizontal_force_string.encode()
-                self.ser_port_uC.write(test_horizontal_force_bytes)
-                self.run_exp1_state = 4
-                self.after(100,self.run_monotonic_tester)
-
-            case 4:
-                setting_result = self.ser_port_uC.readline()
-                setting_result_string = setting_result.strip().decode()
-                if setting_result_string == str(self.horizontal_test_force[0]):
-                    self.run_exp1_state = 5
-                    self.record_timer = time.time()
-                    self.after(100,self.run_monotonic_tester)
-                else:
-                    self.run_exp1_state = 3
-                    self.after(100,self.run_monotonic_tester)
-            
-            case 5:
-                start_exp1 = "r1\n"
-                start_exp1 = start_exp1.encode()
-                self.ser_port_uC.write(start_exp1)
-                self.after(100,self.run_monotonic_tester)
-                self.run_exp1_state = 6
-
-            case 6:        
-                self.ser_port_uC.write(b'f\n')
-                # out_data_dis_x = self.obj_dis_x.get_data()
-                # out_data_dis_y = self.obj_dis_y.get_data()
-                # tim_now = datetime.now()
-                # time_stamp = tim_now.strftime("%H:%M:%S.%f")
-                # if out_data_dis_x != None:
-                #     if out_data_dis_y != None:
-                #         try:
-                #             x_show3digit = f'{int(out_data_dis_x[:-2])*0.001:.3f}'
-                #             y_show3digit = f'{int(out_data_dis_y[:-2])*0.001:.3f}'
-                #             data_dis_xy = ("DISX = "+x_show3digit + "," +"  DISY = "+y_show3digit+" TIME "+ time_stamp+"\n")
-                #             self.monitor_text_box.insert("1.0",data_dis_xy)
-                #         except:
-                #             pass
-                #     else:
-                #         pass
-                # else:
-                #     pass
-                self.run_exp1_state = 7
-                self.after(50,self.run_monotonic_tester)
-
-            case 7:
-                xy_force_bytes = self.ser_port_uC.readline()
-                xy_force_string = xy_force_bytes.strip().decode()
-                vertical_force,horizontal_force = xy_force_string.split(",")
-
-                message_string = horizontal_force + "\t" + vertical_force
-                logger.debug(message_string)
-                horizontal_force = int(horizontal_force)
-                vertical_force = int(vertical_force)
-                vl_bound = int(self.pressure_Y_entry.get())-vf_gap
-                vu_bound = int(self.pressure_Y_entry.get())+vf_gap
-                hl_bound = self.horizontal_test_force[0] - hf_gap
-                hu_bound = self.horizontal_test_force[0] + hf_gap
-                if (horizontal_force >= hl_bound and horizontal_force <= hu_bound ) and (vertical_force >= vl_bound and vertical_force <= vu_bound):
-                    self.run_exp1_state = 8
-                    self.ser_port_uC.write(b'f\n')
-                else:
-                    test_pass_time = time.time() - self.record_timer
-                    if test_pass_time >= 10:
-                        self.run_exp1_state = 9
-                    else:
-                        self.run_exp1_state = 6
-                self.after(10,self.run_monotonic_tester)
-
-            case 8:
-                # save results
-                # logger.debug("save result here")
-                dispX = self.obj_dis_x.get_last()
-                dispY = self.obj_dis_y.get_last()
-                x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
-                y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
-                xy_force_bytes = self.ser_port_uC.readline()
-                xy_force_string = xy_force_bytes.strip().decode()
-                vertical_force,horizontal_force = xy_force_string.split(",")
-                time_stamp = datetime.now().strftime("%H:%M:%S.%f")
-
-                self.x_coordinate.append(int(horizontal_force))
-                self.y_coordinate.append(dispY)
-                self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
-                self.canvas.draw()
-
-                disp_message = time_stamp + "," + x_show3digit +"," + y_show3digit + "," + horizontal_force + "," + vertical_force + "\n"
-                self.monitor_text_box.insert(tk.END,disp_message)
-
-
-                if len(self.horizontal_test_force) > 1:
-                    self.horizontal_test_force.pop(0)
-                    self.run_exp1_state = 1
-                else:
-                    self.run_exp1_state = 9
-                    self.ser_port_uC.write(b't\n')
-                self.after(10,self.run_monotonic_tester)
-
-            # case 8:
-            #     pass
-
-            case 9:
-                self.ser_port_uC.write(b't\n')
-
-            case _:
-                pass
+        pass
 
 
 
