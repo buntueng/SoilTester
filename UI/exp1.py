@@ -63,6 +63,7 @@ class App(ctk.CTk):
         # canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10))
 
 
+<<<<<<< HEAD
         self.fig, self.graph_ax = plt.subplots(figsize=(20, 10), dpi=50)
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.graph_frame)
         plt.yticks(fontsize=40)
@@ -70,6 +71,24 @@ class App(ctk.CTk):
         
         self.canvas.draw()
         self.canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10),)
+=======
+        self.fig, self.graph_ax = plt.subplots(1,1,figsize=(20, 10), dpi=50)
+        self.canvas = FigureCanvasTkAgg(self.fig, master=self.graph_frame)
+        self.canvas.draw()
+        self.canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10))
+        self.graph_ax.set_xlabel('xlabel', fontsize=18)
+        self.graph_ax.set_ylabel('ylabel', fontsize=16)
+        self.graph_ax.tick_params(axis='both', which='major', labelsize=20)
+
+        self.graph_ax.margins(x=0)
+        self.graph_ax.margins(y=0)
+
+        plt.gca().set_axis_on()
+        plt.subplots_adjust(top=0.97,left=0.07,right=0.98,hspace = 0, wspace = 0)
+        # plt.margins(0,0)
+        # plt.gca().xaxis.set_major_locator(plt.NullLocator())
+        # plt.gca().yaxis.set_major_locator(plt.NullLocator())
+>>>>>>> 4c6f83745c192b31a0f114e4a43d4781d641d96c
 
         self.x_coordinate = []
         self.y_coordinate = []
@@ -145,7 +164,11 @@ class App(ctk.CTk):
         self.save_button.grid(row=10,column=0, padx=(20,15),columnspan = 3,sticky=tk.NW)
         self.set_origin.grid(row=11,column=0, padx=(20,15),columnspan = 3,pady=(10,0),sticky=tk.NW)
 
+<<<<<<< HEAD
         # self.plot_graph.grid(row=12,column=0, padx=(20,15),columnspan = 3,pady=(10,0),sticky=tk.NW)
+=======
+        self.plot_graph.grid(row=12,column=0, padx=(20,15),columnspan = 3,pady=(10,0),sticky=tk.NW)
+>>>>>>> 4c6f83745c192b31a0f114e4a43d4781d641d96c
         #============================================================================
 
         self.ser_port_uC = ser.Serial(baudrate=115200,parity=ser.PARITY_NONE,stopbits=ser.STOPBITS_ONE,bytesize=ser.EIGHTBITS,timeout=0.5,inter_byte_timeout=0.1)  
@@ -197,7 +220,11 @@ class App(ctk.CTk):
 
     def list_serial_ports(self):
             if sys.platform.startswith('win'):
+<<<<<<< HEAD
                 ports = ['COM%s' % (i + 1) for i in range(2,40)]
+=======
+                ports = ['COM%s' % (i + 1) for i in range(10,40)]
+>>>>>>> 4c6f83745c192b31a0f114e4a43d4781d641d96c
             elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
                 ports = glob.glob('/dev/tty[A-Za-z]*')
             elif sys.platform.startswith('darwin'):
