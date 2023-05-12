@@ -3,7 +3,7 @@ import tkinter as  tk
 import matplotlib
 matplotlib.use('TkAgg')
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,)
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import serial as ser
 import sys
 import glob
@@ -27,11 +27,13 @@ vf_gap = 5
 hf_gap = 5
 
 #=================================== setup logging =========================================================
+logging.getLogger('matplotlib.font_manager').disabled = True
+logging.getLogger('PIL').setLevel(logging.WARNING)
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 logging_format = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
-fileHandler = logging.FileHandler(filename="./exp1_log.log")
+fileHandler = logging.FileHandler(filename="exp1_log.log")
 fileHandler.setFormatter(logging_format)
 logger.addHandler(fileHandler)
 
@@ -43,7 +45,7 @@ logger.addHandler(consoleHandler)
 class App(ctk.CTk):
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.title("MONOTONIC TESTER")
+        self.title("Soil Tester")
         # self.geometry(f"{1700}x{950}")
         self.resizable(False,False)
 
@@ -59,11 +61,6 @@ class App(ctk.CTk):
         self.monitor_frame = ctk.CTkFrame(self.master_frame,fg_color="cornflowerblue",corner_radius=20)
         self.monitor_frame.grid(row=1,column=0,padx=5,pady=5,sticky=tk.NW)
         #================================== CANVAS ==================================
-        # figure = Figure(figsize=(20, 10), dpi=50)
-        # canvas = FigureCanvasTkAgg(figure, master=self.graph_frame)
-        # canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10))
-
-
         self.fig, self.graph_ax = plt.subplots(figsize=(20, 10), dpi=50)
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.graph_frame)
         plt.yticks(fontsize=20)
@@ -374,23 +371,10 @@ class App(ctk.CTk):
         logger.debug("plot graph")
 
     def on_closing(self):
-        try:
-            # self.ser_port_DIS_X.close()
-            self.obj_dis_x.stop()
-        except:
-            pass
-
-        try:
-            # self.ser_port_DIS_Y.close()
-            self.obj_dis_y.stop()
-        except:
-            pass
-        
-        try:
-            self.ser_port_uC.close()
-        except:
-            pass
-
+        self.quit()
+        self.after(10,self.destoy_windows)
+    
+    def destoy_windows(self):
         self.destroy()
 
     def list_serial_ports(self):
