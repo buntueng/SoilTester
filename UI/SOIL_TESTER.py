@@ -202,7 +202,14 @@ class App(ctk.CTk):
        
         self.zero_state = 0
         self.set_zero_status = False
+
+        self.radiobutton_var.set(1)
+
         self.run_exp1_state = 0
+        self.run_exp2_state = 0
+        self.run_exp3_state = 0
+        self.run_exp4_state = 0
+
         self.start_exp1 = False       
         active_port_list = self.list_serial_ports()
         self.com_port_DIS_X.configure(values=active_port_list)
@@ -213,6 +220,8 @@ class App(ctk.CTk):
         self.disable_widget()
         self.select_exp()
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
+
+        self.running_flag = False
 
     def select_exp(self):
         selected_exp = self.radiobutton_var.get()
@@ -459,7 +468,6 @@ class App(ctk.CTk):
     def start_button_pressed(self):
         self.monitor_text_box.delete("1.0",tk.END)
         if self.check_select_comport() and self.check_xy_params():
-        # if self.check_xy_params():
             self.com_port_uC.configure(state="disabled")
             self.com_port_DIS_X.configure(state="disabled")
             self.com_port_DIS_Y.configure(state="disabled")
@@ -475,15 +483,119 @@ class App(ctk.CTk):
             stop_T = int(self.pressure_max_X_entry.get())
             step_T  = int(self.pressure_step_X_entry.get())
 
-            # self.horizontal_test_force = [*range(start,stop,step)]
             self.horizontal_test_force = [*range(start_T,stop_T,step_T)]
-            # print(self.horizontal_test_force)
 
-            self.run_exp1_state = 0
-            self.start_exp1 = True
-            self.run_monotonic_tester()
+            self.running_flag = True
+            # check experiments here
+            match self.radiobutton_var.get():
+                case 1:
+                    self.run_exp1_state = 0
+                    self.after(10,self.run_exp1)
+                case 2:
+                    self.run_exp2_state = 0
+                    self.after(10,self.run_exp2)
+                case 3:
+                    self.run_exp3_state = 0
+                    self.after(10,self.run_exp3)
+                case 4:
+                    self.run_exp4_state = 0
+                    self.after(10,self.run_exp4)
+                case other:
+                    logger.warning("Experiment number is out of list")
+           
+
+    def run_exp1(self):
+        if self.running_flag:
+            match self.run_exp1_state:
+                case 0:
+                    pass
+                case 1:
+                    pass
+                case 2:
+                    pass
+                case 3:
+                    pass
+                case 4:
+                    pass
+                case 5:
+                    pass
+                case 6:
+                    pass
+                case other:
+                    self.running_flag = False
+            
+            self.after(self.run_exp1())
+
+    def run_exp2(self):
+        if self.running_flag:
+            match self.run_exp2_state:
+                case 0:
+                    pass
+                case 1:
+                    pass
+                case 2:
+                    pass
+                case 3:
+                    pass
+                case 4:
+                    pass
+                case 5:
+                    pass
+                case 6:
+                    pass
+                case other:
+                    self.running_flag = False
+            
+            self.after(self.run_exp2())
+    
+    def run_exp3(self):
+        if self.running_flag:
+            match self.run_exp3_state:
+                case 0:
+                    pass
+                case 1:
+                    pass
+                case 2:
+                    pass
+                case 3:
+                    pass
+                case 4:
+                    pass
+                case 5:
+                    pass
+                case 6:
+                    pass
+                case other:
+                    self.running_flag = False
+            
+            self.after(self.run_exp3())
+
+    def run_exp4(self):
+        if self.running_flag:
+            match self.run_exp4_state:
+                case 0:
+                    pass
+                case 1:
+                    pass
+                case 2:
+                    pass
+                case 3:
+                    pass
+                case 4:
+                    pass
+                case 5:
+                    pass
+                case 6:
+                    pass
+                case other:
+                    self.running_flag = False
+            
+            self.after(self.run_exp4())
+
 
     def stop_button_pressed(self):
+        self.running_flag = False
+
         self.disable_widget()
         self.ser_port_DIS_X.close()
         self.ser_port_DIS_Y.close()
