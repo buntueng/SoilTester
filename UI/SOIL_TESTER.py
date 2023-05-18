@@ -15,6 +15,7 @@ import time
 import matplotlib.pyplot as plt
 import random
 
+data_file = "./OK.txt"
 
 ctk.set_appearance_mode("System") 
 ctk.set_default_color_theme("blue") 
@@ -65,6 +66,7 @@ class App(ctk.CTk):
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.graph_frame)
         plt.yticks(fontsize=20)
         plt.xticks(fontsize=20)
+        
         
         self.canvas.draw()
         self.canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10),)
@@ -254,6 +256,7 @@ class App(ctk.CTk):
             self.pressure_step_X_exp2_label.configure(state = "disabled")
             self.pressure_step_X_exp2_entry.configure(state = "disabled")
             self.pressure_step_X_exp2_unit_label.configure(state = "disabled") 
+            self.update_pwm_x.configure(state = "disabled")
         elif selected_exp == 2:
             self.exp_param_label.configure(state = "normal")
             self.pressure_Y_label.configure(state = "disabled")
@@ -283,6 +286,7 @@ class App(ctk.CTk):
             self.pressure_step_X_exp2_label.configure(state = "normal")
             self.pressure_step_X_exp2_entry.configure(state = "normal")
             self.pressure_step_X_exp2_unit_label.configure(state = "normal") 
+            self.update_pwm_x.configure(state = "normal")
         elif selected_exp == 3:
             self.exp_param_label.configure(state = "normal")
             self.pressure_Y_label.configure(state = "normal")
@@ -311,7 +315,8 @@ class App(ctk.CTk):
             self.pressure_max_X_exp2_unit_label.configure(state = "disabled")
             self.pressure_step_X_exp2_label.configure(state = "disabled")
             self.pressure_step_X_exp2_entry.configure(state = "disabled")
-            self.pressure_step_X_exp2_unit_label.configure(state = "disabled") 
+            self.pressure_step_X_exp2_unit_label.configure(state = "disabled")
+            self.update_pwm_x.configure(state = "disabled") 
         elif selected_exp == 4:
             self.exp_param_label.configure(state = "normal")
             self.pressure_Y_label.configure(state = "disabled")
@@ -340,7 +345,8 @@ class App(ctk.CTk):
             self.pressure_max_X_exp2_unit_label.configure(state = "normal")
             self.pressure_step_X_exp2_label.configure(state = "normal")
             self.pressure_step_X_exp2_entry.configure(state = "normal")
-            self.pressure_step_X_exp2_unit_label.configure(state = "normal") 
+            self.pressure_step_X_exp2_unit_label.configure(state = "normal")
+            self.update_pwm_x.configure(state = "normal")  
         else: 
             self.exp_param_label.configure(state = "disabled")
             self.pressure_Y_label.configure(state = "disabled")
@@ -380,6 +386,12 @@ class App(ctk.CTk):
         logger.debug("plot graph")
 
     def on_closing(self):
+        try:
+            self.ser_port_DIS_X.close()
+            self.ser_port_DIS_Y.close()
+            self.ser_port_uC.close()
+        except:
+            pass
         self.quit()
         self.after(10,self.destoy_windows)
     
@@ -465,8 +477,16 @@ class App(ctk.CTk):
             tk.messagebox.showerror(title="xy params error", message="ตรวจสอบ parameter x และ y",)
         return check_flag
     
+    def clear_can(self):
+        for item in self.canvas.get_tk_widget().find_all():
+            self.canvas.get_tk_widget().delete(item)
+
     def start_button_pressed(self):
         self.monitor_text_box.delete("1.0",tk.END)
+        self.x_coordinate=[]
+        self.y_coordinate=[]
+        self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+        self.canvas.draw()
         if self.check_select_comport() and self.check_xy_params():
             self.com_port_uC.configure(state="disabled")
             self.com_port_DIS_X.configure(state="disabled")
@@ -483,12 +503,14 @@ class App(ctk.CTk):
             stop_T = int(self.pressure_max_X_entry.get())
             step_T  = int(self.pressure_step_X_entry.get())
 
-            self.horizontal_test_force = [*range(start_T,stop_T,step_T)]
-
             self.running_flag = True
+            # clear display and graph
+
             # check experiments here
+
             match self.radiobutton_var.get():
                 case 1:
+                    self.horizontal_test_force = [*range(start_T,stop_T,step_T)]
                     self.run_exp1_state = 0
                     self.after(10,self.run_exp1)
                 case 2:
@@ -503,28 +525,129 @@ class App(ctk.CTk):
                 case other:
                     logger.warning("Experiment number is out of list")
            
-
     def run_exp1(self):
         if self.running_flag:
             match self.run_exp1_state:
                 case 0:
-                    pass
+                    self.ser_port_uC.open()
+                    self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
+                    self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
+                    self.obj_dis_x.run()
+                    self.obj_dis_y.run()
+                    self.run_exp1_state = 1
+                    self.after(2000,self.run_exp1)
+
                 case 1:
-                    pass
+                    vertical_force = self.pressure_Y_entry.get()
+                    if self.ser_port_uC.is_open:
+                        vertical_test_force = "N" + vertical_force + "\n" #============================== Y
+                        vertical_test_force_bytes = vertical_test_force.encode()
+                        self.ser_port_uC.write(vertical_test_force_bytes)
+                        self.run_exp1_state = 2
+                        self.after(100,self.run_exp1)
+
                 case 2:
-                    pass
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.strip().decode()
+                    if setting_result_string == self.pressure_Y_entry.get():
+                        self.run_exp1_state = 3
+                    else:
+                        self.run_exp1_state = 1
+                    self.after(100,self.run_exp1)
+
                 case 3:
-                    pass
+                    test_horizontal_force_string = f'T{self.horizontal_test_force[0]}\n'
+                    test_horizontal_force_bytes = test_horizontal_force_string.encode()
+                    self.ser_port_uC.write(test_horizontal_force_bytes)
+                    self.run_exp1_state = 4
+                    self.after(100,self.run_exp1)
+
                 case 4:
-                    pass
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.strip().decode()
+                    if setting_result_string == str(self.horizontal_test_force[0]):
+                        self.run_exp1_state = 5
+                        self.record_timer = time.time()
+                        self.after(100,self.run_exp1)
+                    else:
+                        self.run_exp1_state = 3
+                        self.after(100,self.run_exp1)
+
                 case 5:
-                    pass
+                    start_exp1 = "r1\n"
+                    start_exp1 = start_exp1.encode()
+                    self.ser_port_uC.write(start_exp1)
+                    self.after(100,self.run_exp1)
+                    self.run_exp1_state = 6
+
                 case 6:
-                    pass
+                    self.ser_port_uC.write(b'f\n')
+                    self.run_exp1_state = 7
+                    self.after(50,self.run_exp1)
+
+                case 7:
+                    xy_force_bytes = self.ser_port_uC.readline()
+                    xy_force_string = xy_force_bytes.strip().decode()
+                    vertical_force,horizontal_force = xy_force_string.split(",")
+
+                    message_string = horizontal_force + "\t" + vertical_force
+                    logger.debug(message_string)
+                    horizontal_force = int(horizontal_force)
+                    vertical_force = int(vertical_force)
+                    vl_bound = int(self.pressure_Y_entry.get())-vf_gap
+                    vu_bound = int(self.pressure_Y_entry.get())+vf_gap
+                    hl_bound = self.horizontal_test_force[0] - hf_gap
+                    hu_bound = self.horizontal_test_force[0] + hf_gap
+                    if (horizontal_force >= hl_bound and horizontal_force <= hu_bound ) and (vertical_force >= vl_bound and vertical_force <= vu_bound):
+                        self.run_exp1_state = 8
+                        self.ser_port_uC.write(b'f\n')
+                    else:
+                        test_pass_time = time.time() - self.record_timer
+                        if test_pass_time >= 10:
+                            self.run_exp1_state = 9
+                        else:
+                            self.run_exp1_state = 6
+                    self.after(10,self.run_exp1)
+
+                case 8:
+                    dispX = self.obj_dis_x.get_last()
+                    dispY = self.obj_dis_y.get_last()
+                    x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
+                    y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
+                    xy_force_bytes = self.ser_port_uC.readline()
+                    xy_force_string = xy_force_bytes.strip().decode()
+                    vertical_force,horizontal_force = xy_force_string.split(",")
+                    time_stamp = datetime.now().strftime("%H:%M:%S.%f")
+
+                    self.x_coordinate.append(float(y_show3digit))
+                    self.y_coordinate.append(int(horizontal_force))
+                    self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                    self.canvas.draw()
+
+                    disp_message = time_stamp + "," + x_show3digit +"," + y_show3digit + "," + horizontal_force + "," + vertical_force + "\n"
+                    self.monitor_text_box.insert(tk.END,disp_message)
+
+                    with open(data_file, 'a+') as f:
+                        f.write(y_show3digit)
+                        f.write(",")
+                        f.write(horizontal_force)
+                        f.write("\n")
+
+                    if len(self.horizontal_test_force) > 1:
+                        self.horizontal_test_force.pop(0)
+                        self.run_exp1_state = 1
+                    else:
+                        self.run_exp1_state = 9
+                        self.ser_port_uC.write(b't\n')
+                    self.after(10,self.run_exp1)
+
+                case 9:
+                    self.ser_port_uC.write(b't\n')
+
                 case other:
                     self.running_flag = False
             
-            self.after(self.run_exp1())
+            # self.after(self.run_exp1())
 
     def run_exp2(self):
         if self.running_flag:
@@ -591,7 +714,6 @@ class App(ctk.CTk):
                     self.running_flag = False
             
             self.after(self.run_exp4())
-
 
     def stop_button_pressed(self):
         self.running_flag = False
@@ -680,150 +802,150 @@ class App(ctk.CTk):
 
     def run_monotonic_tester(self):
         logger.debug(self.run_exp1_state)
-        match(self.run_exp1_state):
-            case 0:
-                if self.start_exp1==True:
-                    self.ser_port_uC.open()
-                    # self.ser_port_DIS_X.open()
-                    # self.ser_port_DIS_Y.open()
-                    self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
-                    self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
-                    self.obj_dis_x.run()
-                    self.obj_dis_y.run()
-                    self.run_exp1_state = 1
-                    self.after(2000,self.run_monotonic_tester)
+        # match(self.run_exp1_state):
+        #     case 0:
+        #         if self.start_exp1==True:
+        #             self.ser_port_uC.open()
+        #             # self.ser_port_DIS_X.open()
+        #             # self.ser_port_DIS_Y.open()
+        #             self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
+        #             self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
+        #             self.obj_dis_x.run()
+        #             self.obj_dis_y.run()
+        #             self.run_exp1_state = 1
+        #             self.after(2000,self.run_monotonic_tester)
 
-            case 1:
-                # print("case1")
-                vertical_force = self.pressure_Y_entry.get()
-                if self.ser_port_uC.is_open:
-                    # print("open")
-                    vertical_test_force = "N" + vertical_force + "\n" #============================== Y
-                    vertical_test_force_bytes = vertical_test_force.encode()
-                    # print(vertical_test_force_bytes)
-                    self.ser_port_uC.write(vertical_test_force_bytes)
-                    self.run_exp1_state = 2
-                    self.after(100,self.run_monotonic_tester)
+        #     case 1:
+        #         # print("case1")
+        #         vertical_force = self.pressure_Y_entry.get()
+        #         if self.ser_port_uC.is_open:
+        #             # print("open")
+        #             vertical_test_force = "N" + vertical_force + "\n" #============================== Y
+        #             vertical_test_force_bytes = vertical_test_force.encode()
+        #             # print(vertical_test_force_bytes)
+        #             self.ser_port_uC.write(vertical_test_force_bytes)
+        #             self.run_exp1_state = 2
+        #             self.after(100,self.run_monotonic_tester)
 
-            case 2:
-                setting_result = self.ser_port_uC.readline()
-                setting_result_string = setting_result.strip().decode()
-                # print("pressure_Y= "+setting_result_string)
-                if setting_result_string == self.pressure_Y_entry.get():
-                    # print("to 3")
-                    self.run_exp1_state = 3
-                else:
-                    self.run_exp1_state = 1
-                self.after(100,self.run_monotonic_tester)
+        #     case 2:
+        #         setting_result = self.ser_port_uC.readline()
+        #         setting_result_string = setting_result.strip().decode()
+        #         # print("pressure_Y= "+setting_result_string)
+        #         if setting_result_string == self.pressure_Y_entry.get():
+        #             # print("to 3")
+        #             self.run_exp1_state = 3
+        #         else:
+        #             self.run_exp1_state = 1
+        #         self.after(100,self.run_monotonic_tester)
                 
-            case 3:
-                test_horizontal_force_string = f'T{self.horizontal_test_force[0]}\n'
-                test_horizontal_force_bytes = test_horizontal_force_string.encode()
-                self.ser_port_uC.write(test_horizontal_force_bytes)
-                self.run_exp1_state = 4
-                self.after(100,self.run_monotonic_tester)
+        #     case 3:
+        #         test_horizontal_force_string = f'T{self.horizontal_test_force[0]}\n'
+        #         test_horizontal_force_bytes = test_horizontal_force_string.encode()
+        #         self.ser_port_uC.write(test_horizontal_force_bytes)
+        #         self.run_exp1_state = 4
+        #         self.after(100,self.run_monotonic_tester)
 
-            case 4:
-                setting_result = self.ser_port_uC.readline()
-                setting_result_string = setting_result.strip().decode()
-                if setting_result_string == str(self.horizontal_test_force[0]):
-                    self.run_exp1_state = 5
-                    self.record_timer = time.time()
-                    self.after(100,self.run_monotonic_tester)
-                else:
-                    self.run_exp1_state = 3
-                    self.after(100,self.run_monotonic_tester)
+        #     case 4:
+        #         setting_result = self.ser_port_uC.readline()
+        #         setting_result_string = setting_result.strip().decode()
+        #         if setting_result_string == str(self.horizontal_test_force[0]):
+        #             self.run_exp1_state = 5
+        #             self.record_timer = time.time()
+        #             self.after(100,self.run_monotonic_tester)
+        #         else:
+        #             self.run_exp1_state = 3
+        #             self.after(100,self.run_monotonic_tester)
             
-            case 5:
-                start_exp1 = "r1\n"
-                start_exp1 = start_exp1.encode()
-                self.ser_port_uC.write(start_exp1)
-                self.after(100,self.run_monotonic_tester)
-                self.run_exp1_state = 6
+        #     case 5:
+        #         start_exp1 = "r1\n"
+        #         start_exp1 = start_exp1.encode()
+        #         self.ser_port_uC.write(start_exp1)
+        #         self.after(100,self.run_monotonic_tester)
+        #         self.run_exp1_state = 6
 
-            case 6:        
-                self.ser_port_uC.write(b'f\n')
-                # out_data_dis_x = self.obj_dis_x.get_data()
-                # out_data_dis_y = self.obj_dis_y.get_data()
-                # tim_now = datetime.now()
-                # time_stamp = tim_now.strftime("%H:%M:%S.%f")
-                # if out_data_dis_x != None:
-                #     if out_data_dis_y != None:
-                #         try:
-                #             x_show3digit = f'{int(out_data_dis_x[:-2])*0.001:.3f}'
-                #             y_show3digit = f'{int(out_data_dis_y[:-2])*0.001:.3f}'
-                #             data_dis_xy = ("DISX = "+x_show3digit + "," +"  DISY = "+y_show3digit+" TIME "+ time_stamp+"\n")
-                #             self.monitor_text_box.insert("1.0",data_dis_xy)
-                #         except:
-                #             pass
-                #     else:
-                #         pass
-                # else:
-                #     pass
-                self.run_exp1_state = 7
-                self.after(50,self.run_monotonic_tester)
+        #     case 6:        
+        #         self.ser_port_uC.write(b'f\n')
+        #         # out_data_dis_x = self.obj_dis_x.get_data()
+        #         # out_data_dis_y = self.obj_dis_y.get_data()
+        #         # tim_now = datetime.now()
+        #         # time_stamp = tim_now.strftime("%H:%M:%S.%f")
+        #         # if out_data_dis_x != None:
+        #         #     if out_data_dis_y != None:
+        #         #         try:
+        #         #             x_show3digit = f'{int(out_data_dis_x[:-2])*0.001:.3f}'
+        #         #             y_show3digit = f'{int(out_data_dis_y[:-2])*0.001:.3f}'
+        #         #             data_dis_xy = ("DISX = "+x_show3digit + "," +"  DISY = "+y_show3digit+" TIME "+ time_stamp+"\n")
+        #         #             self.monitor_text_box.insert("1.0",data_dis_xy)
+        #         #         except:
+        #         #             pass
+        #         #     else:
+        #         #         pass
+        #         # else:
+        #         #     pass
+        #         self.run_exp1_state = 7
+        #         self.after(50,self.run_monotonic_tester)
 
-            case 7:
-                xy_force_bytes = self.ser_port_uC.readline()
-                xy_force_string = xy_force_bytes.strip().decode()
-                vertical_force,horizontal_force = xy_force_string.split(",")
+        #     case 7:
+        #         xy_force_bytes = self.ser_port_uC.readline()
+        #         xy_force_string = xy_force_bytes.strip().decode()
+        #         vertical_force,horizontal_force = xy_force_string.split(",")
 
-                message_string = horizontal_force + "\t" + vertical_force
-                logger.debug(message_string)
-                horizontal_force = int(horizontal_force)
-                vertical_force = int(vertical_force)
-                vl_bound = int(self.pressure_Y_entry.get())-vf_gap
-                vu_bound = int(self.pressure_Y_entry.get())+vf_gap
-                hl_bound = self.horizontal_test_force[0] - hf_gap
-                hu_bound = self.horizontal_test_force[0] + hf_gap
-                if (horizontal_force >= hl_bound and horizontal_force <= hu_bound ) and (vertical_force >= vl_bound and vertical_force <= vu_bound):
-                    self.run_exp1_state = 8
-                    self.ser_port_uC.write(b'f\n')
-                else:
-                    test_pass_time = time.time() - self.record_timer
-                    if test_pass_time >= 10:
-                        self.run_exp1_state = 9
-                    else:
-                        self.run_exp1_state = 6
-                self.after(10,self.run_monotonic_tester)
+        #         message_string = horizontal_force + "\t" + vertical_force
+        #         logger.debug(message_string)
+        #         horizontal_force = int(horizontal_force)
+        #         vertical_force = int(vertical_force)
+        #         vl_bound = int(self.pressure_Y_entry.get())-vf_gap
+        #         vu_bound = int(self.pressure_Y_entry.get())+vf_gap
+        #         hl_bound = self.horizontal_test_force[0] - hf_gap
+        #         hu_bound = self.horizontal_test_force[0] + hf_gap
+        #         if (horizontal_force >= hl_bound and horizontal_force <= hu_bound ) and (vertical_force >= vl_bound and vertical_force <= vu_bound):
+        #             self.run_exp1_state = 8
+        #             self.ser_port_uC.write(b'f\n')
+        #         else:
+        #             test_pass_time = time.time() - self.record_timer
+        #             if test_pass_time >= 10:
+        #                 self.run_exp1_state = 9
+        #             else:
+        #                 self.run_exp1_state = 6
+        #         self.after(10,self.run_monotonic_tester)
 
-            case 8:
-                # save results
-                # logger.debug("save result here")
-                dispX = self.obj_dis_x.get_last()
-                dispY = self.obj_dis_y.get_last()
-                x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
-                y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
-                xy_force_bytes = self.ser_port_uC.readline()
-                xy_force_string = xy_force_bytes.strip().decode()
-                vertical_force,horizontal_force = xy_force_string.split(",")
-                time_stamp = datetime.now().strftime("%H:%M:%S.%f")
+        #     case 8:
+        #         # save results
+        #         # logger.debug("save result here")
+        #         dispX = self.obj_dis_x.get_last()
+        #         dispY = self.obj_dis_y.get_last()
+        #         x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
+        #         y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
+        #         xy_force_bytes = self.ser_port_uC.readline()
+        #         xy_force_string = xy_force_bytes.strip().decode()
+        #         vertical_force,horizontal_force = xy_force_string.split(",")
+        #         time_stamp = datetime.now().strftime("%H:%M:%S.%f")
 
-                self.x_coordinate.append(int(horizontal_force))
-                self.y_coordinate.append(dispY)
-                self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
-                self.canvas.draw()
+        #         self.x_coordinate.append(int(horizontal_force))
+        #         self.y_coordinate.append(dispY)
+        #         self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+        #         self.canvas.draw()
 
-                disp_message = time_stamp + "," + x_show3digit +"," + y_show3digit + "," + horizontal_force + "," + vertical_force + "\n"
-                self.monitor_text_box.insert(tk.END,disp_message)
+        #         disp_message = time_stamp + "," + x_show3digit +"," + y_show3digit + "," + horizontal_force + "," + vertical_force + "\n"
+        #         self.monitor_text_box.insert(tk.END,disp_message)
 
 
-                if len(self.horizontal_test_force) > 1:
-                    self.horizontal_test_force.pop(0)
-                    self.run_exp1_state = 1
-                else:
-                    self.run_exp1_state = 9
-                    self.ser_port_uC.write(b't\n')
-                self.after(10,self.run_monotonic_tester)
+        #         if len(self.horizontal_test_force) > 1:
+        #             self.horizontal_test_force.pop(0)
+        #             self.run_exp1_state = 1
+        #         else:
+        #             self.run_exp1_state = 9
+        #             self.ser_port_uC.write(b't\n')
+        #         self.after(10,self.run_monotonic_tester)
 
-            # case 8:
-            #     pass
+        #     # case 8:
+        #     #     pass
 
-            case 9:
-                self.ser_port_uC.write(b't\n')
+        #     case 9:
+        #         self.ser_port_uC.write(b't\n')
 
-            case _:
-                pass
+        #     case _:
+        #         pass
 
 
 
