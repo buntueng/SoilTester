@@ -584,6 +584,10 @@ void run_exp2()
                 analogWrite(x_motor_speed_pin,0);
                 f_min = x_present_force;
                 // Serial.println("Y"+(String(x_present_force)));
+                if(start_counter>0)
+                {
+                    counter_cyclic++;
+                }
             }
             break;
         }
