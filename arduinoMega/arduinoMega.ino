@@ -129,7 +129,7 @@ void loop()
                 Serial.println(fixed_horizontal_force,DEC);
                 break;
             }
-            case 'a':
+            case 'a': // check exp1 test success
             {
                 Serial.println(exp1_start_test);
                 break;

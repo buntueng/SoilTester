@@ -598,17 +598,17 @@ class App(ctk.CTk):
                         self.run_exp1_state = 3
                     self.after(100,self.run_exp1)
 
-                # case 5:
-                #     start_exp1 = "r1\n"
-                #     start_exp1 = start_exp1.encode()
-                #     self.ser_port_uC.write(start_exp1)
-                #     self.after(100,self.run_exp1)
-                #     self.run_exp1_state = 6
+                case 5:
+                    start_exp1 = "r1\n"
+                    start_exp1 = start_exp1.encode()
+                    self.ser_port_uC.write(start_exp1)
+                    self.after(100,self.run_exp1)
+                    self.run_exp1_state = 6
 
-                # case 6:
-                #     self.ser_port_uC.write(b'f\n')
-                #     self.run_exp1_state = 7
-                #     self.after(50,self.run_exp1)
+                case 6:
+                    self.ser_port_uC.write(b'f\n')
+                    self.run_exp1_state = 7
+                    self.after(50,self.run_exp1)
 
                 # case 7:
                 #     xy_force_bytes = self.ser_port_uC.readline()
