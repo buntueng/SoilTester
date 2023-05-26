@@ -132,7 +132,7 @@ class App(ctk.CTk):
         self.pressure_max_X_exp2_label = ctk.CTkLabel(self.configuration_frame,text="แรงกดสิ้นสุด",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_max_X_exp2_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_max_X_exp2_defualt)
         self.pressure_max_X_exp2_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)  
-        self.pressure_step_X_exp2_defualt = tk.StringVar(value="70")
+        self.pressure_step_X_exp2_defualt = tk.StringVar(value="20")
         self.pwm_x_label = ctk.CTkLabel(self.configuration_frame,text="PWM X ",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pwm_x_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_step_X_exp2_defualt)
         self.pwm_x_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font) 
@@ -245,15 +245,15 @@ class App(ctk.CTk):
             self.pressure_Y_label.configure(state = "normal")
             self.pressure_Y_entry.configure(state = "normal")
             self.pressure_Y_unit_label.configure(state = "normal")
-            self.pressure_min_X_label.configure(state = "normal")
-            self.pressure_min_X_entry.configure(state = "normal")
-            self.pressure_min_X_unit_label.configure(state = "normal")
-            self.pressure_max_X_label.configure(state = "normal")
-            self.pressure_max_X_entry.configure(state = "normal")
-            self.pressure_max_X_unit_label.configure(state = "normal")
-            self.pressure_step_X_label.configure(state = "normal")
-            self.pressure_step_X_entry.configure(state = "normal")
-            self.pressure_step_X_unit_label.configure(state = "normal")
+            self.pressure_min_X_label.configure(state = "disabled")
+            self.pressure_min_X_entry.configure(state = "disabled")
+            self.pressure_min_X_unit_label.configure(state = "disabled")
+            self.pressure_max_X_label.configure(state = "disabled")
+            self.pressure_max_X_entry.configure(state = "disabled")
+            self.pressure_max_X_unit_label.configure(state = "disabled")
+            self.pressure_step_X_label.configure(state = "disabled")
+            self.pressure_step_X_entry.configure(state = "disabled")
+            self.pressure_step_X_unit_label.configure(state = "disabled")
             self.set_K_label.configure(state = "disabled")
             self.set_K_entry.configure(state = "disabled")
             self.set_K_unit_label.configure(state = "disabled")
@@ -266,9 +266,9 @@ class App(ctk.CTk):
             self.pressure_max_X_exp2_label.configure(state = "disabled")
             self.pressure_max_X_exp2_entry.configure(state = "disabled")
             self.pressure_max_X_exp2_unit_label.configure(state = "disabled")
-            self.pwm_x_label.configure(state = "disabled")
-            self.pwm_x_entry.configure(state = "disabled")
-            self.pwm_x_unit_label.configure(state = "disabled") 
+            self.pwm_x_label.configure(state = "normal")
+            self.pwm_x_entry.configure(state = "normal")
+            self.pwm_x_unit_label.configure(state = "normal") 
             self.update_pwm_x.configure(state = "disabled")
             self.cyclic_time_label.configure(state = "disabled")
             self.cyclic_time_entry.configure(state = "disabled")
@@ -582,93 +582,92 @@ class App(ctk.CTk):
                     self.after(100,self.run_exp1)
 
                 case 3:
-                    test_horizontal_force_string = f'T{self.horizontal_test_force[0]}\n'
-                    test_horizontal_force_bytes = test_horizontal_force_string.encode()
-                    self.ser_port_uC.write(test_horizontal_force_bytes)
-                    self.run_exp1_state = 4
-                    self.after(100,self.run_exp1)
-
+                    exp1_pwm_x = self.pwm_x_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_update_pwm_string = "U" + exp1_pwm_x + "\n" #=============================== update pwm x
+                        exp1_update_pwm_byte = exp1_update_pwm_string.encode()
+                        self.ser_port_uC.write(exp1_update_pwm_byte)
+                        self.run_exp1_state = 4 
+                
                 case 4:
                     setting_result = self.ser_port_uC.readline()
-                    setting_result_string = setting_result.strip().decode()
-                    if setting_result_string == str(self.horizontal_test_force[0]):
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pwm_x_entry.get():
                         self.run_exp1_state = 5
-                        self.record_timer = time.time()
-                        self.after(100,self.run_exp1)
                     else:
                         self.run_exp1_state = 3
-                        self.after(100,self.run_exp1)
-
-                case 5:
-                    start_exp1 = "r1\n"
-                    start_exp1 = start_exp1.encode()
-                    self.ser_port_uC.write(start_exp1)
                     self.after(100,self.run_exp1)
-                    self.run_exp1_state = 6
 
-                case 6:
-                    self.ser_port_uC.write(b'f\n')
-                    self.run_exp1_state = 7
-                    self.after(50,self.run_exp1)
+                # case 5:
+                #     start_exp1 = "r1\n"
+                #     start_exp1 = start_exp1.encode()
+                #     self.ser_port_uC.write(start_exp1)
+                #     self.after(100,self.run_exp1)
+                #     self.run_exp1_state = 6
 
-                case 7:
-                    xy_force_bytes = self.ser_port_uC.readline()
-                    xy_force_string = xy_force_bytes.strip().decode()
-                    vertical_force,horizontal_force = xy_force_string.split(",")
+                # case 6:
+                #     self.ser_port_uC.write(b'f\n')
+                #     self.run_exp1_state = 7
+                #     self.after(50,self.run_exp1)
 
-                    message_string = horizontal_force + "\t" + vertical_force
-                    logger.debug(message_string)
-                    horizontal_force = int(horizontal_force)
-                    vertical_force = int(vertical_force)
-                    vl_bound = int(self.pressure_Y_entry.get())-vf_gap
-                    vu_bound = int(self.pressure_Y_entry.get())+vf_gap
-                    hl_bound = self.horizontal_test_force[0] - hf_gap
-                    hu_bound = self.horizontal_test_force[0] + hf_gap
-                    if (horizontal_force >= hl_bound and horizontal_force <= hu_bound ) and (vertical_force >= vl_bound and vertical_force <= vu_bound):
-                        self.run_exp1_state = 8
-                        self.ser_port_uC.write(b'f\n')
-                    else:
-                        test_pass_time = time.time() - self.record_timer
-                        if test_pass_time >= 10:
-                            self.run_exp1_state = 9
-                        else:
-                            self.run_exp1_state = 6
-                    self.after(10,self.run_exp1)
+                # case 7:
+                #     xy_force_bytes = self.ser_port_uC.readline()
+                #     xy_force_string = xy_force_bytes.strip().decode()
+                #     vertical_force,horizontal_force = xy_force_string.split(",")
 
-                case 8:
-                    dispX = self.obj_dis_x.get_last()
-                    dispY = self.obj_dis_y.get_last()
-                    x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
-                    y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
-                    xy_force_bytes = self.ser_port_uC.readline()
-                    xy_force_string = xy_force_bytes.strip().decode()
-                    vertical_force,horizontal_force = xy_force_string.split(",")
-                    time_stamp = datetime.now().strftime("%H:%M:%S.%f")
+                #     message_string = horizontal_force + "\t" + vertical_force
+                #     logger.debug(message_string)
+                #     horizontal_force = int(horizontal_force)
+                #     vertical_force = int(vertical_force)
+                #     vl_bound = int(self.pressure_Y_entry.get())-vf_gap
+                #     vu_bound = int(self.pressure_Y_entry.get())+vf_gap
+                #     hl_bound = self.horizontal_test_force[0] - hf_gap
+                #     hu_bound = self.horizontal_test_force[0] + hf_gap
+                #     if (horizontal_force >= hl_bound and horizontal_force <= hu_bound ) and (vertical_force >= vl_bound and vertical_force <= vu_bound):
+                #         self.run_exp1_state = 8
+                #         self.ser_port_uC.write(b'f\n')
+                #     else:
+                #         test_pass_time = time.time() - self.record_timer
+                #         if test_pass_time >= 10:
+                #             self.run_exp1_state = 9
+                #         else:
+                #             self.run_exp1_state = 6
+                #     self.after(10,self.run_exp1)
 
-                    self.x_coordinate.append(float(y_show3digit))
-                    self.y_coordinate.append(int(horizontal_force))
-                    self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
-                    self.canvas.draw()
+                # case 8:
+                #     dispX = self.obj_dis_x.get_last()
+                #     dispY = self.obj_dis_y.get_last()
+                #     x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
+                #     y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
+                #     xy_force_bytes = self.ser_port_uC.readline()
+                #     xy_force_string = xy_force_bytes.strip().decode()
+                #     vertical_force,horizontal_force = xy_force_string.split(",")
+                #     time_stamp = datetime.now().strftime("%H:%M:%S.%f")
 
-                    disp_message = time_stamp + "," + x_show3digit +"," + y_show3digit + "," + horizontal_force + "," + vertical_force + "\n"
-                    self.monitor_text_box.insert(tk.END,disp_message)
+                #     self.x_coordinate.append(float(y_show3digit))
+                #     self.y_coordinate.append(int(horizontal_force))
+                #     self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                #     self.canvas.draw()
 
-                    with open(data_file, 'a+') as f:
-                        f.write(y_show3digit)
-                        f.write(",")
-                        f.write(horizontal_force)
-                        f.write("\n")
+                #     disp_message = time_stamp + "," + x_show3digit +"," + y_show3digit + "," + horizontal_force + "," + vertical_force + "\n"
+                #     self.monitor_text_box.insert(tk.END,disp_message)
 
-                    if len(self.horizontal_test_force) > 1:
-                        self.horizontal_test_force.pop(0)
-                        self.run_exp1_state = 1
-                    else:
-                        self.run_exp1_state = 9
-                        self.ser_port_uC.write(b't\n')
-                    self.after(10,self.run_exp1)
+                #     with open(data_file, 'a+') as f:
+                #         f.write(y_show3digit)
+                #         f.write(",")
+                #         f.write(horizontal_force)
+                #         f.write("\n")
 
-                case 9:
-                    self.ser_port_uC.write(b't\n')
+                #     if len(self.horizontal_test_force) > 1:
+                #         self.horizontal_test_force.pop(0)
+                #         self.run_exp1_state = 1
+                #     else:
+                #         self.run_exp1_state = 9
+                #         self.ser_port_uC.write(b't\n')
+                #     self.after(10,self.run_exp1)
+
+                # case 9:
+                #     self.ser_port_uC.write(b't\n')
 
                 case other:
                     self.running_flag = False
