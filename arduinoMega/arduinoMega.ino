@@ -1,5 +1,5 @@
-const int x_loadcell_pin = A13;
-const int y_loadcell_pin = A10;
+const int x_loadcell_pin = A10;
+const int y_loadcell_pin = A13;
 
 const int x_motor_dir1 = 7;
 const int x_motor_dir2 = 5;
@@ -50,7 +50,8 @@ int counter_cyclic = 0;
 int start_counter = 0;
 int f_max = 0;
 int f_min = 0;
-
+int A_cyclic = 0;
+unsigned int cyclic_time = 0; 
 
 const int loadcell_guard_band = 2; 
 
@@ -106,7 +107,7 @@ void loop()
             case 'f':
             {
                 int vertical_force = analogRead(y_loadcell_pin);
-                Serial.print(vertical_force,DEC);       // return vertical force Y
+                Serial.print(vertical_force-20,DEC);       // return vertical force Y
                 Serial.print(",");
                 int horizontal_force = analogRead(x_loadcell_pin);
                 Serial.println(horizontal_force,DEC);     // return horizontal force X
@@ -130,6 +131,12 @@ void loop()
                 Serial.println(cyclic,DEC);
                 break;                
             }
+            case 'A': //A cyclic
+            {
+                A_cyclic  = cmd_string.substring(1,cmd_len).toInt();
+                Serial.println(A_cyclic,DEC);
+                break;                
+            }
             case 'Y': // start force
             {
                 start_force = cmd_string.substring(1,cmd_len).toInt();
@@ -149,7 +156,7 @@ void loop()
                 Serial.println(update_pwm,DEC);
                 break;
             }
-            case 'C':
+            case 'B':
             {
                 Serial.println(counter_cyclic);
                 break;
@@ -191,6 +198,7 @@ void loop()
                         exp2_y_state = 0;
                         counter_cyclic = 0;
                         start_counter = 0;
+                        cyclic_time = 0;
                         f_max = 0;
                         f_min = 0;
                         break;
@@ -537,8 +545,7 @@ void run_exp1()
 void run_exp2()
 {
     int x_present_force = analogRead(x_loadcell_pin);
-    int y_present_force = analogRead(y_loadcell_pin); 
-    int cyclic_time = 0;  
+    int y_present_force = analogRead(y_loadcell_pin);  
     switch (exp2_x_state)
     {
         case 0:
@@ -550,7 +557,7 @@ void run_exp2()
         {
             digitalWrite(x_motor_dir1,HIGH);
             digitalWrite(x_motor_dir2,LOW);
-            analogWrite(x_motor_speed_pin,255);
+            analogWrite(x_motor_speed_pin,100);
             exp2_x_state = 2;
             break;
         }
@@ -563,7 +570,7 @@ void run_exp2()
                 digitalWrite(x_motor_dir2,LOW);
                 analogWrite(x_motor_speed_pin,0);
             }
-            else if (x_present_force >= start_force-loadcell_guard_band)
+            else if (x_present_force == start_force-loadcell_guard_band)
             {
                 exp2_x_state = 3;
                 digitalWrite(x_motor_dir1,LOW);
@@ -576,41 +583,47 @@ void run_exp2()
                     counter_cyclic++;
                 }
             }
-            else if((millis()-cyclic_time)>=cyclic)
-            {
-                exp2_x_state = 3;
-                digitalWrite(x_motor_dir1,LOW);
-                digitalWrite(x_motor_dir2,LOW);
-                analogWrite(x_motor_speed_pin,0);
-                f_min = x_present_force;
-                // Serial.println("Y"+(String(x_present_force)));
-                if(start_counter>0)
-                {
-                    counter_cyclic++;
-                }
-            }
+            // else if((millis()-cyclic_time)>=cyclic)
+            // {
+            //     // Serial.println("state2.3");
+            //     exp2_x_state = 3;
+            //     digitalWrite(x_motor_dir1,LOW);
+            //     digitalWrite(x_motor_dir2,LOW);
+            //     analogWrite(x_motor_speed_pin,0);
+            //     f_min = x_present_force;
+            //     // Serial.println("Y"+(String(x_present_force)));
+            //     if(start_counter>0)
+            //     {
+            //         counter_cyclic++;
+            //     }
+            // }
             break;
         }
         case 3: // move machine to stop force
         {  
+            // Serial.println("state3");
             digitalWrite(x_motor_dir1,HIGH);
             digitalWrite(x_motor_dir2,LOW);
             analogWrite(x_motor_speed_pin,update_pwm);
-            cyclic_time = millis();
+            // cyclic_time = millis();
             exp2_x_state = 4;
             break;
         }
         case 4: // machine in stop force
         {
+            // Serial.println("state4");
+            // Serial.println(cyclic_time);
             if(digitalRead(x_limit_front)==1)
             {
+                // Serial.println("state4.1");
                 exp2_x_state = 6;
                 digitalWrite(x_motor_dir1,LOW);
                 digitalWrite(x_motor_dir2,LOW);
                 analogWrite(x_motor_speed_pin,0);
             }
-            else if (x_present_force >= stop_force-loadcell_guard_band)
+            else if (x_present_force == stop_force-loadcell_guard_band)
             {
+                // Serial.println("state4.2");
                 exp2_x_state = 5;
                 digitalWrite(x_motor_dir1,LOW);
                 digitalWrite(x_motor_dir2,LOW);
@@ -618,25 +631,29 @@ void run_exp2()
                 f_max = x_present_force;
                 // Serial.println("S"+(String(x_present_force)));
                 start_counter++;
+
             }
-            else if((millis()-cyclic_time)>=cyclic)
-            {
-                exp2_x_state = 5;
-                digitalWrite(x_motor_dir1,LOW);
-                digitalWrite(x_motor_dir2,LOW);
-                analogWrite(x_motor_speed_pin,0);
-                f_max = x_present_force;
-                // Serial.println("S"+(String(x_present_force)));
-                start_counter++;
-            }
+            // else if((millis()-cyclic_time)>=cyclic)
+            // {
+            //     // Serial.println("state4.3");
+            //     exp2_x_state = 5;
+            //     digitalWrite(x_motor_dir1,LOW);
+            //     digitalWrite(x_motor_dir2,LOW);
+            //     analogWrite(x_motor_speed_pin,0);
+            //     // cyclic_time = 0;
+            //     f_max = x_present_force;
+            //     // Serial.println("S"+(String(x_present_force)));
+            //     start_counter++;
+            // }
             break;
         }
         case 5: // move machine to start force
         {
+            // Serial.println("state5");
             digitalWrite(x_motor_dir1,LOW);
             digitalWrite(x_motor_dir2,HIGH);
             analogWrite(x_motor_speed_pin,update_pwm);
-            cyclic_time = millis();
+            // cyclic_time = millis();
             exp2_x_state = 2;
             break;
         }
@@ -663,10 +680,30 @@ void run_exp2()
         {
             digitalWrite(y_motor_dir1,HIGH);
             digitalWrite(y_motor_dir2,LOW);
-            analogWrite(y_motor_speed_pin,20);
-            exp2_y_state = 2;
+            analogWrite(y_motor_speed_pin,70);
+            exp2_y_state = 22;
             break;
         }
+        case 22:
+        {
+            if(y_present_force >= 5)
+            {
+                exp1_y_state = 23;
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,LOW);
+                analogWrite(y_motor_speed_pin,0);
+                delay(300);               
+            }
+            break;
+        }
+        case 23:     // move machine down
+        {
+            digitalWrite(y_motor_dir1,HIGH);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,30);
+            exp2_y_state = 2;
+            break;
+        }       
         case 2:
         {
             if(digitalRead(y_limit_bottom)==1)
@@ -697,7 +734,7 @@ void run_exp2()
         {
             if(y_present_force < fixed_vertical_force-loadcell_guard_band)
             {
-                exp2_y_state = 1;
+                exp2_y_state = 23;
             }
             else if(y_present_force >= fixed_vertical_force+loadcell_guard_band)
             {

@@ -88,10 +88,10 @@ class App(ctk.CTk):
         self.monitor_text_box.grid(row=1,column=0,padx=5,pady=5,ipadx = 5,sticky=tk.NW)
         #================================== config ==================================
         self.select_port_label = ctk.CTkLabel(self.configuration_frame,text="เลือกพอต",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
-        self.com_port_DIS_X_label = ctk.CTkLabel(self.configuration_frame,text="DIS X PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
+        self.com_port_DIS_X_label = ctk.CTkLabel(self.configuration_frame,text="DIS Y PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.com_port_DIS_X = ctk.CTkOptionMenu(self.configuration_frame,width=100,height=40,values=[""])
         self.com_port_DIS_X.set("เลือกพอต")
-        self.com_port_DIS_Y_label = ctk.CTkLabel(self.configuration_frame,text="DIS Y PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
+        self.com_port_DIS_Y_label = ctk.CTkLabel(self.configuration_frame,text="DIS X PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.com_port_DIS_Y = ctk.CTkOptionMenu(self.configuration_frame,width=100,height=40,values=[""])
         self.com_port_DIS_Y.set("เลือกพอต")
         self.com_port_uC_label = ctk.CTkLabel(self.configuration_frame,text="uC PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
@@ -270,6 +270,9 @@ class App(ctk.CTk):
             self.pwm_x_entry.configure(state = "disabled")
             self.pwm_x_unit_label.configure(state = "disabled") 
             self.update_pwm_x.configure(state = "disabled")
+            self.cyclic_time_label.configure(state = "disabled")
+            self.cyclic_time_entry.configure(state = "disabled")
+            self.cyclic_time_unit_label.configure(state = "disabled")
         elif selected_exp == 2:
             self.exp_param_label.configure(state = "normal")
             self.pressure_Y_label.configure(state = "normal")
@@ -300,6 +303,9 @@ class App(ctk.CTk):
             self.pwm_x_entry.configure(state = "normal")
             self.pwm_x_unit_label.configure(state = "normal") 
             self.update_pwm_x.configure(state = "normal")
+            self.cyclic_time_label.configure(state = "normal")
+            self.cyclic_time_entry.configure(state = "normal")
+            self.cyclic_time_unit_label.configure(state = "normal")
         elif selected_exp == 3:
             self.exp_param_label.configure(state = "normal")
             self.pressure_Y_label.configure(state = "normal")
@@ -330,6 +336,9 @@ class App(ctk.CTk):
             self.pwm_x_entry.configure(state = "disabled")
             self.pwm_x_unit_label.configure(state = "disabled")
             self.update_pwm_x.configure(state = "disabled") 
+            self.cyclic_time_label.configure(state = "disabled")
+            self.cyclic_time_entry.configure(state = "disabled")
+            self.cyclic_time_unit_label.configure(state = "disabled")
         elif selected_exp == 4:
             self.exp_param_label.configure(state = "normal")
             self.pressure_Y_label.configure(state = "normal")
@@ -360,6 +369,9 @@ class App(ctk.CTk):
             self.pwm_x_entry.configure(state = "normal")
             self.pwm_x_unit_label.configure(state = "normal")
             self.update_pwm_x.configure(state = "normal")  
+            self.cyclic_time_label.configure(state = "normal")
+            self.cyclic_time_entry.configure(state = "normal")
+            self.cyclic_time_unit_label.configure(state = "normal")
         else: 
             self.exp_param_label.configure(state = "disabled")
             self.pressure_Y_label.configure(state = "disabled")
