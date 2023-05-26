@@ -32,12 +32,15 @@ unsigned long loadcell_timer = 0;
 //
 bool run_machine = false;
 bool set_zero = false;
+bool set_zero_success = false;
 
 int exp_number = 0;
 int zero_state = 0;
 // experiment 1
 int fixed_vertical_force = 0;
 int fixed_horizontal_force = 0;
+bool exp1_state_x_flage = false;
+bool exp1_start_state_x = false;
 int exp1_x_state = 0;
 int exp1_y_state = 0;
 int cyclic = 0;
@@ -185,6 +188,7 @@ void loop()
                     {   
                         // Serial.println("exp1");
                         run_machine = true;
+                        exp1_start_state_x = true;
                         exp_number = 1;
                         exp1_x_state = 0;
                         exp1_y_state = 0;
@@ -396,6 +400,7 @@ void loop()
             {
                 Serial.println("ZERO");
                 set_zero = false;
+                set_zero_success = true;
                 break;
             }
             default:
@@ -414,7 +419,11 @@ void run_exp1()
     {
         case 0:
         {
-            exp1_x_state = 1;
+            if(exp1_state_x_flage == true)
+            {
+                exp1_state_x_flage = false;
+                exp1_x_state = 1;
+            }
             break;
         }
         case 1:     // move machine forward
@@ -480,22 +489,54 @@ void run_exp1()
     {
         case 0:
         {
+            zero_state = 0;
+            set_zero = true;
             exp1_y_state = 1;
             break;
         }
-        case 1:     // move machine down
+        case 1:
+        {
+            if(set_zero_success == true)
+            {
+                set_zero_success = false;
+                delay(1000);
+                exp1_y_state = 2;
+            }
+            break;
+        }
+        case 2:     // move machine down pwm 200
+        {
+            digitalWrite(y_motor_dir1,HIGH);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,200);
+            exp1_y_state = 3;
+            break;
+        }
+        case 3: // force >1 stop Motor Y
+        {
+            if(y_present_force >1)
+            {
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,LOW);
+                analogWrite(y_motor_speed_pin,0);
+                delay(300);
+                exp1_y_state = 4;
+            }
+            break;
+        }
+        case 4: // start Motor Y Pwm 30
         {
             digitalWrite(y_motor_dir1,HIGH);
             digitalWrite(y_motor_dir2,LOW);
             analogWrite(y_motor_speed_pin,20);
-            exp1_y_state = 2;
+            exp1_y_state = 5;
             break;
         }
-        case 2:
+        case 5: // get limit or preforce > fixvertical
         {
             if(digitalRead(y_limit_bottom)==1)
             {
-                exp1_y_state = 5;
+                exp1_y_state = 7;
                 digitalWrite(y_motor_dir1,LOW);
                 digitalWrite(y_motor_dir2,LOW);
                 analogWrite(y_motor_speed_pin,0);
@@ -503,34 +544,40 @@ void run_exp1()
             }
             else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
             {
-                exp1_y_state = 4;
+                exp1_y_state = 7;
                 digitalWrite(y_motor_dir1,LOW);
                 digitalWrite(y_motor_dir2,LOW);
                 analogWrite(y_motor_speed_pin,0);
+
             }
-        break;
+        break;  
         }
-        case 3:
-        {   // move up
+        case 6: // move up
+        {   
             digitalWrite(y_motor_dir1,LOW);
             digitalWrite(y_motor_dir2,HIGH);
             analogWrite(y_motor_speed_pin,20);
-            exp1_y_state = 2;
+            exp1_y_state = 5;
             break;
         }
-        case 4:
+        case 7: // stabilizer Y force
         {
             if(y_present_force < fixed_vertical_force-loadcell_guard_band)
             {
-                exp1_y_state = 1;
+                exp1_y_state = 4;
             }
             else if(y_present_force >= fixed_vertical_force+loadcell_guard_band)
             {
-                exp1_y_state = 3;
+                exp1_y_state = 6;
+            }
+            else if(exp1_start_state_x == true)
+            {
+                exp1_state_x_flage = true;  
+                exp1_start_state_x = false;
             }
             break;
         }
-        case 5:
+        case 8:
         {
             break;
         }
