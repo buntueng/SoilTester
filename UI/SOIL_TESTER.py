@@ -564,50 +564,65 @@ class App(ctk.CTk):
                     self.after(2000,self.run_exp1)
 
                 case 1:
-                    vertical_force = self.pressure_Y_entry.get()
-                    if self.ser_port_uC.is_open:
-                        vertical_test_force = "N" + vertical_force + "\n" #============================== Y
-                        vertical_test_force_bytes = vertical_test_force.encode()
-                        self.ser_port_uC.write(vertical_test_force_bytes)
-                        self.run_exp1_state = 2
-                        self.after(100,self.run_exp1)
+                    set_zero = "Z" + "\n"
+                    set_zero_byte = set_zero.encode()
+                    self.ser_port_uC.write(set_zero_byte)
+                    self.run_exp1_state = 2
 
                 case 2:
                     setting_result = self.ser_port_uC.readline()
-                    setting_result_string = setting_result.strip().decode()
-                    if setting_result_string == self.pressure_Y_entry.get():
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string =="ZERO SUCCESS":
                         self.run_exp1_state = 3
                     else:
-                        self.run_exp1_state = 1
+                        self.run_exp1_state = 2
                     self.after(100,self.run_exp1)
 
                 case 3:
-                    exp1_pwm_x = self.pwm_x_entry.get()
+                    vertical_force = self.pressure_Y_entry.get()
                     if self.ser_port_uC.is_open:
-                        exp1_update_pwm_string = "U" + exp1_pwm_x + "\n" #=============================== update pwm x
-                        exp1_update_pwm_byte = exp1_update_pwm_string.encode()
-                        self.ser_port_uC.write(exp1_update_pwm_byte)
-                        self.run_exp1_state = 4 
-                
+                        vertical_test_force = "N" + vertical_force + "\n" #============================== Y force
+                        vertical_test_force_bytes = vertical_test_force.encode()
+                        self.ser_port_uC.write(vertical_test_force_bytes)
+                        self.run_exp1_state = 4
+                        self.after(100,self.run_exp1)
+
                 case 4:
                     setting_result = self.ser_port_uC.readline()
-                    setting_result_string = setting_result.rstrip().decode()
-                    if setting_result_string == self.pwm_x_entry.get():
+                    setting_result_string = setting_result.strip().decode()
+                    if setting_result_string == self.pressure_Y_entry.get():
                         self.run_exp1_state = 5
                     else:
                         self.run_exp1_state = 3
                     self.after(100,self.run_exp1)
 
                 case 5:
+                    exp1_pwm_x = self.pwm_x_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_update_pwm_string = "U" + exp1_pwm_x + "\n" #=============================== update pwm x
+                        exp1_update_pwm_byte = exp1_update_pwm_string.encode()
+                        self.ser_port_uC.write(exp1_update_pwm_byte)
+                        self.run_exp1_state = 6
+                
+                case 6:
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pwm_x_entry.get():
+                        self.run_exp1_state = 7
+                    else:
+                        self.run_exp1_state = 5
+                    self.after(100,self.run_exp1)
+
+                case 7:
                     start_exp1 = "r1\n"
                     start_exp1 = start_exp1.encode()
                     self.ser_port_uC.write(start_exp1)
                     self.after(100,self.run_exp1)
-                    self.run_exp1_state = 6
+                    self.run_exp1_state = 8
 
-                case 6:
+                case 8:
                     self.ser_port_uC.write(b'f\n')
-                    self.run_exp1_state = 7
+                    self.run_exp1_state = 9
                     self.after(50,self.run_exp1)
 
                 # case 7:
@@ -686,164 +701,222 @@ class App(ctk.CTk):
                     self.run_exp2_state = 1
                     self.after(2000,self.run_exp2)
                  #  ============= set vertical force ==========================
+
                 case 1:
-                    if self.ser_port_uC.is_open:
-                        vertical_test_force = f'N{self.pressure_Y_entry.get()}\n'
-                        vertical_test_force_bytes = vertical_test_force.encode()
-                        self.ser_port_uC.write(vertical_test_force_bytes)
-                        self.run_exp2_state = 2
-                        self.after(100,self.run_exp2)
+                    set_zero = "Z" + "\n"
+                    set_zero_byte = set_zero.encode()
+                    self.ser_port_uC.write(set_zero_byte)
+                    self.run_exp2_state = 2
+
                 case 2:
                     setting_result = self.ser_port_uC.readline()
-                    setting_result_string = setting_result.strip().decode()
-                    if setting_result_string == self.pressure_Y_entry.get():
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string =="ZERO SUCCESS":
                         self.run_exp2_state = 3
                     else:
-                        self.run_exp2_state = 1
-                    self.after(100,self.run_exp2)
-                #  ============= set cyclic counter ==========================
-                case 3:         
-                    counter_number_string = f'A{self.cyclic_X_entry.get()}\n'
-                    counter_number_bytes = counter_number_string.encode()
-                    self.ser_port_uC.write(counter_number_bytes)
-                    self.run_exp2_state = 4
-                    self.after(100,self.run_exp2)
+                        self.run_exp2_state = 2
+                    self.after(100,self.run_exp1)
+
+                case 3:
+                    vertical_force = self.pressure_Y_entry.get()
+                    if self.ser_port_uC.is_open:
+                        vertical_test_force = "N" + vertical_force + "\n" #============================== Y force
+                        vertical_test_force_bytes = vertical_test_force.encode()
+                        self.ser_port_uC.write(vertical_test_force_bytes)
+                        self.run_exp2_state = 4
+                        self.after(100,self.run_exp1)
+
                 case 4:
                     setting_result = self.ser_port_uC.readline()
                     setting_result_string = setting_result.strip().decode()
-                    if setting_result_string == self.cyclic_X_entry.get():
+                    if setting_result_string == self.pressure_Y_entry.get():
                         self.run_exp2_state = 5
                     else:
                         self.run_exp2_state = 3
-                    self.after(100,self.run_exp2)
-                #  ============= set min force ==========================
-                case 5:         
-                    counter_number_string = f'Y{self.pressure_min_X_exp2_entry.get()}\n'
-                    counter_number_bytes = counter_number_string.encode()
-                    self.ser_port_uC.write(counter_number_bytes)
-                    self.run_exp2_state = 6
-                    self.after(100,self.run_exp2)
+                    self.after(100,self.run_exp1)
+                
+                case 5:
+                    exp2_pwm_x = self.pwm_x_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp2_update_pwm_string = "U" + exp2_pwm_x + "\n" #=============================== update pwm x
+                        exp2_update_pwm_byte = exp2_update_pwm_string.encode()
+                        self.ser_port_uC.write(exp2_update_pwm_byte)
+                        self.run_exp2_state = 6
+                
                 case 6:
                     setting_result = self.ser_port_uC.readline()
-                    setting_result_string = setting_result.strip().decode()
-                    if setting_result_string == self.pressure_min_X_exp2_entry.get():
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pwm_x_entry.get():
                         self.run_exp2_state = 7
                     else:
                         self.run_exp2_state = 5
-                    self.after(100,self.run_exp2)
-                #  ============= set max force ==========================
-                case 7:         
-                    counter_number_string = f'S{self.pressure_max_X_exp2_entry.get()}\n'
-                    counter_number_bytes = counter_number_string.encode()
-                    self.ser_port_uC.write(counter_number_bytes)
-                    self.run_exp2_state = 8
-                    self.after(100,self.run_exp2)
+                    self.after(100,self.run_exp1)
+                
+                case 7:
+                    exp2_start_force = self.pressure_min_X_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp2_start_force_string = "Y" + exp2_start_force + "\n" #===================== start force
+                        exp2_start_force_byte = exp2_start_force_string.encode()
+                        self.ser_port_uC.write(exp2_start_force_byte)
+                        self.run_exp2_state = 8
+                
                 case 8:
                     setting_result = self.ser_port_uC.readline()
-                    setting_result_string = setting_result.strip().decode()
-                    if setting_result_string == self.pressure_max_X_exp2_entry.get():
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pressure_min_X_entry.get():
                         self.run_exp2_state = 9
                     else:
                         self.run_exp2_state = 7
-                    self.after(100,self.run_exp2)
-                #  ============= set cyclic time ==========================
+                    self.after(100,self.run_exp1)  
+
                 case 9:
-                    cyclic_time_int = int(self.cyclic_time_entry.get())
-                    if cyclic_time_int % 2 != 0:
-                        cyclic_time_int = cyclic_time_int + 1
-                        self.cyclic_time_entry.set(str(cyclic_time_int))
-                    half_cyclic_time_int = int(int(self.cyclic_time_entry.get())/2)
-                    half_cyclic_time_string = 'X' + str(half_cyclic_time_int) + '\n'
-                    half_cyclic_time_bytes = half_cyclic_time_string.encode()
-                    self.ser_port_uC.write(half_cyclic_time_bytes)
-                    self.run_exp2_state = 10
-                    self.after(100,self.run_exp2)
+                    exp2_stop_force = self.pressure_max_X_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp2_stop_force_string = "S" + exp2_stop_force + "\n" #======================== stop force
+                        exp2_stop_force_byte = exp2_stop_force_string.encode()
+                        self.ser_port_uC.write(exp2_stop_force_byte)
+                        self.run_exp2_state = 10
+                
                 case 10:
                     setting_result = self.ser_port_uC.readline()
-                    setting_result_string = setting_result.strip().decode()
-                    if setting_result_string == str(int(self.cyclic_time_entry.get())/2):
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pressure_max_X_entry.get():
                         self.run_exp2_state = 11
                     else:
                         self.run_exp2_state = 9
-                    self.after(100,self.run_exp2)
+                    self.after(100,self.run_exp1)  
 
-                # =========== start experiment 2
                 case 11:
-                    start_exp2_cmd = "r2\n"
-                    start_exp2_cmd = start_exp2_cmd.encode()
-                    self.ser_port_uC.write(start_exp2_cmd)
-                    self.run_exp1_state = 12
-                    self.after(100,self.run_exp2)
-                # ============================== loop start here ========================
-                # ============= check pwm update flag
+                    exp2_cyclic = self.cyclic_X_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp2_cyclic_string = "X" + exp2_cyclic + "\n" #=============================== cyclic
+                        exp2_cyclic_byte = exp2_cyclic_string.encode()
+                        self.ser_port_uC.write(exp2_cyclic_byte)
+                        self.run_exp2_state = 12
+
                 case 12:
-                    if self.update_pwm_flag:
-                        self.update_pwm_flag = False
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.cyclic_X_entry.get():
                         self.run_exp2_state = 13
                     else:
-                        self.run_exp2_state = 15
-                    self.after(10,self.run_exp2)
-                # =============== update pwm ===========
+                        self.run_exp2_state = 11
+                    self.after(100,self.run_exp1) 
+
                 case 13:
-                    pwm_string = f'U{self.pwm_x_entry.get()}\n'
-                    pwm_bytes = pwm_string.encode()
-                    self.ser_port_uC.write(pwm_bytes)
-                    self.run_exp2_state = 14
-                    self.after(100,self.run_exp2)
+                    exp2_cyclic_time = self.cyclic_time_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp2_cyclic_time_string = "I" + exp2_cyclic_time + "\n" #============================== cyclic time
+                        exp2_cyclic_time_byte = exp2_cyclic_time_string.encode() 
+                        self.ser_port_uC.write(exp2_cyclic_time_byte)
+                        self.run_exp2_state = 14
+
                 case 14:
                     setting_result = self.ser_port_uC.readline()
-                    setting_result_string = setting_result.strip().decode()
-                    if setting_result_string == self.pwm_x_entry.get():
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.cyclic_time_entry.get():
                         self.run_exp2_state = 15
                     else:
                         self.run_exp2_state = 13
-                    self.after(100,self.run_exp2)
-                # ============== read force ==============
-                case 15:
-                    self.ser_port_uC.write(b'f\n')
-                    self.run_exp2_state = 16
-                    self.after(50,self.run_exp2)
+                    self.after(100,self.run_exp1) 
+                # #  ============= set cyclic time ==========================
+                # case 9:
+                #     cyclic_time_int = int(self.cyclic_time_entry.get())
+                #     if cyclic_time_int % 2 != 0:
+                #         cyclic_time_int = cyclic_time_int + 1
+                #         self.cyclic_time_entry.set(str(cyclic_time_int))
+                #     half_cyclic_time_int = int(int(self.cyclic_time_entry.get())/2)
+                #     half_cyclic_time_string = 'X' + str(half_cyclic_time_int) + '\n'
+                #     half_cyclic_time_bytes = half_cyclic_time_string.encode()
+                #     self.ser_port_uC.write(half_cyclic_time_bytes)
+                #     self.run_exp2_state = 10
+                #     self.after(100,self.run_exp2)
+                # case 10:
+                #     setting_result = self.ser_port_uC.readline()
+                #     setting_result_string = setting_result.strip().decode()
+                #     if setting_result_string == str(int(self.cyclic_time_entry.get())/2):
+                #         self.run_exp2_state = 11
+                #     else:
+                #         self.run_exp2_state = 9
+                #     self.after(100,self.run_exp2)
 
-                case 16:
-                    xy_force_bytes = self.ser_port_uC.readline()
-                    xy_force_string = xy_force_bytes.strip().decode()
-                    vertical_force,horizontal_force = xy_force_string.split(",")
+                # # =========== start experiment 2
+                # case 11:
+                #     start_exp2_cmd = "r2\n"
+                #     start_exp2_cmd = start_exp2_cmd.encode()
+                #     self.ser_port_uC.write(start_exp2_cmd)
+                #     self.run_exp1_state = 12
+                #     self.after(100,self.run_exp2)
+                # # ============================== loop start here ========================
+                # # ============= check pwm update flag
+                # case 12:
+                #     if self.update_pwm_flag:
+                #         self.update_pwm_flag = False
+                #         self.run_exp2_state = 13
+                #     else:
+                #         self.run_exp2_state = 15
+                #     self.after(10,self.run_exp2)
+                # # =============== update pwm ===========
+                # case 13:
+                #     pwm_string = f'U{self.pwm_x_entry.get()}\n'
+                #     pwm_bytes = pwm_string.encode()
+                #     self.ser_port_uC.write(pwm_bytes)
+                #     self.run_exp2_state = 14
+                #     self.after(100,self.run_exp2)
+                # case 14:
+                #     setting_result = self.ser_port_uC.readline()
+                #     setting_result_string = setting_result.strip().decode()
+                #     if setting_result_string == self.pwm_x_entry.get():
+                #         self.run_exp2_state = 15
+                #     else:
+                #         self.run_exp2_state = 13
+                #     self.after(100,self.run_exp2)
+                # # ============== read force ==============
+                # case 15:
+                #     self.ser_port_uC.write(b'f\n')
+                #     self.run_exp2_state = 16
+                #     self.after(50,self.run_exp2)
 
-                    message_string = horizontal_force + "\t" + vertical_force
-                    horizontal_force = int(horizontal_force)
-                    vertical_force = int(vertical_force)
-                    # logger.debug(message_string)
+                # case 16:
+                #     xy_force_bytes = self.ser_port_uC.readline()
+                #     xy_force_string = xy_force_bytes.strip().decode()
+                #     vertical_force,horizontal_force = xy_force_string.split(",")
 
-                    dispX = self.obj_dis_x.get_last()
-                    dispY = self.obj_dis_y.get_last()
-                    x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
-                    y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
+                #     message_string = horizontal_force + "\t" + vertical_force
+                #     horizontal_force = int(horizontal_force)
+                #     vertical_force = int(vertical_force)
+                #     # logger.debug(message_string)
 
-                    self.x_coordinate.append(float(y_show3digit))
-                    self.y_coordinate.append(int(horizontal_force))
-                    self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
-                    self.canvas.draw()
-                    self.run_exp2_state = 17
-                    self.after(50,self.run_exp2)
-                # ======= check loop couter =======
-                case 17:
-                    self.ser_port_uC.write(b'B\n')
-                    self.run_exp2_state = 18
-                    self.after(50,self.run_exp2)
+                #     dispX = self.obj_dis_x.get_last()
+                #     dispY = self.obj_dis_y.get_last()
+                #     x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
+                #     y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
 
-                case 18:
-                    read_result = self.ser_port_uC.readline()
-                    read_result_string = read_result.strip().decode()
-                    if read_result_string == self.cyclic_X_entry.get():
-                        self.run_exp2_state = 555
-                    else:
-                        self.run_exp2_state = 12
-                    self.after(50,self.run_exp2)
+                #     self.x_coordinate.append(float(y_show3digit))
+                #     self.y_coordinate.append(int(horizontal_force))
+                #     self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                #     self.canvas.draw()
+                #     self.run_exp2_state = 17
+                #     self.after(50,self.run_exp2)
+                # # ======= check loop couter =======
+                # case 17:
+                #     self.ser_port_uC.write(b'B\n')
+                #     self.run_exp2_state = 18
+                #     self.after(50,self.run_exp2)
 
-                # ==== terminate task after complete =======
-                case 555:
-                    self.ser_port_uC.write(b't\n') 
-                    self.running_flag = False           
+                # case 18:
+                #     read_result = self.ser_port_uC.readline()
+                #     read_result_string = read_result.strip().decode()
+                #     if read_result_string == self.cyclic_X_entry.get():
+                #         self.run_exp2_state = 555
+                #     else:
+                #         self.run_exp2_state = 12
+                #     self.after(50,self.run_exp2)
+
+                # # ==== terminate task after complete =======
+                # case 555:
+                #     self.ser_port_uC.write(b't\n') 
+                #     self.running_flag = False           
 
                 case _:
                     self.running_flag = False
