@@ -132,17 +132,12 @@ void loop()
                 Serial.println(fixed_vertical_force,DEC);
                 break;
             }
-            case 'T':   // X distans
-            {
-                fixed_horizontal_force = cmd_string.substring(1,cmd_len).toInt();
-                Serial.println(fixed_horizontal_force,DEC);
-                break;
-            }
-            case 'a': // check exp1 test success
-            {
-                Serial.println(exp1_start_test);
-                break;
-            }
+            // case 'T':   // X distans
+            // {
+            //     fixed_horizontal_force = cmd_string.substring(1,cmd_len).toInt();
+            //     Serial.println(fixed_horizontal_force,DEC);
+            //     break;
+            // }
             case 'X': // cyclic
             {
                 cyclic  = cmd_string.substring(1,cmd_len).toInt();
@@ -232,8 +227,8 @@ void loop()
                     {   
                         // Serial.println("exp1");
                         run_machine = true;
-                        exp1_start_state_x = true;
                         exp1_start_test = true;
+                        exp1_start_state_x = true;
                         exp1_test_success = false;
                         exp_number = 1;
                         exp1_x_state = 0;
@@ -275,7 +270,7 @@ void loop()
                 break;
             }
             // =========== check command =================
-            case 'c':
+            case 'c': // check param for exp1
             {
                 Serial.print(fixed_vertical_force);
                 Serial.print(",");
@@ -283,7 +278,7 @@ void loop()
                 Serial.println("");
                 break;
             }
-            case 'd':
+            case 'd': // check param for exp2
             {
                 Serial.print(start_force);
                 Serial.print(",");
@@ -527,7 +522,6 @@ void run_exp1()
             {
                 if(exp1_state_x_flage == true)
                 {
-                    // Serial.println("1");
                     exp1_state_x_flage = false;
                     exp1_x_state = 1;
                 }
@@ -535,50 +529,25 @@ void run_exp1()
             }
             case 1:     // move machine to force >= 1
             {
-                // Serial.println("2");
                 digitalWrite(x_motor_dir1,HIGH);
                 digitalWrite(x_motor_dir2,LOW);
-                analogWrite(x_motor_speed_pin,200);
+                analogWrite(x_motor_speed_pin,update_pwm);
                 exp1_x_state = 2;
                 break;
             }
             case 2:
             {
-                if(x_present_force >= 1)
+                if(digitalRead(x_limit_front)==1)
                 {
-                    // Serial.println("3");
                     digitalWrite(x_motor_dir1,LOW);
                     digitalWrite(x_motor_dir2,LOW);
                     analogWrite(x_motor_speed_pin,0);
-                    delay(300);
                     exp1_x_state = 3;
                 }
                 break;
             }
             case 3:
             {
-                // Serial.println("4");
-                digitalWrite(x_motor_dir1,HIGH);
-                digitalWrite(x_motor_dir2,LOW);
-                analogWrite(x_motor_speed_pin,update_pwm);
-                exp1_x_state = 4;            
-                break;
-            }
-            case 4:
-            {
-                if(digitalRead(x_limit_front)==1)
-                {
-                    // Serial.println("5");
-                    digitalWrite(x_motor_dir1,LOW);
-                    digitalWrite(x_motor_dir2,LOW);
-                    analogWrite(x_motor_speed_pin,0);
-                    exp1_x_state = 5;
-                }
-                break;
-            }
-            case 5:
-            {
-                // Serial.println("6");
                 Serial.flush();
                 exp1_start_test = false;
                 exp1_test_success = true;
@@ -595,25 +564,21 @@ void run_exp1()
         {
             case 0:
             {
-                // Serial.println("y0");
                 exp1_y_state = 1;
                 break;
             }
             case 1:
             {
-                // Serial.println("y1");
                 exp1_y_state = 2;
                 break;
             }
             case 2:     // move machine down pwm 200
             {
-                // Serial.println("y2");
                 digitalWrite(y_motor_dir1,HIGH);
                 digitalWrite(y_motor_dir2,LOW);
                 analogWrite(y_motor_speed_pin,255);
                 if(y_present_force >=50)
                 {
-                    // Serial.println("y21");
                     digitalWrite(y_motor_dir1,LOW);
                     digitalWrite(y_motor_dir2,LOW);
                     analogWrite(y_motor_speed_pin,0);
@@ -624,14 +589,13 @@ void run_exp1()
             }
             case 3: // force >1 stop Motor Y
             {
-                // Serial.println("y3");
                 delay(300);
                 exp1_y_state = 4;
                 break;
             }
             case 4: // start Motor Y Pwm 20 and move down
             {
-                // Serial.println("y4");
+
                 digitalWrite(y_motor_dir1,HIGH);
                 digitalWrite(y_motor_dir2,LOW);
                 analogWrite(y_motor_speed_pin,y_speed_motor_stabilizer);
@@ -640,30 +604,26 @@ void run_exp1()
             }
             case 5: // get limit or preforce > fixvertical
             {
-                // Serial.println("y5");
                 if(digitalRead(y_limit_bottom)==1)
-                {
-                    // Serial.println("y51");
-                    exp1_y_state = 8;
-                    digitalWrite(y_motor_dir1,LOW);
-                    digitalWrite(y_motor_dir2,LOW);
-                    analogWrite(y_motor_speed_pin,0);
+                    {
+                        exp1_y_state = 8;
+                        digitalWrite(y_motor_dir1,LOW);
+                        digitalWrite(y_motor_dir2,LOW);
+                        analogWrite(y_motor_speed_pin,0);
 
-                }
+                    }
                 else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
-                {
-                    // Serial.println("y52");
-                    exp1_y_state = 7;
-                    digitalWrite(y_motor_dir1,LOW);
-                    digitalWrite(y_motor_dir2,LOW);
-                    analogWrite(y_motor_speed_pin,0);
+                    {
+                        exp1_y_state = 7;
+                        digitalWrite(y_motor_dir1,LOW);
+                        digitalWrite(y_motor_dir2,LOW);
+                        analogWrite(y_motor_speed_pin,0);
 
-                }
-            break;  
+                    }
+                break;  
             }
             case 6: // move up
             {   
-                // Serial.println("y6");
                 digitalWrite(y_motor_dir1,LOW);
                 digitalWrite(y_motor_dir2,HIGH);
                 analogWrite(y_motor_speed_pin,y_speed_motor_stabilizer);
@@ -672,22 +632,19 @@ void run_exp1()
             }
             case 7: // stabilizer Y force
             {
-                // Serial.println("y7");
                 if(y_present_force < fixed_vertical_force-loadcell_guard_band)
                 {
-                    Serial.println("y71");
                     exp1_y_state = 4;
                 }
                 else if(y_present_force >= fixed_vertical_force+loadcell_guard_band)
                 {
-                    Serial.println("y72");
                     exp1_y_state = 6;
                 }
                 else if(exp1_start_state_x == true)
                 {
-                    // Serial.println("y73");
                     exp1_state_x_flage = true;  
                     exp1_start_state_x = false;
+                    exp1_y_state = 7;
                 }
                 break;
             }
