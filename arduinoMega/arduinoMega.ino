@@ -750,11 +750,12 @@ void run_exp2()
             }
         case 7:
             {
-                exp2_start_state = false;
+                exp2_start_test = false;
                 exp2_test_success = true;
             }
         default:
             {
+                exp2_start_test = false;
                 break;
             }
             break;
