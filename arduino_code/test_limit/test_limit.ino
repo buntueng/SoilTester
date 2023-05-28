@@ -88,9 +88,8 @@ void loop()
   // Serial.print(digitalRead(y_up_pin));
   // Serial.print((","));
   // Serial.println(digitalRead(y_down_pin));
-
+  //////////////////// ============================= push = 0 ================================================
   x_backward_state = ((x_backward_state << 1) + digitalRead(x_backward_pin)) & 0xFF;
-  // Serial.println(x_backward_state);
   if(x_backward_state == 0xFC)
   {
     x_backward_logic = 1;
@@ -129,7 +128,7 @@ void loop()
   {
     y_down_logic = 0;
   }
-
+  //////////////////// =====================================================================================
 
   if(Serial.available())
   {
@@ -204,38 +203,39 @@ void loop()
     Serial.print(y_up_logic);
     Serial.print(",");
     Serial.println(y_down_logic);
-
-      // if((digitalRead(x_forward_pin)==0)&&(digitalRead(x_limit_front)==0))
-      //   {
-      //       digitalWrite(x_motor_dir1,HIGH);
-      //       digitalWrite(x_motor_dir2,LOW);
-      //       analogWrite(x_motor_speed_pin,50);
-      //   }
-      //   else if ((digitalRead(x_backward_pin)==0)&&(digitalRead(x_limit_back)==0))
-      //   {
-      //       digitalWrite(x_motor_dir1,LOW);
-      //       digitalWrite(x_motor_dir2,HIGH);
-      //       analogWrite(x_motor_speed_pin,50);
-      //   }
-      //   else
-      //   {
-      //       digitalWrite(x_motor_dir1,LOW);
-      //       digitalWrite(x_motor_dir2,LOW);
-      //       analogWrite(x_motor_speed_pin,0);
-      //   }
-      //   // ======= switch control yaxis =============
-      //   if((digitalRead(y_up_pin)==0)&&(digitalRead(y_limit_top)==0))
-      //   {
-      //       digitalWrite(y_motor_dir1,HIGH);
-      //       digitalWrite(y_motor_dir2,LOW);
-      //       analogWrite(y_motor_speed_pin,150);
-      //   }
-      //   else if ((digitalRead(y_down_pin)==0)&&(digitalRead(y_limit_bottom)==0))
-      //   {
-      //       digitalWrite(y_motor_dir1,LOW);
-      //       digitalWrite(y_motor_dir2,HIGH);
-      //       analogWrite(y_motor_speed_pin,150);
-      //   }
+    if(((x_forward_logic) == 0) && (digitalRead(x_limit_front)==0))
+    {
+            digitalWrite(x_motor_dir1,HIGH);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,50);      
+    }
+    else if (((x_backward_logic)==0) && (digitalRead(x_limit_back)==0)) 
+    {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,HIGH);
+            analogWrite(x_motor_speed_pin,50);
+    }
+    else if (((y_up_logic)==0)&&(digitalRead(y_limit_top)==0))
+    {
+            digitalWrite(y_motor_dir1,HIGH);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,150);    
+    }
+    else if(((y_down_logic)==0)&&(digitalRead(y_limit_bottom)==0))
+    {
+            digitalWrite(y_motor_dir1,LOW);
+            digitalWrite(y_motor_dir2,HIGH);
+            analogWrite(y_motor_speed_pin,150);
+    }
+    else
+    {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            digitalWrite(y_motor_dir1,LOW);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+            analogWrite(y_motor_speed_pin,0); 
+    }
       //   else
       //   {
       //       digitalWrite(y_motor_dir1,LOW);
