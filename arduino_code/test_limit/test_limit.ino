@@ -51,8 +51,12 @@ unsigned char x_limit_front_state = 0xFF;
 unsigned char x_limit_back_state = 0xFF;
 unsigned char y_limit_top_state = 0xFF;
 unsigned char y_limit_bottom_state = 0xFF;
-//=======================================================
-int set_zero_state = 0;
+//=================== SET ZERO ============================
+int set_zero_x_state = 0;
+int set_zero_y_state = 0;
+bool set_zero_start = false;
+bool set_zero_x_success = false;
+bool set_zero_y_success = false;
 //=======================================================
 int select_exp = 0;
 
@@ -145,18 +149,22 @@ void loop()
               {
                 break;
               }
-            }
+        }
             break;
-          }
-          case 'L':
+      }
+          case 'Z':
           {
+            set_zero();
+            set_zero_start = true;
+            set_zero_x_state = 0;
+            set_zero_y_state = 0;
             break;
           }
           default:
             {
                 break;
             }
-        }
+    }
         execute_cmd = false;
         cmd_string = "";
   }
@@ -227,17 +235,110 @@ void loop()
 
 void set_zero()
 {
-  switch (set_zero_state)
+  int speed_set_zero = 50;
+  //============================================== SET ZERO X STATE =========================================
+  if(set_zero_start == true)
   {
-    case 1:
+    if(((set_zero_x_success) == true)&((set_zero_y_success) == true))
     {
-      
+      set_zero_x_success = false;
+      set_zero_y_success = false;
+      Serial.println("ZERO SUCCESS");
     }
-    default:
+    switch (set_zero_x_state)
     {
+      case 0:
+      {
+        if((x_limit_back_logic) == 1)
+        {
+          digitalWrite(x_motor_dir1,LOW);
+          digitalWrite(x_motor_dir2,LOW);
+          analogWrite(x_motor_speed_pin,0);
+          set_zero_x_state = 3;
+        }
+        else 
+        {
+          set_zero_x_state = 1;
+        }
+        break;
+      }
+      case 1:
+      {
+          digitalWrite(x_motor_dir1,LOW);
+          digitalWrite(x_motor_dir2,HIGH);
+          analogWrite(x_motor_speed_pin,speed_set_zero);
+          if(x_limit_back_logic == 1)
+          {
+            set_zero_x_state = 2;
+          }
+        break;
+      }
+      case 2:
+      {
+          digitalWrite(x_motor_dir1,LOW);
+          digitalWrite(x_motor_dir2,LOW);
+          analogWrite(x_motor_speed_pin,0);
+          set_zero_x_state = 3;
+        break;
+      }
+      case 3:
+      {
+        set_zero_x_success = true;
+        break;
+      }
+      default:
+      {
+        break;
+      }
       break;
     }
-    break;
+  //============================================== SET ZERO Y STATE =========================================
+    switch (set_zero_y_state)
+    {
+      case 0:
+      {
+        if(y_limit_top_logic == 1)
+        {
+          digitalWrite(y_motor_dir1,LOW);
+          digitalWrite(y_motor_dir2,LOW);
+          analogWrite(y_motor_speed_pin,0);
+          set_zero_y_state = 3;
+        }
+        else
+        {
+          set_zero_y_state = 1;
+        }
+        break;
+      }
+      case 1:
+      {
+          digitalWrite(y_motor_dir1,HIGH);
+          digitalWrite(y_motor_dir2,LOW);
+          analogWrite(y_motor_speed_pin,speed_set_zero);
+          if(y_limit_top_logic == 1)
+          {
+            set_zero_y_state = 2;
+          }
+        break;
+      }
+      case 2:
+      {
+          digitalWrite(y_motor_dir1,LOW);
+          digitalWrite(y_motor_dir2,LOW);
+          analogWrite(y_motor_speed_pin,0);
+          set_zero_y_state = 3;
+      }
+      case 3:
+      {
+        set_zero_y_success = true;
+        break;
+      }
+      default:
+      {
+        break;
+      }
+      break;
+    }
   }
 }
 
