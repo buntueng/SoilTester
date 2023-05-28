@@ -1,3 +1,6 @@
+void scan_input_switches();
+void scan_limit_switches();
+
 const int x_loadcell_pin = A13;
 const int y_loadcell_pin = A10;
 
@@ -60,8 +63,7 @@ bool set_zero_y_success = false;
 //=======================================================
 int select_exp = 0;
 
-
-
+bool set_zero_flag = false;
 
 
 void setup()
@@ -154,10 +156,13 @@ void loop()
       }
           case 'Z':
           {
-            set_zero();
+            Serial.println("SET ZERO");
+            // Serial.println(set_zero_start);
             set_zero_start = true;
             set_zero_x_state = 0;
             set_zero_y_state = 0;
+            set_zero_flag = true;
+            // set_zero();
             break;
           }
           default:
@@ -169,6 +174,10 @@ void loop()
         cmd_string = "";
   }
 
+  if(set_zero_flag)
+  {
+    set_zero();
+  }
   // ============== run machine here ==========================
   if(run_machine)
   {
@@ -235,15 +244,18 @@ void loop()
 
 void set_zero()
 {
-  int speed_set_zero = 50;
+  // int speed_set_zero = 150;
   //============================================== SET ZERO X STATE =========================================
+  // Serial.println("ZERO");
+  Serial.println(set_zero_x_state);
   if(set_zero_start == true)
   {
+    // Serial.println("ZERO TRUE");
     if(((set_zero_x_success) == true)&((set_zero_y_success) == true))
     {
       set_zero_x_success = false;
       set_zero_y_success = false;
-      Serial.println("ZERO SUCCESS");
+      // Serial.println("ZERO SUCCESS");
     }
     switch (set_zero_x_state)
     {
@@ -251,6 +263,7 @@ void set_zero()
       {
         if((x_limit_back_logic) == 1)
         {
+          // Serial.println("case x 1");
           digitalWrite(x_motor_dir1,LOW);
           digitalWrite(x_motor_dir2,LOW);
           analogWrite(x_motor_speed_pin,0);
@@ -258,15 +271,19 @@ void set_zero()
         }
         else 
         {
+          // Serial.println("case x 2");
           set_zero_x_state = 1;
+          digitalWrite(x_motor_dir1,LOW);
+          digitalWrite(x_motor_dir2,HIGH);
+          analogWrite(x_motor_speed_pin,150);
         }
         break;
       }
       case 1:
       {
-          digitalWrite(x_motor_dir1,LOW);
-          digitalWrite(x_motor_dir2,HIGH);
-          analogWrite(x_motor_speed_pin,speed_set_zero);
+          // Serial.print("123234");
+          
+          // Serial.println(speed_set_zero);
           if(x_limit_back_logic == 1)
           {
             set_zero_x_state = 2;
@@ -275,6 +292,7 @@ void set_zero()
       }
       case 2:
       {
+          // Serial.println("case x 4");
           digitalWrite(x_motor_dir1,LOW);
           digitalWrite(x_motor_dir2,LOW);
           analogWrite(x_motor_speed_pin,0);
@@ -283,63 +301,66 @@ void set_zero()
       }
       case 3:
       {
+        // Serial.println("case x 5");
         set_zero_x_success = true;
+        set_zero_flag = false;
         break;
       }
       default:
       {
         break;
       }
-      break;
-    }
-  //============================================== SET ZERO Y STATE =========================================
-    switch (set_zero_y_state)
-    {
-      case 0:
-      {
-        if(y_limit_top_logic == 1)
-        {
-          digitalWrite(y_motor_dir1,LOW);
-          digitalWrite(y_motor_dir2,LOW);
-          analogWrite(y_motor_speed_pin,0);
-          set_zero_y_state = 3;
-        }
-        else
-        {
-          set_zero_y_state = 1;
-        }
-        break;
-      }
-      case 1:
-      {
-          digitalWrite(y_motor_dir1,HIGH);
-          digitalWrite(y_motor_dir2,LOW);
-          analogWrite(y_motor_speed_pin,speed_set_zero);
-          if(y_limit_top_logic == 1)
-          {
-            set_zero_y_state = 2;
-          }
-        break;
-      }
-      case 2:
-      {
-          digitalWrite(y_motor_dir1,LOW);
-          digitalWrite(y_motor_dir2,LOW);
-          analogWrite(y_motor_speed_pin,0);
-          set_zero_y_state = 3;
-      }
-      case 3:
-      {
-        set_zero_y_success = true;
-        break;
-      }
-      default:
-      {
-        break;
-      }
-      break;
+      // break;
     }
   }
+  // //============================================== SET ZERO Y STATE =========================================
+  //   switch (set_zero_y_state)
+  //   {
+  //     case 0:
+  //     {
+  //       if(y_limit_top_logic == 1)
+  //       {
+  //         digitalWrite(y_motor_dir1,LOW);
+  //         digitalWrite(y_motor_dir2,LOW);
+  //         analogWrite(y_motor_speed_pin,0);
+  //         set_zero_y_state = 3;
+  //       }
+  //       else
+  //       {
+  //         set_zero_y_state = 1;
+  //       }
+  //       break;
+  //     }
+  //     case 1:
+  //     {
+  //         digitalWrite(y_motor_dir1,HIGH);
+  //         digitalWrite(y_motor_dir2,LOW);
+  //         analogWrite(y_motor_speed_pin,speed_set_zero);
+  //         if(y_limit_top_logic == 1)
+  //         {
+  //           set_zero_y_state = 2;
+  //         }
+  //       break;
+  //     }
+  //     case 2:
+  //     {
+  //         digitalWrite(y_motor_dir1,LOW);
+  //         digitalWrite(y_motor_dir2,LOW);
+  //         analogWrite(y_motor_speed_pin,0);
+  //         set_zero_y_state = 3;
+  //     }
+  //     case 3:
+  //     {
+  //       set_zero_y_success = true;
+  //       break;
+  //     }
+  //     default:
+  //     {
+  //       break;
+  //     }
+  //     break;
+  //   }
+  // }
 }
 
 
