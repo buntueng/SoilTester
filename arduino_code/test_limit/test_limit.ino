@@ -159,6 +159,13 @@ void loop()
           case 'Z':
           {
             Serial.println("SET ZERO");
+<<<<<<< HEAD
+=======
+            // Serial.println(set_zero_start);
+            // set_zero_start = true;
+            // set_zero_x_state = 0;
+            // set_zero_y_state = 0;
+>>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
             set_zero_flag = true;
             set_zero_state = 0;
             break;
@@ -191,7 +198,11 @@ void loop()
   }
   else
   {
+<<<<<<< HEAD
     if(set_zero_flag==true)
+=======
+    if(set_zero_flag)
+>>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
     {
       set_zero();
     }
@@ -251,20 +262,33 @@ void manual_control()
 
 void set_zero()
 {
+<<<<<<< HEAD
   Serial.println(set_zero_state);
+=======
+>>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
   switch (set_zero_state)
   {
     case 0:
     {
+<<<<<<< HEAD
       if((y_limit_top_logic) == 1)
         {
           digitalWrite(y_motor_dir1,LOW);
           digitalWrite(y_motor_dir2,LOW);
           analogWrite(y_motor_speed_pin,0);
           set_zero_state = 2; 
-        }
-        else 
+=======
+      if((x_limit_back_logic) == 1)
         {
+          digitalWrite(x_motor_dir1,LOW);
+          digitalWrite(x_motor_dir2,LOW);
+          analogWrite(x_motor_speed_pin,0);
+          set_zero_state = 2;
+>>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
+        }
+      else 
+        {
+<<<<<<< HEAD
           set_zero_state = 1;
         }
     }
@@ -302,6 +326,10 @@ void set_zero()
       else 
         {
           set_zero_state = 4;
+=======
+          // move x motor backward
+          set_zero_state = 1;
+>>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
           digitalWrite(x_motor_dir1,LOW);
           digitalWrite(x_motor_dir2,HIGH);
           analogWrite(x_motor_speed_pin,150);
@@ -315,13 +343,24 @@ void set_zero()
             digitalWrite(x_motor_dir1,LOW);
             digitalWrite(x_motor_dir2,LOW);
             analogWrite(x_motor_speed_pin,0);
+<<<<<<< HEAD
             set_zero_state = 5;
+=======
+            set_zero_state = 2;
+>>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
           }
         break;
       }
       case 5:
       {
         set_zero_flag = false;
+<<<<<<< HEAD
+=======
+        break;
+      }
+      case 3:
+      {
+>>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
         break;
       }
       default:
