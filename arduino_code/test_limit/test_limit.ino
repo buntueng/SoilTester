@@ -17,7 +17,7 @@ const int y_limit_bottom = 20;
 
 // x move button
 const int x_forward_pin = 11;
-const int x_backward_pin = 15;
+const int x_backward_pin = 40;
 const int y_up_pin =10;
 const int y_down_pin =12;
 
@@ -80,8 +80,17 @@ void setup()
 
 void loop()
 {
-  //read all button logic
-  x_backward_state = (x_backward_state << 1 + digitalRead(x_backward_pin)) & 0xFF;
+  // read all button logic
+  // Serial.print(digitalRead(x_forward_pin));
+  // Serial.print((","));
+  // Serial.print(digitalRead(x_backward_pin));
+  // Serial.print((","));
+  // Serial.print(digitalRead(y_up_pin));
+  // Serial.print((","));
+  // Serial.println(digitalRead(y_down_pin));
+
+  x_backward_state = ((x_backward_state << 1) + digitalRead(x_backward_pin)) & 0xFF;
+  // Serial.println(x_backward_state);
   if(x_backward_state == 0xFC)
   {
     x_backward_logic = 1;
@@ -91,7 +100,7 @@ void loop()
     x_backward_logic = 0;
   }
 
-  x_forward_state = (x_forward_state << 1 + digitalRead(x_forward_pin)) & 0xFF;
+  x_forward_state = ((x_forward_state << 1) + digitalRead(x_forward_pin)) & 0xFF;
   if(x_forward_state == 0xFC)
   {
     x_forward_logic = 1;
@@ -101,7 +110,7 @@ void loop()
     x_forward_logic = 0;
   }
 
-  y_up_state = (y_up_state << 1 + digitalRead(y_up_pin)) & 0xFF;
+  y_up_state = ((y_up_state << 1) + digitalRead(y_up_pin)) & 0xFF;
   if(y_up_state == 0xFC)
   {
     y_up_logic = 1;
@@ -111,7 +120,7 @@ void loop()
     y_up_logic = 0;
   }
 
-  y_down_state = (y_down_state << 1 + digitalRead(y_down_pin)) & 0xFF;
+  y_down_state = ((y_down_state << 1) + digitalRead(y_down_pin)) & 0xFF;
   if(y_down_state == 0xFC)
   {
     y_down_logic = 1;
