@@ -10,16 +10,16 @@ const int y_motor_dir2 = 4;
 const int y_motor_speed_pin = 2;
 
 // limit switches
-const int x_limit_front_pin = 18;
-const int x_limit_back_pin = 16;
+const int x_limit_front_pin = 28;
+const int x_limit_back_pin = 30;
 const int y_limit_top_pin = 26;
-const int y_limit_bottom_pin = 20;
+const int y_limit_bottom_pin = 24;
 
 // x move button
-const int x_forward_pin = 11;
-const int x_backward_pin = 40;
-const int y_up_pin =10;
-const int y_down_pin =12;
+const int x_forward_pin = 38;
+const int x_backward_pin = 32;
+const int y_up_pin =36;
+const int y_down_pin =34;
 
 // command from pc
 bool execute_cmd = false;
@@ -161,54 +161,64 @@ void loop()
   }
   else
   {
-    Serial.print(x_limit_front_logic);
-    Serial.print(",");
-    Serial.print(x_limit_back_logic);
-    Serial.print(",");
-    Serial.print(y_limit_top_logic);
-    Serial.print(",");
-    Serial.println(y_limit_bottom_logic);
+    // Serial.print(x_limit_front_logic);
+    // Serial.print(",");
+    // Serial.print(x_limit_back_logic);
+    // Serial.print(",");
+    // Serial.print(y_limit_top_logic);
+    // Serial.print(",");
+    // Serial.println(y_limit_bottom_logic);
 
-    
-    if(((x_forward_logic) == 0) && (digitalRead(x_limit_front_pin)==0))
+    // Serial.print(x_backward_logic);
+    // Serial.print(",");
+    // Serial.print(x_forward_logic);
+    // Serial.print(",");
+    // Serial.print(y_up_logic);
+    // Serial.print(",");
+    // Serial.println(y_down_logic);
+    // Serial.println("OK");
+    if(((x_forward_logic) == 1) && ((x_limit_front_logic)==0))
     {
+            // Serial.println("X_forward");
             digitalWrite(x_motor_dir1,HIGH);
             digitalWrite(x_motor_dir2,LOW);
-            analogWrite(x_motor_speed_pin,50);      
+            analogWrite(x_motor_speed_pin,150);      
     }
-    else if (((x_backward_logic)==0) && (digitalRead(x_limit_back_pin)==0)) 
+    else if (((x_backward_logic)==1) && ((x_limit_back_logic)==0)) 
     {
+            // Serial.println("X_backward");
             digitalWrite(x_motor_dir1,LOW);
             digitalWrite(x_motor_dir2,HIGH);
-            analogWrite(x_motor_speed_pin,50);
+            analogWrite(x_motor_speed_pin,150);
     }
-    else if (((y_up_logic)==0)&&(digitalRead(y_limit_top_pin)==0))
+    else
     {
+            // Serial.println("x stop");
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+    }
+    if (((y_up_logic)==1)&&((y_limit_top_logic)==0))
+    {
+            // Serial.println("Y_up");
             digitalWrite(y_motor_dir1,HIGH);
             digitalWrite(y_motor_dir2,LOW);
             analogWrite(y_motor_speed_pin,150);    
     }
-    else if(((y_down_logic)==0)&&(digitalRead(y_limit_bottom_pin)==0))
+    else if(((y_down_logic)==1)&&((y_limit_bottom_logic)==0))
     {
+            // Serial.println("Y_down");
             digitalWrite(y_motor_dir1,LOW);
             digitalWrite(y_motor_dir2,HIGH);
             analogWrite(y_motor_speed_pin,150);
     }
     else
     {
-            digitalWrite(x_motor_dir1,LOW);
-            digitalWrite(x_motor_dir2,LOW);
-            digitalWrite(y_motor_dir1,LOW);
-            digitalWrite(y_motor_dir2,LOW);
-            analogWrite(x_motor_speed_pin,0);
-            analogWrite(y_motor_speed_pin,0); 
+        // Serial.println("y stop");
+        digitalWrite(y_motor_dir1,LOW);
+        digitalWrite(y_motor_dir2,LOW);
+        analogWrite(y_motor_speed_pin,0);
     }
-      //   else
-      //   {
-      //       digitalWrite(y_motor_dir1,LOW);
-      //       digitalWrite(y_motor_dir2,LOW);
-      //       analogWrite(y_motor_speed_pin,0);
-      //   }
   }    
 }
 
@@ -259,44 +269,45 @@ void scan_input_switches()
 
 void scan_limit_switches()
 {
+  // ============================== push = 0 ========================
   x_limit_front_state = ((x_limit_front_state << 1) + digitalRead(x_limit_front_pin)) & 0xFF;
   if(x_limit_front_state == 0xFC)
   {
-    x_limit_front_logic = 1;
+    x_limit_front_logic = 0;
   }
   else if(x_limit_front_state == 0x3F)
   {
-    x_limit_front_logic = 0;
+    x_limit_front_logic = 1;
   }
 
   x_limit_back_state = ((x_limit_back_state << 1) + digitalRead(x_limit_back_pin)) & 0xFF;
   if(x_limit_back_state == 0xFC)
   {
-    x_limit_back_logic = 1;
+    x_limit_back_logic = 0;
   }
   else if(x_limit_back_state == 0x3F)
   {
-    x_limit_back_logic = 0;
+    x_limit_back_logic = 1;
   }
 
   y_limit_top_state = ((y_limit_top_state << 1) + digitalRead(y_limit_top_pin)) & 0xFF;
   if(y_limit_top_state == 0xFC)
   {
-    y_limit_top_logic = 1;
+    y_limit_top_logic = 0;
   }
   else if(y_limit_top_state == 0x3F)
   {
-    y_limit_top_logic = 0;
+    y_limit_top_logic = 1;
   }
 
   y_limit_bottom_state = ((y_limit_bottom_state << 1) + digitalRead(y_limit_bottom_pin)) & 0xFF;
   if(y_limit_bottom_state == 0xFC)
   {
-    y_limit_bottom_logic = 1;
+    y_limit_bottom_logic = 0;
   }
   else if(y_limit_bottom_state == 0x3F)
   {
-    y_limit_bottom_logic = 0;
+    y_limit_bottom_logic = 1;
   }
 
 
