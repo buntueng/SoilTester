@@ -156,27 +156,31 @@ void loop()
         }
             break;
       }
-          case 'Z':
-          {
-            Serial.println("SET ZERO");
-<<<<<<< HEAD
-=======
-            // Serial.println(set_zero_start);
-            // set_zero_start = true;
-            // set_zero_x_state = 0;
-            // set_zero_y_state = 0;
->>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
-            set_zero_flag = true;
-            set_zero_state = 0;
-            break;
-          }
-          default:
-            {
-                break;
-            }
+      case 'L':
+      {
+        Serial.print(x_limit_front_logic);
+        Serial.print(",");
+        Serial.print(x_limit_back_logic);
+        Serial.print(",");
+        Serial.print(y_limit_top_logic);
+        Serial.print(",");
+        Serial.println(y_limit_bottom_logic);
+        break;
+      }
+      case 'Z':
+      {
+        Serial.println("SET ZERO");
+        set_zero_flag = true;
+        set_zero_state = 0;
+        break;
+      }
+      default:
+      {
+        break;
+      }
     }
-        execute_cmd = false;
-        cmd_string = "";
+    execute_cmd = false;
+    cmd_string = "";
   }
 
   // ============== run machine here ==========================
@@ -198,11 +202,7 @@ void loop()
   }
   else
   {
-<<<<<<< HEAD
-    if(set_zero_flag==true)
-=======
     if(set_zero_flag)
->>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
     {
       set_zero();
     }
@@ -262,37 +262,29 @@ void manual_control()
 
 void set_zero()
 {
-<<<<<<< HEAD
-  Serial.println(set_zero_state);
-=======
->>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
   switch (set_zero_state)
   {
     case 0:
     {
-<<<<<<< HEAD
       if((y_limit_top_logic) == 1)
         {
           digitalWrite(y_motor_dir1,LOW);
           digitalWrite(y_motor_dir2,LOW);
           analogWrite(y_motor_speed_pin,0);
-          set_zero_state = 2; 
-=======
+          set_zero_state = 2;
+        }
       if((x_limit_back_logic) == 1)
         {
           digitalWrite(x_motor_dir1,LOW);
           digitalWrite(x_motor_dir2,LOW);
           analogWrite(x_motor_speed_pin,0);
           set_zero_state = 2;
->>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
         }
       else 
         {
-<<<<<<< HEAD
           set_zero_state = 1;
         }
     }
-
     case 1:
     {
         digitalWrite(y_motor_dir1,HIGH);
@@ -304,7 +296,6 @@ void set_zero()
         }
         break;
     } 
-
     case 2:
     {
         digitalWrite(y_motor_dir1,LOW);
@@ -326,41 +317,30 @@ void set_zero()
       else 
         {
           set_zero_state = 4;
-=======
-          // move x motor backward
-          set_zero_state = 1;
->>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
           digitalWrite(x_motor_dir1,LOW);
           digitalWrite(x_motor_dir2,HIGH);
           analogWrite(x_motor_speed_pin,150);
         }
         break;
     }
-      case 4:
+    case 4:
+    {
+      if(x_limit_back_logic == 1)
       {
-          if(x_limit_back_logic == 1)
-          {
-            digitalWrite(x_motor_dir1,LOW);
-            digitalWrite(x_motor_dir2,LOW);
-            analogWrite(x_motor_speed_pin,0);
-<<<<<<< HEAD
-            set_zero_state = 5;
-=======
-            set_zero_state = 2;
->>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
-          }
-        break;
+        digitalWrite(x_motor_dir1,LOW);
+        digitalWrite(x_motor_dir2,LOW);
+        analogWrite(x_motor_speed_pin,0);
+        set_zero_state = 5;
       }
+      break;
+    }
       case 5:
       {
         set_zero_flag = false;
-<<<<<<< HEAD
-=======
         break;
       }
-      case 3:
+      case 6:
       {
->>>>>>> 2658df9b6b633fe5bc3c864cb1be3e12f707212f
         break;
       }
       default:
@@ -368,54 +348,6 @@ void set_zero()
         break;
       }
   }
-  // //============================================== SET ZERO Y STATE =========================================
-  //   switch (set_zero_y_state)
-  //   {
-  //     case 0:
-  //     {
-  //       if(y_limit_top_logic == 1)
-  //       {
-  //         digitalWrite(y_motor_dir1,LOW);
-  //         digitalWrite(y_motor_dir2,LOW);
-  //         analogWrite(y_motor_speed_pin,0);
-  //         set_zero_y_state = 3;
-  //       }
-  //       else
-  //       {
-  //         set_zero_y_state = 1;
-  //       }
-  //       break;
-  //     }
-  //     case 1:
-  //     {
-  //         digitalWrite(y_motor_dir1,HIGH);
-  //         digitalWrite(y_motor_dir2,LOW);
-  //         analogWrite(y_motor_speed_pin,speed_set_zero);
-  //         if(y_limit_top_logic == 1)
-  //         {
-  //           set_zero_y_state = 2;
-  //         }
-  //       break;
-  //     }
-  //     case 2:
-  //     {
-  //         digitalWrite(y_motor_dir1,LOW);
-  //         digitalWrite(y_motor_dir2,LOW);
-  //         analogWrite(y_motor_speed_pin,0);
-  //         set_zero_y_state = 3;
-  //     }
-  //     case 3:
-  //     {
-  //       set_zero_y_success = true;
-  //       break;
-  //     }
-  //     default:
-  //     {
-  //       break;
-  //     }
-  //     break;
-  //   }
-  // }
 }
 
 
