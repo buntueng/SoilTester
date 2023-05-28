@@ -52,6 +52,13 @@ unsigned char x_limit_back_state = 0xFF;
 unsigned char y_limit_top_state = 0xFF;
 unsigned char y_limit_bottom_state = 0xFF;
 //=======================================================
+int set_zero_state = 0;
+//=======================================================
+int select_exp = 0;
+
+
+
+
 
 void setup()
 {
@@ -157,26 +164,22 @@ void loop()
   // ============== run machine here ==========================
   if(run_machine)
   {
-    
+    switch (select_exp) 
+    {
+      case 1:
+      {
+
+        break;
+      }
+      default:
+      {
+        break;
+      }
+      break;
+    }
   }
   else
   {
-    // Serial.print(x_limit_front_logic);
-    // Serial.print(",");
-    // Serial.print(x_limit_back_logic);
-    // Serial.print(",");
-    // Serial.print(y_limit_top_logic);
-    // Serial.print(",");
-    // Serial.println(y_limit_bottom_logic);
-
-    // Serial.print(x_backward_logic);
-    // Serial.print(",");
-    // Serial.print(x_forward_logic);
-    // Serial.print(",");
-    // Serial.print(y_up_logic);
-    // Serial.print(",");
-    // Serial.println(y_down_logic);
-    // Serial.println("OK");
     if(((x_forward_logic) == 1) && ((x_limit_front_logic)==0))
     {
             // Serial.println("X_forward");
@@ -222,6 +225,27 @@ void loop()
   }    
 }
 
+void set_zero()
+{
+  switch (set_zero_state)
+  {
+    case 1:
+    {
+      
+    }
+    default:
+    {
+      break;
+    }
+    break;
+  }
+}
+
+
+void exp1()
+{
+  
+}
 
 // ====================== sub program ===============================
 void scan_input_switches()
