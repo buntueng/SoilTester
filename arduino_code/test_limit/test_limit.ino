@@ -22,8 +22,8 @@ const int y_limit_bottom_pin = 24;
 // x move button
 const int x_forward_pin = 38;
 const int x_backward_pin = 32;
-const int y_up_pin =36;
-const int y_down_pin =34;
+const int y_up_pin =34;
+const int y_down_pin =36;
 
 // command from pc
 bool execute_cmd = false;
@@ -298,48 +298,63 @@ void set_zero()
     } 
     case 2:
     {
+      if(y_limit_top_logic == 1)
+      {
+        set_zero_state = 3;
+      }
+    }
+    case 3:
+    {
         digitalWrite(y_motor_dir1,LOW);
         digitalWrite(y_motor_dir2,LOW);
         analogWrite(y_motor_speed_pin,0);
-        set_zero_state = 3; 
+        set_zero_state = 4; 
       break;
     }   
 
-    case 3:
+    case 4:
     {
       if((x_limit_back_logic) == 1)
         {
           digitalWrite(x_motor_dir1,LOW);
           digitalWrite(x_motor_dir2,LOW);
           analogWrite(x_motor_speed_pin,0);
-          set_zero_state = 5;
+          set_zero_state = 6;
         }
       else 
         {
-          set_zero_state = 4;
           digitalWrite(x_motor_dir1,LOW);
           digitalWrite(x_motor_dir2,HIGH);
           analogWrite(x_motor_speed_pin,150);
+          set_zero_state = 5;
         }
         break;
     }
-    case 4:
+    case 5:
+    {
+      if(x_limit_back_logic == 1)
+      {
+        set_zero_state = 6;
+      }
+    }
+    case 6:
     {
       if(x_limit_back_logic == 1)
       {
         digitalWrite(x_motor_dir1,LOW);
         digitalWrite(x_motor_dir2,LOW);
         analogWrite(x_motor_speed_pin,0);
-        set_zero_state = 5;
+        set_zero_state = 7;
       }
       break;
     }
-      case 5:
+    case 7:
       {
+        Serial.println("Zero complete");
         set_zero_flag = false;
         break;
       }
-      case 6:
+      case 8:
       {
         break;
       }
@@ -360,41 +375,41 @@ void exp1()
 void scan_input_switches()
 {
   x_backward_state = ((x_backward_state << 1) + digitalRead(x_backward_pin)) & 0xFF;
-  if(x_backward_state == 0xFC)
+  if(x_backward_state == 0xFE)
   {
     x_backward_logic = 1;
   }
-  else if(x_backward_state == 0x3F)
+  else if(x_backward_state == 0x7F)
   {
     x_backward_logic = 0;
   }
 
   x_forward_state = ((x_forward_state << 1) + digitalRead(x_forward_pin)) & 0xFF;
-  if(x_forward_state == 0xFC)
+  if(x_forward_state == 0xFE)
   {
     x_forward_logic = 1;
   }
-  else if(x_forward_state == 0x3F)
+  else if(x_forward_state == 0x7F)
   {
     x_forward_logic = 0;
   }
 
   y_up_state = ((y_up_state << 1) + digitalRead(y_up_pin)) & 0xFF;
-  if(y_up_state == 0xFC)
+  if(y_up_state == 0xFE)
   {
     y_up_logic = 1;
   }
-  else if(y_up_state == 0x3F)
+  else if(y_up_state == 0x7F)
   {
     y_up_logic = 0;
   }
 
   y_down_state = ((y_down_state << 1) + digitalRead(y_down_pin)) & 0xFF;
-  if(y_down_state == 0xFC)
+  if(y_down_state == 0xFE)
   {
     y_down_logic = 1;
   }
-  else if(y_down_state == 0x3F)
+  else if(y_down_state == 0x7F)
   {
     y_down_logic = 0;
   }
@@ -402,46 +417,50 @@ void scan_input_switches()
 
 void scan_limit_switches()
 {
+  x_limit_front_logic = digitalRead(x_limit_front_pin);
+  x_limit_back_logic = digitalRead(x_limit_back_pin);
+  y_limit_top_logic = digitalRead(y_limit_top_pin);
+  y_limit_bottom_logic = digitalRead(y_limit_bottom_pin);
   // ============================== push = 0 ========================
-  x_limit_front_state = ((x_limit_front_state << 1) + digitalRead(x_limit_front_pin)) & 0xFF;
-  if(x_limit_front_state == 0xFC)
-  {
-    x_limit_front_logic = 0;
-  }
-  else if(x_limit_front_state == 0x3F)
-  {
-    x_limit_front_logic = 1;
-  }
+  // x_limit_front_state = ((x_limit_front_state << 1) + digitalRead(x_limit_front_pin)) & 0xFF;
+  // if(x_limit_front_state == 0xFC)
+  // {
+  //   x_limit_front_logic = 0;
+  // }
+  // else if(x_limit_front_state == 0x3F)
+  // {
+  //   x_limit_front_logic = 1;
+  // }
 
-  x_limit_back_state = ((x_limit_back_state << 1) + digitalRead(x_limit_back_pin)) & 0xFF;
-  if(x_limit_back_state == 0xFC)
-  {
-    x_limit_back_logic = 0;
-  }
-  else if(x_limit_back_state == 0x3F)
-  {
-    x_limit_back_logic = 1;
-  }
+  // x_limit_back_state = ((x_limit_back_state << 1) + digitalRead(x_limit_back_pin)) & 0xFF;
+  // if(x_limit_back_state == 0xFC)
+  // {
+  //   x_limit_back_logic = 0;
+  // }
+  // else if(x_limit_back_state == 0x3F)
+  // {
+  //   x_limit_back_logic = 1;
+  // }
 
-  y_limit_top_state = ((y_limit_top_state << 1) + digitalRead(y_limit_top_pin)) & 0xFF;
-  if(y_limit_top_state == 0xFC)
-  {
-    y_limit_top_logic = 0;
-  }
-  else if(y_limit_top_state == 0x3F)
-  {
-    y_limit_top_logic = 1;
-  }
+  // y_limit_top_state = ((y_limit_top_state << 1) + digitalRead(y_limit_top_pin)) & 0xFF;
+  // if(y_limit_top_state == 0xFC)
+  // {
+  //   y_limit_top_logic = 0;
+  // }
+  // else if(y_limit_top_state == 0x3F)
+  // {
+  //   y_limit_top_logic = 1;
+  // }
 
-  y_limit_bottom_state = ((y_limit_bottom_state << 1) + digitalRead(y_limit_bottom_pin)) & 0xFF;
-  if(y_limit_bottom_state == 0xFC)
-  {
-    y_limit_bottom_logic = 0;
-  }
-  else if(y_limit_bottom_state == 0x3F)
-  {
-    y_limit_bottom_logic = 1;
-  }
+  // y_limit_bottom_state = ((y_limit_bottom_state << 1) + digitalRead(y_limit_bottom_pin)) & 0xFF;
+  // if(y_limit_bottom_state == 0xFC)
+  // {
+  //   y_limit_bottom_logic = 0;
+  // }
+  // else if(y_limit_bottom_state == 0x3F)
+  // {
+  //   y_limit_bottom_logic = 1;
+  // }
 
 
 }
