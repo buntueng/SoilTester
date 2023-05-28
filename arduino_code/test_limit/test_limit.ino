@@ -1,5 +1,6 @@
 void scan_input_switches();
 void scan_limit_switches();
+void manual_control();
 
 const int x_loadcell_pin = A13;
 const int y_loadcell_pin = A10;
@@ -64,6 +65,7 @@ bool set_zero_y_success = false;
 int select_exp = 0;
 
 bool set_zero_flag = false;
+unsigned int set_zero_state = 0;
 
 
 void setup()
@@ -157,12 +159,8 @@ void loop()
           case 'Z':
           {
             Serial.println("SET ZERO");
-            // Serial.println(set_zero_start);
-            set_zero_start = true;
-            set_zero_x_state = 0;
-            set_zero_y_state = 0;
             set_zero_flag = true;
-            // set_zero();
+            set_zero_state = 0;
             break;
           }
           default:
@@ -174,10 +172,6 @@ void loop()
         cmd_string = "";
   }
 
-  if(set_zero_flag)
-  {
-    set_zero();
-  }
   // ============== run machine here ==========================
   if(run_machine)
   {
@@ -197,7 +191,21 @@ void loop()
   }
   else
   {
-    if(((x_forward_logic) == 1) && ((x_limit_front_logic)==0))
+    if(set_zero_flag==true)
+    {
+      set_zero();
+    }
+    else
+    {
+      manual_control();
+    }    
+  }
+}
+
+
+void manual_control()
+{
+  if(((x_forward_logic) == 1) && ((x_limit_front_logic)==0))
     {
             // Serial.println("X_forward");
             digitalWrite(x_motor_dir1,HIGH);
@@ -239,70 +247,80 @@ void loop()
         digitalWrite(y_motor_dir2,LOW);
         analogWrite(y_motor_speed_pin,0);
     }
-  }    
 }
 
 void set_zero()
 {
-  // int speed_set_zero = 150;
-  //============================================== SET ZERO X STATE =========================================
-  // Serial.println("ZERO");
-  Serial.println(set_zero_x_state);
-  if(set_zero_start == true)
+  Serial.println(set_zero_state);
+  switch (set_zero_state)
   {
-    // Serial.println("ZERO TRUE");
-    if(((set_zero_x_success) == true)&((set_zero_y_success) == true))
+    case 0:
     {
-      set_zero_x_success = false;
-      set_zero_y_success = false;
-      // Serial.println("ZERO SUCCESS");
-    }
-    switch (set_zero_x_state)
-    {
-      case 0:
-      {
-        if((x_limit_back_logic) == 1)
+      if((y_limit_top_logic) == 1)
         {
-          // Serial.println("case x 1");
-          digitalWrite(x_motor_dir1,LOW);
-          digitalWrite(x_motor_dir2,LOW);
-          analogWrite(x_motor_speed_pin,0);
-          set_zero_x_state = 3;
+          digitalWrite(y_motor_dir1,LOW);
+          digitalWrite(y_motor_dir2,LOW);
+          analogWrite(y_motor_speed_pin,0);
+          set_zero_state = 2; 
         }
         else 
         {
-          // Serial.println("case x 2");
-          set_zero_x_state = 1;
+          set_zero_state = 1;
+        }
+    }
+
+    case 1:
+    {
+        digitalWrite(y_motor_dir1,HIGH);
+        digitalWrite(y_motor_dir2,LOW);
+        analogWrite(y_motor_speed_pin,150);
+        if(y_limit_top_logic == 1)
+        {
+          set_zero_state = 2;
+        }
+        break;
+    } 
+
+    case 2:
+    {
+        digitalWrite(y_motor_dir1,LOW);
+        digitalWrite(y_motor_dir2,LOW);
+        analogWrite(y_motor_speed_pin,0);
+        set_zero_state = 3; 
+      break;
+    }   
+
+    case 3:
+    {
+      if((x_limit_back_logic) == 1)
+        {
+          digitalWrite(x_motor_dir1,LOW);
+          digitalWrite(x_motor_dir2,LOW);
+          analogWrite(x_motor_speed_pin,0);
+          set_zero_state = 5;
+        }
+      else 
+        {
+          set_zero_state = 4;
           digitalWrite(x_motor_dir1,LOW);
           digitalWrite(x_motor_dir2,HIGH);
           analogWrite(x_motor_speed_pin,150);
         }
         break;
-      }
-      case 1:
+    }
+      case 4:
       {
-          // Serial.print("123234");
-          
-          // Serial.println(speed_set_zero);
           if(x_limit_back_logic == 1)
           {
-            set_zero_x_state = 2;
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+            set_zero_state = 5;
           }
         break;
       }
-      case 2:
+      case 5:
       {
-          // Serial.println("case x 4");
-          digitalWrite(x_motor_dir1,LOW);
-          digitalWrite(x_motor_dir2,LOW);
-          analogWrite(x_motor_speed_pin,0);
-          set_zero_x_state = 3;
-        break;
-      }
-      case 3:
-      {
-        // Serial.println("case x 5");
-        set_zero_x_success = true;
         set_zero_flag = false;
         break;
       }
@@ -310,8 +328,6 @@ void set_zero()
       {
         break;
       }
-      // break;
-    }
   }
   // //============================================== SET ZERO Y STATE =========================================
   //   switch (set_zero_y_state)
