@@ -139,22 +139,35 @@ void loop()
           case '1':
           {
             run_machine = true;
+            select_exp = 1;
             break;
           }
-              case '2':
-              {
-                break;
-              }
-              case '3':
-              {
-                break;
-              }
-              case '4':
-              {
-                break;
-              }
+          case '2':
+          {
+            run_machine = true;
+            select_exp = 2;            
+            break;
+          }
+          case '3':
+          {
+            run_machine = true;
+            select_exp = 3;            
+            break;
+          }
+          case '4':
+          {
+            run_machine = true;
+            select_exp = 4;            
+            break;
+          }
         }
             break;
+      }
+      case 't':
+      {
+        run_machine = false;
+        select_exp = 0;
+        break;
       }
       case 'L':
       {
@@ -190,7 +203,22 @@ void loop()
     {
       case 1:
       {
-
+        Serial.println("R1");
+        break;
+      }
+      case 2:
+      {
+        Serial.println("R2");
+        break;
+      }
+      case 3:
+      {
+        Serial.println("R3");
+        break;
+      }
+      case 4:
+      {
+        Serial.println("R4");
         break;
       }
       default:
@@ -273,8 +301,6 @@ void set_zero()
       digitalWrite(x_motor_dir1,LOW);
       digitalWrite(x_motor_dir2,LOW);
       analogWrite(x_motor_speed_pin,0); 
-      // x_limit_back_logic = 0;
-      // y_limit_top_logic = 0;
       set_zero_state = 1;
       break;
     }
