@@ -414,11 +414,6 @@ void scan_input_switches()
 
 void scan_limit_switches()
 {
-  // x_limit_front_logic = digitalRead(x_limit_front_pin);
-  // x_limit_back_logic = digitalRead(x_limit_back_pin);
-  // y_limit_top_logic = digitalRead(y_limit_top_pin);
-  // y_limit_bottom_logic = digitalRead(y_limit_bottom_pin);
-  // ============================== push = 0 ========================
   x_limit_front_state = ((x_limit_front_state << 1) + digitalRead(x_limit_front_pin)) & 0x03;
   if(x_limit_front_state == 0x03)
   {
@@ -444,7 +439,7 @@ void scan_limit_switches()
   {
     y_limit_top_logic = 1;
   }
-  else if(y_limit_top_state == 0x3F)
+  else if(y_limit_top_state == 0x00)
   {
     y_limit_top_logic = 0;
   }
@@ -458,6 +453,4 @@ void scan_limit_switches()
   {
     y_limit_bottom_logic = 0;
   }
-
-
 }
