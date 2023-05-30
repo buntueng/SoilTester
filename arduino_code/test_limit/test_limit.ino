@@ -203,7 +203,8 @@ void loop()
     {
       case 1:
       {
-        Serial.println("R1");
+        // Serial.println("R1");
+        exp1();
         break;
       }
       case 2:
@@ -391,6 +392,7 @@ void set_zero()
 
 void exp1()
 {
+  Serial.println("EXP1");
   
 }
 
