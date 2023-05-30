@@ -266,102 +266,99 @@ void set_zero()
   {
     case 0:
     {
-      if((y_limit_top_logic) == 1)
-        {
-          digitalWrite(y_motor_dir1,LOW);
-          digitalWrite(y_motor_dir2,LOW);
-          analogWrite(y_motor_speed_pin,0);
-          set_zero_state = 2;
-        }
-      if((x_limit_back_logic) == 1)
-        {
-          digitalWrite(x_motor_dir1,LOW);
-          digitalWrite(x_motor_dir2,LOW);
-          analogWrite(x_motor_speed_pin,0);
-          set_zero_state = 2;
-        }
-      else 
-        {
-          set_zero_state = 1;
-        }
+      digitalWrite(y_motor_dir1,LOW);
+      digitalWrite(y_motor_dir2,LOW);
+      analogWrite(y_motor_speed_pin,0);
+
+      digitalWrite(x_motor_dir1,LOW);
+      digitalWrite(x_motor_dir2,LOW);
+      analogWrite(x_motor_speed_pin,0); 
+      // x_limit_back_logic = 0;
+      // y_limit_top_logic = 0;
+      set_zero_state = 1;
+      break;
     }
     case 1:
     {
+      if(y_limit_top_logic == 1)
+      {
+        set_zero_state = 3;
+      }
+      else
+      {
+        set_zero_state = 2;
         digitalWrite(y_motor_dir1,HIGH);
         digitalWrite(y_motor_dir2,LOW);
         analogWrite(y_motor_speed_pin,150);
-        if(y_limit_top_logic == 1)
-        {
-          set_zero_state = 2;
-        }
-        break;
+      }
+      break;
     } 
     case 2:
     {
       if(y_limit_top_logic == 1)
       {
         set_zero_state = 3;
-      }
-    }
-    case 3:
-    {
         digitalWrite(y_motor_dir1,LOW);
         digitalWrite(y_motor_dir2,LOW);
         analogWrite(y_motor_speed_pin,0);
-        set_zero_state = 4; 
+      }
       break;
-    }   
-
+    }
+    case 3:
+    {   
+      set_zero_state = 4;
+      digitalWrite(y_motor_dir1,LOW);
+      digitalWrite(y_motor_dir2,LOW);
+      analogWrite(y_motor_speed_pin,0);
+      break;
+    }
     case 4:
     {
       if((x_limit_back_logic) == 1)
-        {
-          digitalWrite(x_motor_dir1,LOW);
-          digitalWrite(x_motor_dir2,LOW);
-          analogWrite(x_motor_speed_pin,0);
-          set_zero_state = 6;
-        }
-      else 
-        {
-          digitalWrite(x_motor_dir1,LOW);
-          digitalWrite(x_motor_dir2,HIGH);
-          analogWrite(x_motor_speed_pin,150);
-          set_zero_state = 5;
-        }
-        break;
-    }
-    case 5:
-    {
-      if(x_limit_back_logic == 1)
-      {
-        set_zero_state = 6;
-      }
-    }
-    case 6:
-    {
-      if(x_limit_back_logic == 1)
       {
         digitalWrite(x_motor_dir1,LOW);
         digitalWrite(x_motor_dir2,LOW);
         analogWrite(x_motor_speed_pin,0);
         set_zero_state = 7;
       }
+      else
+      {
+        set_zero_state = 5;
+        digitalWrite(x_motor_dir1,LOW);
+        digitalWrite(x_motor_dir2,HIGH);
+        analogWrite(x_motor_speed_pin,150);
+      }
+      break;
+    }   
+    case 5:
+    {
+      if((x_limit_back_logic) == 1)
+        {
+          set_zero_state = 6;
+          digitalWrite(x_motor_dir1,LOW);
+          digitalWrite(x_motor_dir2,LOW);
+          analogWrite(x_motor_speed_pin,0);
+        }
+        break;
+    }
+    case 6:
+    {
+      set_zero_state = 7;
+      digitalWrite(x_motor_dir1,LOW);
+      digitalWrite(x_motor_dir2,LOW);
+      analogWrite(x_motor_speed_pin,0);
       break;
     }
     case 7:
-      {
-        Serial.println("Zero complete");
-        set_zero_flag = false;
-        break;
-      }
-      case 8:
-      {
-        break;
-      }
-      default:
-      {
-        break;
-      }
+    {
+      Serial.println("Zero complete");
+      set_zero_flag = false;
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
 }
 
@@ -417,50 +414,50 @@ void scan_input_switches()
 
 void scan_limit_switches()
 {
-  x_limit_front_logic = digitalRead(x_limit_front_pin);
-  x_limit_back_logic = digitalRead(x_limit_back_pin);
-  y_limit_top_logic = digitalRead(y_limit_top_pin);
-  y_limit_bottom_logic = digitalRead(y_limit_bottom_pin);
+  // x_limit_front_logic = digitalRead(x_limit_front_pin);
+  // x_limit_back_logic = digitalRead(x_limit_back_pin);
+  // y_limit_top_logic = digitalRead(y_limit_top_pin);
+  // y_limit_bottom_logic = digitalRead(y_limit_bottom_pin);
   // ============================== push = 0 ========================
-  // x_limit_front_state = ((x_limit_front_state << 1) + digitalRead(x_limit_front_pin)) & 0xFF;
-  // if(x_limit_front_state == 0xFC)
-  // {
-  //   x_limit_front_logic = 0;
-  // }
-  // else if(x_limit_front_state == 0x3F)
-  // {
-  //   x_limit_front_logic = 1;
-  // }
+  x_limit_front_state = ((x_limit_front_state << 1) + digitalRead(x_limit_front_pin)) & 0x03;
+  if(x_limit_front_state == 0x03)
+  {
+    x_limit_front_logic = 1;
+  }
+  else if(x_limit_front_state == 0x00)
+  {
+    x_limit_front_logic = 0;
+  }
 
-  // x_limit_back_state = ((x_limit_back_state << 1) + digitalRead(x_limit_back_pin)) & 0xFF;
-  // if(x_limit_back_state == 0xFC)
-  // {
-  //   x_limit_back_logic = 0;
-  // }
-  // else if(x_limit_back_state == 0x3F)
-  // {
-  //   x_limit_back_logic = 1;
-  // }
+  x_limit_back_state = ((x_limit_back_state << 1) + digitalRead(x_limit_back_pin)) & 0x03;
+  if(x_limit_back_state == 0x03)
+  {
+    x_limit_back_logic = 1;
+  }
+  else if(x_limit_back_state == 0x00)
+  {
+    x_limit_back_logic = 0;
+  }
 
-  // y_limit_top_state = ((y_limit_top_state << 1) + digitalRead(y_limit_top_pin)) & 0xFF;
-  // if(y_limit_top_state == 0xFC)
-  // {
-  //   y_limit_top_logic = 0;
-  // }
-  // else if(y_limit_top_state == 0x3F)
-  // {
-  //   y_limit_top_logic = 1;
-  // }
+  y_limit_top_state = ((y_limit_top_state << 1) + digitalRead(y_limit_top_pin)) & 0x03;
+  if(y_limit_top_state == 0x03)
+  {
+    y_limit_top_logic = 1;
+  }
+  else if(y_limit_top_state == 0x3F)
+  {
+    y_limit_top_logic = 0;
+  }
 
-  // y_limit_bottom_state = ((y_limit_bottom_state << 1) + digitalRead(y_limit_bottom_pin)) & 0xFF;
-  // if(y_limit_bottom_state == 0xFC)
-  // {
-  //   y_limit_bottom_logic = 0;
-  // }
-  // else if(y_limit_bottom_state == 0x3F)
-  // {
-  //   y_limit_bottom_logic = 1;
-  // }
+  y_limit_bottom_state = ((y_limit_bottom_state << 1) + digitalRead(y_limit_bottom_pin)) & 0x03;
+  if(y_limit_bottom_state == 0x03)
+  {
+    y_limit_bottom_logic = 1;
+  }
+  else if(y_limit_bottom_state == 0x00)
+  {
+    y_limit_bottom_logic = 0;
+  }
 
 
 }
