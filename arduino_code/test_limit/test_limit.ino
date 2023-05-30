@@ -298,413 +298,414 @@ void loop()
 
 
 void manual_control()
-{
-  if(((x_forward_logic) == 1) && ((x_limit_front_logic)==0))
-    {
-            // Serial.println("X_forward");
-            digitalWrite(x_motor_dir1,HIGH);
-            digitalWrite(x_motor_dir2,LOW);
-            analogWrite(x_motor_speed_pin,255);      
-    }
-    else if (((x_backward_logic)==1) && ((x_limit_back_logic)==0)) 
-    {
-            // Serial.println("X_backward");
-            digitalWrite(x_motor_dir1,LOW);
-            digitalWrite(x_motor_dir2,HIGH);
-            analogWrite(x_motor_speed_pin,255);
-    }
-    else
-    {
-            // Serial.println("x stop");
-            digitalWrite(x_motor_dir1,LOW);
-            digitalWrite(x_motor_dir2,LOW);
-            analogWrite(x_motor_speed_pin,0);
-    }
-    if (((y_up_logic)==1)&&((y_limit_top_logic)==0))
-    {
-            // Serial.println("Y_up");
-            digitalWrite(y_motor_dir1,HIGH);
-            digitalWrite(y_motor_dir2,LOW);
-            analogWrite(y_motor_speed_pin,255);    
-    }
-    else if(((y_down_logic)==1)&&((y_limit_bottom_logic)==0))
-    {
-            // Serial.println("Y_down");
-            digitalWrite(y_motor_dir1,LOW);
-            digitalWrite(y_motor_dir2,HIGH);
-            analogWrite(y_motor_speed_pin,255);
-    }
-    else
-    {
-        // Serial.println("y stop");
-        digitalWrite(y_motor_dir1,LOW);
-        digitalWrite(y_motor_dir2,LOW);
-        analogWrite(y_motor_speed_pin,0);
-    }
-}
-
-void set_zero()
-{
-  switch (set_zero_state)
   {
-    case 0:
-    {
-      digitalWrite(y_motor_dir1,LOW);
-      digitalWrite(y_motor_dir2,LOW);
-      analogWrite(y_motor_speed_pin,0);
-
-      digitalWrite(x_motor_dir1,LOW);
-      digitalWrite(x_motor_dir2,LOW);
-      analogWrite(x_motor_speed_pin,0); 
-      set_zero_state = 1;
-      break;
-    }
-    case 1:
-    {
-      if(y_limit_top_logic == 1)
+    if(((x_forward_logic) == 1) && ((x_limit_front_logic)==0))
       {
-        set_zero_state = 3;
+              // Serial.println("X_forward");
+              digitalWrite(x_motor_dir1,HIGH);
+              digitalWrite(x_motor_dir2,LOW);
+              analogWrite(x_motor_speed_pin,255);      
+      }
+      else if (((x_backward_logic)==1) && ((x_limit_back_logic)==0)) 
+      {
+              // Serial.println("X_backward");
+              digitalWrite(x_motor_dir1,LOW);
+              digitalWrite(x_motor_dir2,HIGH);
+              analogWrite(x_motor_speed_pin,255);
       }
       else
       {
-        set_zero_state = 2;
-        digitalWrite(y_motor_dir1,HIGH);
-        digitalWrite(y_motor_dir2,LOW);
-        analogWrite(y_motor_speed_pin,150);
-      }
-      break;
-    } 
-    case 2:
-    {
-      if(y_limit_top_logic == 1)
-      {
-        set_zero_state = 3;
-        digitalWrite(y_motor_dir1,LOW);
-        digitalWrite(y_motor_dir2,LOW);
-        analogWrite(y_motor_speed_pin,0);
-      }
-      break;
-    }
-    case 3:
-    {   
-      set_zero_state = 4;
-      digitalWrite(y_motor_dir1,LOW);
-      digitalWrite(y_motor_dir2,LOW);
-      analogWrite(y_motor_speed_pin,0);
-      break;
-    }
-    case 4:
-    {
-      if((x_limit_back_logic) == 1)
-      {
-        digitalWrite(x_motor_dir1,LOW);
-        digitalWrite(x_motor_dir2,LOW);
-        analogWrite(x_motor_speed_pin,0);
-        set_zero_state = 7;
-      }
-      else
-      {
-        set_zero_state = 5;
-        digitalWrite(x_motor_dir1,LOW);
-        digitalWrite(x_motor_dir2,HIGH);
-        analogWrite(x_motor_speed_pin,150);
-      }
-      break;
-    }   
-    case 5:
-    {
-      if((x_limit_back_logic) == 1)
-        {
-          set_zero_state = 6;
-          digitalWrite(x_motor_dir1,LOW);
-          digitalWrite(x_motor_dir2,LOW);
-          analogWrite(x_motor_speed_pin,0);
-        }
-        break;
-    }
-    case 6:
-    {
-      set_zero_state = 7;
-      digitalWrite(x_motor_dir1,LOW);
-      digitalWrite(x_motor_dir2,LOW);
-      analogWrite(x_motor_speed_pin,0);
-      break;
-    }
-    case 7:
-    {
-      Serial.println("Zero complete");
-      set_zero_flag = false;
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-}
-
-
-void exp1()
-{
-  int x_present_force = analogRead(x_loadcell_pin);
-  int y_present_force = analogRead(y_loadcell_pin);
-  int y_stabilizer_pwm = 35;
-  switch (exp1_x_state)
-    {
-      case 0:
-        {
-          if((exp1_x_state_start)==true)
-          {
-            // Serial.println("EXP1 X");
-            exp1_x_state_start = false;
-            exp1_x_state = 1;
-          }
-          break;
-        }
-      case 1:
-        {
-          digitalWrite(x_motor_dir1,HIGH);
-          digitalWrite(x_motor_dir2,LOW);
-          analogWrite(x_motor_speed_pin,update_pwm);
-          exp1_x_state = 2;
-          break;
-        }
-      case 2:
-        {
-          if((x_limit_front_logic)==1)
-          {
+              // Serial.println("x stop");
               digitalWrite(x_motor_dir1,LOW);
               digitalWrite(x_motor_dir2,LOW);
               analogWrite(x_motor_speed_pin,0);
-              exp1_x_state = 3;
+      }
+      if (((y_up_logic)==1)&&((y_limit_top_logic)==0))
+      {
+              // Serial.println("Y_up");
+              digitalWrite(y_motor_dir1,HIGH);
+              digitalWrite(y_motor_dir2,LOW);
+              analogWrite(y_motor_speed_pin,255);    
+      }
+      else if(((y_down_logic)==1)&&((y_limit_bottom_logic)==0))
+      {
+              // Serial.println("Y_down");
+              digitalWrite(y_motor_dir1,LOW);
+              digitalWrite(y_motor_dir2,HIGH);
+              analogWrite(y_motor_speed_pin,255);
+      }
+      else
+      {
+          // Serial.println("y stop");
+          digitalWrite(y_motor_dir1,LOW);
+          digitalWrite(y_motor_dir2,LOW);
+          analogWrite(y_motor_speed_pin,0);
+      }
+  }
+
+void set_zero()
+  {
+    switch (set_zero_state)
+      {
+        case 0:
+          {
+            digitalWrite(y_motor_dir1,LOW);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,0);
+
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0); 
+            set_zero_state = 1;
+            break;
+          }
+      case 1:
+        {
+          if(y_limit_top_logic == 1)
+          {
+            set_zero_state = 3;
+          }
+          else
+          {
+            set_zero_state = 2;
+            digitalWrite(y_motor_dir1,HIGH);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,150);
+          }
+          break;
+        } 
+      case 2:
+        {
+          if(y_limit_top_logic == 1)
+          {
+            set_zero_state = 3;
+            digitalWrite(y_motor_dir1,LOW);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,0);
           }
           break;
         }
       case 3:
+        {   
+          set_zero_state = 4;
+          digitalWrite(y_motor_dir1,LOW);
+          digitalWrite(y_motor_dir2,LOW);
+          analogWrite(y_motor_speed_pin,0);
+          break;
+        }
+      case 4:
         {
-          exp1_test_success = true;
-          exp1_start_y = false;
+          if((x_limit_back_logic) == 1)
+          {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+            set_zero_state = 7;
+          }
+          else
+          {
+            set_zero_state = 5;
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,HIGH);
+            analogWrite(x_motor_speed_pin,150);
+          }
+          break;
+        }   
+      case 5:
+        {
+          if((x_limit_back_logic) == 1)
+            {
+              set_zero_state = 6;
+              digitalWrite(x_motor_dir1,LOW);
+              digitalWrite(x_motor_dir2,LOW);
+              analogWrite(x_motor_speed_pin,0);
+            }
+            break;
+        }
+      case 6:
+        {
+          set_zero_state = 7;
+          digitalWrite(x_motor_dir1,LOW);
+          digitalWrite(x_motor_dir2,LOW);
+          analogWrite(x_motor_speed_pin,0);
+          break;
+        }
+      case 7:
+        {
+          Serial.println("ZERO COMPLETE");
+          set_zero_flag = false;
           break;
         }
       default:
         {
           break;
         }
-    }
-  switch (exp1_y_state)
-    {
+      }
+  }
+
+
+void exp1()
+  {
+    int x_present_force = analogRead(x_loadcell_pin);
+    int y_present_force = analogRead(y_loadcell_pin);
+    int y_stabilizer_pwm = 35;
+    switch (exp1_x_state)
+      {
         case 0:
           {
-            digitalWrite(y_motor_dir1,LOW);
-            digitalWrite(y_motor_dir2,LOW);
-            analogWrite(y_motor_speed_pin,0);
-            exp1_y_state = 1;
+            if((exp1_x_state_start)==true)
+            {
+              // Serial.println("EXP1 X");
+              exp1_x_state_start = false;
+              exp1_x_state = 1;
+            }
             break;
           }
-        case 1:     // move machine down pwm 200
+        case 1:
           {
-              digitalWrite(y_motor_dir1,LOW);
-              digitalWrite(y_motor_dir2,HIGH);
-              analogWrite(y_motor_speed_pin,200);
-              if(y_present_force >=100)
-              {
-                  digitalWrite(y_motor_dir1,LOW);
-                  digitalWrite(y_motor_dir2,LOW);
-                  analogWrite(y_motor_speed_pin,0);
-                  delay(300);
-                  exp1_y_state = 2;
-              }
-              
-              break;
+            digitalWrite(x_motor_dir1,HIGH);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,update_pwm);
+            exp1_x_state = 2;
+            break;
           }
         case 2:
           {
-            digitalWrite(y_motor_dir1,LOW);
-            digitalWrite(y_motor_dir2,HIGH);
-            analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
-            exp1_y_state = 3;
+            if((x_limit_front_logic)==1)
+            {
+                digitalWrite(x_motor_dir1,LOW);
+                digitalWrite(x_motor_dir2,LOW);
+                analogWrite(x_motor_speed_pin,0);
+                exp1_x_state = 3;
+            }
             break;
           }
         case 3:
           {
-            if(exp1_start_y == false)
-            {
-                    exp1_y_state = 7;
-                    digitalWrite(y_motor_dir1,LOW);
-                    digitalWrite(y_motor_dir2,LOW);
-                    analogWrite(y_motor_speed_pin,0);
-            }
-            if(y_limit_bottom_logic == 1)
-                {
-                    exp1_y_state = 7;
-                    digitalWrite(y_motor_dir1,LOW);
-                    digitalWrite(y_motor_dir2,LOW);
-                    analogWrite(y_motor_speed_pin,0);
-
-                }
-            else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
-                {
-                    // Serial.println("OOK");
-                    exp1_y_state = 5;
-                    digitalWrite(y_motor_dir1,LOW);
-                    digitalWrite(y_motor_dir2,LOW);
-                    analogWrite(y_motor_speed_pin,0);
-                }
-            break;
-          }
-        case 4:
-          {
-            digitalWrite(y_motor_dir1,HIGH);
-            digitalWrite(y_motor_dir2,LOW);
-            analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
-            exp1_y_state = 3;
-            break;
-          }
-        case 5:
-          {
-            if(y_present_force < fixed_vertical_force-loadcell_guard_band)
-            {
-                exp1_y_state = 2;
-            }
-            else if(y_present_force >= fixed_vertical_force+loadcell_guard_band)
-            {
-                exp1_y_state = 4;
-            }
-            if(exp1_y_set == true)
-            {
-              exp1_x_state_start = true;
-              exp1_y_set = false;
-              exp1_y_state = 5;
-            }
-            break;
-          }
-        case 7:
-          {
-            // Serial.println("DDDDDD");
+            exp1_test_success = true;
+            exp1_start_y = false;
             break;
           }
         default:
           {
             break;
           }
-        break;
-    }
-  switch (exp1_send_force_state)
-    {
-      case 0:
-        {
-          exp1_timemer_send_data = millis();
-          exp1_send_force_state = 1;
-          break;
-        }
-      case 1:
-        {
-          if((millis()-exp1_timemer_send_data)>=exp1_timmer_trig)
-          {
-            // Serial.print(exp1_start_y);
-            // Serial.print(",");
-            Serial.print(exp1_test_success);
-            Serial.print(",");
-            Serial.print(x_present_force);
-            Serial.print(",");
-            Serial.println(y_present_force);
-            exp1_send_force_state = 0;
-          }
-          break;
-        }
-      default:
-      {
-        break;
       }
-    }
-  
+    switch (exp1_y_state)
+      {
+          case 0:
+            {
+              digitalWrite(y_motor_dir1,LOW);
+              digitalWrite(y_motor_dir2,LOW);
+              analogWrite(y_motor_speed_pin,0);
+              exp1_y_state = 1;
+              break;
+            }
+          case 1:     // move machine down pwm 200
+            {
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,HIGH);
+                analogWrite(y_motor_speed_pin,200);
+                if(y_present_force >=100)
+                {
+                    digitalWrite(y_motor_dir1,LOW);
+                    digitalWrite(y_motor_dir2,LOW);
+                    analogWrite(y_motor_speed_pin,0);
+                    delay(300);
+                    exp1_y_state = 2;
+                }
+                
+                break;
+            }
+          case 2:
+            {
+              digitalWrite(y_motor_dir1,LOW);
+              digitalWrite(y_motor_dir2,HIGH);
+              analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
+              exp1_y_state = 3;
+              break;
+            }
+          case 3:
+            {
+              if(exp1_start_y == false)
+              {
+                      exp1_y_state = 7;
+                      digitalWrite(y_motor_dir1,LOW);
+                      digitalWrite(y_motor_dir2,LOW);
+                      analogWrite(y_motor_speed_pin,0);
+              }
+              if(y_limit_bottom_logic == 1)
+                  {
+                      exp1_y_state = 7;
+                      digitalWrite(y_motor_dir1,LOW);
+                      digitalWrite(y_motor_dir2,LOW);
+                      analogWrite(y_motor_speed_pin,0);
 
-
-}
+                  }
+              else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
+                  {
+                      // Serial.println("OOK");
+                      exp1_y_state = 5;
+                      digitalWrite(y_motor_dir1,LOW);
+                      digitalWrite(y_motor_dir2,LOW);
+                      analogWrite(y_motor_speed_pin,0);
+                  }
+              break;
+            }
+          case 4:
+            {
+              digitalWrite(y_motor_dir1,HIGH);
+              digitalWrite(y_motor_dir2,LOW);
+              analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
+              exp1_y_state = 3;
+              break;
+            }
+          case 5:
+            {
+              if(y_present_force < fixed_vertical_force-loadcell_guard_band)
+              {
+                  exp1_y_state = 2;
+              }
+              else if(y_present_force >= fixed_vertical_force+loadcell_guard_band)
+              {
+                  exp1_y_state = 4;
+              }
+              if(exp1_y_set == true)
+              {
+                exp1_x_state_start = true;
+                exp1_y_set = false;
+                exp1_y_state = 5;
+              }
+              break;
+            }
+          case 7:
+            {
+              // Serial.println("DDDDDD");
+              break;
+            }
+          default:
+            {
+              break;
+            }
+          break;
+      }
+    switch (exp1_send_force_state)
+      {
+        case 0:
+          {
+            exp1_timemer_send_data = millis();
+            exp1_send_force_state = 1;
+            break;
+          }
+        case 1:
+          {
+            if((millis()-exp1_timemer_send_data)>=exp1_timmer_trig)
+            {
+              // Serial.print(exp1_start_y);
+              // Serial.print(",");
+              Serial.print(exp1_test_success);
+              Serial.print(",");
+              Serial.print(x_present_force);
+              Serial.print(",");
+              Serial.println(y_present_force);
+              exp1_send_force_state = 0;
+            }
+            // if((millis()-exp1_send_force_state)>=5000)
+            // {
+            //   exp1_test_success = true;
+            // }
+            break;
+          }
+        default:
+        {
+          break;
+        }
+      }
+  }
 
 // ====================== sub program ===============================
 void scan_input_switches()
-{
-  x_backward_state = ((x_backward_state << 1) + digitalRead(x_backward_pin)) & 0xFF;
-  if(x_backward_state == 0xFE)
   {
-    x_backward_logic = 1;
-  }
-  else if(x_backward_state == 0x7F)
-  {
-    x_backward_logic = 0;
-  }
+    x_backward_state = ((x_backward_state << 1) + digitalRead(x_backward_pin)) & 0xFF;
+    if(x_backward_state == 0xFE)
+    {
+      x_backward_logic = 1;
+    }
+    else if(x_backward_state == 0x7F)
+    {
+      x_backward_logic = 0;
+    }
 
-  x_forward_state = ((x_forward_state << 1) + digitalRead(x_forward_pin)) & 0xFF;
-  if(x_forward_state == 0xFE)
-  {
-    x_forward_logic = 1;
-  }
-  else if(x_forward_state == 0x7F)
-  {
-    x_forward_logic = 0;
-  }
+    x_forward_state = ((x_forward_state << 1) + digitalRead(x_forward_pin)) & 0xFF;
+    if(x_forward_state == 0xFE)
+    {
+      x_forward_logic = 1;
+    }
+    else if(x_forward_state == 0x7F)
+    {
+      x_forward_logic = 0;
+    }
 
-  y_up_state = ((y_up_state << 1) + digitalRead(y_up_pin)) & 0xFF;
-  if(y_up_state == 0xFE)
-  {
-    y_up_logic = 1;
-  }
-  else if(y_up_state == 0x7F)
-  {
-    y_up_logic = 0;
-  }
+    y_up_state = ((y_up_state << 1) + digitalRead(y_up_pin)) & 0xFF;
+    if(y_up_state == 0xFE)
+    {
+      y_up_logic = 1;
+    }
+    else if(y_up_state == 0x7F)
+    {
+      y_up_logic = 0;
+    }
 
-  y_down_state = ((y_down_state << 1) + digitalRead(y_down_pin)) & 0xFF;
-  if(y_down_state == 0xFE)
-  {
-    y_down_logic = 1;
+    y_down_state = ((y_down_state << 1) + digitalRead(y_down_pin)) & 0xFF;
+    if(y_down_state == 0xFE)
+    {
+      y_down_logic = 1;
+    }
+    else if(y_down_state == 0x7F)
+    {
+      y_down_logic = 0;
+    }
   }
-  else if(y_down_state == 0x7F)
-  {
-    y_down_logic = 0;
-  }
-}
 
 void scan_limit_switches()
-{
-  x_limit_front_state = ((x_limit_front_state << 1) + digitalRead(x_limit_front_pin)) & 0x03;
-  if(x_limit_front_state == 0x03)
   {
-    x_limit_front_logic = 1;
-  }
-  else if(x_limit_front_state == 0x00)
-  {
-    x_limit_front_logic = 0;
-  }
+    x_limit_front_state = ((x_limit_front_state << 1) + digitalRead(x_limit_front_pin)) & 0x03;
+    if(x_limit_front_state == 0x03)
+    {
+      x_limit_front_logic = 1;
+    }
+    else if(x_limit_front_state == 0x00)
+    {
+      x_limit_front_logic = 0;
+    }
 
-  x_limit_back_state = ((x_limit_back_state << 1) + digitalRead(x_limit_back_pin)) & 0x03;
-  if(x_limit_back_state == 0x03)
-  {
-    x_limit_back_logic = 1;
-  }
-  else if(x_limit_back_state == 0x00)
-  {
-    x_limit_back_logic = 0;
-  }
+    x_limit_back_state = ((x_limit_back_state << 1) + digitalRead(x_limit_back_pin)) & 0x03;
+    if(x_limit_back_state == 0x03)
+    {
+      x_limit_back_logic = 1;
+    }
+    else if(x_limit_back_state == 0x00)
+    {
+      x_limit_back_logic = 0;
+    }
 
-  y_limit_top_state = ((y_limit_top_state << 1) + digitalRead(y_limit_top_pin)) & 0x03;
-  if(y_limit_top_state == 0x03)
-  {
-    y_limit_top_logic = 1;
-  }
-  else if(y_limit_top_state == 0x00)
-  {
-    y_limit_top_logic = 0;
-  }
+    y_limit_top_state = ((y_limit_top_state << 1) + digitalRead(y_limit_top_pin)) & 0x03;
+    if(y_limit_top_state == 0x03)
+    {
+      y_limit_top_logic = 1;
+    }
+    else if(y_limit_top_state == 0x00)
+    {
+      y_limit_top_logic = 0;
+    }
 
-  y_limit_bottom_state = ((y_limit_bottom_state << 1) + digitalRead(y_limit_bottom_pin)) & 0x03;
-  if(y_limit_bottom_state == 0x03)
-  {
-    y_limit_bottom_logic = 1;
+    y_limit_bottom_state = ((y_limit_bottom_state << 1) + digitalRead(y_limit_bottom_pin)) & 0x03;
+    if(y_limit_bottom_state == 0x03)
+    {
+      y_limit_bottom_logic = 1;
+    }
+    else if(y_limit_bottom_state == 0x00)
+    {
+      y_limit_bottom_logic = 0;
+    }
   }
-  else if(y_limit_bottom_state == 0x00)
-  {
-    y_limit_bottom_logic = 0;
-  }
-}
