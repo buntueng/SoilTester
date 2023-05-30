@@ -68,14 +68,12 @@ class App(ctk.CTk):
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.graph_frame)
         plt.yticks(fontsize=20)
         plt.xticks(fontsize=20)
-        
-        
+    
         self.canvas.draw()
         self.canvas.get_tk_widget().grid(row=1,column=0,padx = 10, pady = (0,10),)
 
         self.x_coordinate = []
         self.y_coordinate = []
-
         #================================== object ==================================
         graph_fg_colors = "powderblue"
         self.result_graph_label = ctk.CTkLabel(self.graph_frame,text="RESULT GRAPH",bg_color="blanchedalmond",text_color="red",font=thai_large_font)
@@ -403,7 +401,7 @@ class App(ctk.CTk):
         self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
         self.canvas.draw()
         
-        logger.debug("plot graph")
+        # logger.debug("plot graph")
 
     def on_closing(self):
         try:
@@ -491,7 +489,7 @@ class App(ctk.CTk):
             int(param_x)
             int(param_y)
             check_flag = True
-            logger.debug("xy params is integer")
+            # logger.debug("xy params is integer")
         except:
             check_flag = False
             tk.messagebox.showerror(title="xy params error", message="ตรวจสอบ parameter x และ y",)
@@ -619,7 +617,7 @@ class App(ctk.CTk):
                     param_result = self.ser_port_uC.readline()
                     param_result_string = param_result.rstrip().decode()
                     status_exp1_test,horizontal_force,vertical_force = param_result_string.split(",")
-                    param_for_exp1 = "status = "+(status_exp1_test)+" <> X force =  "+(horizontal_force)+" <> Y force =  "+(vertical_force)+"\n" 
+                    param_for_exp1 = "status = "+(status_exp1_test)+" <> X Force =  "+(horizontal_force)+" <> Y Force =  "+(vertical_force)+"\n" 
                     self.monitor_text_box.insert(tk.END,param_for_exp1)
                     if status_exp1_test == "1":
                         self.run_exp1_state = 9
@@ -794,10 +792,7 @@ class App(ctk.CTk):
         messagebox.showinfo("INFO", "TEST SUCCESS")
 
     def save_botton_pressed(self):
-        print("SAVE")
         self.savefileas()
-        # param = self.monitor_text_box.get('1.0', tk.END)
-        # print(param)
 
     def savefileas(self):
         path = None
@@ -806,16 +801,11 @@ class App(ctk.CTk):
             param = self.monitor_text_box.get('1.0', tk.END)
             file_path.write(param)
             file_path.close()
+            self.stop_button_pressed()
         
         except:
-            print("Error")
-              
-        
-        # with open(path, 'a+') as f:
-        #     param = self.monitor_text_box.get('1.0', tk.END)
-        #     print(param)
-        #     f.write(param)
-
+            # print("Error")
+            pass
 
     def clear_monitor(self):
         pwm = int(self.pwm_x_entry.get())
