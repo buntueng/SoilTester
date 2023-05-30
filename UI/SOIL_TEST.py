@@ -799,17 +799,22 @@ class App(ctk.CTk):
         # param = self.monitor_text_box.get('1.0', tk.END)
         # print(param)
 
-    def savefileas(self):    
+    def savefileas(self):
+        path = None
         try:
-            path = filedialog.asksaveasfile(filetypes = (("Text files", "*.txt"), ("All files", "*.*"))).name
-            App.title('Notepad - ' + path)
+            file_path = filedialog.asksaveasfile(filetypes = (("Text files", "*.txt"), ("All files", "*.*")))
+            param = self.monitor_text_box.get('1.0', tk.END)
+            file_path.write(param)
+            file_path.close()
         
         except:
-            return   
+            print("Error")
+              
         
-        with open(path, 'a+') as f:
-            param = self.monitor_text_box.get('1.0', tk.END)
-            f.write(param)
+        # with open(path, 'a+') as f:
+        #     param = self.monitor_text_box.get('1.0', tk.END)
+        #     print(param)
+        #     f.write(param)
 
 
     def clear_monitor(self):
