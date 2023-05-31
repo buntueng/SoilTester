@@ -632,11 +632,8 @@ class App(ctk.CTk):
                         self.y_coordinate.append(float(y_show3digit))
                         self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
                         self.canvas.draw()
-
                     if status_exp1_test == "1":
                         self.run_exp1_state = 9
-                        
-
                     self.after(40,self.run_exp1)
 
                 case 9:
@@ -648,64 +645,7 @@ class App(ctk.CTk):
                 
                 case 10:
                     self.exp_test_success()
-                # case 7:
-                #     xy_force_bytes = self.ser_port_uC.readline()
-                #     xy_force_string = xy_force_bytes.strip().decode()
-                #     vertical_force,horizontal_force = xy_force_string.split(",")
-
-                #     message_string = horizontal_force + "\t" + vertical_force
-                #     logger.debug(message_string)
-                #     horizontal_force = int(horizontal_force)
-                #     vertical_force = int(vertical_force)
-                #     vl_bound = int(self.pressure_Y_entry.get())-vf_gap
-                #     vu_bound = int(self.pressure_Y_entry.get())+vf_gap
-                #     hl_bound = self.horizontal_test_force[0] - hf_gap
-                #     hu_bound = self.horizontal_test_force[0] + hf_gap
-                #     if (horizontal_force >= hl_bound and horizontal_force <= hu_bound ) and (vertical_force >= vl_bound and vertical_force <= vu_bound):
-                #         self.run_exp1_state = 8
-                #         self.ser_port_uC.write(b'f\n')
-                #     else:
-                #         test_pass_time = time.time() - self.record_timer
-                #         if test_pass_time >= 10:
-                #             self.run_exp1_state = 9
-                #         else:
-                #             self.run_exp1_state = 6
-                #     self.after(10,self.run_exp1)
-
-                # case 8:
-                #     dispX = self.obj_dis_x.get_last()
-                #     dispY = self.obj_dis_y.get_last()
-                #     x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
-                #     y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
-                #     xy_force_bytes = self.ser_port_uC.readline()
-                #     xy_force_string = xy_force_bytes.strip().decode()
-                #     vertical_force,horizontal_force = xy_force_string.split(",")
-                #     time_stamp = datetime.now().strftime("%H:%M:%S.%f")
-
-                #     self.x_coordinate.append(float(y_show3digit))
-                #     self.y_coordinate.append(int(horizontal_force))
-                #     self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
-                #     self.canvas.draw()
-
-                #     disp_message = time_stamp + "," + x_show3digit +"," + y_show3digit + "," + horizontal_force + "," + vertical_force + "\n"
-                #     self.monitor_text_box.insert(tk.END,disp_message)
-
-                #     with open(data_file, 'a+') as f:
-                #         f.write(y_show3digit)
-                #         f.write(",")
-                #         f.write(horizontal_force)
-                #         f.write("\n")
-
-                #     if len(self.horizontal_test_force) > 1:
-                #         self.horizontal_test_force.pop(0)
-                #         self.run_exp1_state = 1
-                #     else:
-                #         self.run_exp1_state = 9
-                #         self.ser_port_uC.write(b't\n')
-                #     self.after(10,self.run_exp1)
-
-                # case 9:
-                #     self.ser_port_uC.write(b't\n')
+                    logger.debug("EXP1 SUCCESS")
 
                 case other:
                     self.running_flag = False
