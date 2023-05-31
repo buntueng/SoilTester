@@ -1,15 +1,16 @@
-import time
+import tkinter as tk
+from PIL import Image, ImageTk
 
-t = time.time() # เวลาเริ่มต้น
-while True:
-    t0 = (time.time()-t)
-    print('%.3f'%t0)
-    time.sleep(0.04)
+app = tk.Tk()
+img = Image.open('test.jpg')
 
-# f = 156.36595
-# print( 'f = '+str(f) )
-# print( 'f .1f = %.1f' %f )
-# print( 'f .2f = %.2f' %f )
-# print( 'f .3f = %.3f' %f )
-# print( 'f .4f = %.4f' %f )
-# print( 'f .5f = %.5f' %f )
+tk_img = ImageTk.PhotoImage(img)
+img_width, img_height = img.size
+
+canvas = tk.Canvas(app, width=img_width, height=img_height)      # Creating an image display area
+canvas.pack()
+canvas.create_image(0, 0 , anchor = tk.NW, image=tk_img)        # image display
+
+canvas.postscript(file="test.ps", colormode='color') # Save image
+
+app.mainloop()

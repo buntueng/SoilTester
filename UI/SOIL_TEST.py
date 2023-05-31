@@ -51,6 +51,7 @@ class App(ctk.CTk):
         self.title("Soil Tester")
         # self.geometry(f"{1700}x{950}")
         self.resizable(False,False)
+        
 
         self.master_frame = ctk.CTkFrame(self,fg_color="powderblue")
         self.master_frame.grid(row=0,column = 0)
@@ -627,7 +628,7 @@ class App(ctk.CTk):
                     dispY = (self.obj_dis_y.get_last())
                     if dispY != None:
                         y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
-                        print(y_show3digit)
+                        # print(y_show3digit)
                         self.x_coordinate.append(float(time_in_x))
                         self.y_coordinate.append(float(y_show3digit))
                         self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
@@ -764,11 +765,8 @@ class App(ctk.CTk):
             pass
 
     def clear_monitor(self):
-        pwm = int(self.pwm_x_entry.get())
-        pwm_de = str(int(float(pwm*2.5555555))) 
-        print(pwm_de,(type(pwm_de)))
         self.monitor_text_box.delete('1.0',tk.END)
-
+    
     def zero_origin_pressed(self):
         comport_uc_selected = self.com_port_uC.get()
         if comport_uc_selected == "เลือกพอต":
