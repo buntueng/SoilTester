@@ -97,6 +97,7 @@ bool exp2_y_set = false;
 bool exp2_x_start_state = false;
 bool exp2_stop_y = false;
 bool exp2_test_success = false;
+bool exp2_limit_swicth_is_pressed = false;
 //=========================================================
 
 
@@ -186,12 +187,15 @@ void loop()
               case '2':
               {
                 run_machine = true;
-                select_exp = 2;   
+                select_exp = 2;  
+                exp2_x_state = 0; 
                 exp2_y_state = 0;
                 counter_cyclic = 0;
                 exp2_stop_y = false;
                 exp2_x_start_state = false;
-                exp2_y_set = true;         
+                exp2_y_set = true;       
+                exp2_test_success = false; 
+                exp2_limit_swicth_is_pressed = false; 
                 break;
               }
               case '3':
@@ -603,6 +607,10 @@ void exp1()
               digitalWrite(y_motor_dir2,LOW);
               analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
               exp1_y_state = 3;
+              if((y_limit_top_logic)==1)
+                {
+                  exp1_start_y = false;
+                }
               break;
             }
           case 5:
@@ -691,7 +699,10 @@ void exp2()
                 start_timer = millis();
                 exp2_x_state = 2;
               }
-            
+            else if((x_limit_front_logic)==1)
+              {
+                exp2_x_state = 8;
+              }
             break;
           }
         case 2: // form start force
@@ -713,6 +724,10 @@ void exp2()
             if ((x_present_force)>=stop_force-loadcell_guard_band)
               {
                 exp2_x_state = 4;
+              }
+            if ((x_limit_front_logic) == 1)
+              {
+                exp2_x_state = 8;
               }            
             break;
           }
@@ -732,6 +747,10 @@ void exp2()
             if((x_present_force)<=start_force)
               {
                 exp2_x_state = 6;
+              }
+            if ((x_limit_back_logic)==1)
+              {
+                exp2_x_state = 8;
               }
             break;
           }
@@ -756,6 +775,15 @@ void exp2()
             exp2_stop_y = true;
             exp2_test_success = true;
             break; 
+          }
+        case 8:
+          {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+            exp2_stop_y = true;
+            exp2_limit_swicth_is_pressed = true;
+            break;
           }
         default:
           {
@@ -829,6 +857,10 @@ void exp2()
               digitalWrite(y_motor_dir2,LOW);
               analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
               exp2_y_state = 3;
+              if((y_limit_top_logic)==1)
+                {
+                  exp2_stop_y = true;
+                }
               break;
             }
           case 5:
@@ -875,7 +907,11 @@ void exp2()
                 Serial.print(",");
                 Serial.print(x_present_force);
                 Serial.print(",");
-                Serial.println(y_present_force);
+                Serial.print(y_present_force);
+                Serial.print(",");
+                Serial.print(counter_cyclic);
+                Serial.print(",");
+                Serial.println(exp2_limit_swicth_is_pressed);
                 exp2_send_force_state = 0;
               }
             break;
