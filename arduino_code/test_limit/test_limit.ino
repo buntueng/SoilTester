@@ -308,7 +308,8 @@ void loop()
         }
         case 2:
         {
-          Serial.println("R2");
+          exp2();
+          // Serial.println("R2");
           break;
         }
         case 3:

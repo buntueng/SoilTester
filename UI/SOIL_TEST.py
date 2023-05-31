@@ -88,10 +88,10 @@ class App(ctk.CTk):
         self.monitor_text_box.grid(row=1,column=0,padx=5,pady=5,ipadx = 5,sticky=tk.NW)
         #================================== config ==================================
         self.select_port_label = ctk.CTkLabel(self.configuration_frame,text="เลือกพอต",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
-        self.com_port_DIS_X_label = ctk.CTkLabel(self.configuration_frame,text="DIS Y PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
+        self.com_port_DIS_X_label = ctk.CTkLabel(self.configuration_frame,text="DIS X PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.com_port_DIS_X = ctk.CTkOptionMenu(self.configuration_frame,width=100,height=40,values=[""])
         self.com_port_DIS_X.set("เลือกพอต")
-        self.com_port_DIS_Y_label = ctk.CTkLabel(self.configuration_frame,text="DIS X PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
+        self.com_port_DIS_Y_label = ctk.CTkLabel(self.configuration_frame,text="DIS Y PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.com_port_DIS_Y = ctk.CTkOptionMenu(self.configuration_frame,width=100,height=40,values=[""])
         self.com_port_DIS_Y.set("เลือกพอต")
         self.com_port_uC_label = ctk.CTkLabel(self.configuration_frame,text="uC PORT",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
@@ -549,6 +549,7 @@ class App(ctk.CTk):
                     self.ser_port_uC.open()
                     self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
                     self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
+                    # print(("port x ")+(self.com_port_DIS_X.get())+("  port y ")+(self.com_port_DIS_Y.get()))
                     self.obj_dis_x.run()
                     self.obj_dis_y.run()
                     self.run_exp1_state = 1
@@ -611,17 +612,34 @@ class App(ctk.CTk):
                     start_exp1 = start_exp1.encode()
                     self.ser_port_uC.write(start_exp1)
                     self.run_exp1_state = 8
+                    start_time = time.time()
                     self.after(100,self.run_exp1)
 
                 case 8:
                     param_result = self.ser_port_uC.readline()
                     param_result_string = param_result.rstrip().decode()
                     status_exp1_test,horizontal_force,vertical_force = param_result_string.split(",")
-                    param_for_exp1 = "status = "+(status_exp1_test)+" <> X Force =  "+(horizontal_force)+" <> Y Force =  "+(vertical_force)+"\n" 
+                    time_stamp = datetime.now().strftime("%H:%M:%S.%f")
+                    param_for_exp1 = (time_stamp)+(",")+(status_exp1_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
                     self.monitor_text_box.insert(tk.END,param_for_exp1)
+                    
+                    # time_in_send_data = datetime.now().strftime("%S.%f")
+                    # time_show3digit = f'{int(time_in_send_data[:-2])*0.1:.3f}'
+                    print(start_time)
+                    # dispX = self.obj_dis_x.get_last()
+                    # x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
+                    # dispY = self.obj_dis_y.get_last()
+                    # if dispY != None:
+                    #     y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
+                    #     print(y_show3digit)
                     if status_exp1_test == "1":
                         self.run_exp1_state = 9
-                    self.after(50,self.run_exp1)
+                        
+                    # self.x_coordinate.append(float(time_stamp))
+                    # self.y_coordinate.append(int(y_show3digit))
+                    # self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                    # self.canvas.draw()
+                    self.after(40,self.run_exp1)
 
                 case 9:
                     stop_exp1 = "t\n"

@@ -72,17 +72,26 @@ class linear_displacement:
         self.data_list = []
 
 if __name__ == "__main__":
-    print("11111")
-    # dd = linear_displacement(portname="COM17")
+    pass
+    # print("11111")
+    # dd = linear_displacement(portname="COM9")
     # dd.run()
-    # in_data = dd.get_data()
+    # # time.sleep(2)
+    # for i in range(1000):
+    #     int_data = dd.get_last()
+    #     # print(int_data)
+    #     if int_data != None:
+    #         logger.debug(int_data)
+    #     time.sleep(0.01)
+    # dd.stop()
     # while True:
     #     in_data = dd.get_data()
     #     if in_data != None:
     #         logger.debug(in_data)
     #     time.sleep(0.01)
+    # int_data = dd.get_data()
     # for i in range(1000):
-    #     int_data = dd.get_data()
+    #     int_data = dd.get_last()
     #     if int_data != None:
     #         logger.debug(int_data)
     #     time.sleep(0.01)

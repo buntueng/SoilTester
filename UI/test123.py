@@ -1,35 +1,16 @@
+import time
 
-import tkinter as tk
- 
- 
-root = Tk()
- 
-# specify size of window.
-root.geometry("250x170")
- 
-# Create text widget and specify size.
-T = Text(root, height = 5, width = 52)
- 
-# Create label
-l = Label(root, text = "Fact of the Day")
-l.config(font =("Courier", 14))
- 
-Fact = """A man can be arrested in
-Italy for wearing a skirt in public."""
- 
-# Create button for next text.
-b1 = Button(root, text = "Next", )
- 
-# Create an Exit button.
-b2 = Button(root, text = "Exit",
-            command = root.destroy)
- 
-l.pack()
-T.pack()
-b1.pack()
-b2.pack()
- 
-# Insert The Fact.
-T.insert(tk.END, Fact)
- 
-tk.mainloop()
+t0 = time.time()
+t0_int = f'{int(t0[:-2])*0.01:3f}'
+# t0_show3digit = f'{int(t0[:-2])*0.001:.3f}'
+while True:
+    # t = time.time()
+    # t_show3digit = f'{int(t[:-2])*0.001:.3f}'
+    # time.sleep(0.01)
+    # print(type(t))
+    # print(t_show3digit-t0_show3digit) # ได้ 0.8062782287597656
+    # t = time.time() # เวลาเริ่มต้น
+    # t_int = t*0.01
+    # <กลุ่มคำสั่งที่ต้องการจับเวลา>
+    print(t0_int) # พิมพ์เวลาสุดท้ายลบด้วยเวลาเริ่มต้น
+    time.sleep(0.04)
