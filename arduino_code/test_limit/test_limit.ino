@@ -661,10 +661,10 @@ void exp1()
               Serial.println(y_present_force);
               exp1_send_force_state = 0;
             }
-            // if((millis()-exp1_send_force_state)>=10000)
-            // {
-            //   exp1_test_success = true;
-            // }
+            if((millis()-exp1_send_force_state)>=20000)
+            {
+              exp1_test_success = true;
+            }
             break;
           }
         default:

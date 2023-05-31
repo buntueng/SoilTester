@@ -612,8 +612,8 @@ class App(ctk.CTk):
                     start_exp1 = start_exp1.encode()
                     self.ser_port_uC.write(start_exp1)
                     self.run_exp1_state = 8
-                    start_time = time.time()
                     self.after(100,self.run_exp1)
+                    self.start_time = time.time()
 
                 case 8:
                     param_result = self.ser_port_uC.readline()
@@ -622,23 +622,21 @@ class App(ctk.CTk):
                     time_stamp = datetime.now().strftime("%H:%M:%S.%f")
                     param_for_exp1 = (time_stamp)+(",")+(status_exp1_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
                     self.monitor_text_box.insert(tk.END,param_for_exp1)
-                    
-                    # time_in_send_data = datetime.now().strftime("%S.%f")
-                    # time_show3digit = f'{int(time_in_send_data[:-2])*0.1:.3f}'
-                    print(start_time)
-                    # dispX = self.obj_dis_x.get_last()
-                    # x_show3digit = f'{int(dispX[:-2])*0.001:.3f}'
-                    # dispY = self.obj_dis_y.get_last()
-                    # if dispY != None:
-                    #     y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
-                    #     print(y_show3digit)
+                    time_in_x = (time.time()-self.start_time)
+                    time_in_x = float('%.3f'%time_in_x)#time in X
+                    dispY = (self.obj_dis_y.get_last())
+                    if dispY != None:
+                        y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
+                        print(y_show3digit)
+                        self.x_coordinate.append(float(time_in_x))
+                        self.y_coordinate.append(float(y_show3digit))
+                        self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                        self.canvas.draw()
+
                     if status_exp1_test == "1":
                         self.run_exp1_state = 9
                         
-                    # self.x_coordinate.append(float(time_stamp))
-                    # self.y_coordinate.append(int(y_show3digit))
-                    # self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
-                    # self.canvas.draw()
+
                     self.after(40,self.run_exp1)
 
                 case 9:
