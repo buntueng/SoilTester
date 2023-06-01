@@ -489,7 +489,8 @@ class App(ctk.CTk):
                     self.after(2000,self.run_exp1)
 
                 case 1:
-                    if(self.set_zero_command == True):
+                    selec = self.set_zero_switch.get()
+                    if selec == 1:
                         set_zero = "Z" + "\n"
                         set_zero_byte = set_zero.encode()
                         self.ser_port_uC.write(set_zero_byte)
@@ -601,7 +602,8 @@ class App(ctk.CTk):
                     self.after(2000,self.run_exp2)
 
                 case 1:
-                    if(self.set_zero_command == True):
+                    selec = self.set_zero_switch.get()
+                    if selec == 1:
                         set_zero = "Z" + "\n"
                         set_zero_byte = set_zero.encode()
                         self.ser_port_uC.write(set_zero_byte)
@@ -906,12 +908,12 @@ class App(ctk.CTk):
     
     def select_set_zero(self):
         selec = self.set_zero_switch.get()
-        if(selec == 1):
+        if selec == 1:
             messagebox.showinfo("INFO", "SET ZERO ON")
-            self.set_zero_command = True
-        elif(selec == 0):
+            # self.set_zero_command = 1
+        else:
             messagebox.showwarning("WARNING", "SET ZERO OFF")
-            self.set_zero_command = False
+            # self.set_zero_command = 0
 
 if __name__ == "__main__":
     app = App()
