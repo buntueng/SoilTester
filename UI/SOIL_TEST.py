@@ -620,7 +620,7 @@ class App(ctk.CTk):
                     param_result = self.ser_port_uC.readline()
                     param_result_string = param_result.rstrip().decode()
                     status_exp1_test,horizontal_force,vertical_force = param_result_string.split(",")
-                    time_stamp = datetime.now().strftime("%H:%M:%S.%f")
+                    time_stamp = self.format_time()
                     param_for_exp1 = (time_stamp)+(",")+(status_exp1_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
                     self.monitor_text_box.insert(tk.END,param_for_exp1)
                     time_in_x = (time.time()-self.start_time)
@@ -655,19 +655,157 @@ class App(ctk.CTk):
         if self.running_flag:
             match self.run_exp2_state:
                 case 0:
-                    pass
+                    self.ser_port_uC.open()
+                    self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
+                    self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
+                    self.obj_dis_x.run()
+                    self.obj_dis_y.run()
+                    self.run_exp2_state = 1
+                    self.after(2000,self.run_exp2)
+
                 case 1:
-                    pass
+                    set_zero = "Z" + "\n"
+                    set_zero_byte = set_zero.encode()
+                    self.ser_port_uC.write(set_zero_byte)
+                    self.run_exp2_state = 2
+                    self.after(500,self.run_exp2)
+
                 case 2:
-                    pass
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string =="ZERO COMPLETE":
+                        self.run_exp2_state = 3
+                    else:
+                        pass
+                    self.after(500,self.run_exp2)
+
                 case 3:
-                    pass
+                    vertical_force = self.pressure_Y_entry.get()
+                    if self.ser_port_uC.is_open:
+                        vertical_test_force = "N" + vertical_force + "\n" #============================== Y force
+                        vertical_test_force_bytes = vertical_test_force.encode()
+                        self.ser_port_uC.write(vertical_test_force_bytes)
+                        self.run_exp2_state = 4
+                        self.after(100,self.run_exp2)
+
                 case 4:
-                    pass
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.strip().decode()
+                    if setting_result_string == self.pressure_Y_entry.get():
+                        self.run_exp2_state = 5
+                    else:
+                        self.run_exp2_state = 3
+                    self.after(100,self.run_exp2)
+
                 case 5:
-                    pass
+                    pwm = self.pwm_x_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_update_pwm_string = "U" + pwm + "\n" #=============================== update pwm x
+                        exp1_update_pwm_byte = exp1_update_pwm_string.encode()
+                        self.ser_port_uC.write(exp1_update_pwm_byte)
+                        self.run_exp2_state = 6
+                        self.after(100,self.run_exp2)
+                
                 case 6:
-                    pass
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pwm_x_entry.get():
+                        self.run_exp2_state = 7
+                    else:
+                        self.run_exp2_state = 5
+                    self.after(100,self.run_exp2)
+
+                case 7:
+                    start_force = self.pressure_min_X_exp2_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_start_force_string = "S" + start_force + "\n" #=============================== update start force x
+                        exp1_start_force_byte = exp1_start_force_string.encode()
+                        self.ser_port_uC.write(exp1_start_force_byte)
+                        self.run_exp2_state = 8
+                        self.after(100,self.run_exp2)
+
+                case 8:
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pressure_min_X_exp2_entry.get():
+                        self.run_exp2_state = 9
+                    else:
+                        self.run_exp2_state = 7
+                    self.after(100,self.run_exp2)
+                
+                case 9:
+                    stop_force = self.pressure_max_X_exp2_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_stop_force_string = "Y" + stop_force + "\n" #=============================== update stop force x
+                        exp1_stop_force_byte = exp1_stop_force_string.encode()
+                        self.ser_port_uC.write(exp1_stop_force_byte)
+                        self.run_exp2_state = 10
+                        self.after(100,self.run_exp2)
+
+                case 10:
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pressure_max_X_exp2_entry.get():
+                        self.run_exp2_state = 11
+                    else:
+                        self.run_exp2_state = 9
+                    self.after(100,self.run_exp2)
+                
+                case 11:
+                    cyclic = self.cyclic_X_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_cyclic_string = "C" + cyclic + "\n" #=============================== update cyclic x
+                        exp1_cyclic_byte = exp1_cyclic_string.encode()
+                        self.ser_port_uC.write(exp1_cyclic_byte)
+                        self.run_exp2_state = 12
+                        self.after(100,self.run_exp2)
+
+                case 12:
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.cyclic_X_entry.get():
+                        self.run_exp2_state = 13
+                    else:
+                        self.run_exp2_state = 11
+                    self.after(100,self.run_exp2)     
+                           
+                case 13:
+                    start_exp2 = "r2\n"
+                    start_exp2 = start_exp2.encode()
+                    self.ser_port_uC.write(start_exp2)
+                    self.run_exp2_state = 14
+                    self.after(100,self.run_exp2)
+                    print("r2")
+                    self.start_time = time.time()
+                case 14:
+                    # print("state 14")
+                    param_result = self.ser_port_uC.readline()
+                    param_result_string = param_result.rstrip().decode()
+                    status_exp2_test,horizontal_force,vertical_force,cyclic_counter,limit_x_swicth_pressed = param_result_string.split(",")
+                    time_stamp = self.format_time()
+                    param_for_exp2 = (time_stamp)+(",")+(status_exp2_test)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(cyclic_counter)+(",")+(limit_x_swicth_pressed)+"\n" 
+                    self.monitor_text_box.insert(tk.END,param_for_exp2)
+                    time_in_x = (time.time()-self.start_time)
+                    time_in_x = float('%.3f'%time_in_x)#time in X
+                    self.x_coordinate.append(float(time_in_x))
+                    self.y_coordinate.append(float(horizontal_force))
+                    self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                    self.canvas.draw()
+                    if status_exp2_test == "1":
+                        self.run_exp2_state = 9
+                    self.after(40,self.run_exp2)
+                
+                case 15:
+                    stop_exp2 = "t\n"
+                    stop_exp2 = stop_exp2.encode()
+                    self.ser_port_uC.write(stop_exp2)
+                    self.run_exp2_state = 16
+                    self.after(100,self.run_exp2)
+                    
+                case 16:
+                    print("EXP2 SUCCESS")
+                    self.exp_test_success()
+
                 case _:
                     self.running_flag = False
     
@@ -766,7 +904,7 @@ class App(ctk.CTk):
 
     def clear_monitor(self):
         self.monitor_text_box.delete('1.0',tk.END)
-    
+
     def zero_origin_pressed(self):
         comport_uc_selected = self.com_port_uC.get()
         if comport_uc_selected == "เลือกพอต":
@@ -821,7 +959,10 @@ class App(ctk.CTk):
             case _:
                 pass
 
-
+    def format_time(self):
+        t = datetime.now()
+        s = t.strftime('%Y-%m-%d %H:%M:%S.%f')
+        return s[:-3]
 
 if __name__ == "__main__":
     app = App()

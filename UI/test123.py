@@ -1,16 +1,20 @@
-import tkinter as tk
-from PIL import Image, ImageTk
+from datetime import datetime
+import time
 
-app = tk.Tk()
-img = Image.open('test.jpg')
+start_time = time.time()
 
-tk_img = ImageTk.PhotoImage(img)
-img_width, img_height = img.size
+def format_time():
+    t = datetime.now()
+    s = t.strftime('%Y-%m-%d %H:%M:%S.%f')
+    return s[:-3]
 
-canvas = tk.Canvas(app, width=img_width, height=img_height)      # Creating an image display area
-canvas.pack()
-canvas.create_image(0, 0 , anchor = tk.NW, image=tk_img)        # image display
+for i in range(50):
+    # time_stamp = datetime.now().strftime("%H:%M:%S.%f")
+    # time_stamp_in_millisec = datetime.now().strftime("%f")
+    # time_stamp_in_millisec = int(time_stamp_in_millisec)
+    # time_stamp_in_millisec_3digit = float('%f'%time_stamp_in_millisec)
+    # time_in_x = (time.time()-start_time)
+    # time_in_x = float('%.3f'%time_in_x)#time in X
+    print((format_time()))
+    time.sleep(0.04)
 
-canvas.postscript(file="test.ps", colormode='color') # Save image
-
-app.mainloop()

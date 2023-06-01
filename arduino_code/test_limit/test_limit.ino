@@ -79,6 +79,12 @@ const int loadcell_guard_band = 2;
 unsigned long start_timer = 0;
 unsigned long timemer_send_data = 0;
 unsigned int timmer_trig = 50;
+unsigned long debug_time = 0;
+unsigned long debug_time_trig = 10000;
+//=========================== DEBUG =========================
+bool all_debug = false;
+bool debug_start = false;
+bool debug_send_data = false;
 //====================== EXP 1 PARAM ========================
 int exp1_x_state = 0;
 int exp1_y_state = 0;
@@ -182,6 +188,14 @@ void loop()
                 exp1_start_y = true;
                 exp1_x_state_start = false; 
                 exp1_test_success = false;
+                timemer_send_data = 0;
+                // =========== DEBUG ==========
+                if (all_debug == true)
+                  {
+                    debug_send_data = true;
+                    debug_start = true;
+                  }
+                // =========== DEBUG ==========
                 break;
               }
               case '2':
@@ -196,6 +210,12 @@ void loop()
                 exp2_y_set = true;       
                 exp2_test_success = false; 
                 exp2_limit_swicth_is_pressed = false; 
+                timemer_send_data = 0;
+                if (all_debug == true)
+                  {
+                    debug_send_data = true;
+                    debug_start = true;
+                  }
                 break;
               }
               case '3':
@@ -646,8 +666,16 @@ void exp1()
       {
         case 0:
           {
-            timemer_send_data = millis();
-            exp1_send_force_state = 1;
+            if (debug_send_data == true)
+              {
+                exp1_send_force_state = 2;
+                debug_send_data = false;
+              }
+            else 
+              {
+                timemer_send_data = millis();
+                exp1_send_force_state = 1; 
+              }
             break;
           }
         case 1:
@@ -661,12 +689,26 @@ void exp1()
               Serial.println(y_present_force);
               exp1_send_force_state = 0;
             }
-            if((millis()-exp1_send_force_state)>=20000)
-            {
-              exp1_test_success = true;
-            }
+            if(debug_start == true)
+              if((millis()-debug_time)>=debug_time_trig)
+              {
+                exp1_send_force_state = 3;
+              }
             break;
           }
+          case 2:
+            {
+              debug_time = millis();
+              exp1_send_force_state = 0;
+              break;
+            }
+          case 3:
+            { 
+              exp1_test_success = true;
+              debug_start = false;
+              exp1_send_force_state = 1;
+              break;
+            }
         default:
         {
           break;
@@ -895,8 +937,16 @@ void exp2()
       {
         case 0:
           {
-            timemer_send_data = millis();
-            exp2_send_force_state = 1;
+            if (debug_send_data == true)
+              {
+                exp2_send_force_state = 2;
+                debug_send_data = false;
+              }
+            else 
+              {
+                timemer_send_data = millis();
+                exp2_send_force_state = 1;
+              }
             break;
           }
         case 1:
@@ -914,8 +964,26 @@ void exp2()
                 Serial.println(exp2_limit_swicth_is_pressed);
                 exp2_send_force_state = 0;
               }
+            if(debug_start == true)
+              if((millis()-debug_time)>=debug_time_trig)
+              {
+                exp2_send_force_state = 3;
+              }
             break;
           }
+          case 2:
+            {
+              debug_time = millis();
+              exp2_send_force_state = 0;
+              break;
+            }
+          case 3:
+            { 
+              exp2_test_success = true;
+              debug_start = false;
+              exp2_send_force_state = 1;
+              break;
+            }
         default:
           {
             break;
