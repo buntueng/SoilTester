@@ -82,7 +82,7 @@ unsigned int timmer_trig = 50;
 unsigned long debug_time = 0;
 unsigned long debug_time_trig = 10000;
 //=========================== DEBUG =========================
-bool all_debug = false;
+bool all_debug = true;
 bool debug_start = false;
 bool debug_send_data = false;
 //====================== EXP 1 PARAM ========================

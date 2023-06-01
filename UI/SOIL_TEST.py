@@ -778,7 +778,6 @@ class App(ctk.CTk):
                     print("r2")
                     self.start_time = time.time()
                 case 14:
-                    # print("state 14")
                     param_result = self.ser_port_uC.readline()
                     param_result_string = param_result.rstrip().decode()
                     status_exp2_test,horizontal_force,vertical_force,cyclic_counter,limit_x_swicth_pressed = param_result_string.split(",")
@@ -792,7 +791,7 @@ class App(ctk.CTk):
                     self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
                     self.canvas.draw()
                     if status_exp2_test == "1":
-                        self.run_exp2_state = 9
+                        self.run_exp2_state = 15
                     self.after(40,self.run_exp2)
                 
                 case 15:
@@ -803,7 +802,7 @@ class App(ctk.CTk):
                     self.after(100,self.run_exp2)
                     
                 case 16:
-                    print("EXP2 SUCCESS")
+                    logger.debug("EXP2 SUCCESS")
                     self.exp_test_success()
 
                 case _:
