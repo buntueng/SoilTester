@@ -76,6 +76,9 @@ int start_force = 0;
 int stop_force = 0;
 int cyclic = 0;
 int fixed_vertical_force = 0;
+int exp3_y_down = 0;
+int exp3_y_up = 0;
+int exp3_y_stop_force = 0;
 const int loadcell_guard_band = 2; 
 unsigned long start_timer = 0;
 unsigned long timemer_send_data = 0;
@@ -106,47 +109,52 @@ bool exp2_stop_y = false;
 bool exp2_test_success = false;
 bool exp2_limit_swicth_is_pressed = false;
 //======================= EXP 3 PARAM =====================
+int exp3_x_state = 0;
 int exp3_y_state = 0;
 bool exp3_y_stop = false;
+bool exp3_x_start_state = false;
+bool exp3_y_set = false;
+bool exp3_stop_y = false;
+bool exp3_test_success = false;
 //=========================================================
 
 
 
 void setup()
-{
-    Serial.begin(115200);
-    //============ setup motor pin ================
-    pinMode(x_motor_dir1,OUTPUT);
-    pinMode(x_motor_dir2,OUTPUT);
-    pinMode(x_motor_speed_pin,OUTPUT);
+  {
+      Serial.begin(115200);
+      //============ setup motor pin ================
+      pinMode(x_motor_dir1,OUTPUT);
+      pinMode(x_motor_dir2,OUTPUT);
+      pinMode(x_motor_speed_pin,OUTPUT);
 
-    pinMode(y_motor_dir1,OUTPUT);
-    pinMode(y_motor_dir2,OUTPUT);
-    pinMode(y_motor_speed_pin,OUTPUT);
+      pinMode(y_motor_dir1,OUTPUT);
+      pinMode(y_motor_dir2,OUTPUT);
+      pinMode(y_motor_speed_pin,OUTPUT);
 
-    pinMode(x_limit_front_pin,INPUT_PULLUP);
-    pinMode(x_limit_back_pin,INPUT_PULLUP);
+      pinMode(x_limit_front_pin,INPUT_PULLUP);
+      pinMode(x_limit_back_pin,INPUT_PULLUP);
 
-    pinMode(x_forward_pin,INPUT_PULLUP);
-    pinMode(x_backward_pin,INPUT_PULLUP);
+      pinMode(x_forward_pin,INPUT_PULLUP);
+      pinMode(x_backward_pin,INPUT_PULLUP);
 
-    pinMode(y_up_pin,INPUT_PULLUP);
-    pinMode(y_down_pin,INPUT_PULLUP);
-    pinMode(y_limit_top_pin,INPUT_PULLUP);
-    pinMode(y_limit_bottom_pin,INPUT_PULLUP);
+      pinMode(y_up_pin,INPUT_PULLUP);
+      pinMode(y_down_pin,INPUT_PULLUP);
+      pinMode(y_limit_top_pin,INPUT_PULLUP);
+      pinMode(y_limit_bottom_pin,INPUT_PULLUP);
 
-    pinMode(x_loadcell_pin,INPUT);
-    pinMode(y_loadcell_pin,INPUT);
+      pinMode(x_loadcell_pin,INPUT);
+      pinMode(y_loadcell_pin,INPUT);
 
-    // stop all motors
-    digitalWrite(x_motor_dir1,0);
-    digitalWrite(x_motor_dir2,0);
-    digitalWrite(x_motor_speed_pin,0);
+      // stop all motors
+      digitalWrite(x_motor_dir1,0);
+      digitalWrite(x_motor_dir2,0);
+      digitalWrite(x_motor_speed_pin,0);
 
-    digitalWrite(y_motor_dir1,0);
-    digitalWrite(y_motor_dir2,0);
-    digitalWrite(y_motor_speed_pin,0);
-}
+      digitalWrite(y_motor_dir1,0);
+      digitalWrite(y_motor_dir2,0);
+      digitalWrite(y_motor_speed_pin,0);
+  }
 
 void loop()
 {
@@ -225,7 +233,15 @@ void loop()
               case '3':
               {
                 run_machine = true;
-                select_exp = 3;            
+                select_exp = 3;     
+                exp3_x_state = 0;
+                exp3_y_state = 0;
+                exp3_y_set = true;
+                exp3_x_start_state = false;
+                exp3_y_stop =false;
+                exp3_y_down = 0;
+                exp3_y_up = 0;
+                exp3_y_stop_force = 0;       
                 break;
               }
               case '4':
@@ -271,6 +287,27 @@ void loop()
           {
             cyclic = cmd_string.substring(1,cmd_len).toInt();
             Serial.println(cyclic,DEC);
+            break;
+          }
+        case 'd': // exp3 y down
+          {
+            exp3_y_down = cmd_string.substring(1,cmd_len).toInt();
+            Serial.println(exp3_y_down,DEC);
+            exp3_y_state = 5;
+            break;
+          }
+        case 'u': // exp3 y up
+          {
+            exp3_y_up = cmd_string.substring(1,cmd_len).toInt();
+            Serial.println(exp3_y_up,DEC);
+            exp3_y_state = 6;
+            break;
+          }
+        case 's':
+          {
+            exp3_y_stop_force = cmd_string.substring(1,cmd_len).toInt();
+            Serial.println(exp3_y_stop_force,DEC);
+            exp3_y_state = 7;
             break;
           }
         case 'a': // read param update pwm && F(Y)
@@ -1002,6 +1039,40 @@ void exp3()
   {
     int x_present_force = analogRead(x_loadcell_pin);
     int y_present_force = analogRead(y_loadcell_pin);
+    switch (exp3_x_state)
+      {
+        case 0:
+          {
+            if(exp3_x_start_state == true)
+              {
+                exp3_x_start_state = false;
+                // Serial.println("EXP3");
+                exp3_x_state = 1;
+              }
+            break;
+          }
+        case 1:
+          {
+            digitalWrite(x_motor_dir1,HIGH);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,update_pwm);
+            if((x_limit_front_logic)==1)
+              {
+                exp2_x_state = 2;
+              }              
+            break;
+          }
+        case 2:
+          {
+            exp3_stop_y = true;
+            exp3_test_success = true;
+            break;
+          }
+        default:
+          {
+            break;
+          }
+      }
     switch (exp3_y_state) 
       {
           case 0:// state 0 y == stop
@@ -1027,11 +1098,19 @@ void exp3()
                 }
                 break;
             }
-          case 2: // selec condition
+          case 2:
+            {
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,HIGH);
+                analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
+                exp3_y_state = 3;
+              break;
+            }
+          case 3: // selec condition
             {
               if(y_limit_bottom_logic == 1)
                   {
-                      exp3_y_state = 7;
+                      exp3_y_state = 10;
                       digitalWrite(y_motor_dir1,LOW);
                       digitalWrite(y_motor_dir2,LOW);
                       analogWrite(y_motor_speed_pin,0);
@@ -1039,16 +1118,75 @@ void exp3()
                   }
               else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
                   {
-                      exp3_y_state = 5;
+                      exp3_y_state = 4;
                       digitalWrite(y_motor_dir1,LOW);
                       digitalWrite(y_motor_dir2,LOW);
                       analogWrite(y_motor_speed_pin,0);
                   }
               break;
             }
-          case 3:
+          case 4:
             {
-              Serial.print("SET Y OK");
+              // Serial.print("SET Y OK"); // wait command 
+              if(exp3_y_set == true)
+                {
+                  exp3_x_start_state = true;
+                  exp3_y_set = false;
+                  exp3_y_state = 3;
+                }
+              else 
+                {
+                  break;
+                }
+              break;
+            }
+          case 5: // d down gain Y
+            {
+              digitalWrite(y_motor_dir1,LOW);
+              digitalWrite(y_motor_dir2,HIGH);
+              analogWrite(y_motor_speed_pin,y_stabilizer_pwm); 
+              if((y_present_force)>=exp3_y_down-loadcell_guard_band)
+                {
+                  digitalWrite(y_motor_dir1,LOW);
+                  digitalWrite(y_motor_dir2,LOW);
+                  analogWrite(y_motor_speed_pin,0); 
+                }
+              if((y_limit_bottom_logic)==1)
+                {
+                  digitalWrite(y_motor_dir1,LOW);
+                  digitalWrite(y_motor_dir2,LOW);
+                  analogWrite(y_motor_speed_pin,0); 
+                }
+              break;
+            } 
+          case 6: // u up gain Y
+            {
+              digitalWrite(y_motor_dir1,HIGH);
+              digitalWrite(y_motor_dir2,LOW);
+              analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
+              if((y_present_force)<=exp3_y_up-loadcell_guard_band) 
+                {
+                  digitalWrite(y_motor_dir1,LOW);
+                  digitalWrite(y_motor_dir2,LOW);
+                  analogWrite(y_motor_speed_pin,0); 
+                }
+              if((y_limit_top_logic)==1)
+                {
+                  digitalWrite(y_motor_dir1,LOW);
+                  digitalWrite(y_motor_dir2,LOW);
+                  analogWrite(y_motor_speed_pin,0); 
+                }
+              break;
+            } 
+          case 7: // s stop gain Y
+            {
+              digitalWrite(y_motor_dir1,LOW);
+              digitalWrite(y_motor_dir2,LOW);
+              analogWrite(y_motor_speed_pin,0); 
+              break;
+            }
+          case 10:
+            {
               break;
             }
           default:
