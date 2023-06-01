@@ -718,7 +718,6 @@ class App(ctk.CTk):
                     self.ser_port_uC.write(start_exp2)
                     self.run_exp2_state = 14
                     self.after(100,self.run_exp2)
-                    print("r2")
                     self.start_time = time.time()
 
                 case 14:
@@ -757,19 +756,72 @@ class App(ctk.CTk):
         if self.running_flag:
             match self.run_exp3_state:
                 case 0:
-                    pass
-                case 1:
-                    pass
-                case 2:
-                    pass
+                    self.ser_port_uC.open()
+                    self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
+                    self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
+                    self.obj_dis_x.run()
+                    self.obj_dis_y.run()
+                    self.run_exp3_state = 1
+                    self.after(2000,self.run_exp3)
+
+                case 1: #CHACK FOR SET ZERO
+                    selec = self.set_zero_switch.get()
+                    if selec == 1:
+                        set_zero = "Z" + "\n"
+                        set_zero_byte = set_zero.encode()
+                        self.ser_port_uC.write(set_zero_byte)
+                        self.run_exp3_state = 2
+                        self.after(500,self.run_exp3)
+                    else:
+                        self.run_exp3_state = 3
+                        self.after(500,self.run_exp3)
+
+                case 2: #=================== ZERO COMPLET
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string =="ZERO COMPLETE":
+                        self.run_exp3_state = 3
+                    else:
+                        pass
+                    self.after(500,self.run_exp3)
+
                 case 3:
-                    pass
+                    vertical_force = self.pressure_Y_entry.get()
+                    if self.ser_port_uC.is_open:
+                        vertical_test_force = "N" + vertical_force + "\n" #============================== Y force
+                        vertical_test_force_bytes = vertical_test_force.encode()
+                        self.ser_port_uC.write(vertical_test_force_bytes)
+                        self.run_exp3_state = 4
+                        self.after(100,self.run_exp3)
+
                 case 4:
-                    pass
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.strip().decode()
+                    if setting_result_string == self.pressure_Y_entry.get():
+                        self.run_exp3_state = 5
+                    else:
+                        self.run_exp3_state = 3
+                    self.after(100,self.run_exp3)
+
                 case 5:
-                    pass
+                    pwm = self.pwm_x_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_update_pwm_string = "U" + pwm + "\n" #=============================== update pwm x
+                        exp1_update_pwm_byte = exp1_update_pwm_string.encode()
+                        self.ser_port_uC.write(exp1_update_pwm_byte)
+                        self.run_exp3_state = 6
+                        self.after(100,self.run_exp3)
+                
                 case 6:
-                    pass
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pwm_x_entry.get():
+                        self.run_exp3_state = 7
+                    else:
+                        self.run_exp3_state = 5
+                    self.after(100,self.run_exp3)
+
+                    
                 case other:
                     self.running_flag = False
             
@@ -910,10 +962,8 @@ class App(ctk.CTk):
         selec = self.set_zero_switch.get()
         if selec == 1:
             messagebox.showinfo("INFO", "SET ZERO ON")
-            # self.set_zero_command = 1
         else:
             messagebox.showwarning("WARNING", "SET ZERO OFF")
-            # self.set_zero_command = 0
 
 if __name__ == "__main__":
     app = App()
