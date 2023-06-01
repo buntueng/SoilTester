@@ -4,6 +4,7 @@ void set_zero();
 void manual_control();
 void exp1();
 void exp2();
+void exp3();
 
 const int x_loadcell_pin = A13;
 const int y_loadcell_pin = A10;
@@ -82,7 +83,7 @@ unsigned int timmer_trig = 50;
 unsigned long debug_time = 0;
 unsigned long debug_time_trig = 10000;
 //=========================== DEBUG =========================
-bool all_debug = true;
+bool all_debug = false;
 bool debug_start = false;
 bool debug_send_data = false;
 //====================== EXP 1 PARAM ========================
@@ -104,6 +105,9 @@ bool exp2_x_start_state = false;
 bool exp2_stop_y = false;
 bool exp2_test_success = false;
 bool exp2_limit_swicth_is_pressed = false;
+//======================= EXP 3 PARAM =====================
+int exp3_y_state = 0;
+bool exp3_y_stop = false;
 //=========================================================
 
 
@@ -280,10 +284,13 @@ void loop()
           {
             Serial.print(start_force);
             Serial.print(",");
-            Serial.println(stop_force);
+            Serial.print(stop_force);
+            Serial.print(",");
+            Serial.println(cyclic);
+            
             break;
           }
-        case 'f':
+        case 'f': // read force x & y
           {
             int vertical_force = analogRead(y_loadcell_pin);
             int horizontal_force = analogRead(x_loadcell_pin);
@@ -292,7 +299,7 @@ void loop()
             Serial.println(horizontal_force,DEC);     // return horizontal force X
             break;
           }
-        case 'L':
+        case 'L': // read limit logic
           {
             Serial.print(x_limit_front_logic);
             Serial.print(",");
@@ -303,7 +310,7 @@ void loop()
             Serial.println(y_limit_bottom_logic);
             break;
           }
-        case 'Z':
+        case 'Z': // SET ZERO
           {
             Serial.println("SET ZERO");
             set_zero_flag = true;
@@ -338,7 +345,8 @@ void loop()
         }
         case 3:
         {
-          Serial.println("R3");
+          exp3();
+          // Serial.println("R3");
           break;
         }
         case 4:
@@ -988,6 +996,65 @@ void exp2()
           {
             break;
           }
+      }
+  }
+void exp3()
+  {
+    int x_present_force = analogRead(x_loadcell_pin);
+    int y_present_force = analogRead(y_loadcell_pin);
+    switch (exp3_y_state) 
+      {
+          case 0:// state 0 y == stop
+            {
+              digitalWrite(y_motor_dir1,LOW);
+              digitalWrite(y_motor_dir2,LOW);
+              analogWrite(y_motor_speed_pin,0);
+              exp3_y_state = 1;
+              break;
+            }
+          case 1:     // move machine down pwm 200
+            {
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,HIGH);
+                analogWrite(y_motor_speed_pin,200);
+                if(y_present_force >= 100)
+                {
+                    digitalWrite(y_motor_dir1,LOW);
+                    digitalWrite(y_motor_dir2,LOW);
+                    analogWrite(y_motor_speed_pin,0);
+                    delay(300);
+                    exp3_y_state = 2;
+                }
+                break;
+            }
+          case 2: // selec condition
+            {
+              if(y_limit_bottom_logic == 1)
+                  {
+                      exp3_y_state = 7;
+                      digitalWrite(y_motor_dir1,LOW);
+                      digitalWrite(y_motor_dir2,LOW);
+                      analogWrite(y_motor_speed_pin,0);
+
+                  }
+              else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
+                  {
+                      exp3_y_state = 5;
+                      digitalWrite(y_motor_dir1,LOW);
+                      digitalWrite(y_motor_dir2,LOW);
+                      analogWrite(y_motor_speed_pin,0);
+                  }
+              break;
+            }
+          case 3:
+            {
+              Serial.print("SET Y OK");
+              break;
+            }
+          default:
+            {
+              break;
+            }
       }
   }
 
