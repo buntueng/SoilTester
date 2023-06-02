@@ -562,9 +562,9 @@ class App(ctk.CTk):
                     self.monitor_text_box.insert(tk.END,param_for_exp1)
                     time_in_x = (time.time()-self.start_time)
                     time_in_x = float('%.3f'%time_in_x)#time in X
-                    dispY = (self.obj_dis_y.get_last())
-                    if dispY != None:
-                        y_show3digit = f'{int(dispY[:-2])*0.001:.3f}'
+                    dis_Y = (self.obj_dis_y.get_last())
+                    if dis_Y != None:
+                        y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
                         # print(y_show3digit)
                         self.x_coordinate.append(float(time_in_x))
                         self.y_coordinate.append(float(y_show3digit))
@@ -829,13 +829,35 @@ class App(ctk.CTk):
                     self.after(100,self.run_exp3)
                     self.start_time = time.time()
 
-                case 8:
-                    pass
+                case 8: #================ set K
+                    param_result = self.ser_port_uC.readline()
+                    param_result_string = param_result.rstrip().decode()
+                    status_exp3_test,horizontal_force,vertical_force = param_result_string.split(",")
+                    time_stamp = self.format_time()
+                    param_for_exp2 = (time_stamp)+(",")+(status_exp3_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
+                    self.monitor_text_box.insert(tk.END,param_for_exp2)
+                    self.ser_port_uC.flushInput()
+                    dis_Y = (self.obj_dis_y.get_last())
+                    dis_x = (self.obj_dis_x.get_last())
+                    if dis_Y != None:
+                        y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
+                    if dis_x != None:
+                        x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
+                    
+                    if status_exp3_test == 1:
+                        self.run_exp3_state = 9
+
+                    else :
+                        pass
+                    self.after(20,self.run_exp3)
+                
+                case 9:
+                    print("EXP3 SUCCESS")
+                    self.after(500,self.run_exp3)
 
                 case other:
                     self.running_flag = False
             
-            self.after(self.run_exp3())
 
     def run_exp4(self):
         if self.running_flag:

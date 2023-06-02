@@ -237,7 +237,7 @@ void loop()
                 select_exp = 3;
                 exp3_x_state = 0;
                 exp3_y_state = 0;
-                exp3_send_force_state = 0;
+                // exp3_send_force_state = 0;
                 exp3_y_set = true;
                 exp3_x_start_state = false;
                 exp3_y_stop =false;
@@ -1053,7 +1053,6 @@ void exp3()
             if(exp3_x_start_state == true)
               {
                 exp3_x_start_state = false;
-                // Serial.println("EXP3");
                 exp3_x_state = 1;
               }
             break;
@@ -1063,13 +1062,21 @@ void exp3()
             digitalWrite(x_motor_dir1,HIGH);
             digitalWrite(x_motor_dir2,LOW);
             analogWrite(x_motor_speed_pin,update_pwm);
-            if((x_limit_front_logic)==1)
-              {
-                exp2_x_state = 2;
-              }              
+                exp3_x_state = 2;             
             break;
           }
         case 2:
+          {
+            if((x_limit_front_logic)==1)
+            {
+                digitalWrite(x_motor_dir1,LOW);
+                digitalWrite(x_motor_dir2,LOW);
+                analogWrite(x_motor_speed_pin,0);
+                exp3_x_state = 3;
+            }
+            break;
+          }
+        case 3:
           {
             exp3_stop_y = true;
             exp3_test_success = true;
