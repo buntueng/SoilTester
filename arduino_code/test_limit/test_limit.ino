@@ -5,6 +5,7 @@ void manual_control();
 void exp1();
 void exp2();
 void exp3();
+void exp4();
 
 const int x_loadcell_pin = A13;
 const int y_loadcell_pin = A10;
@@ -76,9 +77,9 @@ int start_force = 0;
 int stop_force = 0;
 int cyclic = 0;
 int fixed_vertical_force = 0;
-int exp3_y_down = 0;
-int exp3_y_up = 0;
-int exp3_y_stop_force = 0;
+int exp_y_down = 0;
+int exp_y_up = 0;
+int exp_y_stop_force = 0;
 const int loadcell_guard_band = 2; 
 unsigned long start_timer = 0;
 unsigned long timemer_send_data = 0;
@@ -117,8 +118,17 @@ bool exp3_x_start_state = false;
 bool exp3_y_set = false;
 bool exp3_stop_y = false;
 bool exp3_test_success = false;
-//=========================================================
-
+//======================= EXP 4 PARAM =====================
+int exp4_x_state = 0;
+int exp4_y_state = 0;
+int exp4_send_force_state = 0;
+bool exp4_y_stop = false;
+bool exp4_x_start_state = false;
+bool exp4_y_set = false;
+bool exp4_stop_y = false;
+bool exp4_test_success = false;
+bool exp4_limit_swicth_is_pressed = false;
+//========================================================
 
 
 void setup()
@@ -191,70 +201,90 @@ void loop()
                 break;
               }
               case '1':
-              {
-                run_machine = true;
-                select_exp = 1;
-                exp1_y_state = 0;
-                exp1_x_state = 0;
-                exp1_send_force_state = 0;
-                exp1_y_set = true;
-                exp1_start_y = true;
-                exp1_x_state_start = false; 
-                exp1_test_success = false;
-                timemer_send_data = 0;
-                // =========== DEBUG ==========
-                if (all_debug == true)
-                  {
-                    debug_send_data = true;
-                    debug_start = true;
-                  }
-                // =========== DEBUG ==========
-                break;
-              }
+                {
+                  run_machine = true;
+                  select_exp = 1;
+                  exp1_y_state = 0;
+                  exp1_x_state = 0;
+                  exp1_send_force_state = 0;
+                  exp1_y_set = true;
+                  exp1_start_y = true;
+                  exp1_x_state_start = false; 
+                  exp1_test_success = false;
+                  timemer_send_data = 0;
+                  // =========== DEBUG ==========
+                  if (all_debug == true)
+                    {
+                      debug_send_data = true;
+                      debug_start = true;
+                    }
+                  // =========== DEBUG ==========
+                  break;
+                }
               case '2':
-              {
-                run_machine = true;
-                select_exp = 2;  
-                exp2_x_state = 0; 
-                exp2_y_state = 0;
-                counter_cyclic = 0;
-                exp2_stop_y = false;
-                exp2_x_start_state = false;
-                exp2_y_set = true;       
-                exp2_test_success = false; 
-                exp2_limit_swicth_is_pressed = false; 
-                timemer_send_data = 0;
-                if (all_debug == true)
-                  {
-                    debug_send_data = true;
-                    debug_start = true;
-                  }
-                break;
-              }
+                {
+                  run_machine = true;
+                  select_exp = 2;  
+                  exp2_x_state = 0; 
+                  exp2_y_state = 0;
+                  counter_cyclic = 0;
+                  exp2_stop_y = false;
+                  exp2_x_start_state = false;
+                  exp2_y_set = true;       
+                  exp2_test_success = false; 
+                  exp2_limit_swicth_is_pressed = false; 
+                  timemer_send_data = 0;
+                  start_force = 0;
+                  stop_force = 0;  
+                  if (all_debug == true)
+                    {
+                      debug_send_data = true;
+                      debug_start = true;
+                    }
+                  break;
+                }
               case '3':
-              {
-                run_machine = true;
-                select_exp = 3;
-                exp3_x_state = 0;
-                exp3_y_state = 0;
-                // exp3_send_force_state = 0;
-                exp3_y_set = true;
-                exp3_x_start_state = false;
-                exp3_y_stop =false;
-                exp3_y_down = 0;
-                exp3_y_up = 0;
-                exp3_y_stop_force = 0;   
-                if (all_debug == true)
-                  {
-                    debug_send_data = true;
-                    debug_start = true;
-                  }    
-                break;
-              }
+                {
+                  run_machine = true;
+                  select_exp = 3;
+                  exp3_x_state = 0;
+                  exp3_y_state = 0;
+                  // exp3_send_force_state = 0;
+                  exp3_y_set = true;
+                  exp3_x_start_state = false;
+                  exp3_y_stop =false;
+                  exp_y_down = 0;
+                  exp_y_up = 0;
+                  exp_y_stop_force = 0;   
+                  if (all_debug == true)
+                    {
+                      debug_send_data = true;
+                      debug_start = true;
+                    }    
+                  break;
+                }
               case '4':
               {
                 run_machine = true;
-                select_exp = 4;            
+                select_exp = 4; 
+                exp4_x_state = 0;
+                exp4_y_state = 0; 
+                exp4_y_set = true;
+                exp4_x_start_state = false;
+                exp4_y_stop =false;
+                exp_y_down = 0;
+                exp_y_up = 0;
+                exp_y_stop_force = 0; 
+                start_force = 0;
+                stop_force = 0;  
+                counter_cyclic = 0;
+                exp4_stop_y = false;
+                exp4_test_success = false;
+                if (all_debug == true)
+                  {
+                    debug_send_data = true;
+                    debug_start = true;
+                  }            
                 break;
               }
             }
@@ -298,22 +328,22 @@ void loop()
           }
         case 'd': // exp3 y down
           {
-            exp3_y_down = cmd_string.substring(1,cmd_len).toInt();
-            Serial.println(exp3_y_down,DEC);
+            exp_y_down = cmd_string.substring(1,cmd_len).toInt();
+            Serial.println(exp_y_down,DEC);
             exp3_y_state = 5;
             break;
           }
         case 'u': // exp3 y up
           {
-            exp3_y_up = cmd_string.substring(1,cmd_len).toInt();
-            Serial.println(exp3_y_up,DEC);
+            exp_y_up = cmd_string.substring(1,cmd_len).toInt();
+            Serial.println(exp_y_up,DEC);
             exp3_y_state = 6;
             break;
           }
         case 's': // stop y
           {
-            exp3_y_stop_force = cmd_string.substring(1,cmd_len).toInt();
-            Serial.println(exp3_y_stop_force,DEC);
+            exp_y_stop_force = cmd_string.substring(1,cmd_len).toInt();
+            Serial.println(exp_y_stop_force,DEC);
             exp3_y_state = 7;
             break;
           }
@@ -1159,7 +1189,7 @@ void exp3()
               digitalWrite(y_motor_dir1,LOW);
               digitalWrite(y_motor_dir2,HIGH);
               analogWrite(y_motor_speed_pin,y_stabilizer_pwm); 
-              if((y_present_force)>=exp3_y_down-loadcell_guard_band)
+              if((y_present_force)>=exp_y_down-loadcell_guard_band)
                 {
                   digitalWrite(y_motor_dir1,LOW);
                   digitalWrite(y_motor_dir2,LOW);
@@ -1178,7 +1208,7 @@ void exp3()
               digitalWrite(y_motor_dir1,HIGH);
               digitalWrite(y_motor_dir2,LOW);
               analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
-              if((y_present_force)<=exp3_y_up-loadcell_guard_band) 
+              if((y_present_force)<=exp_y_up-loadcell_guard_band) 
                 {
                   digitalWrite(y_motor_dir1,LOW);
                   digitalWrite(y_motor_dir2,LOW);
@@ -1260,6 +1290,300 @@ void exp3()
             break;
           }
       }
+  }
+void exp4()
+  {
+    int x_present_force = analogRead(x_loadcell_pin);
+    int y_present_force = analogRead(y_loadcell_pin);
+    switch (exp4_x_state) 
+      {
+        case 0: // state start x
+          {
+            if((exp4_x_start_state)== true)
+            {
+              exp4_x_start_state = false;
+              exp4_x_state = 1;
+            }
+            break;
+          }
+        case 1: // set x to start force is pwm = 200
+          {
+            digitalWrite(x_motor_dir1,HIGH);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,200);
+            if((x_present_force)>=start_force)
+              {
+                start_timer = millis();
+                exp4_x_state = 2;
+              }
+            else if((x_limit_front_logic)==1)
+              {
+                exp4_x_state = 8;
+              }
+            break;
+          }
+        case 2: // form start force
+          {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+            if((millis()-start_timer)>=300)
+              {
+                exp4_x_state = 3;
+              }
+            break;
+          }
+        case 3: // x to stop force
+          {
+            digitalWrite(x_motor_dir1,HIGH);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,update_pwm);
+            if ((x_present_force)>=stop_force-loadcell_guard_band)
+              {
+                exp4_x_state = 4;
+              }
+            if ((x_limit_front_logic) == 1)
+              {
+                exp4_x_state = 8;
+              }            
+            break;
+          }
+        case 4: // x form stop force 
+          {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+            exp4_x_state = 5;
+            break;
+          }
+        case 5: // x to start force
+          {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,HIGH);
+            analogWrite(x_motor_speed_pin,update_pwm-loadcell_guard_band);
+            if((x_present_force)<=start_force)
+              {
+                exp4_x_state = 6;
+              }
+            if ((x_limit_back_logic)==1)
+              {
+                exp4_x_state = 8;
+              }
+            break;
+          }
+        case 6: // x form start force and counter cyclic 
+          {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+            counter_cyclic++;
+            exp4_x_state = 3;
+            if((counter_cyclic)==cyclic)
+              {
+                exp2_x_state = 7;
+              }
+            break;
+          }
+        case 7: // counter cyclic = cyclic form pc
+          {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+            exp4_stop_y = true;
+            exp4_test_success = true;
+            break; 
+          }
+        case 8:
+          {
+            digitalWrite(x_motor_dir1,LOW);
+            digitalWrite(x_motor_dir2,LOW);
+            analogWrite(x_motor_speed_pin,0);
+            exp4_stop_y = true;
+            exp4_limit_swicth_is_pressed = true;
+            break;
+          }
+        default:
+          {
+            break;
+          }
+      }
+    switch (exp4_y_state) 
+      {
+          case 0:// state 0 y == stop
+            {
+              digitalWrite(y_motor_dir1,LOW);
+              digitalWrite(y_motor_dir2,LOW);
+              analogWrite(y_motor_speed_pin,0);
+              exp4_y_state = 1;
+              break;
+            }
+          case 1:     // move machine down pwm 200
+            {
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,HIGH);
+                analogWrite(y_motor_speed_pin,200);
+                if(y_present_force >= 100)
+                {
+                    digitalWrite(y_motor_dir1,LOW);
+                    digitalWrite(y_motor_dir2,LOW);
+                    analogWrite(y_motor_speed_pin,0);
+                    delay(300);
+                    exp4_y_state = 2;
+                }
+                break;
+            }
+          case 2:
+            {
+                digitalWrite(y_motor_dir1,LOW);
+                digitalWrite(y_motor_dir2,HIGH);
+                analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
+                exp4_y_state = 3;
+              break;
+            }
+          case 3: // selec condition
+            {
+              if(y_limit_bottom_logic == 1)
+                  {
+                      exp4_y_state = 10;
+                      digitalWrite(y_motor_dir1,LOW);
+                      digitalWrite(y_motor_dir2,LOW);
+                      analogWrite(y_motor_speed_pin,0);
+
+                  }
+              else if (y_present_force >= fixed_vertical_force-loadcell_guard_band)
+                  {
+                      exp4_y_state = 4;
+                      digitalWrite(y_motor_dir1,LOW);
+                      digitalWrite(y_motor_dir2,LOW);
+                      analogWrite(y_motor_speed_pin,0);
+                  }
+              break;
+            }
+          case 4:
+            {
+              // Serial.print("SET Y OK"); // wait command 
+              if(exp4_y_set == true)
+                {
+                  exp4_x_start_state = true;
+                  exp4_y_set = false;
+                  exp4_y_state = 3;
+                }
+              else 
+                {
+                  break;
+                }
+              break;
+            }
+          case 5: // d down gain Y
+            {
+              digitalWrite(y_motor_dir1,LOW);
+              digitalWrite(y_motor_dir2,HIGH);
+              analogWrite(y_motor_speed_pin,y_stabilizer_pwm); 
+              if((y_present_force)>=exp_y_down-loadcell_guard_band)
+                {
+                  digitalWrite(y_motor_dir1,LOW);
+                  digitalWrite(y_motor_dir2,LOW);
+                  analogWrite(y_motor_speed_pin,0); 
+                }
+              if((y_limit_bottom_logic)==1)
+                {
+                  digitalWrite(y_motor_dir1,LOW);
+                  digitalWrite(y_motor_dir2,LOW);
+                  analogWrite(y_motor_speed_pin,0); 
+                }
+              break;
+            } 
+          case 6: // u up gain Y
+            {
+              digitalWrite(y_motor_dir1,HIGH);
+              digitalWrite(y_motor_dir2,LOW);
+              analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
+              if((y_present_force)<=exp_y_up-loadcell_guard_band) 
+                {
+                  digitalWrite(y_motor_dir1,LOW);
+                  digitalWrite(y_motor_dir2,LOW);
+                  analogWrite(y_motor_speed_pin,0); 
+                }
+              if((y_limit_top_logic)==1)
+                {
+                  digitalWrite(y_motor_dir1,LOW);
+                  digitalWrite(y_motor_dir2,LOW);
+                  analogWrite(y_motor_speed_pin,0); 
+                }
+              break;
+            } 
+          case 7: // s stop gain Y
+            {
+              digitalWrite(y_motor_dir1,LOW);
+              digitalWrite(y_motor_dir2,LOW);
+              analogWrite(y_motor_speed_pin,0); 
+              break;
+            }
+          case 10:
+            {
+              break;
+            }
+          default:
+            {
+              break;
+            }
+      }  
+    switch (exp4_send_force_state)
+      {
+        case 0:
+          {
+            if (debug_send_data == true)
+              {
+                exp4_send_force_state = 2;
+                debug_send_data = false;
+              }
+            else 
+              {
+                timemer_send_data = millis();
+                exp4_send_force_state = 1;
+              }
+            break;
+          }
+        case 1:
+          {
+            if((millis()-timemer_send_data)>=timmer_trig)
+              {
+                Serial.print(exp4_test_success);
+                Serial.print(",");
+                Serial.print(x_present_force);
+                Serial.print(",");
+                Serial.print(y_present_force);
+                Serial.print(",");
+                Serial.print(counter_cyclic);
+                Serial.print(",");
+                Serial.println(exp4_limit_swicth_is_pressed);
+                exp4_send_force_state = 0;
+              }
+            if(debug_start == true)
+              if((millis()-debug_time)>=debug_time_trig)
+              {
+                exp4_send_force_state = 3;
+              }
+            break;
+          }
+        case 2:
+          {
+            debug_time = millis();
+            exp4_send_force_state = 0;
+            break;
+          }
+        case 3:
+          { 
+            exp4_test_success = true;
+            debug_start = false;
+            exp4_send_force_state = 1;
+            break;
+          }
+        default:
+          {
+            break;
+          }
+      }  
   }
 
 // ====================== sub program ===============================
