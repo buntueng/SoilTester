@@ -785,16 +785,16 @@ class App(ctk.CTk):
                         pass
                     self.after(500,self.run_exp3)
 
-                case 3:
+                case 3: #============================== Y force
                     vertical_force = self.pressure_Y_entry.get()
                     if self.ser_port_uC.is_open:
-                        vertical_test_force = "N" + vertical_force + "\n" #============================== Y force
+                        vertical_test_force = "N" + vertical_force + "\n"
                         vertical_test_force_bytes = vertical_test_force.encode()
                         self.ser_port_uC.write(vertical_test_force_bytes)
                         self.run_exp3_state = 4
                         self.after(100,self.run_exp3)
 
-                case 4:
+                case 4: #======================== read Y force
                     setting_result = self.ser_port_uC.readline()
                     setting_result_string = setting_result.strip().decode()
                     if setting_result_string == self.pressure_Y_entry.get():
@@ -803,7 +803,7 @@ class App(ctk.CTk):
                         self.run_exp3_state = 3
                     self.after(100,self.run_exp3)
 
-                case 5:
+                case 5: #================== PWM FOR X   
                     pwm = self.pwm_x_entry.get()
                     if self.ser_port_uC.is_open:
                         exp1_update_pwm_string = "U" + pwm + "\n" #=============================== update pwm x
@@ -812,7 +812,7 @@ class App(ctk.CTk):
                         self.run_exp3_state = 6
                         self.after(100,self.run_exp3)
                 
-                case 6:
+                case 6: #================ read pwm x
                     setting_result = self.ser_port_uC.readline()
                     setting_result_string = setting_result.rstrip().decode()
                     if setting_result_string == self.pwm_x_entry.get():
@@ -821,7 +821,17 @@ class App(ctk.CTk):
                         self.run_exp3_state = 5
                     self.after(100,self.run_exp3)
 
-                    
+                case 7: #================ start exp3 test
+                    start_exp1 = "r1\n"
+                    start_exp1 = start_exp1.encode()
+                    self.ser_port_uC.write(start_exp1)
+                    self.run_exp3_state = 8
+                    self.after(100,self.run_exp3)
+                    self.start_time = time.time()
+
+                case 8:
+                    pass
+
                 case other:
                     self.running_flag = False
             

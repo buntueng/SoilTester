@@ -111,6 +111,7 @@ bool exp2_limit_swicth_is_pressed = false;
 //======================= EXP 3 PARAM =====================
 int exp3_x_state = 0;
 int exp3_y_state = 0;
+int exp3_send_force_state = 0;
 bool exp3_y_stop = false;
 bool exp3_x_start_state = false;
 bool exp3_y_set = false;
@@ -233,15 +234,21 @@ void loop()
               case '3':
               {
                 run_machine = true;
-                select_exp = 3;     
+                select_exp = 3;
                 exp3_x_state = 0;
                 exp3_y_state = 0;
+                exp3_send_force_state = 0;
                 exp3_y_set = true;
                 exp3_x_start_state = false;
                 exp3_y_stop =false;
                 exp3_y_down = 0;
                 exp3_y_up = 0;
-                exp3_y_stop_force = 0;       
+                exp3_y_stop_force = 0;   
+                if (all_debug == true)
+                  {
+                    debug_send_data = true;
+                    debug_start = true;
+                  }    
                 break;
               }
               case '4':
@@ -303,7 +310,7 @@ void loop()
             exp3_y_state = 6;
             break;
           }
-        case 's':
+        case 's': // stop y
           {
             exp3_y_stop_force = cmd_string.substring(1,cmd_len).toInt();
             Serial.println(exp3_y_stop_force,DEC);
@@ -755,9 +762,9 @@ void exp1()
               break;
             }
         default:
-        {
-          break;
-        }
+          {
+            break;
+          }
       }
   }
 
@@ -1016,19 +1023,19 @@ void exp2()
               }
             break;
           }
-          case 2:
-            {
-              debug_time = millis();
-              exp2_send_force_state = 0;
-              break;
-            }
-          case 3:
-            { 
-              exp2_test_success = true;
-              debug_start = false;
-              exp2_send_force_state = 1;
-              break;
-            }
+        case 2:
+          {
+            debug_time = millis();
+            exp2_send_force_state = 0;
+            break;
+          }
+        case 3:
+          { 
+            exp2_test_success = true;
+            debug_start = false;
+            exp2_send_force_state = 1;
+            break;
+          }
         default:
           {
             break;
@@ -1193,6 +1200,58 @@ void exp3()
             {
               break;
             }
+      }
+    switch (exp3_send_force_state)
+      {
+        case 0:
+          {
+            if (debug_send_data == true)
+              {
+                exp3_send_force_state = 2;
+                debug_send_data = false;
+              }
+            else 
+              {
+                timemer_send_data = millis();
+                exp3_send_force_state = 1;
+              }
+            break;
+          }
+        case 1:
+          {
+            if((millis()-timemer_send_data)>=timmer_trig)
+              {
+                Serial.print(exp3_test_success);
+                Serial.print(",");
+                Serial.print(x_present_force);
+                Serial.print(",");
+                Serial.println(y_present_force);
+                exp3_send_force_state = 0;
+              }
+            if(debug_start == true)
+              if((millis()-debug_time)>=debug_time_trig)
+              {
+                exp3_send_force_state = 3;
+              }
+            break;
+          }
+        case 2:
+          {
+            debug_time = millis();
+            exp3_send_force_state = 0;
+            break;
+          }
+        case 3:
+          { 
+            exp3_test_success = true;
+            debug_start = false;
+            exp3_send_force_state = 1;
+            break;
+          }
+        default:
+          {
+            break;
+          }
       }
   }
 
