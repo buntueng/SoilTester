@@ -204,6 +204,11 @@ class App(ctk.CTk):
         self.run_exp3_state = 0
         self.run_exp4_state = 0
 
+        self.previous_sigma = 0
+        self.previous_displacement = 0
+        self.sample_area = 1
+        self.k_setting = 0
+
         self.start_exp1 = False       
         active_port_list = self.list_serial_ports()
         self.com_port_DIS_X.configure(values=active_port_list)
@@ -442,6 +447,9 @@ class App(ctk.CTk):
         self.y_coordinate=[]
         self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
         self.canvas.draw()
+
+        self.k_setting = int(self.set_K_entry.get())
+
         if self.check_select_comport() and self.check_xy_params():
             self.com_port_uC.configure(state="disabled")
             self.com_port_DIS_X.configure(state="disabled")
@@ -839,11 +847,28 @@ class App(ctk.CTk):
                     self.ser_port_uC.flushInput()
                     dis_Y = (self.obj_dis_y.get_last())
                     dis_x = (self.obj_dis_x.get_last())
+                    y_show3digit =0
+                    x_show3digit = 0
                     if dis_Y != None:
                         y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
                     if dis_x != None:
                         x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
+
+                    delta_k_constant = (self.previous_sigma - (vertical_force/self.sample_area))/(y_show3digit-self.previous_displacement)
+                    if delta_k_constant == self.k_setting :       # do nothing
+                            pass
+                    elif delta_k_constant > self.k_setting :
+                            exp1_update_pwm_string = "u\n"
+                            exp1_update_pwm_byte = exp1_update_pwm_string.encode()
+                            self.ser_port_uC.write(exp1_update_pwm_byte)
+                    elif delta_k_constant < self.k_setting :
+                            exp1_update_pwm_string = "d\n"
+                            exp1_update_pwm_byte = exp1_update_pwm_string.encode()
+                            self.ser_port_uC.write(exp1_update_pwm_byte)
                     
+                    self.previous_sigma = vertical_force/self.sample_area
+                    self.previous_displacement = y_show3digit
+
                     if status_exp3_test == 1:
                         self.run_exp3_state = 9
 
