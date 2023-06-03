@@ -448,7 +448,11 @@ class App(ctk.CTk):
         self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
         self.canvas.draw()
 
+<<<<<<< HEAD
         self.k_setting = float(self.set_K_entry.get())
+=======
+        self.k_setting = int(self.set_K_entry.get())
+>>>>>>> 149db7eacbbd863c92e0b8a54231a3c693684f45
 
         if self.check_select_comport() and self.check_xy_params():
             self.com_port_uC.configure(state="disabled")
@@ -842,10 +846,47 @@ class App(ctk.CTk):
                 case 77:
                     param_result = self.ser_port_uC.readline()
                     param_result_string = param_result.rstrip().decode()
+<<<<<<< HEAD
                     status_exp3_test,horizontal_force,vertical_force_back = param_result_string.split(",")
                     print( status_exp3_test + "," + horizontal_force+","+vertical_force_back)
                     if int(vertical_force_back) >= int(self.pressure_Y_entry.get()):
                         self.run_exp3_state = 78
+=======
+                    status_exp3_test,horizontal_force,vertical_force = param_result_string.split(",")
+                    time_stamp = self.format_time()
+                    param_for_exp2 = (time_stamp)+(",")+(status_exp3_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
+                    self.monitor_text_box.insert(tk.END,param_for_exp2)
+                    self.ser_port_uC.flushInput()
+                    dis_Y = (self.obj_dis_y.get_last())
+                    dis_x = (self.obj_dis_x.get_last())
+                    y_show3digit =0
+                    x_show3digit = 0
+                    if dis_Y != None:
+                        y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
+                    if dis_x != None:
+                        x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
+
+                    delta_k_constant = (self.previous_sigma - (vertical_force/self.sample_area))/(y_show3digit-self.previous_displacement)
+                    if delta_k_constant == self.k_setting :       # do nothing
+                            pass
+                    elif delta_k_constant > self.k_setting :
+                            exp1_update_pwm_string = "u\n"
+                            exp1_update_pwm_byte = exp1_update_pwm_string.encode()
+                            self.ser_port_uC.write(exp1_update_pwm_byte)
+                    elif delta_k_constant < self.k_setting :
+                            exp1_update_pwm_string = "d\n"
+                            exp1_update_pwm_byte = exp1_update_pwm_string.encode()
+                            self.ser_port_uC.write(exp1_update_pwm_byte)
+                    
+                    self.previous_sigma = vertical_force/self.sample_area
+                    self.previous_displacement = y_show3digit
+
+                    if status_exp3_test == 1:
+                        self.run_exp3_state = 9
+
+                    else :
+                        pass
+>>>>>>> 149db7eacbbd863c92e0b8a54231a3c693684f45
                     self.after(20,self.run_exp3)
 
                 case 78:
