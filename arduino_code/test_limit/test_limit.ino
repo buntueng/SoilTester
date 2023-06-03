@@ -234,8 +234,6 @@ void loop()
                   exp2_test_success = false; 
                   exp2_limit_swicth_is_pressed = false; 
                   timemer_send_data = 0;
-                  start_force = 0;
-                  stop_force = 0;  
                   if (all_debug == true)
                     {
                       debug_send_data = true;
@@ -249,13 +247,16 @@ void loop()
                   select_exp = 3;
                   exp3_x_state = 0;
                   exp3_y_state = 0;
-                  // exp3_send_force_state = 0;
+                  
+                  exp3_send_force_state = 0;
+
                   exp3_y_set = true;
                   exp3_x_start_state = false;
                   exp3_y_stop =false;
                   exp_y_down = 0;
                   exp_y_up = 0;
                   exp_y_stop_force = 0;   
+                  exp3_test_success = false;
                   if (all_debug == true)
                     {
                       debug_send_data = true;
@@ -264,29 +265,27 @@ void loop()
                   break;
                 }
               case '4':
-              {
-                run_machine = true;
-                select_exp = 4; 
-                exp4_x_state = 0;
-                exp4_y_state = 0; 
-                exp4_y_set = true;
-                exp4_x_start_state = false;
-                exp4_y_stop =false;
-                exp_y_down = 0;
-                exp_y_up = 0;
-                exp_y_stop_force = 0; 
-                start_force = 0;
-                stop_force = 0;  
-                counter_cyclic = 0;
-                exp4_stop_y = false;
-                exp4_test_success = false;
-                if (all_debug == true)
-                  {
-                    debug_send_data = true;
-                    debug_start = true;
-                  }            
-                break;
-              }
+                {
+                  run_machine = true;
+                  select_exp = 4; 
+                  exp4_x_state = 0;
+                  exp4_y_state = 0; 
+                  exp4_y_set = true;
+                  exp4_x_start_state = false;
+                  exp4_y_stop =false;
+                  exp_y_down = 0;
+                  exp_y_up = 0;
+                  exp_y_stop_force = 0; 
+                  counter_cyclic = 0;
+                  exp4_stop_y = false;
+                  exp4_test_success = false;
+                  if (all_debug == true)
+                    {
+                      debug_send_data = true;
+                      debug_start = true;
+                    }            
+                  break;
+                }
             }
                 break;
           }
@@ -329,24 +328,36 @@ void loop()
         case 'd': // exp3 y down
           {
             exp_y_down = cmd_string.substring(1,cmd_len).toInt();
-            Serial.println(exp_y_down,DEC);
-            exp3_y_state = 5;
+            //Serial.println(exp_y_down,DEC);
+            digitalWrite(y_motor_dir1,HIGH);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,20);
             break;
           }
         case 'u': // exp3 y up
           {
             exp_y_up = cmd_string.substring(1,cmd_len).toInt();
-            Serial.println(exp_y_up,DEC);
-            exp3_y_state = 6;
+            //Serial.println(exp_y_up,DEC);
+            digitalWrite(y_motor_dir1,LOW);
+            digitalWrite(y_motor_dir2,HIGH);
+            analogWrite(y_motor_speed_pin,20);
+            
             break;
           }
         case 's': // stop y
           {
             exp_y_stop_force = cmd_string.substring(1,cmd_len).toInt();
-            Serial.println(exp_y_stop_force,DEC);
-            exp3_y_state = 7;
+            digitalWrite(y_motor_dir1,LOW);
+            digitalWrite(y_motor_dir2,LOW);
+            analogWrite(y_motor_speed_pin,0);
             break;
           }
+        case 'k':
+        {
+          exp3_x_start_state = true;
+          exp3_x_state = 0;
+          break;
+        }
         case 'a': // read param update pwm && F(Y)
           {
             Serial.print(update_pwm);
@@ -425,7 +436,8 @@ void loop()
         }
         case 4:
         {
-          Serial.println("R4");
+          exp4();
+          // Serial.println("R4");
           break;
         }
         default:
@@ -1092,7 +1104,7 @@ void exp3()
             digitalWrite(x_motor_dir1,HIGH);
             digitalWrite(x_motor_dir2,LOW);
             analogWrite(x_motor_speed_pin,update_pwm);
-                exp3_x_state = 2;             
+            exp3_x_state = 2;             
             break;
           }
         case 2:
@@ -1103,6 +1115,7 @@ void exp3()
                 digitalWrite(x_motor_dir2,LOW);
                 analogWrite(x_motor_speed_pin,0);
                 exp3_x_state = 3;
+                exp3_test_success = 1;
             }
             break;
           }
@@ -1154,7 +1167,7 @@ void exp3()
             {
               if(y_limit_bottom_logic == 1)
                   {
-                      exp3_y_state = 10;
+                      exp3_y_state = 5;
                       digitalWrite(y_motor_dir1,LOW);
                       digitalWrite(y_motor_dir2,LOW);
                       analogWrite(y_motor_speed_pin,0);
@@ -1171,65 +1184,12 @@ void exp3()
             }
           case 4:
             {
-              // Serial.print("SET Y OK"); // wait command 
-              if(exp3_y_set == true)
-                {
-                  exp3_x_start_state = true;
-                  exp3_y_set = false;
-                  exp3_y_state = 3;
-                }
-              else 
-                {
-                  break;
-                }
+              // exp3_x_start_state = true;
+              // exp3_x_state = 0;
+              exp3_y_state = 5;
               break;
             }
-          case 5: // d down gain Y
-            {
-              digitalWrite(y_motor_dir1,LOW);
-              digitalWrite(y_motor_dir2,HIGH);
-              analogWrite(y_motor_speed_pin,y_stabilizer_pwm); 
-              if((y_present_force)>=exp_y_down-loadcell_guard_band)
-                {
-                  digitalWrite(y_motor_dir1,LOW);
-                  digitalWrite(y_motor_dir2,LOW);
-                  analogWrite(y_motor_speed_pin,0); 
-                }
-              if((y_limit_bottom_logic)==1)
-                {
-                  digitalWrite(y_motor_dir1,LOW);
-                  digitalWrite(y_motor_dir2,LOW);
-                  analogWrite(y_motor_speed_pin,0); 
-                }
-              break;
-            } 
-          case 6: // u up gain Y
-            {
-              digitalWrite(y_motor_dir1,HIGH);
-              digitalWrite(y_motor_dir2,LOW);
-              analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
-              if((y_present_force)<=exp_y_up-loadcell_guard_band) 
-                {
-                  digitalWrite(y_motor_dir1,LOW);
-                  digitalWrite(y_motor_dir2,LOW);
-                  analogWrite(y_motor_speed_pin,0); 
-                }
-              if((y_limit_top_logic)==1)
-                {
-                  digitalWrite(y_motor_dir1,LOW);
-                  digitalWrite(y_motor_dir2,LOW);
-                  analogWrite(y_motor_speed_pin,0); 
-                }
-              break;
-            } 
-          case 7: // s stop gain Y
-            {
-              digitalWrite(y_motor_dir1,LOW);
-              digitalWrite(y_motor_dir2,LOW);
-              analogWrite(y_motor_speed_pin,0); 
-              break;
-            }
-          case 10:
+          case 5:
             {
               break;
             }
@@ -1301,6 +1261,7 @@ void exp4()
           {
             if((exp4_x_start_state)== true)
             {
+              // Serial.println("x1");
               exp4_x_start_state = false;
               exp4_x_state = 1;
             }
@@ -1367,6 +1328,7 @@ void exp4()
               }
             if ((x_limit_back_logic)==1)
               {
+                // Serial.println("x51");
                 exp4_x_state = 8;
               }
             break;
@@ -1380,7 +1342,7 @@ void exp4()
             exp4_x_state = 3;
             if((counter_cyclic)==cyclic)
               {
-                exp2_x_state = 7;
+                exp4_x_state = 7;
               }
             break;
           }
@@ -1400,6 +1362,7 @@ void exp4()
             analogWrite(x_motor_speed_pin,0);
             exp4_stop_y = true;
             exp4_limit_swicth_is_pressed = true;
+            // Serial.println("x8");
             break;
           }
         default:
@@ -1479,12 +1442,6 @@ void exp4()
               digitalWrite(y_motor_dir1,LOW);
               digitalWrite(y_motor_dir2,HIGH);
               analogWrite(y_motor_speed_pin,y_stabilizer_pwm); 
-              if((y_present_force)>=exp_y_down-loadcell_guard_band)
-                {
-                  digitalWrite(y_motor_dir1,LOW);
-                  digitalWrite(y_motor_dir2,LOW);
-                  analogWrite(y_motor_speed_pin,0); 
-                }
               if((y_limit_bottom_logic)==1)
                 {
                   digitalWrite(y_motor_dir1,LOW);
@@ -1498,12 +1455,6 @@ void exp4()
               digitalWrite(y_motor_dir1,HIGH);
               digitalWrite(y_motor_dir2,LOW);
               analogWrite(y_motor_speed_pin,y_stabilizer_pwm);
-              if((y_present_force)<=exp_y_up-loadcell_guard_band) 
-                {
-                  digitalWrite(y_motor_dir1,LOW);
-                  digitalWrite(y_motor_dir2,LOW);
-                  analogWrite(y_motor_speed_pin,0); 
-                }
               if((y_limit_top_logic)==1)
                 {
                   digitalWrite(y_motor_dir1,LOW);

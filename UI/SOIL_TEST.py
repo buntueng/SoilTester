@@ -105,15 +105,15 @@ class App(ctk.CTk):
         self.radiobutton_EXP3 = ctk.CTkRadioButton(self.configuration_frame, variable=self.radiobutton_var, value=3,text="EXP 3",font=thai_large_font,command=self.select_exp)
         self.radiobutton_EXP4 = ctk.CTkRadioButton(self.configuration_frame, variable=self.radiobutton_var, value=4,text="EXP 4",font=thai_large_font,command=self.select_exp)
         self.exp_param_label = ctk.CTkLabel(self.configuration_frame,text="ตั้งค่าการทดสอบ",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
-        self.pressure_Y_defualt = tk.StringVar(value="100")
+        self.pressure_Y_defualt = tk.StringVar(value="150")
         self.pressure_Y_label = ctk.CTkLabel(self.configuration_frame,text="แรงกดแกน Y",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_Y_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_Y_defualt)
         self.pressure_Y_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
-        self.cyclic_X_defualt = tk.StringVar(value="10")
+        self.cyclic_X_defualt = tk.StringVar(value="30")
         self.cyclic_X_label = ctk.CTkLabel(self.configuration_frame,text="จำนวนครั้ง",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.cyclic_X_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.cyclic_X_defualt)
         self.cyclic_X_unit_label = ctk.CTkLabel(self.configuration_frame,text="ครั้ง",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
-        self.pressure_X_exp2_defualt = tk.StringVar(value="10")
+        self.pressure_X_exp2_defualt = tk.StringVar(value="40")
         self.pressure_min_X_exp2_label = ctk.CTkLabel(self.configuration_frame,text="แรงกดเริ่ม X",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_min_X_exp2_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_X_exp2_defualt)
         self.pressure_min_X_exp2_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
@@ -121,7 +121,7 @@ class App(ctk.CTk):
         self.pressure_max_X_exp2_label = ctk.CTkLabel(self.configuration_frame,text="แรงกดสิ้นสุด X",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_max_X_exp2_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_max_X_exp2_defualt)
         self.pressure_max_X_exp2_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)  
-        self.pressure_step_X_exp2_defualt = tk.StringVar(value="100")
+        self.pressure_step_X_exp2_defualt = tk.StringVar(value="50")
         self.pwm_x_label = ctk.CTkLabel(self.configuration_frame,text="PWM X ",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pwm_x_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_step_X_exp2_defualt)
         self.pwm_x_unit_label = ctk.CTkLabel(self.configuration_frame,text="/255",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)  
@@ -129,12 +129,12 @@ class App(ctk.CTk):
         self.set_zero_label = ctk.CTkLabel(self.configuration_frame,text="SET ZERO ทุกครั้งก่อนเริ่มทำการทดสอบ ",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.set_zero_switch = ctk.CTkSwitch(self.configuration_frame,text=" SET ZERO ",font=thai_large_font,command=self.select_set_zero)
         self.config_set_zero_swicth.append(self.set_zero_switch)
-        self.config_set_zero_swicth[0].select()
+        # self.config_set_zero_swicth[0].select()
         self.counter_cyclic_defualt = tk.StringVar(value="0")
         self.counter_cyclic_label = ctk.CTkLabel(self.configuration_frame,text="CYCLIC ไปแล้วทั้งหมด ",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.counter_cyclic_entry = ctk.CTkEntry(self.configuration_frame,width=135,height=40,font=eng_font,corner_radius=20,textvariable=self.counter_cyclic_defualt)
         self.counter_cyclic_unit = ctk.CTkLabel(self.configuration_frame,text="รอบ",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
-        self.set_K_defualt = tk.StringVar(value="50")
+        self.set_K_defualt = tk.StringVar(value="10")
         self.set_K_label = ctk.CTkLabel(self.configuration_frame,text="SET K",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.set_K_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.set_K_defualt)
         self.set_K_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
@@ -203,6 +203,11 @@ class App(ctk.CTk):
         self.run_exp2_state = 0
         self.run_exp3_state = 0
         self.run_exp4_state = 0
+
+        self.previous_sigma = 0
+        self.previous_displacement = 0
+        self.sample_area = 1
+        self.k_setting = 0
 
         self.start_exp1 = False       
         active_port_list = self.list_serial_ports()
@@ -442,6 +447,9 @@ class App(ctk.CTk):
         self.y_coordinate=[]
         self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
         self.canvas.draw()
+
+        self.k_setting = float(self.set_K_entry.get())
+
         if self.check_select_comport() and self.check_xy_params():
             self.com_port_uC.configure(state="disabled")
             self.com_port_DIS_X.configure(state="disabled")
@@ -727,6 +735,7 @@ class App(ctk.CTk):
                     time_stamp = self.format_time()
                     param_for_exp2 = (time_stamp)+(",")+(status_exp2_test)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(cyclic_counter)+(",")+(limit_x_swicth_pressed)+"\n" 
                     self.monitor_text_box.insert(tk.END,param_for_exp2)
+                    self.counter_cyclic_defualt.set(cyclic_counter)
                     time_in_x = (time.time()-self.start_time)
                     time_in_x = float('%.3f'%time_in_x)#time in X
                     self.x_coordinate.append(float(time_in_x))
@@ -822,42 +831,96 @@ class App(ctk.CTk):
                     self.after(100,self.run_exp3)
 
                 case 7: #================ start exp3 test
-                    start_exp1 = "r1\n"
+                    start_exp1 = "r3\n"
                     start_exp1 = start_exp1.encode()
                     self.ser_port_uC.write(start_exp1)
-                    self.run_exp3_state = 8
+                    self.run_exp3_state = 77
+                    # print("R3")
                     self.after(100,self.run_exp3)
                     self.start_time = time.time()
-
-                case 8: #================ set K
+                
+                case 77:
                     param_result = self.ser_port_uC.readline()
                     param_result_string = param_result.rstrip().decode()
-                    status_exp3_test,horizontal_force,vertical_force = param_result_string.split(",")
-                    time_stamp = self.format_time()
-                    param_for_exp2 = (time_stamp)+(",")+(status_exp3_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
-                    self.monitor_text_box.insert(tk.END,param_for_exp2)
-                    self.ser_port_uC.flushInput()
-                    dis_Y = (self.obj_dis_y.get_last())
-                    dis_x = (self.obj_dis_x.get_last())
-                    if dis_Y != None:
-                        y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
-                    if dis_x != None:
-                        x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
-                    
-                    if status_exp3_test == 1:
-                        self.run_exp3_state = 9
-
-                    else :
-                        pass
+                    status_exp3_test,horizontal_force,vertical_force_back = param_result_string.split(",")
+                    print( status_exp3_test + "," + horizontal_force+","+vertical_force_back)
+                    if int(vertical_force_back) >= int(self.pressure_Y_entry.get()):
+                        self.run_exp3_state = 78
                     self.after(20,self.run_exp3)
+
+                case 78:
+                    # print("NOOOOOOOOOOOO")
+                    self.ser_port_uC.write("k\n".encode())
+                    self.run_exp3_state = 8
+                    self.after(200,self.run_exp3)
+
+                case 8: #================ set K
+                    # print("State 8")
+                    param_result = self.ser_port_uC.readline()
+                    param_result_string = param_result.rstrip().decode()
+                    time_stamp = self.format_time()
+                    try:
+                        # print("Try")
+                        status_exp3_test = 0
+                        horizontal_force = 0
+                        vertical_force = 0
+                        splitted_params = param_result_string.split(",")
+                        if len(splitted_params) == 3:
+                            status_exp3_test = splitted_params[0]
+                            horizontal_force = splitted_params[1]
+                            vertical_force = splitted_params[2]
+                        else:
+                            print(splitted_params)
+                        
+                        param_for_exp3 = (time_stamp)+(",")+(status_exp3_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
+                        self.monitor_text_box.insert(tk.END,param_for_exp3)
+                        dis_Y = (self.obj_dis_y.get_last())
+                        dis_x = (self.obj_dis_x.get_last())
+                        print(dis_Y)
+                        vertical_force = int(vertical_force)
+                        print("H1")
+                        if dis_Y != None:
+                            y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
+                            y_show3digit = float(y_show3digit)
+                            nominator = self.previous_sigma - (vertical_force/self.sample_area)
+                            denominator = y_show3digit-self.previous_displacement
+                            if denominator == 0:
+                                denominator = 0.01
+                            delta_k_constant = nominator/denominator
+                            print(delta_k_constant)
+                            if delta_k_constant == self.k_setting :       # do nothing
+                                    stop_cmd_string = "s\n"
+                                    stop_cmd_byte = stop_cmd_string.encode()
+                                    self.ser_port_uC.write(stop_cmd_byte)
+                            elif delta_k_constant > self.k_setting :
+                                    up_cmd_string = "u\n"
+                                    up_cmd_byte = up_cmd_string.encode()
+                                    self.ser_port_uC.write(up_cmd_byte)
+                            elif delta_k_constant < self.k_setting :
+                                    down_cmd_string = "d\n"
+                                    down_cmd_byte = down_cmd_string.encode()
+                                    self.ser_port_uC.write(down_cmd_byte)
+                            
+                            self.previous_sigma = vertical_force/self.sample_area
+                            self.previous_displacement = y_show3digit
+                            
+                            print("GG")
+                            if status_exp3_test == 1:
+                                print("BB")
+                                self.run_exp3_state = 9
+                            self.after(30,self.run_exp3)
+                        else:
+                            self.after(30,self.run_exp3)
+                    except:
+                        print("Can not execute")
+                        self.after(20,self.run_exp3)
                 
                 case 9:
                     print("EXP3 SUCCESS")
-                    self.after(500,self.run_exp3)
-
-                case other:
+                    self.ser_port_uC.write("t\n".encode())
                     self.running_flag = False
-            
+                    # self.after(500,self.run_exp3)
+
 
     def run_exp4(self):
         if self.running_flag:
@@ -883,6 +946,8 @@ class App(ctk.CTk):
 
     def stop_button_pressed(self):
         self.running_flag = False
+        stop_cmd_byte = "t\n".encode()
+        self.ser_port_uC.write(stop_cmd_byte)
         self.disable_widget()
         self.ser_port_DIS_X.close()
         self.ser_port_DIS_Y.close()
