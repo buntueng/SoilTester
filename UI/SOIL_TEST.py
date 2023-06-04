@@ -105,7 +105,7 @@ class App(ctk.CTk):
         self.radiobutton_EXP3 = ctk.CTkRadioButton(self.configuration_frame, variable=self.radiobutton_var, value=3,text="EXP 3",font=thai_large_font,command=self.select_exp)
         self.radiobutton_EXP4 = ctk.CTkRadioButton(self.configuration_frame, variable=self.radiobutton_var, value=4,text="EXP 4",font=thai_large_font,command=self.select_exp)
         self.exp_param_label = ctk.CTkLabel(self.configuration_frame,text="ตั้งค่าการทดสอบ",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
-        self.pressure_Y_defualt = tk.StringVar(value="150")
+        self.pressure_Y_defualt = tk.StringVar(value="130")
         self.pressure_Y_label = ctk.CTkLabel(self.configuration_frame,text="แรงกดแกน Y",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
         self.pressure_Y_entry = ctk.CTkEntry(self.configuration_frame,width=100,height=40,font=eng_font,corner_radius=20,textvariable=self.pressure_Y_defualt)
         self.pressure_Y_unit_label = ctk.CTkLabel(self.configuration_frame,text="N",bg_color=graph_fg_colors,text_color="red",font=thai_large_font)
@@ -448,11 +448,7 @@ class App(ctk.CTk):
         self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
         self.canvas.draw()
 
-<<<<<<< HEAD
         self.k_setting = float(self.set_K_entry.get())
-=======
-        self.k_setting = int(self.set_K_entry.get())
->>>>>>> 149db7eacbbd863c92e0b8a54231a3c693684f45
 
         if self.check_select_comport() and self.check_xy_params():
             self.com_port_uC.configure(state="disabled")
@@ -839,69 +835,29 @@ class App(ctk.CTk):
                     start_exp1 = start_exp1.encode()
                     self.ser_port_uC.write(start_exp1)
                     self.run_exp3_state = 77
-                    # print("R3")
                     self.after(100,self.run_exp3)
                     self.start_time = time.time()
                 
                 case 77:
                     param_result = self.ser_port_uC.readline()
                     param_result_string = param_result.rstrip().decode()
-<<<<<<< HEAD
                     status_exp3_test,horizontal_force,vertical_force_back = param_result_string.split(",")
                     print( status_exp3_test + "," + horizontal_force+","+vertical_force_back)
                     if int(vertical_force_back) >= int(self.pressure_Y_entry.get()):
                         self.run_exp3_state = 78
-=======
-                    status_exp3_test,horizontal_force,vertical_force = param_result_string.split(",")
-                    time_stamp = self.format_time()
-                    param_for_exp2 = (time_stamp)+(",")+(status_exp3_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
-                    self.monitor_text_box.insert(tk.END,param_for_exp2)
-                    self.ser_port_uC.flushInput()
-                    dis_Y = (self.obj_dis_y.get_last())
-                    dis_x = (self.obj_dis_x.get_last())
-                    y_show3digit =0
-                    x_show3digit = 0
-                    if dis_Y != None:
-                        y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
-                    if dis_x != None:
-                        x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
-
-                    delta_k_constant = (self.previous_sigma - (vertical_force/self.sample_area))/(y_show3digit-self.previous_displacement)
-                    if delta_k_constant == self.k_setting :       # do nothing
-                            pass
-                    elif delta_k_constant > self.k_setting :
-                            exp1_update_pwm_string = "u\n"
-                            exp1_update_pwm_byte = exp1_update_pwm_string.encode()
-                            self.ser_port_uC.write(exp1_update_pwm_byte)
-                    elif delta_k_constant < self.k_setting :
-                            exp1_update_pwm_string = "d\n"
-                            exp1_update_pwm_byte = exp1_update_pwm_string.encode()
-                            self.ser_port_uC.write(exp1_update_pwm_byte)
-                    
-                    self.previous_sigma = vertical_force/self.sample_area
-                    self.previous_displacement = y_show3digit
-
-                    if status_exp3_test == 1:
-                        self.run_exp3_state = 9
-
-                    else :
-                        pass
->>>>>>> 149db7eacbbd863c92e0b8a54231a3c693684f45
                     self.after(20,self.run_exp3)
 
                 case 78:
-                    # print("NOOOOOOOOOOOO")
                     self.ser_port_uC.write("k\n".encode())
                     self.run_exp3_state = 8
                     self.after(200,self.run_exp3)
+                    self.start_time = time.time()
 
                 case 8: #================ set K
-                    # print("State 8")
                     param_result = self.ser_port_uC.readline()
                     param_result_string = param_result.rstrip().decode()
                     time_stamp = self.format_time()
                     try:
-                        # print("Try")
                         status_exp3_test = 0
                         horizontal_force = 0
                         vertical_force = 0
@@ -911,15 +867,13 @@ class App(ctk.CTk):
                             horizontal_force = splitted_params[1]
                             vertical_force = splitted_params[2]
                         else:
-                            print(splitted_params)
-                        
+                            pass
+                            # print(splitted_params)
                         param_for_exp3 = (time_stamp)+(",")+(status_exp3_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
                         self.monitor_text_box.insert(tk.END,param_for_exp3)
                         dis_Y = (self.obj_dis_y.get_last())
                         dis_x = (self.obj_dis_x.get_last())
-                        print(dis_Y)
                         vertical_force = int(vertical_force)
-                        print("H1")
                         if dis_Y != None:
                             y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
                             y_show3digit = float(y_show3digit)
@@ -928,7 +882,13 @@ class App(ctk.CTk):
                             if denominator == 0:
                                 denominator = 0.01
                             delta_k_constant = nominator/denominator
-                            print(delta_k_constant)
+                            time_in_x = (time.time()-self.start_time)
+                            time_in_x = float('%.3f'%time_in_x)#time in X
+                            self.x_coordinate.append(float(time_in_x))
+                            self.y_coordinate.append(float(delta_k_constant))
+                            self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                            self.canvas.draw()
+                            self.ser_port_uC.flushInput()
                             if delta_k_constant == self.k_setting :       # do nothing
                                     stop_cmd_string = "s\n"
                                     stop_cmd_byte = stop_cmd_string.encode()
@@ -945,9 +905,9 @@ class App(ctk.CTk):
                             self.previous_sigma = vertical_force/self.sample_area
                             self.previous_displacement = y_show3digit
                             
-                            print("GG")
-                            if status_exp3_test == 1:
-                                print("BB")
+                            print(status_exp3_test)
+                            if status_exp3_test == "1":
+                                self.ser_port_uC.write("s\n".encode())
                                 self.run_exp3_state = 9
                             self.after(30,self.run_exp3)
                         else:
@@ -959,36 +919,275 @@ class App(ctk.CTk):
                 case 9:
                     print("EXP3 SUCCESS")
                     self.ser_port_uC.write("t\n".encode())
-                    self.running_flag = False
-                    # self.after(500,self.run_exp3)
+                    self.exp_test_success()
+                    self.after(20,self.run_exp3)
+                    self.run_exp3_state = 10
 
+                case 10:
+                    self.exp_test_success()
+                    self.running_flag = False
+
+                    # self.after(20,self.run_exp3)
 
     def run_exp4(self):
         if self.running_flag:
             match self.run_exp4_state:
                 case 0:
-                    pass
-                case 1:
-                    pass
-                case 2:
-                    pass
-                case 3:
-                    pass
-                case 4:
-                    pass
-                case 5:
-                    pass
-                case 6:
-                    pass
+                    self.ser_port_uC.open()
+                    self.obj_dis_x = linear_displacement(portname=self.com_port_DIS_X.get())
+                    self.obj_dis_y = linear_displacement(portname=self.com_port_DIS_Y.get())
+                    self.obj_dis_x.run()
+                    self.obj_dis_y.run()
+                    self.run_exp4_state = 1
+                    # print("EXP4_1")
+                    self.after(2000,self.run_exp4)
+
+                case 1: #CHACK FOR SET ZERO
+                    selec = self.set_zero_switch.get()
+                    if selec == 1:
+                        set_zero = "Z" + "\n"
+                        set_zero_byte = set_zero.encode()
+                        self.ser_port_uC.write(set_zero_byte)
+                        self.run_exp4_state = 2
+                        self.after(500,self.run_exp4)
+                        # print("EXP4_1_1")
+                    else:
+                        self.run_exp4_state = 3
+                        # print("EXP4_1_2")
+                        self.after(500,self.run_exp4)
+
+                case 2: #=================== ZERO COMPLET
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string =="ZERO COMPLETE":
+                        self.run_exp4_state = 3
+                        # print("EXP4_2_1")
+                    else:
+                        pass
+                    self.after(500,self.run_exp4)
+
+                case 3: #============================== Y force
+                    vertical_force = self.pressure_Y_entry.get()
+                    if self.ser_port_uC.is_open:
+                        vertical_test_force = "N" + vertical_force + "\n"
+                        vertical_test_force_bytes = vertical_test_force.encode()
+                        self.ser_port_uC.write(vertical_test_force_bytes)
+                        self.run_exp4_state = 4
+                        # print("EXP4_3")
+                        self.after(100,self.run_exp4)
+
+                case 4: #======================== read Y force
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.strip().decode()
+                    # print(setting_result_string+"!!!!!!"+self.pressure_Y_entry.get())
+                    if setting_result_string == self.pressure_Y_entry.get():
+                        self.run_exp4_state = 5
+                        # print("EXP4_4_1")
+                    else:
+                        self.run_exp4_state = 3
+                        # print("EXP4_4_2")
+                    self.after(100,self.run_exp4)
+
+                case 5: #================== PWM FOR X   
+                    pwm = self.pwm_x_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_update_pwm_string = "U" + pwm + "\n" #=============================== update pwm x
+                        exp1_update_pwm_byte = exp1_update_pwm_string.encode()
+                        self.ser_port_uC.write(exp1_update_pwm_byte)
+                        self.run_exp4_state = 6
+                        # print("EXP4_5")
+                        self.after(100,self.run_exp4)
+                
+                case 6: #================ read pwm x
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pwm_x_entry.get():
+                        self.run_exp4_state = 7
+                        # print("EXP4_6_1")
+                    else:
+                        self.run_exp4_state = 5
+                        # print("EXP4_6_2")
+                    self.after(100,self.run_exp4)
+
+                case 7:
+                    start_force = self.pressure_min_X_exp2_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_start_force_string = "S" + start_force + "\n" #=============================== update start force x
+                        exp1_start_force_byte = exp1_start_force_string.encode()
+                        self.ser_port_uC.write(exp1_start_force_byte)
+                        self.run_exp4_state = 8
+                        # print("EXP7")
+                        self.after(100,self.run_exp4)
+
+                case 8:
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pressure_min_X_exp2_entry.get():
+                        self.run_exp4_state = 9
+                        # print("EXP4_8_1")
+                    else:
+                        self.run_exp4_state = 7
+                        # print("EXP4_8_2")
+                    self.after(100,self.run_exp4)
+
+                case 9:
+                    stop_force = self.pressure_max_X_exp2_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_stop_force_string = "Y" + stop_force + "\n" #=============================== update stop force x
+                        exp1_stop_force_byte = exp1_stop_force_string.encode()
+                        self.ser_port_uC.write(exp1_stop_force_byte)
+                        self.run_exp4_state = 10
+                        # print("EXP4_9")
+                        self.after(100,self.run_exp4)
+
+                case 10:
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.pressure_max_X_exp2_entry.get():
+                        self.run_exp4_state = 11
+                        # print("EXP4_10")
+                    else:
+                        self.run_exp4_state = 9
+                        # print("EXP4_10_1")
+                    self.after(100,self.run_exp4)
+                
+                case 11:
+                    cyclic = self.cyclic_X_entry.get()
+                    if self.ser_port_uC.is_open:
+                        exp1_cyclic_string = "C" + cyclic + "\n" #=============================== update cyclic x
+                        exp1_cyclic_byte = exp1_cyclic_string.encode()
+                        self.ser_port_uC.write(exp1_cyclic_byte)
+                        self.run_exp4_state = 12
+                        # print("EXP4_11")
+                        self.after(100,self.run_exp4)
+
+                case 12:
+                    setting_result = self.ser_port_uC.readline()
+                    setting_result_string = setting_result.rstrip().decode()
+                    if setting_result_string == self.cyclic_X_entry.get():
+                        self.run_exp4_state = 13
+                        # print("EXP4_12")
+                    else:
+                        self.run_exp4_state = 11
+                    self.after(100,self.run_exp4)     
+                    
+                case 13:
+                    start_exp2 = "r4\n"
+                    start_exp2 = start_exp2.encode()
+                    self.ser_port_uC.write(start_exp2)
+                    self.run_exp4_state = 14
+                    self.after(100,self.run_exp4)
+                    # print("EXP4_13")
+                    self.start_time = time.time()
+
+                case 14:
+                    param_result = self.ser_port_uC.readline()
+                    param_result_string = param_result.rstrip().decode()
+                    # print(param_result_string)
+                    status_exp4_test,horizontal_force,vertical_force_back,counter_cyclic,limit_switch = param_result_string.split(",")
+                    # print( status_exp3_test + "," + horizontal_force+","+vertical_force_back+","+counter_cyclic+","+limit_switch)
+                    if int(vertical_force_back) >= int(self.pressure_Y_entry.get()):
+                        self.run_exp4_state = 15
+                        # print("EXP4_14")
+                    self.after(20,self.run_exp4)
+
+                case 15:
+                    self.ser_port_uC.write("k\n".encode())
+                    self.run_exp4_state = 16
+                    # print("start EXP4")
+                    self.after(200,self.run_exp4)
+                    self.start_time = time.time()
+
+                case 16: #================ set K
+                    param_result = self.ser_port_uC.readline()
+                    param_result_string = param_result.rstrip().decode()
+                    time_stamp = self.format_time()
+                    try:
+                        status_exp4_test = 0
+                        horizontal_force = 0
+                        vertical_force = 0
+                        splitted_params = param_result_string.split(",")
+                        if len(splitted_params) == 5:
+                            status_exp4_test = splitted_params[0]
+                            horizontal_force = splitted_params[1]
+                            vertical_force = splitted_params[2]
+                            exp4_counter_cyclic = splitted_params[3]
+                            exp4_limit_switch_pressed = splitted_params[4]
+                        else:
+                            pass
+                        # print(splitted_params)
+                        param_for_exp4 = (time_stamp)+(",")+(status_exp4_test)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(exp4_counter_cyclic)+(",")+(exp4_limit_switch_pressed)+"\n" 
+                        print(param_for_exp4)
+                        self.monitor_text_box.insert(tk.END,param_for_exp4)
+                        self.counter_cyclic_defualt.set(exp4_counter_cyclic)
+                        dis_Y = (self.obj_dis_y.get_last())
+                        dis_x = (self.obj_dis_x.get_last())
+                        vertical_force = int(vertical_force)
+                        if dis_Y != None:
+                            y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
+                            y_show3digit = float(y_show3digit)
+                            nominator = self.previous_sigma - (vertical_force/self.sample_area)
+                            denominator = y_show3digit-self.previous_displacement
+                            if denominator == 0:
+                                denominator = 0.01
+                            delta_k_constant = nominator/denominator
+                            time_in_x = (time.time()-self.start_time)
+                            time_in_x = float('%.3f'%time_in_x)#time in X
+                            self.x_coordinate.append(float(time_in_x))
+                            self.y_coordinate.append(float(delta_k_constant))
+                            self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                            self.canvas.draw()
+                            self.ser_port_uC.flushInput()
+                            if delta_k_constant == self.k_setting :       # do nothing
+                                    stop_cmd_string = "s\n"
+                                    stop_cmd_byte = stop_cmd_string.encode()
+                                    self.ser_port_uC.write(stop_cmd_byte)
+                            elif delta_k_constant > self.k_setting :
+                                    up_cmd_string = "u\n"
+                                    up_cmd_byte = up_cmd_string.encode()
+                                    self.ser_port_uC.write(up_cmd_byte)
+                            elif delta_k_constant < self.k_setting :
+                                    down_cmd_string = "d\n"
+                                    down_cmd_byte = down_cmd_string.encode()
+                                    self.ser_port_uC.write(down_cmd_byte)
+                            
+                            self.previous_sigma = vertical_force/self.sample_area
+                            self.previous_displacement = y_show3digit
+                            
+                            # print(status_exp3_test)
+                            if status_exp4_test == "1":
+                                self.ser_port_uC.write("s\n".encode())
+                                self.run_exp4_state = 17
+                            self.after(30,self.run_exp4)
+                        else:
+                            self.after(30,self.run_exp4)
+                    except:
+                        print("Can not execute")
+                        self.after(20,self.run_exp4)
+                
+                case 17:
+                    print("EXP4 SUCCESS")
+                    self.ser_port_uC.write("t\n".encode())
+                    # self.exp_test_success()
+                    self.after(20,self.run_exp4)
+                    self.run_exp4_state = 18
+
+                case 18:
+                    print("KKKKKKKKK")
+                    self.exp_test_success()
+                    # self.exp4_test_success()
+                    self.running_flag = False
+
                 case other:
                     self.running_flag = False
             
-            self.after(self.run_exp4())
+            # self.after(self.run_exp4())
 
     def stop_button_pressed(self):
         self.running_flag = False
         stop_cmd_byte = "t\n".encode()
         self.ser_port_uC.write(stop_cmd_byte)
+        # print("1232342342342")
         self.disable_widget()
         self.ser_port_DIS_X.close()
         self.ser_port_DIS_Y.close()
@@ -1005,6 +1204,15 @@ class App(ctk.CTk):
         self.obj_dis_x.stop()
         self.obj_dis_y.stop()
 
+    def exp4_test_success(self):
+        self.com_port_uC.configure(state="normal")
+        self.com_port_DIS_X.configure(state="normal")
+        self.com_port_DIS_Y.configure(state="normal")
+        self.start_button.configure(state = "normal")
+        self.stop_button.configure(state="disabled")
+        self.save_button.configure(state="disabled")
+        self.pressure_Y_entry.configure(state = "normal")
+
     def exp_test_success(self):
         self.stop_button.configure(state="disabled")
         self.save_button.configure(state="normal")
@@ -1018,7 +1226,7 @@ class App(ctk.CTk):
         self.obj_dis_y.stop()
         messagebox.showinfo("INFO", "TEST SUCCESS")
 
-    def save_botton_pressed(self):
+    def save_botton_pressed(self):        
         self.savefileas()
 
     def savefileas(self):
@@ -1027,11 +1235,13 @@ class App(ctk.CTk):
             file_path = filedialog.asksaveasfile(filetypes = (("Text files", "*.txt"), ("All files", "*.*")))
             param = self.monitor_text_box.get('1.0', tk.END)
             file_path.write(param)
+            # print("param")
             file_path.close()
+            # print("close")
             self.stop_button_pressed()
         
         except:
-            # print("Error")
+            print("Error")
             pass
 
     def clear_monitor(self):
