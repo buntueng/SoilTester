@@ -209,6 +209,8 @@ class App(ctk.CTk):
         self.sample_area = 1
         self.k_setting = 0
 
+        self.previous_y_displacement = 0
+
         self.start_exp1 = False       
         active_port_list = self.list_serial_ports()
         self.com_port_DIS_X.configure(values=active_port_list)
@@ -1131,47 +1133,51 @@ class App(ctk.CTk):
                         vertical_force = int(vertical_force)
                         if dis_x != None:
                             x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
+                        else:
+                            x_show3digit = "None"
                         if dis_Y != None:
                             y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
                             y_show3digit = float(y_show3digit)
-                            nominator = self.previous_sigma - (vertical_force/self.sample_area)
-                            denominator = y_show3digit-self.previous_displacement
-                            if denominator == 0:
-                                denominator = 0.01
-                            delta_k_constant = nominator/denominator
-                            time_in_x = (time.time()-self.start_time)
-                            time_in_x = float('%.3f'%time_in_x)#time in X
-                            param_for_exp4 = (time_stamp)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(x_show3digit)+(",")+(y_show3digit)+"\n" 
-                            print(param_for_exp4)
-                            self.monitor_text_box.insert(tk.END,param_for_exp4)
-                            self.x_coordinate.append(float(time_in_x))
-                            self.y_coordinate.append(float(delta_k_constant))
-                            self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
-                            self.canvas.draw()
-                            self.ser_port_uC.flushInput()
-                            if delta_k_constant == self.k_setting :       # do nothing
-                                    stop_cmd_string = "s\n"
-                                    stop_cmd_byte = stop_cmd_string.encode()
-                                    self.ser_port_uC.write(stop_cmd_byte)
-                            elif delta_k_constant > self.k_setting :
-                                    up_cmd_string = "u\n"
-                                    up_cmd_byte = up_cmd_string.encode()
-                                    self.ser_port_uC.write(up_cmd_byte)
-                            elif delta_k_constant < self.k_setting :
-                                    down_cmd_string = "d\n"
-                                    down_cmd_byte = down_cmd_string.encode()
-                                    self.ser_port_uC.write(down_cmd_byte)
+                        else:
+                            y_show3digit = self.previous_displacement
+
+                        nominator = self.previous_sigma - (vertical_force/self.sample_area)
+                        denominator = y_show3digit-self.previous_displacement
+                        if denominator == 0:
+                            denominator = 0.01
+                        delta_k_constant = nominator/denominator
+                        time_in_x = (time.time()-self.start_time)
+                        time_in_x = float('%.3f'%time_in_x)#time in X
+                        
+                        param_for_exp4 = (time_stamp)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(x_show3digit)+(",")+(y_show3digit)+"\n" 
+                        self.monitor_text_box.insert(tk.END,param_for_exp4)
+
+                        self.x_coordinate.append(float(time_in_x))
+                        self.y_coordinate.append(float(delta_k_constant))
+                        self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                        self.canvas.draw()
+                        self.ser_port_uC.flushInput()
+                        if delta_k_constant == self.k_setting or delta_k_constant == 0 :       # do nothing
+                                stop_cmd_string = "s\n"
+                                stop_cmd_byte = stop_cmd_string.encode()
+                                self.ser_port_uC.write(stop_cmd_byte)
+                        elif delta_k_constant > self.k_setting :
+                                up_cmd_string = "u\n"
+                                up_cmd_byte = up_cmd_string.encode()
+                                self.ser_port_uC.write(up_cmd_byte)
+                        elif delta_k_constant < self.k_setting :
+                                down_cmd_string = "d\n"
+                                down_cmd_byte = down_cmd_string.encode()
+                                self.ser_port_uC.write(down_cmd_byte)
                             
-                            self.previous_sigma = vertical_force/self.sample_area
-                            self.previous_displacement = y_show3digit
+                        self.previous_sigma = vertical_force/self.sample_area
+                        self.previous_displacement = y_show3digit
                             
                             # print(status_exp3_test)
-                            if status_exp4_test == "1":
-                                self.ser_port_uC.write("s\n".encode())
-                                self.run_exp4_state = 17
-                            self.after(30,self.run_exp4)
-                        else:
-                            self.after(30,self.run_exp4)
+                        if status_exp4_test == "1":
+                            self.ser_port_uC.write("s\n".encode())
+                            self.run_exp4_state = 17
+                        self.after(30,self.run_exp4)
                     except:
                         print("Can not execute")
                         self.after(20,self.run_exp4)
