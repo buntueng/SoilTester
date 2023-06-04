@@ -566,14 +566,15 @@ class App(ctk.CTk):
                     param_result_string = param_result.rstrip().decode()
                     status_exp1_test,horizontal_force,vertical_force = param_result_string.split(",")
                     time_stamp = self.format_time()
-                    param_for_exp1 = (time_stamp)+(",")+(status_exp1_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
-                    self.monitor_text_box.insert(tk.END,param_for_exp1)
+
                     time_in_x = (time.time()-self.start_time)
                     time_in_x = float('%.3f'%time_in_x)#time in X
                     dis_Y = (self.obj_dis_y.get_last())
                     if dis_Y != None:
                         y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
                         # print(y_show3digit)
+                        param_for_exp1 = (time_stamp)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(y_show3digit)+"\n" 
+                        self.monitor_text_box.insert(tk.END,param_for_exp1)
                         self.x_coordinate.append(float(time_in_x))
                         self.y_coordinate.append(float(y_show3digit))
                         self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
@@ -731,20 +732,26 @@ class App(ctk.CTk):
                 case 14:
                     param_result = self.ser_port_uC.readline()
                     param_result_string = param_result.rstrip().decode()
-                    status_exp2_test,horizontal_force,vertical_force,cyclic_counter,limit_x_swicth_pressed = param_result_string.split(",")
-                    time_stamp = self.format_time()
-                    param_for_exp2 = (time_stamp)+(",")+(status_exp2_test)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(cyclic_counter)+(",")+(limit_x_swicth_pressed)+"\n" 
-                    self.monitor_text_box.insert(tk.END,param_for_exp2)
-                    self.counter_cyclic_defualt.set(cyclic_counter)
-                    time_in_x = (time.time()-self.start_time)
-                    time_in_x = float('%.3f'%time_in_x)#time in X
-                    self.x_coordinate.append(float(time_in_x))
-                    self.y_coordinate.append(float(horizontal_force))
-                    self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
-                    self.canvas.draw()
-                    self.ser_port_uC.flushInput()
-                    if status_exp2_test == "1":
-                        self.run_exp2_state = 15
+                    dis_Y = (self.obj_dis_y.get_last())
+                    dis_x = (self.obj_dis_x.get_last())
+                    if dis_x != None:
+                        x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
+                    if dis_Y != None:
+                        y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
+                        status_exp2_test,horizontal_force,vertical_force,cyclic_counter,limit_x_swicth_pressed = param_result_string.split(",")
+                        time_stamp = self.format_time()
+                        param_for_exp2 = (time_stamp)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(x_show3digit)+(",")+(y_show3digit)+"\n" 
+                        self.monitor_text_box.insert(tk.END,param_for_exp2)
+                        self.counter_cyclic_defualt.set(cyclic_counter)
+                        time_in_x = (time.time()-self.start_time)
+                        time_in_x = float('%.3f'%time_in_x)#time in X
+                        self.x_coordinate.append(float(time_in_x))
+                        self.y_coordinate.append(float(horizontal_force))
+                        self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
+                        self.canvas.draw()
+                        self.ser_port_uC.flushInput()
+                        if status_exp2_test == "1":
+                            self.run_exp2_state = 15
                     self.after(40,self.run_exp2)
                 
                 case 15:
@@ -869,11 +876,12 @@ class App(ctk.CTk):
                         else:
                             pass
                             # print(splitted_params)
-                        param_for_exp3 = (time_stamp)+(",")+(status_exp3_test)+(",")+(horizontal_force)+(",")+(vertical_force)+"\n" 
-                        self.monitor_text_box.insert(tk.END,param_for_exp3)
+
                         dis_Y = (self.obj_dis_y.get_last())
                         dis_x = (self.obj_dis_x.get_last())
                         vertical_force = int(vertical_force)
+                        if dis_x != None:
+                            x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
                         if dis_Y != None:
                             y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
                             y_show3digit = float(y_show3digit)
@@ -882,6 +890,8 @@ class App(ctk.CTk):
                             if denominator == 0:
                                 denominator = 0.01
                             delta_k_constant = nominator/denominator
+                            param_for_exp3 = (time_stamp)+(",")+(horizontal_force)+(",")+(vertical_force)+(x_show3digit)+(",")+(y_show3digit)+"\n" 
+                            self.monitor_text_box.insert(tk.END,param_for_exp3)
                             time_in_x = (time.time()-self.start_time)
                             time_in_x = float('%.3f'%time_in_x)#time in X
                             self.x_coordinate.append(float(time_in_x))
@@ -1116,13 +1126,12 @@ class App(ctk.CTk):
                         else:
                             pass
                         # print(splitted_params)
-                        param_for_exp4 = (time_stamp)+(",")+(status_exp4_test)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(exp4_counter_cyclic)+(",")+(exp4_limit_switch_pressed)+"\n" 
-                        print(param_for_exp4)
-                        self.monitor_text_box.insert(tk.END,param_for_exp4)
                         self.counter_cyclic_defualt.set(exp4_counter_cyclic)
                         dis_Y = (self.obj_dis_y.get_last())
                         dis_x = (self.obj_dis_x.get_last())
                         vertical_force = int(vertical_force)
+                        if dis_x != None:
+                            x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
                         if dis_Y != None:
                             y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
                             y_show3digit = float(y_show3digit)
@@ -1133,6 +1142,9 @@ class App(ctk.CTk):
                             delta_k_constant = nominator/denominator
                             time_in_x = (time.time()-self.start_time)
                             time_in_x = float('%.3f'%time_in_x)#time in X
+                            param_for_exp4 = (time_stamp)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(x_show3digit)+(",")+(y_show3digit)+"\n" 
+                            print(param_for_exp4)
+                            self.monitor_text_box.insert(tk.END,param_for_exp4)
                             self.x_coordinate.append(float(time_in_x))
                             self.y_coordinate.append(float(delta_k_constant))
                             self.graph_ax.plot(self.x_coordinate,self.y_coordinate)
@@ -1174,7 +1186,7 @@ class App(ctk.CTk):
 
                 case 18:
                     print("KKKKKKKKK")
-                    self.exp_test_success()
+                    # self.exp_test_success()
                     # self.exp4_test_success()
                     self.running_flag = False
 
