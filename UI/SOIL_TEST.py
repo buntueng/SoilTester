@@ -734,13 +734,12 @@ class App(ctk.CTk):
                     param_result_string = param_result.rstrip().decode()
                     dis_Y = (self.obj_dis_y.get_last())
                     dis_x = (self.obj_dis_x.get_last())
-                    if dis_x != None:
-                        x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
-                    if dis_Y != None:
+                    if  dis_Y != None:
+                        # x_show3digit = f'{int(dis_x[:-2])*0.001:.3f}'
                         y_show3digit = f'{int(dis_Y[:-2])*0.001:.3f}'
                         status_exp2_test,horizontal_force,vertical_force,cyclic_counter,limit_x_swicth_pressed = param_result_string.split(",")
                         time_stamp = self.format_time()
-                        param_for_exp2 = (time_stamp)+(",")+(horizontal_force)+(",")+(vertical_force)+(",")+(x_show3digit)+(",")+(y_show3digit)+"\n" 
+                        param_for_exp2 = (time_stamp)+","+(horizontal_force)+","+(vertical_force)+","+(y_show3digit)+"\n" 
                         self.monitor_text_box.insert(tk.END,param_for_exp2)
                         self.counter_cyclic_defualt.set(cyclic_counter)
                         time_in_x = (time.time()-self.start_time)
